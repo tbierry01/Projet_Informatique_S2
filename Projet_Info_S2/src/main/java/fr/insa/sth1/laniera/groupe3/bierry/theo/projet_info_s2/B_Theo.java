@@ -15,5 +15,6 @@ public class B_Theo {
         System.out.println("Yes");
         System.out.println("Cocorico");
         System.out.println("Comment que c'est que ca va?");
+        System.out.println("Ok");
     }
 }
