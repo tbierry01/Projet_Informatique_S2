@@ -12,6 +12,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 public class Class_Test {
     public static void main(String[] args) {
         System.out.println("Théo");
+        System.out.println("Yes");
         System.out.println("Cocorico");
     }
 }
