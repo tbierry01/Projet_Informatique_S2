@@ -18,6 +18,7 @@ public abstract class Noeud {
     private Treillis Treillis_Noeud;
     
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
+   
     public void setTreillisNoeud(Treillis T){
         Treillis_Noeud = T;
     }
