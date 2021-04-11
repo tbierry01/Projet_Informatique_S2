@@ -52,4 +52,5 @@ public class Point {
     public ArrayList <Segment> getSegment_Point(){
         return Segment_Point;
     }
+    
 }
