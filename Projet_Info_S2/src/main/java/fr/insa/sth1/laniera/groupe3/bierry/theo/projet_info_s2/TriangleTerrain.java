@@ -13,8 +13,9 @@ public class TriangleTerrain {
     
     private int Id;
     private Segment [] Seg = new Segment[3]; // On stocke ici les 3 segments qui forment notre triangle terrain
+    private ZoneConstructible ZCTrinagleTerrain;
     
-    public TriangleTerrain(int Iden, Segment[] S){ //On envoit les 3 segment à travers un tableau, c'est plus simple
+    public TriangleTerrain(int Iden, Segment[] S, ZoneConstructible ZC){ //On envoit les 3 segment à travers un tableau, c'est plus simple
         if (S.length !=3) {
             if (S.length < 3) {
                 throw new Error ("Il n'y a pas assez de segment");
@@ -28,6 +29,10 @@ public class TriangleTerrain {
             Seg[i] = S[i];
             
         }
+        
+        ZCTrinagleTerrain = ZC;
+        ZC.addTriangleTerrain(this); //On fait ca pour respecter la multiplicité de notre diagrmame UML, dès que l'on crer un nouveua TringalTerrain dans la zone constructible ZC, on l'ajoute à la liste des triangles terrains de ZC
+        
     }
 
    
