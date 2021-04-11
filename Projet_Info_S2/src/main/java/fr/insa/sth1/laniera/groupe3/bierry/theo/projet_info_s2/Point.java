@@ -53,4 +53,8 @@ public class Point {
         return Segment_Point;
     }
     
+    public void addSegment(Segment S){
+        Segment_Point.add(S);
+    }
+    
 }
