@@ -12,7 +12,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 public class TriangleTerrain {
     
     private int Id;
-    private Segment [] Seg = new Segment[3]; // On stocke ici les 3 segments qui forment notre triangle terrain
+    private Segment [] Seg; // On stocke ici les 3 segments qui forment notre triangle terrain
     private ZoneConstructible ZCTrinagleTerrain;
     
     public TriangleTerrain(int Iden, Segment[] S, ZoneConstructible ZC){ //On envoit les 3 segment à travers un tableau, c'est plus simple
@@ -25,6 +25,7 @@ public class TriangleTerrain {
             }
         }
         Id = Iden;
+        Seg = new Segment[3];
         for (int i = 0; i < 3; i++) {
             Seg[i] = S[i];
             
