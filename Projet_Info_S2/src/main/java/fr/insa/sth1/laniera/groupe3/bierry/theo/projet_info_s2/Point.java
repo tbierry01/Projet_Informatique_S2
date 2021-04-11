@@ -49,7 +49,7 @@ public class Point {
         this.Id = Id;
     }
     
-    public ArrayList <Segment> getSegment_Point(){
+    public ArrayList <Segment> getSegment_Point(){ //On retourne le tableau de tous les segments
         return Segment_Point;
     }
     
