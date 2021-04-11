@@ -14,5 +14,12 @@ public class TriangleTerrain {
     private int Id;
     private Segment [] Seg = new Segment[3]; // On stocke ici les 3 segments qui forment notre triangle terrain
     
+    public TriangleTerrain(int Iden, Segment[] S){ //On envoit les 3 segment à travers un tableau, c'est plus simple
+        Id = Iden;
+        for (int i = 0; i < 3; i++) {
+            Seg[i] = S[i];
+            
+        }
+    }
     
 }
