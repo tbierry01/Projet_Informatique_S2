@@ -12,11 +12,12 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 public class Segment {
     
     private int Id;
-    private Point[] Extremite = new Point[2]; // Tableau ou l'on met les points des extrémités du segment
+    private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
     private TriangleTerrain TT;
             
     public Segment (int Iden, Point P1, Point P2, TriangleTerrain TTe){
         Id = Iden;
+        Extremite = new Point[2];
         Extremite[0] = P1; //On rempli le tableau des extremité avec les points P1 et P2
         Extremite[1] = P2;
         TT = TTe;
