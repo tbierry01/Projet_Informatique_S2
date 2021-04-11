@@ -14,5 +14,4 @@ public class Barre {
     private Noeud [] Noeuds_Barre;
     private Treillis Treillis_Barre;
     
-    
 }
