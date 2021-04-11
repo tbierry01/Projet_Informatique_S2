@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public abstract class Noeud {
     
     private int Id;
-    private ArrayList<Barre> Barres_Noeud;
+    protected ArrayList<Barre> Barres_Noeud;
     
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
     
