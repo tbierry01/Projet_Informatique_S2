@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public abstract class Noeud {
     
     private int Id;
-    protected ArrayList<Barre> Barres_Noeud;
+    protected ArrayList<Barre> Barres_Noeud; //Portected pour que ce soit plus simple avec les sous classes
     
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
     
