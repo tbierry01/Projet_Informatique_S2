@@ -18,6 +18,7 @@ public class ZoneConstructible {
     private double Ymax;
     private double Ymin;
     private ArrayList<TriangleTerrain> TTContenu;
+    private Treillis Treillis_ZoneConstructible;
     
     public ZoneConstructible(double Xmi,double  Xma,double  Ymi,double Yma){
         Xmax = Xma;
@@ -52,6 +53,10 @@ public class ZoneConstructible {
     
     public void addTriangleTerrain(TriangleTerrain TT){
         TTContenu.add(TT);
+    }
+    
+    public void setTreillisZoneConstructible(Treillis T){
+        Treillis_ZoneConstructible = T;
     }
     
     
