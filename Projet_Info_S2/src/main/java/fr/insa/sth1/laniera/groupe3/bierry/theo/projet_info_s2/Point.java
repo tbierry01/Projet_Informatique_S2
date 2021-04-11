@@ -5,6 +5,8 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author theob
@@ -14,6 +16,7 @@ public class Point {
     private double abscisse;
     private double ordonnee;
     private int Id;
+    private ArrayList <Segment> Segment_Point;
 
     public Point(double x, double y, int Iden) {
         abscisse = x;
