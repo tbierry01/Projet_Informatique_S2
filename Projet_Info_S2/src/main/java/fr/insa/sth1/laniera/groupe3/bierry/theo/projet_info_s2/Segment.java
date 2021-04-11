@@ -20,6 +20,8 @@ public class Segment {
         Extremite[0] = P1; //On rempli le tableau des extremité avec les points P1 et P2
         Extremite[1] = P2;
         TT = TTe;
+        P1.addSegment(this);
+        P2.addSegment(this);
     }
 
     public int getId() {
