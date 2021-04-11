@@ -49,5 +49,7 @@ public class Point {
         this.Id = Id;
     }
     
-
+    public ArrayList <Segment> getSegment_Point(){
+        return Segment_Point;
+    }
 }
