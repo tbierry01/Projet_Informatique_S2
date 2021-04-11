@@ -13,11 +13,13 @@ public class Segment {
     
     private int Id;
     private Point[] Extremite; // Tableau ou l'on met les points des extrémités du segment
-    
-    public Segment (int Iden, Point P1, Point P2){
+    private TriangleTerrain TT;
+            
+    public Segment (int Iden, Point P1, Point P2, TrinagleTerrain TTe){
         Id = Iden;
         Extremite[0] = P1; //On rempli le tableau des extremité avec les points P1 et P2
         Extremite[1] = P2;
+        TT = TTe;
     }
 
     public int getId() {
