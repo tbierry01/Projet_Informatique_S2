@@ -12,6 +12,6 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 public abstract class Appui extends Noeud{
     
     private double alpha;
-    private int Segment;
+    private Segment SegAppui;
     
 }
