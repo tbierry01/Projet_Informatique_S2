@@ -22,6 +22,7 @@ public class Point {
         abscisse = x;
         ordonnee = y;
         Id = Iden;
+        Segment_Point = new ArrayList<>();
     }
 
     public double getAbscisse() {
