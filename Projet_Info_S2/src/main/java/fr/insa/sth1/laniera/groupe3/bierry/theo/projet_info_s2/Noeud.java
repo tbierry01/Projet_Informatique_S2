@@ -28,3 +28,7 @@ public abstract class Noeud {
         Treillis_Noeud = T;
     }
 }
+
+
+///Pour faire arctan  Math.atan
+/// Pour prendre en compte tous les problèmes, toutes les conditions : Math.atan2(CO, CA);  Cote opposé, coté adjacent
