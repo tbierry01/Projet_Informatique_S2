@@ -21,7 +21,7 @@ public class Point {
     public Point(double x, double y, int Iden) {
         abscisse = x;
         ordonnee = y;
-        Id = Iden;//
+        Id = Iden;
         Segment_Point = new ArrayList<>();
     }
 
