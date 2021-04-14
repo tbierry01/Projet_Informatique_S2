@@ -28,4 +28,6 @@ public class Barre {
         N2.addBarre(this);
         T.addBarre_Treillis(this);
     }
+    //Test Test
+    
 }
