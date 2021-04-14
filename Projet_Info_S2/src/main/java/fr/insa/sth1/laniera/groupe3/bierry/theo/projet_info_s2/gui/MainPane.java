@@ -37,7 +37,6 @@ public class MainPane extends BorderPane {
         
         this.setTop(entete);
         
-        //Je rejoute un truc
     }
     
 }
