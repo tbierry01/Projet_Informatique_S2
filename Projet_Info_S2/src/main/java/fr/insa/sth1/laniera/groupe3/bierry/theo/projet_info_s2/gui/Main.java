@@ -23,7 +23,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("Dessin 2D");
 //      Scene scene = new Scene(new MainDessinPane());
-        Scene scene = new Scene(new MainPane());
+        Scene scene = new Scene(new TopBorderPane());
         primaryStage.setScene(scene);
         primaryStage.show();
 
