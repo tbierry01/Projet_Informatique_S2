@@ -17,6 +17,11 @@ public abstract class Noeud {
     protected ArrayList<Barre> Barres_Noeud; //Portected pour que ce soit plus simple avec les sous classes
     private Treillis Treillis_Noeud;
     
+    public Noeud(Treillis T, int Iden){
+        Treillis_Noeud = T;
+        Id = Iden;
+        
+    }
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
    
     public void setTreillisNoeud(Treillis T){
