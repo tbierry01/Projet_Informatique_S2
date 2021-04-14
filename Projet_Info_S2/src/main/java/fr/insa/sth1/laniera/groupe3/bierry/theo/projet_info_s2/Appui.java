@@ -14,4 +14,10 @@ public abstract class Appui extends Noeud{
     private double alpha;
     private Segment SegAppui;
     
+    public Appui(Treillis T, int Iden, double coeff, Segment Seg){
+        super(T, Iden);
+        alpha = coeff;
+        SegAppui = Seg;
+    }
+    
 }
