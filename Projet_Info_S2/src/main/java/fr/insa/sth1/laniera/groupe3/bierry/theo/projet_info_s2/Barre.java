@@ -28,6 +28,10 @@ public class Barre {
         N2.addBarre(this);
         T.addBarre_Treillis(this);
     }
-    //Test Test
+    public String toString(){
+        String res;
+        res = "\n --Barre "+Id+"--"+"\nExtremités : "+"\n-> "+Noeuds_Barre[0]+"\n-> "+Noeuds_Barre[1]+"\nAppartient au Treillis : "+Treillis_Barre+"\nLa Barre est de type : "+Type_de_Barre;
+        return res;
+    }
     
 }
