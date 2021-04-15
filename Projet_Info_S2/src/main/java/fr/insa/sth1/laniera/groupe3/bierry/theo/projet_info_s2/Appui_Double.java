@@ -20,4 +20,11 @@ public class Appui_Double extends Appui{
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         super.Barres_Noeud.add(B);
     }
+    
+    public String toString(){
+        String res;
+        res = "\n --Appui Double--"+super.toString();
+        
+        return res;
+    }
 }
