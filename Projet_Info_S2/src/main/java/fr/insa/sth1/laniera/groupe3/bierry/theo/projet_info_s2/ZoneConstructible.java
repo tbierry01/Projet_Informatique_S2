@@ -12,15 +12,15 @@ import java.util.ArrayList;
  * @author theob
  */
 public class ZoneConstructible {
-    
+
     private double Xmax;
     private double Xmin;
     private double Ymax;
     private double Ymin;
     private ArrayList<TriangleTerrain> TTContenu;
     private Treillis Treillis_ZoneConstructible;
-    
-    public ZoneConstructible(double Xmi,double  Xma,double  Ymi,double Yma){
+
+    public ZoneConstructible(double Xmi, double Xma, double Ymi, double Yma) {
         Xmax = Xma;
         Xmin = Xmi;
         Ymin = Ymi;
@@ -28,21 +28,29 @@ public class ZoneConstructible {
         TTContenu = new ArrayList<>();
     }
 
+    public String toString() {
+        String res;
+        res = "\n --ZoneConstructible--" + "\n- Xmin : " + Xmin + "\n- Xmax : " + Xmax + "\n- Ymin : " + Ymin + "\n- Ymax : " + Ymax + "\nContient les treillis : " + Treillis_ZoneConstructible + "\nContient les triangles terrain : ";
+        for (int i = 0; i < TTContenu.size(); i++) {
+            res = res + "\n-> " + TTContenu.get(i);
+
+        }
+        
+        return res;
+    }
 
     public double getXmax() {
         return Xmax;
     }
 
-
     public double getXmin() {
         return Xmin;
     }
 
-  
     public double getYmax() {
         return Ymax;
     }
-    
+
     public double getYmin() {
         return Ymin;
     }
@@ -50,14 +58,13 @@ public class ZoneConstructible {
     public ArrayList<TriangleTerrain> getTTContenu() {
         return TTContenu;
     }
-    
-    public void addTriangleTerrain(TriangleTerrain TT){
+
+    public void addTriangleTerrain(TriangleTerrain TT) {
         TTContenu.add(TT);
     }
-    
-    public void setTreillisZoneConstructible(Treillis T){
+
+    public void setTreillisZoneConstructible(Treillis T) {
         Treillis_ZoneConstructible = T;
     }
-    
-    
+
 }
