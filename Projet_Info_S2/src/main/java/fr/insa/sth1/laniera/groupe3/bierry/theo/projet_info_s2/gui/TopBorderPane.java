@@ -5,7 +5,7 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
-import java.awt.Font;
+import java.awt.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -39,6 +39,7 @@ public class TopBorderPane extends BorderPane{
     private TextField Abscisse;
     private TextField Ordonnee;
     private Label Aide;
+    private Canvas Dessin;
     
     public TopBorderPane (){
         
@@ -60,6 +61,7 @@ public class TopBorderPane extends BorderPane{
         this.Abscisse = new TextField ();
         this.Ordonnee = new TextField ();
         this.Aide = new Label ();
+        this.Dessin = new Canvas ();
          
         this.Terrain.setPrefSize(100, 100);
         this.Segment.setPrefSize (100,50);
@@ -85,6 +87,7 @@ public class TopBorderPane extends BorderPane{
         
         this.setTop(entete);
         
+       
         HBox pAbscisses = new HBox (this.X, this.Abscisse);
         HBox pOrdonnee = new HBox (this.Y, this.Ordonnee);
         
@@ -96,6 +99,7 @@ public class TopBorderPane extends BorderPane{
         
         this.setLeft(coteGauche);
         
+        
         Aide.setText("Toto cduo dhio dax hbuaa huivda huixqbuip dhov huxpv huipx huixs bic bipvd bip c");
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
@@ -104,7 +108,11 @@ public class TopBorderPane extends BorderPane{
         this.setBottom (coteBas);
         
         
-          //insets     
+//        this.setCenter(Dessin);
+// Voir comment mettre le canvas au centre de la border pane
+        
+        
+          //insets (4 valeurs d'espace    mets l'espace entre les boutons
     }
     
 }
