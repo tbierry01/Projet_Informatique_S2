@@ -20,4 +20,10 @@ public abstract class Appui extends Noeud{
         SegAppui = Seg;
     }
     
+    public String toString(){
+        String res;
+        res = super.toString()+"\nCoefficient alpha : "+alpha+"\nSegment : "+SegAppui;
+        return res;
+    }
+    
 }
