@@ -27,6 +27,16 @@ public abstract class Noeud {
     public void setTreillisNoeud(Treillis T){
         Treillis_Noeud = T;
     }
+    
+    public String toString(){
+        String res;
+        res = "\n --Noeud "+Id+"--"+"\nAppartient au treillis : "+Treillis_Noeud+"\nRelie les barres : ";
+        for (int i = 0; i < Barres_Noeud.size(); i++) {
+            res = res+"\n-> "+Barres_Noeud.get(i);
+            
+        }
+        return res;
+    }
 }
 
 
