@@ -38,7 +38,7 @@ public class TriangleTerrain {
     
     public String toString(){
         String res;
-        res = "\n -- Triangle Terrain "+Id+"--"+"\nA pour segment : "+"\n ->"+Seg[0]+"\n ->"+Seg[1]+"\n ->"+Seg[2]+"\nAppartient à la zone constructible";
+        res = "\n -- Triangle Terrain "+Id+"--"+"\nA pour segment : "+"\n -> "+Seg[0]+"\n -> "+Seg[1]+"\n -> "+Seg[2]+"\nAppartient à la zone constructible";
         return res;
     }
 
