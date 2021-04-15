@@ -25,7 +25,7 @@ public class Treillis {
 
     public String toString() {
         String res;
-        res = "\n --Treillis " + Id + "--" + "\nContient les barres";
+        res = "\n --Treillis " + Id + "--" + "\nContient les barres : ";
         for (int i = 0; i < Barre_Treillis.size(); i++) {
             res = res + "\n-> " + Barre_Treillis.get(i);
         }
