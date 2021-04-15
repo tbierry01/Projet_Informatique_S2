@@ -24,6 +24,7 @@ public class TopBorderPane extends BorderPane{
     private ChoiceBox Appuis;
     private ToggleButton Noeuds;
     private ToggleButton Barres;
+    private ChoiceBox Couleur;
     
     public TopBorderPane (){
         
@@ -50,7 +51,9 @@ public class TopBorderPane extends BorderPane{
         HBox entete = new HBox (this.Terrain, bTerrain, this.Pont, bPont1, bPont2);
         
         this.setTop(entete);
-               
+        
+        
+          //insets     
     }
     
 }
