@@ -24,7 +24,16 @@ public class Point {
         Id = Iden;
         Segment_Point = new ArrayList<>();
     }
-
+    
+    public String toString(){
+        String res;
+        res = "\n --Point "+Id+"--"+"\nAbscisse : "+abscisse+"\nOrdonnée : "+ordonnee+"\nEst l'extremité des segements";
+        for (int i = 0; i < Segment_Point.size(); i++) {
+            res = res+"\n-> "+Segment_Point.get(i);
+            
+        }
+        return res;
+    }
     public double getAbscisse() {
         return abscisse;
     }
