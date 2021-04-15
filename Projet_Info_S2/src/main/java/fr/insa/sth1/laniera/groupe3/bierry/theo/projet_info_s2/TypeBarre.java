@@ -26,4 +26,17 @@ public class TypeBarre {
     public void addBarre_TypeBarre(Barre B){
         Barre_TypeBarre.add(B);
     }
+    
+    public String toString(){
+        String res;
+        res = "\n --Type Barre "+Id+"--"+"\n- Section : "+Section+"\n- Longueur min : "+Lmin+"\n- Longueur max : "+Lmax+"\n- Resistance à la compression : "+RmC
+                +"\n- Resistance à la torsion : "+RmT+"\n- Materiau : "+Materiaux;
+        res = res+"\nLes barres suivantes sont de ce type : ";
+        for (int i = 0; i < Barre_TypeBarre.size(); i++) {
+            res = res+"\n-> "+Barre_TypeBarre.get(i);
+            
+        }
+        
+        return res;
+    }
 }
