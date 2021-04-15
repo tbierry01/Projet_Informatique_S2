@@ -7,14 +7,14 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author drumm
  */
-public class TopBorderPane extends BorderPane{
+public class TopBorderPane extends HBox{
     
     private ToggleButton Terrain;
     private ToggleButton Segment;
@@ -34,7 +34,8 @@ public class TopBorderPane extends BorderPane{
         this.Noeuds = new ToggleButton ("Noeuds");
         this.Barres = new ToggleButton ("Barres");
         
-        this.Barres.setPrefSize(100, 100);
+        this.Terrain.setPrefSize(100, 100);
+        this.Pont.setPrefSize (100,100);
         
 /*        this.setLeft(this.Terrain);
         this.setLeft(this.Segment);
@@ -45,18 +46,22 @@ public class TopBorderPane extends BorderPane{
         this.setRight(this.Appuis);
         this.setRight(this.Barres);
         this.setRight(this.Noeuds);
-*/      
+
         HBox enteteGauche = new HBox(this.Terrain);
         HBox enteteCentre = new HBox (this.Segment, this.Point, this.Pont);
         HBox enteteDroite = new HBox (this.Appuis, this.Barres, this.Noeuds);
+*/        
+        VBox bTerrain = new VBox (this.Segment, this.Point);
+        VBox bPont1 = new VBox (this.Appuis, this.Barres);
+        VBox bPont2 = new VBox (this.Noeuds);
+        
+        HBox entete = new HBox (this.Terrain, bTerrain, this.Pont, bPont1, bPont2);
+        
+        
         
 /*        BorderPane entete = new BorderPane ();
         entete.setLeft();
- */       
-        this.setLeft(enteteGauche);
-        this.setCenter(enteteCentre);
-        this.setRight(enteteDroite);
-        
+ */      
         
     }
     
