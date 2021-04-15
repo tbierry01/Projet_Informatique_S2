@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.setTitle("Dessin 2D");
+        primaryStage.setTitle("Le meilleur logiciel du monde entier voire même de l'Univers by moi");
 //      Scene scene = new Scene(new MainDessinPane());
         Scene scene = new Scene(new TopBorderPane());
         primaryStage.setScene(scene);
