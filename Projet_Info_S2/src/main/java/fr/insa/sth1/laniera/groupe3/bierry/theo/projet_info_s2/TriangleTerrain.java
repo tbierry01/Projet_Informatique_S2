@@ -35,6 +35,12 @@ public class TriangleTerrain {
         ZC.addTriangleTerrain(this); //On fait ca pour respecter la multiplicité de notre diagrmame UML, dès que l'on crer un nouveua TringalTerrain dans la zone constructible ZC, on l'ajoute à la liste des triangles terrains de ZC
         
     }
+    
+    public String toString(){
+        String res;
+        res = "\n -- Triangle Terrain "+Id+"--"+"\nA pour segment : "+"\n ->"+Seg[0]+"\n ->"+Seg[1]+"\n ->"+Seg[2]+"\nAppartient à la zone constructible";
+        return res;
+    }
 
    
     public int getId() {
