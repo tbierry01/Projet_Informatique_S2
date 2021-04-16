@@ -16,7 +16,7 @@ public class Point {
     private double abscisse;
     private double ordonnee;
     private int Id;
-    private ArrayList <Segment> Segment_Point; //Cela permet de stocker l'ensemble des segments liés à un point dans un tableau dynamique
+    private ArrayList<Segment> Segment_Point; //Cela permet de stocker l'ensemble des segments liés à un point dans un tableau dynamique
 
     public Point(double x, double y, int Iden) {
         abscisse = x;
@@ -24,17 +24,18 @@ public class Point {
         Id = Iden;
         Segment_Point = new ArrayList<>();
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String res;
-        res = "\n --Point "+Id+"--"+"\nAbscisse : "+abscisse+"\nOrdonnée : "+ordonnee+"\nEst l'extremité des segements : ";
+        res = "\n --Point " + Id + "--" + "\nAbscisse : " + abscisse + "\nOrdonnée : " + ordonnee + "\nEst l'extremité des segements : ";
         for (int i = 0; i < Segment_Point.size(); i++) {
-            res = res+"\n-> "+Segment_Point.get(i);
-            
+            res = res + "\n-> " + Segment_Point.get(i);
+
         }
         return res;
     }
+
     public double getAbscisse() {
         return abscisse;
     }
@@ -58,13 +59,13 @@ public class Point {
     public void setId(int Id) {
         this.Id = Id;
     }
-    
-    public ArrayList <Segment> getSegment_Point(){ //On retourne le tableau de tous les segments
+
+    public ArrayList<Segment> getSegment_Point() { //On retourne le tableau de tous les segments
         return Segment_Point;
     }
-    
-    public void addSegment(Segment S){
+
+    public void addSegment(Segment S) {
         Segment_Point.add(S);
     }
-    
+
 }
