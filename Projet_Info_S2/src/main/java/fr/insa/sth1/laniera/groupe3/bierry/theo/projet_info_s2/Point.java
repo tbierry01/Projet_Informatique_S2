@@ -25,6 +25,7 @@ public class Point {
         Segment_Point = new ArrayList<>();
     }
     
+    @Override
     public String toString(){
         String res;
         res = "\n --Point "+Id+"--"+"\nAbscisse : "+abscisse+"\nOrdonnée : "+ordonnee+"\nEst l'extremité des segements : ";
