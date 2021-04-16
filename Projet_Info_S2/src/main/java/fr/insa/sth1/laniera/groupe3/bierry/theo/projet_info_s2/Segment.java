@@ -24,6 +24,7 @@ public class Segment {
         P2.addSegment(this);
     }
 
+    @Override
     public String toString(){
         String res;
         res = "\n --Segment "+Id+"--"+"\nExtrémité "+"\n-> "+Extremite[0]+"\n-> "+Extremite[1]+"\nContenu dans le trinagle terrain : "+TT;
