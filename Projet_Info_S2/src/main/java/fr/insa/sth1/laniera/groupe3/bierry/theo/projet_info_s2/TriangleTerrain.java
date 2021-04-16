@@ -28,7 +28,7 @@ public class TriangleTerrain {
         Seg = new Segment[3];
         for (int i = 0; i < 3; i++) {
             Seg[i] = S[i];
-            
+            S[i].setTriangleTerrain(this);
         }
         
         ZCTrinagleTerrain = ZC;
