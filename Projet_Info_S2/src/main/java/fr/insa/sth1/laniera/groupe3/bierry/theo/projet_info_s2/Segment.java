@@ -15,12 +15,11 @@ public class Segment {
     private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
     private TriangleTerrain TT;
             
-    public Segment (int Iden, Point P1, Point P2, TriangleTerrain TTe){
+    public Segment (int Iden, Point P1, Point P2){
         Id = Iden;
         Extremite = new Point[2];
         Extremite[0] = P1; //On rempli le tableau des extremité avec les points P1 et P2
         Extremite[1] = P2;
-        TT = TTe;
         P1.addSegment(this);
         P2.addSegment(this);
     }
@@ -41,6 +40,10 @@ public class Segment {
     
     public Point getExtremite(int Pos){
         return Extremite[Pos];
+    }
+    
+    public void setTriangleTerrain(TriangleTerrain TTer){
+        TT = TTer;
     }
     
     
