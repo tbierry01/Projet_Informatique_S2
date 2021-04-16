@@ -28,7 +28,7 @@ public class Test_ensemble {
         S[1] = S1;
         S[2] = S2;
         TriangleTerrain TT1 = new TriangleTerrain(0, S, ZC);
-        System.out.println("-------------------------------------------------------------------\n"+ZC);
+        System.out.println("-------------------------------------------------------------------\n"+P0);
     }
     
     public static void main(String[] args) {
