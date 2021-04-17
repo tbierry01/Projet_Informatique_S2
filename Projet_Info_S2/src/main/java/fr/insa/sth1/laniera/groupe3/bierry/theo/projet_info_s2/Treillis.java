@@ -27,11 +27,11 @@ public class Treillis {
         String res;
         res = "\n --Treillis " + Id + "--" + "\nContient les barres : ";
         for (int i = 0; i < Barre_Treillis.size(); i++) {
-            res = res + "\n-> " + Barre_Treillis.get(i);
+            res = res + "\n-> " + Barre_Treillis.get(i).getId();
         }
         res = res + "\nContient les noeuds";
         for (int i = 0; i < Noeuds_Treillis.size(); i++) {
-            res = res + "\n-> " + Noeuds_Treillis.get(i);
+            res = res + "\n-> " + Noeuds_Treillis.get(i).getId();
 
         }
         return res;
@@ -52,5 +52,7 @@ public class Treillis {
     public void addNoeuds_Treillis(Noeud N) { //Ceci permet de rajouter des noeuds dans notre list de noeuds
         Noeuds_Treillis.add(N);
     }
+    
+    
 
 }
