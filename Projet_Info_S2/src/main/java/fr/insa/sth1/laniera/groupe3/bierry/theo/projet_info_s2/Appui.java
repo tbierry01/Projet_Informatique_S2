@@ -22,7 +22,7 @@ public abstract class Appui extends Noeud{
     
     public String toString(){
         String res;
-        res = super.toString()+"\nCoefficient alpha : "+alpha+"\nSegment : "+SegAppui;
+        res = super.toString()+"\nCoefficient alpha : "+alpha+"\nSegment : "+SegAppui.getId();
         return res;
     }
     
