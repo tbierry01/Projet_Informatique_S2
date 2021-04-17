@@ -25,7 +25,7 @@ public class Treillis {
 
     public String toString() {
         String res;
-        res = "\n --Treillis " + Id + "--" + "\nContient les barres : ";
+        res = "\n --Treillis " + getId() + "--" + "\nContient les barres : ";
         for (int i = 0; i < Barre_Treillis.size(); i++) {
             res = res + "\n-> " + Barre_Treillis.get(i).getId();
         }
@@ -52,6 +52,14 @@ public class Treillis {
     public void addNoeuds_Treillis(Noeud N) { //Ceci permet de rajouter des noeuds dans notre list de noeuds
         Noeuds_Treillis.add(N);
     }
+
+    /**
+     * @return the Id
+     */
+    public int getId() {
+        return Id;
+    }
+    
     
     
 
