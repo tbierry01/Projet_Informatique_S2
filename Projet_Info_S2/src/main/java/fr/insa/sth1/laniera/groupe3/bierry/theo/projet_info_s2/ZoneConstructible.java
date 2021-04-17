@@ -32,7 +32,7 @@ public class ZoneConstructible {
         String res;
         res = "\n --ZoneConstructible--" + "\n- Xmin : " + Xmin + "\n- Xmax : " + Xmax + "\n- Ymin : " + Ymin + "\n- Ymax : " + Ymax + "\nContient les treillis : "+ Treillis_ZoneConstructible+ "\nContient les triangles terrain : ";
         for (int i = 0; i < TTContenu.size(); i++) {
-            res = res + "\n-> " + TTContenu.get(i);
+            res = res + "\n-> " + TTContenu.get(i).getId();
 
         }
         
