@@ -12,9 +12,16 @@ import java.util.ArrayList;
  * @author theob
  */
 public class Test_ensemble {
-    
-    public static void Test_definition_classes(){
-        ArrayList<Point> AP = new ArrayList();
+
+    public static void Test_definition_classes() {
+        ArrayList<Point> AP = new ArrayList<>();
+        ArrayList<Segment[]> AS = new ArrayList<>();
+        ArrayList<Barre> AB = new ArrayList<>();
+        ArrayList<Noeud_Simple> ANS = new ArrayList<>();
+        ArrayList<Appui_Simple> AAS = new ArrayList<>();
+        ArrayList<Appui_Double> AAD = new ArrayList<>();
+        ArrayList<Treillis> AT = new ArrayList<>();
+        ArrayList<TriangleTerrain> ATT = new ArrayList<>();
         System.out.println("Cette classe je m'en sert pour tester si mes autres calsses fonctionnent bien \nThéo");
         ZoneConstructible ZC = new ZoneConstructible(0, 0, 200, 200);
         System.out.println("-------------------------------------------------------------------\n");
@@ -37,19 +44,45 @@ public class Test_ensemble {
         S[0] = S0;
         S[1] = S1;
         S[2] = S2;
+        AS.add(S);
         TriangleTerrain TT1 = new TriangleTerrain(0, S, ZC);
+        ATT.add(TT1);
+        System.out.println("\n=====Points=====");
         for (int i = 0; i < AP.size(); i++) {
             System.out.println(AP.get(i));
-            //System.out.println("++++I+++++ "+i);
         }
-        for (int i = 0; i < S.length; i++) {
-            System.out.println(S[i]);
-            
+        System.out.println("\n=====Segments=====");
+        for (int i = 0; i < AS.size(); i++) {
+            for (int j = 0; j < S.length; j++) {
+                System.out.println(AS.get(i)[j]);
+
+            }
+
         }
-        System.out.println(TT1);
-        System.out.println("-------------------------------------------------------------------\n"+ZC);
+        System.out.println("\n=====TrianglesTerrain=====");
+        for (int i = 0; i < ATT.size(); i++) {
+            System.out.println(ATT.get(i));
+        }
+        System.out.println("\n=====Barres=====");
+        for (int i = 0; i < AB.size(); i++) {
+            System.out.println(AB.get(i));
+        }
+        System.out.println("\n=====Noeuds Simples=====");
+        for (int i = 0; i < ANS.size(); i++) {
+            System.out.println(ANS.get(i));
+        }
+        System.out.println("\n=====Appui Simples=====");
+        for (int i = 0; i < AAS.size(); i++) {
+            System.out.println(AAS.get(i));
+        }
+        System.out.println("\n=====Appui Double=====");
+        for (int i = 0; i < AAD.size(); i++) {
+            System.out.println(AAD.get(i));
+        }
+
+        System.out.println("-------------------------------------------------------------------\n" + ZC);
     }
-    
+
     public static void main(String[] args) {
         Test_definition_classes();
     }
