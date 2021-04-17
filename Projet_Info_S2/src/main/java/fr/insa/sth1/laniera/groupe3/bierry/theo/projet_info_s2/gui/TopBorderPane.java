@@ -74,12 +74,13 @@ public class TopBorderPane extends BorderPane{
         this.Appuis.setPrefSize (100,50);
         this.Noeuds.setPrefSize (100,50);
         this.Barres.setPrefSize (100,50);
-        this.Couleur.setPrefSize (100,50);
-        this.Eppaisseur.setPrefSize (100,50);
-        this.Traits.setPrefSize (100,50);
+        this.Couleur.setPrefSize (120,25);
+        this.Eppaisseur.setPrefSize (120,25);
+        this.Traits.setPrefSize (120,25);
         this.Abscisse.setPrefSize (100,25);
         this.Ordonnee.setPrefSize (100,25);
         this.Simulation.setPrefSize (100,100);
+        
         
 //        this.Style.setFont(javafx.scene.text.Font.font("Magneto", 30));
                
@@ -108,7 +109,7 @@ public class TopBorderPane extends BorderPane{
         HBox pOrdonnee = new HBox (this.Y, this.Ordonnee);
         
         pAbscisses.setSpacing(2);
-        pOrdonnee.setSpacing(2);
+        pOrdonnee.setSpacing(3);
         
         HBox hStyle = new HBox (this.Style);
         hStyle.setPadding (new javafx.geometry.Insets(10, 5, 0, 0));
@@ -136,6 +137,9 @@ public class TopBorderPane extends BorderPane{
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
         HBox coteBas = new HBox (this.Aide);
+        
+        Background bgLightGrey2 = new Background(new BackgroundFill (Color.LIGHTGREY, CornerRadii.EMPTY,null));
+        coteBas.setBackground(bgLightGrey2);
         
         this.setBottom (coteBas);
         
