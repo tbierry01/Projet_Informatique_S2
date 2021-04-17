@@ -30,7 +30,7 @@ public class Point {
         String res;
         res = "\n --Point " + Id + "--" + "\nAbscisse : " + abscisse + "\nOrdonnée : " + ordonnee + "\nEst l'extremité des segements : ";
         for (int i = 0; i < Segment_Point.size(); i++) {
-            res = res + "\n-> " + Segment_Point.get(i).toString();
+            res = res + "\n-> " + Segment_Point.get(i).getId();
 
         }
         return res;
