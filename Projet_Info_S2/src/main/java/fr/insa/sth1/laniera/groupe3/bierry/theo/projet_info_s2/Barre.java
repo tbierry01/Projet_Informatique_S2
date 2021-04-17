@@ -28,10 +28,39 @@ public class Barre {
         N2.addBarre(this);
         T.addBarre_Treillis(this);
     }
+    
     public String toString(){
         String res;
-        res = "\n --Barre "+Id+"--"+"\nExtremités : "+"\n-> "+Noeuds_Barre[0]+"\n-> "+Noeuds_Barre[1]+"\nAppartient au Treillis : "+Treillis_Barre+"\nLa Barre est de type : "+Type_de_Barre;
+        res = "\n --Barre "+getId()+"--"+"\nExtremités : "+"\n-> "+Noeuds_Barre[0].getId()+"\n-> "+Noeuds_Barre[1].getId()+"\nAppartient au Treillis : "+Treillis_Barre.get+"\nLa Barre est de type : "+getType_de_Barre();
         return res;
+    }
+
+    /**
+     * @return the Id
+     */
+    public int getId() {
+        return Id;
+    }
+
+    /**
+     * @return the Noeuds_Barre
+     */
+    public Noeud[] getNoeuds_Barre() {
+        return Noeuds_Barre;
+    }
+
+    /**
+     * @return the Treillis_Barre
+     */
+    public Treillis getTreillis_Barre() {
+        return Treillis_Barre;
+    }
+
+    /**
+     * @return the Type_de_Barre
+     */
+    public TypeBarre getType_de_Barre() {
+        return Type_de_Barre;
     }
     
 }
