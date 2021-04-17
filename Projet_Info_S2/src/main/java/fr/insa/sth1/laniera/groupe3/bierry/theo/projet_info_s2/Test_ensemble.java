@@ -5,6 +5,8 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author theob
@@ -12,14 +14,22 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 public class Test_ensemble {
     
     public static void Test_definition_classes(){
+        ArrayList<Point> AP = new ArrayList();
         System.out.println("Cette classe je m'en sert pour tester si mes autres calsses fonctionnent bien \nThéo");
         ZoneConstructible ZC = new ZoneConstructible(0, 0, 200, 200);
+        System.out.println("-------------------------------------------------------------------\n");
         Point P0 = new Point(0, 0, 0);
+        AP.add(P0);
         Point P1 = new Point(50, 50, 1);
+        AP.add(P1);
         Point P2 = new Point(10, 10, 2);
+        AP.add(P2);
         Point P3 = new Point(30, 30, 3);
+        AP.add(P3);
         Point P4 = new Point(100, 100, 4);
+        AP.add(P4);
         Point P5 = new Point(70, 70, 5);
+        AP.add(P5);
         Segment S0 = new Segment(0, P0, P1);
         Segment S1 = new Segment(1, P1, P2);
         Segment S2 = new Segment(2, P1, P3);
@@ -28,7 +38,16 @@ public class Test_ensemble {
         S[1] = S1;
         S[2] = S2;
         TriangleTerrain TT1 = new TriangleTerrain(0, S, ZC);
-        System.out.println("-------------------------------------------------------------------\n"+P0);
+        for (int i = 0; i < AP.size(); i++) {
+            System.out.println(AP.get(i));
+            //System.out.println("++++I+++++ "+i);
+        }
+        for (int i = 0; i < S.length; i++) {
+            System.out.println(S[i]);
+            
+        }
+        System.out.println(TT1);
+        System.out.println("-------------------------------------------------------------------\n"+ZC);
     }
     
     public static void main(String[] args) {
