@@ -29,7 +29,7 @@ public class TypeBarre {
     
     public String toString(){
         String res;
-        res = "\n --Type Barre "+Id+"--"+"\n- Section : "+Section+"\n- Longueur min : "+Lmin+"\n- Longueur max : "+Lmax+"\n- Resistance à la compression : "+RmC
+        res = "\n --Type Barre "+getId()+"--"+"\n- Section : "+Section+"\n- Longueur min : "+Lmin+"\n- Longueur max : "+Lmax+"\n- Resistance à la compression : "+RmC
                 +"\n- Resistance à la torsion : "+RmT+"\n- Materiau : "+Materiaux;
         res = res+"\nLes barres suivantes sont de ce type : ";
         for (int i = 0; i < Barre_TypeBarre.size(); i++) {
@@ -38,5 +38,12 @@ public class TypeBarre {
         }
         
         return res;
+    }
+
+    /**
+     * @return the Id
+     */
+    public int getId() {
+        return Id;
     }
 }
