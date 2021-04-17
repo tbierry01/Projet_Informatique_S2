@@ -27,7 +27,7 @@ public class Segment {
     @Override
     public String toString(){
         String res;
-        res = "\n --Segment "+Id+"--"+"\nExtrémité "+"\n-> "+Extremite[0].getId()+"\n-> "+Extremite[1].getId()+"\nContenu dans le trinagle terrain : "+TT.getId();
+        res = "\n --Segment "+Id+"--"+"\nExtrémité "+"\n -> "+Extremite[0].getId()+"\n -> "+Extremite[1].getId()+"\nContenu dans le triangle terrain : "+TT.getId();
         return res;
     }
     
