@@ -11,9 +11,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -83,24 +87,52 @@ public class TopBorderPane extends BorderPane{
         VBox bPont1 = new VBox (this.Appuis, this.Barres);
         VBox bPont2 = new VBox (this.Noeuds);
         
-        HBox entete = new HBox (this.Terrain, bTerrain, this.Pont, bPont1, bPont2, this.Simulation);
+        HBox hTerrain = new HBox (this.Terrain, bTerrain);
+        HBox hPont = new HBox (this.Pont, bPont1, bPont2);
+        
+        hTerrain.setSpacing(8);
+        hPont.setSpacing(8);
+        
+        HBox entete = new HBox (hTerrain, hPont, this.Simulation);
+        entete.setSpacing(20);
+        entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
+        
+        Background bgGrey = new Background(new BackgroundFill (Color.GREY, CornerRadii.EMPTY,null));
+        entete.setBackground(bgGrey);
         
         this.setTop(entete);
         
        
+        
         HBox pAbscisses = new HBox (this.X, this.Abscisse);
         HBox pOrdonnee = new HBox (this.Y, this.Ordonnee);
+        
+        pAbscisses.setSpacing(2);
+        pOrdonnee.setSpacing(2);
+        
+        HBox hStyle = new HBox (this.Style);
+        hStyle.setPadding (new javafx.geometry.Insets(10, 5, 0, 0));
+  
+        HBox hPositions = new HBox (this.Positions);
+        hPositions.setPadding (new javafx.geometry.Insets(10, 10, 0, 0));
         
         this.Style.setFont(javafx.scene.text.Font.font(15));
         this.Positions.setFont(javafx.scene.text.Font.font(15));
         
-        VBox coteGauche = new VBox (this.Style, this.Couleur, this.Eppaisseur,
-            this.Traits, this.Positions, pAbscisses, pOrdonnee);
+        VBox coteGauche = new VBox (hStyle, this.Couleur, this.Eppaisseur,
+            this.Traits, hPositions, pAbscisses, pOrdonnee);
+        coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
+        
+        Background bgLightGrey = new Background(new BackgroundFill (Color.LIGHTGREY, CornerRadii.EMPTY,null));
+        coteGauche.setBackground(bgLightGrey);
+
         
         this.setLeft(coteGauche);
         
         
-        Aide.setText("Toto cduo dhio dax hbuaa huivda huixqbuip dhov huxpv huipx huixs bic bipvd bip c");
+        
+        
+        Aide.setText("C'est ici que seront les infos attendues de par l'utilisateur");
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
         HBox coteBas = new HBox (this.Aide);
