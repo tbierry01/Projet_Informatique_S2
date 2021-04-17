@@ -27,4 +27,9 @@ public class Appui_Encastre extends Appui{
         
         return res;
     }
+    
+    @Override
+    public int getId() {
+        return super.getId();
+    }
 }
