@@ -28,4 +28,9 @@ public class Appui_Simple extends Appui{
         return res;
     }
     
+    @Override
+    public int getId() {
+        return super.getId();
+    }
+    
 }
