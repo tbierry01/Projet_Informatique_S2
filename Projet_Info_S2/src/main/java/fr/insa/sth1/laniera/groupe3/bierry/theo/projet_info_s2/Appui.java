@@ -26,4 +26,8 @@ public abstract class Appui extends Noeud{
         return res;
     }
     
+    public int getId(){
+        return super.getId();
+    }
+    
 }
