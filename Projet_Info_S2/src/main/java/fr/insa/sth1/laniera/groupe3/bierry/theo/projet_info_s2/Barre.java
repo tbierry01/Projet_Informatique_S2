@@ -31,7 +31,7 @@ public class Barre {
     
     public String toString(){
         String res;
-        res = "\n --Barre "+getId()+"--"+"\nExtremités : "+"\n-> "+Noeuds_Barre[0].getId()+"\n-> "+Noeuds_Barre[1].getId()+"\nAppartient au Treillis : "+Treillis_Barre.get+"\nLa Barre est de type : "+getType_de_Barre();
+        res = "\n --Barre "+getId()+"--"+"\nExtremités : "+"\n-> "+Noeuds_Barre[0].getId()+"\n-> "+Noeuds_Barre[1].getId()+"\nAppartient au Treillis : "+Treillis_Barre.getId()+"\nLa Barre est de type : "+Type_de_Barre.getId();
         return res;
     }
 
