@@ -30,7 +30,7 @@ public class ZoneConstructible {
 
     public String toString() {
         String res;
-        res = "\n --ZoneConstructible--" + "\n- Xmin : " + Xmin + "\n- Xmax : " + Xmax + "\n- Ymin : " + Ymin + "\n- Ymax : " + Ymax + "\nContient les treillis : "+ Treillis_ZoneConstructible+ "\nContient les triangles terrain : ";
+        res = "\n --ZoneConstructible--\n- Xmin : " + Xmin + "\n- Xmax : " + Xmax + "\n- Ymin : " + Ymin + "\n- Ymax : " + Ymax + "\nContient les treillis : "+ Treillis_ZoneConstructible.getId()+ "\nContient les triangles terrain : ";
         for (int i = 0; i < TTContenu.size(); i++) {
             res = res + "\n-> " + TTContenu.get(i).getId();
 
@@ -64,7 +64,14 @@ public class ZoneConstructible {
     }
 
     public void setTreillisZoneConstructible(Treillis T) {
-        Treillis_ZoneConstructible = T;
+        setTreillis_ZoneConstructible(T);
+    }
+
+    /**
+     * @param Treillis_ZoneConstructible the Treillis_ZoneConstructible to set
+     */
+    public void setTreillis_ZoneConstructible(Treillis Treillis_ZoneConstructible) {
+        this.Treillis_ZoneConstructible = Treillis_ZoneConstructible;
     }
 
 }
