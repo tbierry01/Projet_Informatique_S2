@@ -20,6 +20,8 @@ public abstract class Noeud {
     public Noeud(Treillis T, int Iden){
         Treillis_Noeud = T;
         Id = Iden;
+        Barres_Noeud = new ArrayList<>();
+        T.addNoeuds_Treillis(this);
     }
     
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
@@ -30,9 +32,9 @@ public abstract class Noeud {
     
     public String toString(){
         String res;
-        res = "\n --Noeud "+Id+"--"+"\nAppartient au treillis : "+Treillis_Noeud+"\nRelie les barres : ";
+        res = "\n --Noeud "+Id+"--"+"\nAppartient au treillis : "+Treillis_Noeud.getId()+"\nRelie les barres : ";
         for (int i = 0; i < Barres_Noeud.size(); i++) {
-            res = res+"\n-> "+Barres_Noeud.get(i);
+            res = res+"\n-> "+Barres_Noeud.get(i).getId();
             
         }
         return res;
