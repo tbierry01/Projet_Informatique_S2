@@ -6,6 +6,8 @@
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -17,10 +19,12 @@ public class Treillis {
     private ArrayList<Noeud> Noeuds_Treillis;
     private int Id;
 
-    public Treillis(int Iden) {
+    public Treillis(int Iden, ZoneConstructible ZC) {
         Id = Iden;
         Barre_Treillis = new ArrayList<>();
         Noeuds_Treillis = new ArrayList<>();
+        ZC.setTreillisZoneConstructible(this);
+        
     }
 
     public String toString() {
@@ -29,7 +33,7 @@ public class Treillis {
         for (int i = 0; i < Barre_Treillis.size(); i++) {
             res = res + "\n-> " + Barre_Treillis.get(i).getId();
         }
-        res = res + "\nContient les noeuds";
+        res = res + "\nContient les noeuds :";
         for (int i = 0; i < Noeuds_Treillis.size(); i++) {
             res = res + "\n-> " + Noeuds_Treillis.get(i).getId();
 
