@@ -23,6 +23,18 @@ public class TypeBarre {
     private ArrayList<Barre> Barre_TypeBarre;
     
     //TODO Constructeur avec création de la liste Barre_TypeBarre
+    
+    public TypeBarre(int Iden){ //On s'en fout de ce qu'il y a dedans c'est juste pour dire qu'il y a un truc quoi
+        Id = Iden;
+        Section = "Rond";
+        Lmin = 3;
+        Lmax = 4;
+        Cout = 200;
+        RmC = 100;
+        RmT = 50;
+        Materiaux = "Fer";
+        Barre_TypeBarre = new ArrayList<>();
+    }
     public void addBarre_TypeBarre(Barre B){
         Barre_TypeBarre.add(B);
     }
