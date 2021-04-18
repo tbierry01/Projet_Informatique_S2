@@ -12,7 +12,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 public abstract class Appui extends Noeud{
     
     private double alpha;
-    private Segment SegAppui;
+    private Segment SegAppui; //Segment du triangle terrain auquel il appartient
     
     public Appui(Treillis T, int Iden, double coeff, Segment Seg){
         super(T, Iden);
