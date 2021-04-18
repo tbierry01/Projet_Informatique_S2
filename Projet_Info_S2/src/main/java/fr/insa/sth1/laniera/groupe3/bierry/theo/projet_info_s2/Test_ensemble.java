@@ -39,7 +39,7 @@ public class Test_ensemble {
         AP.add(P5);
         Segment S0 = new Segment(0, P0, P1);
         Segment S1 = new Segment(1, P1, P2);
-        Segment S2 = new Segment(2, P1, P3);
+        Segment S2 = new Segment(2, P2, P0);
         Segment[] S = new Segment[3];
         S[0] = S0;
         S[1] = S1;
@@ -47,13 +47,33 @@ public class Test_ensemble {
         AS.add(S);
         TriangleTerrain TT1 = new TriangleTerrain(0, S, ZC);
         ATT.add(TT1);
+        Treillis T0 = new Treillis(0, ZC);
+        AT.add(T0);
+        Noeud_Simple N0 = new Noeud_Simple(P5, T0, 0);
+        ANS.add(N0);
+        Noeud_Simple N1 = new Noeud_Simple(P4, T0, 1);
+        ANS.add(N1);
+        TypeBarre TB = new TypeBarre(0);
+        Barre B0 = new Barre(0, N0, N1, T0, TB);
+        AB.add(B0);
+        Appui_Simple AS0 = new Appui_Simple(T0, 2, 0.5, S2);
+        AAS.add(AS0);
+        Appui_Double AD0 = new Appui_Double(T0, 3, 0, S2);
+        AAD.add(AD0);
+        Barre B1 = new Barre(0, AD0, AS0, T0, TB);
+        AB.add(B1);
+        //Ce qui suit est la partie de l'affichage
+        Affichage(AP, AS, ATT, AB, ANS, AAS, AAD, AT, ZC);
+    }
+    
+    public static void Affichage(ArrayList<Point> AP, ArrayList<Segment[]> AS, ArrayList<TriangleTerrain> ATT, ArrayList<Barre> AB, ArrayList<Noeud_Simple> ANS, ArrayList<Appui_Simple> AAS, ArrayList<Appui_Double> AAD, ArrayList<Treillis> AT, ZoneConstructible ZC){
         System.out.println("\n=====Points=====");
         for (int i = 0; i < AP.size(); i++) {
             System.out.println(AP.get(i));
         }
         System.out.println("\n=====Segments=====");
         for (int i = 0; i < AS.size(); i++) {
-            for (int j = 0; j < S.length; j++) {
+            for (int j = 0; j < AS.get(i).length; j++) {
                 System.out.println(AS.get(i)[j]);
 
             }
@@ -78,6 +98,11 @@ public class Test_ensemble {
         System.out.println("\n=====Appui Double=====");
         for (int i = 0; i < AAD.size(); i++) {
             System.out.println(AAD.get(i));
+        }
+        
+        System.out.println("\n=====Treillis=====");
+        for (int i = 0; i < AT.size(); i++) {
+            System.out.println(AT.get(i));
         }
 
         System.out.println("-------------------------------------------------------------------\n" + ZC);
