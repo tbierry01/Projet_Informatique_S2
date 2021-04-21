@@ -107,8 +107,30 @@ public class Test_ensemble {
 
         System.out.println("-------------------------------------------------------------------\n" + ZC);
     }
+    
+    public static void  Test_Classe_Point(){
+        Point P0 = new Point(0,1, 0);
+        Point P1 = new Point(1,0, 1);
+        Segment S0 = new Segment(0, P0, P1);
+        System.out.println("Points\n"+P0+P1+S0);
+        System.out.println("Longueur "+ S0.LongueurSegment());
+        System.out.println("Angle verticale P0 par rapport à P1 "+P0.AngleVertical_DeuxPoints(P1));
+        System.out.println("Angle horizontale P0 par rapport à P1 "+P0.AngleHorizontal_DeuxPoints(P1));
+        System.out.println("Angle verticale P1 par rapport à P0 "+P1.AngleVertical_DeuxPoints(P0));
+        System.out.println("Angle horizontale P1 par rapport à P0 "+P1.AngleHorizontal_DeuxPoints(P0));
 
+    }
+    
+    public static void Test_Position_Appui(){
+        Point P0 = new Point(0,1, 0);
+        Point P1 = new Point(1,0, 1);
+        Segment S0 = new Segment(0, P0, P1);
+        Appui A0 = new Appui_Double(0.5, S0);
+        System.out.println("Position appui "+A0.PositionAppui());
+    }
     public static void main(String[] args) {
-        Test_definition_classes();
+        //Test_definition_classes();
+        //Test_Classe_Point();
+        Test_Position_Appui();
     }
 }
