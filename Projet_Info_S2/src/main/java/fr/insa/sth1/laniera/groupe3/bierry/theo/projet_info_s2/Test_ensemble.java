@@ -122,10 +122,10 @@ public class Test_ensemble {
     }
     
     public static void Test_Position_Appui(){
-        Point P0 = new Point(0,1, 0);
-        Point P1 = new Point(1,0, 1);
+        Point P0 = new Point(1,1, 0);
+        Point P1 = new Point(0,0, 1);
         Segment S0 = new Segment(0, P0, P1);
-        Appui A0 = new Appui_Double(0.5, S0);
+        Appui A0 = new Appui_Double(1, S0);
         System.out.println("Position appui "+A0.PositionAppui());
     }
     public static void main(String[] args) {
