@@ -16,12 +16,18 @@ public abstract class Appui extends Noeud{
     
     public Appui(Treillis T, int Iden, double coeff, Segment Seg){
         super(T, Iden);
+        if(coeff > 1 || coeff <0 ){
+            throw new Error ("Le coefficient n'est pas dans le bon intervalle, celui ci doit être compris entre 0 et 1");
+        }
         alpha = coeff;
         SegAppui = Seg;
     }
     
     public Appui(double coeff, Segment Seg){
         super();
+        if(coeff > 1 || coeff <0 ){
+            throw new Error ("Le coefficient n'est pas dans le bon intervalle, celui ci doit être compris entre 0 et 1");
+        }
         alpha = coeff;
         SegAppui = Seg;
     }
@@ -37,7 +43,7 @@ public abstract class Appui extends Noeud{
     }
     
     
-    private Point PositionAppui(){ //On renvoit le point où se trouve l'appui et comme ca, on aura ses coordonées et se sera plus simple pour le claul d'angle
+    public Point PositionAppui(){ //On renvoit le point où se trouve l'appui et comme ca, on aura ses coordonées et se sera plus simple pour le claul d'angle
         Point P;
         EquationDroite ED;
         ED = SegAppui.EquationSegment();
@@ -48,9 +54,10 @@ public abstract class Appui extends Noeud{
         double xa = SegAppui.getExtremite(0).getAbscisse();
         double xb = SegAppui.getExtremite(1).getAbscisse();
         double ya = SegAppui.getExtremite(0).getOrdonnee();
+        double L = SegAppui.LongueurSegment();
         double a = 1+m*m;
         double b = 2*m*p - 2*ya*m - 2*xa;
-        double c = xa*xa+p*p-2*p*ya+ya*ya;
+        double c = xa*xa+p*p-2*p*ya+ya*ya-(L*alpha)*(L*alpha);
         Resolution_equation_degres2 Polynome = new Resolution_equation_degres2(a, b, c);
         double xpotentiel[] = Polynome.Resolution();
         if (xpotentiel.length == 0) {
