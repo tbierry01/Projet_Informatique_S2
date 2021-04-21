@@ -24,6 +24,11 @@ public abstract class Noeud {
         T.addNoeuds_Treillis(this);
     }
     
+    public Noeud(){ //C'est juste un constructeur pour les tests
+        Treillis_Noeud = null;
+        Id = 0;
+    }
+    
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
    
     public void setTreillisNoeud(Treillis T){
