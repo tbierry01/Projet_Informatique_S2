@@ -25,6 +25,12 @@ public class Point {
         Segment_Point = new ArrayList<>();
     }
 
+    public Point(double x, double y) { //Ce constructeur permet de ne pas se casser la tête avec l'identificateur, il sert à créer des points qui ne sont pas vraiment des points du trerrain, mais plutôt des points pour les tests ou pour les calculs
+        abscisse = x;
+        ordonnee = y;
+        Segment_Point = new ArrayList<>();
+    }
+    
     @Override
     public String toString() {
         String res;
@@ -68,4 +74,30 @@ public class Point {
         Segment_Point.add(S);
     }
 
+    public EquationDroite Droite_deuxPoints(Point P2) { // Cette classe permet de determiner l'équation de la droite qui relie le point this au point P2
+        EquationDroite ED;
+        double m;
+        double p;
+        if (this.getAbscisse() == P2.getAbscisse() && this.getOrdonnee() == P2.getOrdonnee()) {
+            m = 0;
+            p = 0;
+        } else {
+            m = (P2.getOrdonnee() - this.getOrdonnee()) / (P2.getAbscisse() - this.getAbscisse()); //On calcule le coeff directeur m = Delta y/ Delta x
+            p = this.getOrdonnee() - m * this.getAbscisse(); //On calcul maintenant p avec p = y - mx que l'on applique au point this
+        }
+        ED = new EquationDroite(m, p); //On renvoit tout ça dans al micro classe EquationDroite
+        return ED;
+    }
+    
+    public double AngleVertical_DeuxPoints(Point P2){
+        double Angle;
+        Angle = Math.atan(Math.abs(P2.getAbscisse()-this.getAbscisse())/(P2.getOrdonnee()-this.getOrdonnee()));//Ici, on calcul l'angle entre les deux angles en applicant la tangente avec Cote Opposé/Coté Adjacent. Avec a<b Pour calculer Cote Opposé : xb-xa, Cote adjacent : yb - ya. Ensuite, on applique l'arctan avec la commande atan
+        return Angle;
+    }
+    
+    public double AngleHorizontal_DeuxPoints(Point P2){
+        double Angle;
+        Angle = Math.atan(Math.abs((P2.getOrdonnee()-this.getOrdonnee())/(P2.getAbscisse()-this.getAbscisse())));//Ici, on calcul l'angle entre les deux angles en applicant la tangente avec Cote Opposé/Coté Adjacent. Avec a<b Pour calculer Cote Adjacent : xb-xa, Cote Opposé : yb - ya. Ensuite, on applique l'arctan avec la commande atan
+        return Angle;
+    }
 }
