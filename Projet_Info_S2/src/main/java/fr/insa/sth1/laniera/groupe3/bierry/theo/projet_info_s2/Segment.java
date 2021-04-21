@@ -27,7 +27,7 @@ public class Segment {
     @Override
     public String toString(){
         String res;
-        res = "\n --Segment "+Id+"--"+"\nExtrémité "+"\n -> "+Extremite[0].getId()+"\n -> "+Extremite[1].getId()+"\nContenu dans le triangle terrain : "+TT.getId();
+        res = "\n --Segment "+Id+"--"+"\nExtrémité "+"\n -> "+Extremite[0].getId()+"\n -> "+Extremite[1].getId()+"\nContenu dans le triangle terrain : ";//+TT.getId();
         return res;
     }
     
@@ -45,6 +45,18 @@ public class Segment {
     
     public void setTriangleTerrain(TriangleTerrain TTer){
         TT = TTer;
+    }
+    
+    public double LongueurSegment(){
+        double dist;
+        dist = Math.abs(Math.sqrt(Math.pow((Extremite[0].getAbscisse()-Extremite[1].getAbscisse()),2)+Math.pow((Extremite[0].getOrdonnee()-Extremite[1].getOrdonnee()),2))); //Cette éthode permet de donneer la longueur d'un segment en faisant le raisonnement, racine((x1-x2)²+(y1-y2)²)
+        return dist;
+    }
+    
+    public EquationDroite EquationSegment(){ //On fait l'équation de droite d'un segment en s'appuyant en fait sur la méthode équation droite dans la classe point
+        EquationDroite ED;
+        ED = Extremite[0].Droite_deuxPoints(Extremite[1]); //On fait la méthode droitedeuxPoints que l'on applique aux deux extémité du segment;
+        return ED;
     }
     
     
