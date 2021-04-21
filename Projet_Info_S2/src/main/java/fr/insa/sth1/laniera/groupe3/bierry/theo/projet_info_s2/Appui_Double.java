@@ -15,6 +15,11 @@ public class Appui_Double extends Appui{
         super(T, iden, alpha, S);
         
     }
+    
+    public Appui_Double(double alpha, Segment S){
+        super(alpha, S);
+    }
+     
     @Override
     public void addBarre(Barre B) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
