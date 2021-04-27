@@ -38,9 +38,9 @@ public class Appui_Simple extends Appui{
         return super.getId();
     }
     
-//    public double getAngleNormal(){
-//        //TODO
-//    }
+    public double getAngleNormal(){
+        //TODO
+    }
     
     
     @Override
