@@ -29,6 +29,12 @@ public class Barre {
         T.addBarre_Treillis(this);
     }
     
+    public Barre(Noeud N1, Noeud N2){
+        Noeuds_Barre = new Noeud[2];
+        Noeuds_Barre[0] = N1;
+        Noeuds_Barre[1] = N2;
+    }
+    
     public String toString(){
         String res;
         res = "\n --Barre "+getId()+"--"+"\nExtremités : "+"\n-> "+Noeuds_Barre[0].getId()+"\n-> "+Noeuds_Barre[1].getId()+"\nAppartient au Treillis : "+Treillis_Barre.getId()+"\nLa Barre est de type : "+Type_de_Barre.getId();
@@ -47,6 +53,10 @@ public class Barre {
      */
     public Noeud[] getNoeuds_Barre() {
         return Noeuds_Barre;
+    }
+    
+    public Noeud getNoeuds_Barre(int i) {
+        return Noeuds_Barre[i];
     }
 
     /**
