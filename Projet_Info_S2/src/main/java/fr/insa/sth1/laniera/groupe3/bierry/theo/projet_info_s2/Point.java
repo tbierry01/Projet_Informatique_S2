@@ -17,7 +17,7 @@ public class Point {
     private double ordonnee;
     private int Id;
     private ArrayList<Segment> Segment_Point; //Cela permet de stocker l'ensemble des segments liés à un point dans un tableau dynamique
-
+    
     public Point(double x, double y, int Iden) {
         abscisse = x;
         ordonnee = y;
@@ -29,6 +29,8 @@ public class Point {
         abscisse = x;
         ordonnee = y;
         Segment_Point = new ArrayList<>();
+//        Id = CompteurId;
+//        CompteurId = CompteurId + 1;
     }
     
     @Override
