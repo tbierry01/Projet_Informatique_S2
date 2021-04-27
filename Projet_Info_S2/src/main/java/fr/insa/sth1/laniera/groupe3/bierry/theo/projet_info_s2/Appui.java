@@ -42,8 +42,12 @@ public abstract class Appui extends Noeud{
         return super.getId();
     }
     
+    public Segment getSegment(){
+        return SegAppui;
+    }
     
-    public Point PositionAppui(){ //On renvoit le point où se trouve l'appui et comme ca, on aura ses coordonées et se sera plus simple pour le claul d'angle
+    
+    public Point getPos(){ //On renvoit le point où se trouve l'appui et comme ca, on aura ses coordonées et se sera plus simple pour le claul d'angle
         Point P;
         EquationDroite ED;
         ED = SegAppui.EquationSegment();
