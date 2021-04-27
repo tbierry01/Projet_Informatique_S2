@@ -42,6 +42,7 @@ public class Appui_Simple extends Appui{
         //TODO
     }
     
+    
     @Override
     public FormatDeRetourSystemNoeuds Generation_Syteme(int Colones, int Pos) {
         //On commence par remplir la matrice de l'égalité avec les forces qui nous sont données. ATTENTION, comme ici, on passe toutes les forces données de l'autre côté de l'égalité alors on inverse le signe
