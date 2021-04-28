@@ -32,7 +32,7 @@ public class ResolutionContrainteNoeuds {
         NbInconnus = Compteur;
     }
 
-    public FormatDeRetourSystemNoeuds CreationSystemeEnsembleTreillis() {
+    public FormatDeRetourSystemNoeuds CreationSystemeEnsembleTreillis() { //On créer les 2 matrices de notre système, celle qui posède le système et celle qui contient le vecteur de l'équivalence
         int Compteur = NbBarres;
         Matrice SystemeEquation = new Matrice(0, NbInconnus);
         Matrice Equivalence = new Matrice(0, 1);
