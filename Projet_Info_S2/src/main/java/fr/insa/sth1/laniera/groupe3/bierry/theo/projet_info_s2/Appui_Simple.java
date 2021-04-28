@@ -38,8 +38,26 @@ public class Appui_Simple extends Appui{
         return super.getId();
     }
     
-    public double getAngleNormal(){
-        //TODO
+    public double getAngleNormal(){ //ATTENTION ATTENTION ATTENTION, cette méthode n'est pas la meilleure, en effet, on ne va considerer ici que nous n'avons que des appuis sur les parties supérieurs des triangles, pas sur des parties inférieures
+        Segment S = super.getSegment(); //On récupère le segment auquel appartient l'appui
+        //Ensuite, on cherche lequel des deux points du segment est le plus haut, s'ils sont à la même hauteur, alors il est triviale de dire que l'angle est pi/2
+        Point P0 = S.getExtremite(0);
+        Point P1 = S.getExtremite(1);
+        Point P; //On va stocker ici, le pooint qui ser le plus haut par rapport à notre appui, pour pouvoir ensuite calculer l'angle
+        double P0x = P0.getAbscisse();
+        double P0y = P0.getOrdonnee();
+        double P1x = P1.getAbscisse();
+        double P1y = P1.getOrdonnee();
+        if(P0x == P1x && P0y == P1y){
+            return Math.PI;
+        } else if(P0y > P1y){ //Ici, on compare les ordonnes des points, le point qui a la plus grande ordonée, est le plus haut et donc on va se serivr de lui pour faire le claulu d'angle
+            P = P0;
+        } else{
+            P = P1;
+        }
+        double AngleHorizontal = this.Angle(P);
+        double AngleNormal = AngleHorizontal + Math.PI;
+        return AngleNormal;
     }
     
     
