@@ -93,6 +93,18 @@ public abstract class Noeud {
         return Angles;
     }
     
+    public double Angle(Point P){
+        Point N = this.getPos();
+        double Nx = N.getAbscisse();
+        double Ny = N.getOrdonnee();
+        double Px = P.getAbscisse();
+        double Py = P.getOrdonnee();
+        double CO = Py - Ny;
+        double CA = Px - Nx;
+        double Angle = Math.atan2(CO, CA);
+        return Angle;
+    }
+    
     public abstract FormatDeRetourSystemNoeuds Generation_Syteme(int Colones, int Pos); //Cette classe permet de créer des petites matrices de 2 de haut et du nombre voulu de large pour avoir les equation selon X et Y de chaque noeud. Le pos ne sert que pour les appuis, pour savoir ou positionner les inconnus
 }
 
