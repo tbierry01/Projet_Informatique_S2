@@ -11,8 +11,8 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
  */
 public class Appui_Double extends Appui{
     
-    public Appui_Double(Treillis T, int iden, double alpha, Segment S){
-        super(T, iden, alpha, S);
+    public Appui_Double(Treillis T, int iden, double alpha, Segment S, Force FN){
+        super(T, iden, alpha, S, FN);
         
     }
     
