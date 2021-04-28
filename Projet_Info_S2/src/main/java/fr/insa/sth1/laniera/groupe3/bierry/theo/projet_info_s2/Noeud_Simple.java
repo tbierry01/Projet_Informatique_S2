@@ -13,8 +13,8 @@ public class Noeud_Simple extends Noeud{
 
     private Point Pos;
     
-    public Noeud_Simple (Point P, Treillis T, int Id){
-        super(T, Id);
+    public Noeud_Simple (Point P, Treillis T, int Id, Force FN){
+        super(T, Id, FN);
         this.Pos = P;
     }
     
