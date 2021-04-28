@@ -26,6 +26,11 @@ public class FormatDeRetourSystemNoeuds {
     public Matrice getEgalite() {
         return Egalite;
     }
-
+    
+    public String toString(){
+        String res;
+        res = "\nSysteme : \n" + Systeme.toString() + "\nEgalité : \n"+Egalite.toString();
+        return res;
+    }
 
 }
