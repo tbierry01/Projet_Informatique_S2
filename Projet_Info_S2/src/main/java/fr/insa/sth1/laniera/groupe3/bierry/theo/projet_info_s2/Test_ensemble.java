@@ -253,7 +253,7 @@ public class Test_ensemble {
         Appui_Simple AS0 = new Appui_Simple(0.25, S);
         System.out.println("Position appui "+AS0.getPos());
         System.out.println("Angle horizontale "+ AS0.Angle(P1));
-        System.out.println("Angle "+ AS0.getAngleNormal());
+        //System.out.println("Angle "+ AS0.getAngleNormal());
     }
     
     public static void TestResolutionContrainte(){
@@ -281,12 +281,12 @@ public class Test_ensemble {
         Barre B3 = new Barre(2, AD, AS, T, TB);
         TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
         ArrayList<Noeud> ARN = new ArrayList<>();
-        ARN.add(AD);
         ARN.add(AS);
+        ARN.add(AD);
         ARN.add(NS);
         ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(ARN);
         Matrice M = RCN.Resolution();
-        System.out.println("Matrice : "+M);
+        System.out.println("Matrice : \n"+M);
     }
     
     public static void main(String[] args) {
