@@ -246,12 +246,40 @@ public class Test_ensemble {
         
     }
     
+    public static void TestAngleNormal(){
+        Point P0 = new Point(1,-10);
+        Point P1 = new Point(1, 0);
+        Segment S = new Segment(0, P1, P0);
+        Appui_Simple AS0 = new Appui_Simple(0.25, S);
+        System.out.println("Position appui "+AS0.getPos());
+        System.out.println("Angle horizontale "+ AS0.Angle(P1));
+        System.out.println("Angle "+ AS0.getAngleNormal());
+    }
+    
+    public static void TestResolutionContrainte(){
+        ZoneConstructible ZC = new ZoneConstructible(-5, 5, -5, 5);
+        Point P0 = new Point(0, -2, 0);
+        Point P1 = new Point(0, 2, 1);
+        Point P2 = new Point(-1, 0, 2);
+        Segment S0 = new Segment(0, P0, P1);
+        Segment S1 = new Segment(1, P1, P2);
+        Segment S2 = new Segment(2, P2, P0);
+        Segment [] S = new Segment [3];
+        S[0] = S0;
+        S[1] = S1;
+        S[2] = S2;
+        //Faire les appuis et tt
+        TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
+    }
+    
     public static void main(String[] args) {
         //Test_definition_classes();
         //Test_Classe_Point();
         //Test_Position_Appui();
         //Test_CompteurId_Points();
         //Test_Angles();
-        TestAngle2();
+        //TestAngle2();
+        TestAngleNormal();
+        //TestResolutionContrainte();
     }
 }
