@@ -37,6 +37,12 @@ public class Remonte_Inversion {
         return Possible;
     }
     
+    public String toString(){
+        String res;
+        res = "\nPossiblité : "+Possible;
+        return res;
+    }
+    
     
     
 }
