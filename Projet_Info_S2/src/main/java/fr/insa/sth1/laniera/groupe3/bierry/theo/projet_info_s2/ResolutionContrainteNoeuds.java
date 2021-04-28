@@ -65,5 +65,7 @@ public class ResolutionContrainteNoeuds {
         System.out.println("Remonte Inversion: "+ RI);
         return RI.getSolution();
     }
+    
+    //ATTENTION, on n'a un problème de résolution lorsque l'on inverse l'ordre
 
 }
