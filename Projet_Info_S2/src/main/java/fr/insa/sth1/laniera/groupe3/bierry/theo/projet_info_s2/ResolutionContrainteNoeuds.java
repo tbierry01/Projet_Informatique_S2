@@ -41,12 +41,16 @@ public class ResolutionContrainteNoeuds {
             FR = Noeuds_Systeme.get(i).Generation_Syteme(NbInconnus, Compteur); //On reupère le FormatDeRetour du Noeud en position i
             SystemeEquation = SystemeEquation.concatLig(FR.getSysteme()); //On concatène toutes les lignes des systemes de chauque Noeuds pour en faire un système
             Equivalence = Equivalence.concatLig(FR.getEgalite()); //On concatène toutes les lignes des equivalences de chaque Noeuds pour en faire une grandde colone
+            
+            System.out.println("Matrices au noeud "+i+"\n--Systeme equation--\n"+SystemeEquation+"\n--Equivalence--\n"+Equivalence);
+            System.out.println("Compteur : "+Compteur);
             //Dans les boucles de conditions qui suivent, on ajuste le compteur en fonction du type de noeud auquel on fait face
             if (Noeuds_Systeme.get(i) instanceof Appui_Double) {
-                Compteur = Compteur + 2; //Plus 2 car 2 inconnus donc 2 colones en plus
+                Compteur = Compteur + 1; //Plus 1 car 1 inconnus donc 2 colones en plus
             } else if (Noeuds_Systeme.get(i) instanceof Appui_Simple) {
-                Compteur = Compteur + 1; //Plus 1 car 1 inconnu donc 1 colone en plus
+                Compteur = Compteur + 2; //Plus 2 car 2 inconnu donc 1 colone en plus
             }
+            
         }
         FormatDeRetourSystemNoeuds FRreturn = new FormatDeRetourSystemNoeuds(SystemeEquation, Equivalence);
         System.out.println("Matrice avant travail : "+FRreturn);
@@ -55,7 +59,10 @@ public class ResolutionContrainteNoeuds {
     
     public Matrice Resolution(){
         FormatDeRetourSystemNoeuds FR = CreationSystemeEnsembleTreillis(); //On fait la méthode CreationSystemEnsembleTreillis
+        System.out.println("Format de retour : "+FR);
         Remonte_Inversion RI = FR.getSysteme().Resolution_complete(FR.getEgalite()); //On résoud le système composé de la matrice principale et de l'équivalence
+        //System.out.println("FR Sytem : "+ FR.getSysteme());
+        System.out.println("Remonte Inversion: "+ RI);
         return RI.getSolution();
     }
 
