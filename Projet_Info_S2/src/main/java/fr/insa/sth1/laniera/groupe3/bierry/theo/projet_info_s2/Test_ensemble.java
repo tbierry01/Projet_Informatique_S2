@@ -13,103 +13,103 @@ import java.util.ArrayList;
  */
 public class Test_ensemble {
 
-    public static void Test_definition_classes() {
-        ArrayList<Point> AP = new ArrayList<>();
-        ArrayList<Segment[]> AS = new ArrayList<>();
-        ArrayList<Barre> AB = new ArrayList<>();
-        ArrayList<Noeud_Simple> ANS = new ArrayList<>();
-        ArrayList<Appui_Simple> AAS = new ArrayList<>();
-        ArrayList<Appui_Double> AAD = new ArrayList<>();
-        ArrayList<Treillis> AT = new ArrayList<>();
-        ArrayList<TriangleTerrain> ATT = new ArrayList<>();
-        System.out.println("Cette classe je m'en sert pour tester si mes autres calsses fonctionnent bien \nThéo");
-        ZoneConstructible ZC = new ZoneConstructible(0, 0, 200, 200);
-        System.out.println("-------------------------------------------------------------------\n");
-        Point P0 = new Point(0, 0, 0);
-        AP.add(P0);
-        Point P1 = new Point(1, 1, 1);
-        AP.add(P1);
-        Point P2 = new Point(1, 0, 2);
-        AP.add(P2);
-        Point P3 = new Point(0, 1, 3);
-        AP.add(P3);
-        Point P4 = new Point(-1, 1, 4);
-        AP.add(P4);
-        Point P5 = new Point(-1, 0, 5);
-        AP.add(P5);
-        Point P6 = new Point(-1, -1, 6);
-        AP.add(P6);
-        Point P7 = new Point(0, -1, 7);
-        AP.add(P7);
-        Point P8 = new Point(1, -1, 8);
-        AP.add(P8);
-        Point P9 = new Point(0, 0, 9);
-        AP.add(P9);
-        Segment S0 = new Segment(0, P0, P1);
-        Segment S1 = new Segment(1, P1, P2);
-        Segment S2 = new Segment(2, P2, P0);
-        Segment[] S = new Segment[3];
-        S[0] = S0;
-        S[1] = S1;
-        S[2] = S2;
-        AS.add(S);
-        TriangleTerrain TT1 = new TriangleTerrain(0, S, ZC);
-        ATT.add(TT1);
-        Treillis T0 = new Treillis(0, ZC);
-        AT.add(T0);
-        Noeud_Simple N0 = new Noeud_Simple(P0, T0, 0);
-        ANS.add(N0);
-        Noeud_Simple N1 = new Noeud_Simple(P1, T0, 1);
-        ANS.add(N1);
-         Noeud_Simple N2 = new Noeud_Simple(P2, T0, 0);
-        ANS.add(N2);
-        Noeud_Simple N3 = new Noeud_Simple(P3, T0, 1);
-        ANS.add(N3);
-        Noeud_Simple N4 = new Noeud_Simple(P4, T0, 1);
-        ANS.add(N4);
-        Noeud_Simple N5 = new Noeud_Simple(P5, T0, 1);
-        ANS.add(N5);
-        Noeud_Simple N6 = new Noeud_Simple(P6, T0, 1);
-        ANS.add(N6);
-         Noeud_Simple N7 = new Noeud_Simple(P7, T0, 0);
-        ANS.add(N7);
-        Noeud_Simple N8 = new Noeud_Simple(P8, T0, 1);
-        ANS.add(N8);
-        Noeud_Simple N9 = new Noeud_Simple(P9, T0, 1);
-        ANS.add(N9);
-        TypeBarre TB = new TypeBarre(0);
-        Barre B0 = new Barre(0, N0, N1, T0, TB);
-        AB.add(B0);
-        Barre B1 = new Barre(1, N0, N2, T0, TB);
-        AB.add(B1);
-        Barre B2 = new Barre(2, N0, N3, T0, TB);
-        AB.add(B2);
-        Barre B3 = new Barre(3, N0, N4, T0, TB);
-        AB.add(B3);
-        Barre B4 = new Barre(4, N0, N5, T0, TB);
-        AB.add(B4);
-        Barre B5 = new Barre(5, N0, N6, T0, TB);
-        AB.add(B5);
-        Barre B6 = new Barre(6, N0, N7, T0, TB);
-        AB.add(B6);
-        Barre B7 = new Barre(7, N0, N8, T0, TB);
-        AB.add(B7);
-        Appui_Simple AS0 = new Appui_Simple(T0, 2, 0.5, S2);
-        AAS.add(AS0);
-        Appui_Double AD0 = new Appui_Double(T0, 3, 0, S2);
-        AAD.add(AD0);
-//        Barre B5 = new Barre(5, AD0, AS0, T0, TB);
+//    public static void Test_definition_classes() {
+//        ArrayList<Point> AP = new ArrayList<>();
+//        ArrayList<Segment[]> AS = new ArrayList<>();
+//        ArrayList<Barre> AB = new ArrayList<>();
+//        ArrayList<Noeud_Simple> ANS = new ArrayList<>();
+//        ArrayList<Appui_Simple> AAS = new ArrayList<>();
+//        ArrayList<Appui_Double> AAD = new ArrayList<>();
+//        ArrayList<Treillis> AT = new ArrayList<>();
+//        ArrayList<TriangleTerrain> ATT = new ArrayList<>();
+//        System.out.println("Cette classe je m'en sert pour tester si mes autres calsses fonctionnent bien \nThéo");
+//        ZoneConstructible ZC = new ZoneConstructible(0, 0, 200, 200);
+//        System.out.println("-------------------------------------------------------------------\n");
+//        Point P0 = new Point(0, 0, 0);
+//        AP.add(P0);
+//        Point P1 = new Point(1, 1, 1);
+//        AP.add(P1);
+//        Point P2 = new Point(1, 0, 2);
+//        AP.add(P2);
+//        Point P3 = new Point(0, 1, 3);
+//        AP.add(P3);
+//        Point P4 = new Point(-1, 1, 4);
+//        AP.add(P4);
+//        Point P5 = new Point(-1, 0, 5);
+//        AP.add(P5);
+//        Point P6 = new Point(-1, -1, 6);
+//        AP.add(P6);
+//        Point P7 = new Point(0, -1, 7);
+//        AP.add(P7);
+//        Point P8 = new Point(1, -1, 8);
+//        AP.add(P8);
+//        Point P9 = new Point(0, 0, 9);
+//        AP.add(P9);
+//        Segment S0 = new Segment(0, P0, P1);
+//        Segment S1 = new Segment(1, P1, P2);
+//        Segment S2 = new Segment(2, P2, P0);
+//        Segment[] S = new Segment[3];
+//        S[0] = S0;
+//        S[1] = S1;
+//        S[2] = S2;
+//        AS.add(S);
+//        TriangleTerrain TT1 = new TriangleTerrain(0, S, ZC);
+//        ATT.add(TT1);
+//        Treillis T0 = new Treillis(0, ZC);
+//        AT.add(T0);
+//        Noeud_Simple N0 = new Noeud_Simple(P0, T0, 0);
+//        ANS.add(N0);
+//        Noeud_Simple N1 = new Noeud_Simple(P1, T0, 1);
+//        ANS.add(N1);
+//         Noeud_Simple N2 = new Noeud_Simple(P2, T0, 0);
+//        ANS.add(N2);
+//        Noeud_Simple N3 = new Noeud_Simple(P3, T0, 1);
+//        ANS.add(N3);
+//        Noeud_Simple N4 = new Noeud_Simple(P4, T0, 1);
+//        ANS.add(N4);
+//        Noeud_Simple N5 = new Noeud_Simple(P5, T0, 1);
+//        ANS.add(N5);
+//        Noeud_Simple N6 = new Noeud_Simple(P6, T0, 1);
+//        ANS.add(N6);
+//         Noeud_Simple N7 = new Noeud_Simple(P7, T0, 0);
+//        ANS.add(N7);
+//        Noeud_Simple N8 = new Noeud_Simple(P8, T0, 1);
+//        ANS.add(N8);
+//        Noeud_Simple N9 = new Noeud_Simple(P9, T0, 1);
+//        ANS.add(N9);
+//        TypeBarre TB = new TypeBarre(0);
+//        Barre B0 = new Barre(0, N0, N1, T0, TB);
+//        AB.add(B0);
+//        Barre B1 = new Barre(1, N0, N2, T0, TB);
+//        AB.add(B1);
+//        Barre B2 = new Barre(2, N0, N3, T0, TB);
+//        AB.add(B2);
+//        Barre B3 = new Barre(3, N0, N4, T0, TB);
+//        AB.add(B3);
+//        Barre B4 = new Barre(4, N0, N5, T0, TB);
+//        AB.add(B4);
+//        Barre B5 = new Barre(5, N0, N6, T0, TB);
 //        AB.add(B5);
-        //Ce qui suit est la partie de l'affichage
-        Affichage(AP, AS, ATT, AB, ANS, AAS, AAD, AT, ZC);
-        double [] Angle = N0.AnglesBarres();
-        System.out.println("N0 ");
-        for (int i = 0; i < Angle.length; i++) {
-            System.out.println("\n" + Angle[i]);
-            
-        }
-    }
-    
+//        Barre B6 = new Barre(6, N0, N7, T0, TB);
+//        AB.add(B6);
+//        Barre B7 = new Barre(7, N0, N8, T0, TB);
+//        AB.add(B7);
+//        Appui_Simple AS0 = new Appui_Simple(T0, 2, 0.5, S2);
+//        AAS.add(AS0);
+//        Appui_Double AD0 = new Appui_Double(T0, 3, 0, S2);
+//        AAD.add(AD0);
+////        Barre B5 = new Barre(5, AD0, AS0, T0, TB);
+////        AB.add(B5);
+//        //Ce qui suit est la partie de l'affichage
+//        Affichage(AP, AS, ATT, AB, ANS, AAS, AAD, AT, ZC);
+//        double [] Angle = N0.AnglesBarres();
+//        System.out.println("N0 ");
+//        for (int i = 0; i < Angle.length; i++) {
+//            System.out.println("\n" + Angle[i]);
+//            
+//        }
+//    }
+//    
     public static void Affichage(ArrayList<Point> AP, ArrayList<Segment[]> AS, ArrayList<TriangleTerrain> ATT, ArrayList<Barre> AB, ArrayList<Noeud_Simple> ANS, ArrayList<Appui_Simple> AAS, ArrayList<Appui_Double> AAD, ArrayList<Treillis> AT, ZoneConstructible ZC){
         System.out.println("\n=====Points=====");
         for (int i = 0; i < AP.size(); i++) {
@@ -261,6 +261,7 @@ public class Test_ensemble {
         Point P0 = new Point(0, -2, 0);
         Point P1 = new Point(0, 2, 1);
         Point P2 = new Point(-1, 0, 2);
+        Point P3 = new Point(1, 1, 3);
         Segment S0 = new Segment(0, P0, P1);
         Segment S1 = new Segment(1, P1, P2);
         Segment S2 = new Segment(2, P2, P0);
@@ -268,8 +269,24 @@ public class Test_ensemble {
         S[0] = S0;
         S[1] = S1;
         S[2] = S2;
-        //Faire les appuis et tt
+        Treillis T = new Treillis(0, ZC);
+        Force F0 = new Force(0, 0);
+        Force F1 = new Force(-1000, Math.PI/2);
+        Appui_Double AD = new Appui_Double(T, 0 , 0.5, S0, F0);
+        Appui_Simple AS = new Appui_Simple(T, 1, 1, S0, F0);
+        Noeud_Simple NS = new Noeud_Simple(P3, T, 2, F1);
+        TypeBarre TB = new TypeBarre(0);
+        Barre B1 = new Barre(0, AS, NS, T, TB);
+        Barre B2 = new Barre(1, AD, NS, T, TB);
+        Barre B3 = new Barre(2, AD, AS, T, TB);
         TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
+        ArrayList<Noeud> ARN = new ArrayList<>();
+        ARN.add(AD);
+        ARN.add(AS);
+        ARN.add(NS);
+        ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(ARN);
+        Matrice M = RCN.Resolution();
+        System.out.println("Matrice : "+M);
     }
     
     public static void main(String[] args) {
@@ -279,7 +296,7 @@ public class Test_ensemble {
         //Test_CompteurId_Points();
         //Test_Angles();
         //TestAngle2();
-        TestAngleNormal();
-        //TestResolutionContrainte();
+        //TestAngleNormal();
+        TestResolutionContrainte();
     }
 }
