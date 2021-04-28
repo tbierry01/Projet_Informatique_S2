@@ -75,11 +75,15 @@ public class Matrice {
 //1.3 toString 
     public String toString() {
 
-        String res = "";
-
+        String res = "      ";
+        for (int j = 0; j < this.nbrCol; j++) {
+            res = res + "    ("+j+")     ";
+            
+        }
+        res = res +"\n";
         for (int i = 0; i < this.nbrLig; i++) {
 
-            res = res + "[";
+            res = res + "("+i+")"+"[";
 
             for (int j = 0; j < this.nbrCol; j++) {
 
