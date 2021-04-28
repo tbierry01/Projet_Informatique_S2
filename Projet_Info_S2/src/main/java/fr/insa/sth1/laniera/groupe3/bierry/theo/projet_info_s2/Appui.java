@@ -14,8 +14,8 @@ public abstract class Appui extends Noeud {
     private double alpha; //Alpha est pris en comptea partir de la première extremité du segment SegApui, à savoir SegAppui.getExtremite(0)
     private Segment SegAppui; //Segment du triangle terrain auquel il appartient
 
-    public Appui(Treillis T, int Iden, double coeff, Segment Seg) {
-        super(T, Iden);
+    public Appui(Treillis T, int Iden, double coeff, Segment Seg, Force FN) {
+        super(T, Iden, FN);
         if (coeff > 1 || coeff < 0) {
             throw new Error("Le coefficient n'est pas dans le bon intervalle, celui ci doit être compris entre 0 et 1");
         }
