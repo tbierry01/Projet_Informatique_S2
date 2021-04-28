@@ -496,14 +496,14 @@ public class Matrice {
             throw new Error("La valeur [" + l1 + "][" + l2 + "] est nulle \n");
         }
         double p = (this.coeffs[l2][l1]) / (this.coeffs[l1][l1]);
-        System.out.println("p " + p);
+        //System.out.println("p " + p);
         for (int j = 0; j < this.nbrCol; j++) {
             if (j == l1) {
                 this.coeffs[l2][j] = 0;
-                System.out.println("Matrice (ligne 497) changement du coeff ligne " + l2 + " colone " + j + " par 0 \n" + this);
+                //System.out.println("Matrice (ligne 497) changement du coeff ligne " + l2 + " colone " + j + " par 0 \n" + this);
             } else {
                 this.coeffs[l2][j] = this.coeffs[l2][j] - p * this.coeffs[l1][j];
-                System.out.println("Matrice (ligne 500) changement du coeff ligne " + l2 + " colone " + j + " par coeff [" + l2 + "][" + j + "] - " + p + " * coeff [" + l1 + "][" + j + "]\n" + this);
+                //System.out.println("Matrice (ligne 500) changement du coeff ligne " + l2 + " colone " + j + " par coeff [" + l2 + "][" + j + "] - " + p + " * coeff [" + l1 + "][" + j + "]\n" + this);
             }
 
         }
@@ -529,17 +529,17 @@ public class Matrice {
         int Ligne_pivot;
 
         for (int j = 0; j < this.nbrLig; j++) { //On travail là sur les colones mais on met nbrLig car on veut une matrice carré
-            System.out.println("-----------Travail sur la colone " + j + "----------- ");
+            //System.out.println("-----------Travail sur la colone " + j + "----------- ");
             Ligne_pivot = this.lignePlusGrandPivot(j); //On cherche la ligne du plus grand pivot de la colone j
-            System.out.println("Ligne pivot " + Ligne_pivot);
+            //System.out.println("Ligne pivot " + Ligne_pivot);
             if (Ligne_pivot == -1) {
                 Signature = -1 * Signature;
-                System.out.println("Signature dans la boucle if : "+ Signature);
+                //System.out.println("Signature dans la boucle if : "+ Signature);
             } else {
                 ne = ne + 1;
                 if (j != Ligne_pivot) {
                     Signature = Signature * this.permutLigne(j, Ligne_pivot); //on permute la ligne du plus grand pivot avec la ligne égale  la colone actuelle car  chaque fois, le plus grand pivot doit être sur le même numéro de ligne que celui de la colone ou l'on est actuellement
-                    System.out.println("Signature  " + Signature);
+                    //System.out.println("Signature  " + Signature);
                     //System.out.println("Matrice (ligne 535), après permutation ligne " + j + " avec ligne " + Ligne_pivot + "\n" + this);
                 }
                 for (int i = j + 1; i < this.nbrLig; i++) {
@@ -622,7 +622,7 @@ public class Matrice {
         Matrice Matrice_rectangle = this.concatCol(Vect); // On assemble les deux pour que cela soit plus facile a travailler
         ResGauss Resultat_descente = Matrice_rectangle.DescenteGauss(); //On rend la matrice triangulaire supérieur
         double EPSILON_PIVOT = Math.pow(10, -8);
-        System.out.println(" +++++++++++++++++++++++++++++ Determinant : "+Matrice_rectangle.Determinant(Resultat_descente.signature) );
+        //System.out.println(" +++++++++++++++++++++++++++++ Determinant : "+Matrice_rectangle.Determinant(Resultat_descente.signature) );
         if (Math.abs(Matrice_rectangle.Determinant(Resultat_descente.signature)) <= EPSILON_PIVOT ) { //Ici on fait une condition qui demande si la matrice est inversible ou non,  à savoir, si son déterminant est différnet de 0 ou non
             Remonte_Inversion Sol = new Remonte_Inversion(); // S'il l'est, alors on créer un objet de la classe Remonte_Inversion qui est vide de la matrice solution puisqu'elle n'existe pas et qui possède comme attribut Possible, false 
             return Sol; //!!! DEMANDER SI CELA SORTE AU RTURN OU SI CELA CONTINUE L'EXECUTION
