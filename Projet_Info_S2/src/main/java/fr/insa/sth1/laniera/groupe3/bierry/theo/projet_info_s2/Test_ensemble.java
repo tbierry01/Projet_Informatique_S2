@@ -227,11 +227,31 @@ public class Test_ensemble {
         }
     }
     
+    public static void TestAngle2(){
+        Point P = new Point(0, 0);
+        Noeud_Simple N = new Noeud_Simple(P);
+        Point P1 = new Point(0, 1);
+        Point P2 = new Point(1, 0);
+        Point P3 = new Point(0, -1);
+        Point P4 = new Point(1, -1);
+        Point P5 = new Point(-1, -1);
+        System.out.println("Angle : ");
+        System.out.println("P : " + N.Angle(P));
+        System.out.println("P1 : " + N.Angle(P1));
+        System.out.println("P2 : " + N.Angle(P2));
+        System.out.println("P3 : " + N.Angle(P3));
+        System.out.println("P4 : " + N.Angle(P4));
+        System.out.println("P5 : " + N.Angle(P5));
+        
+        
+    }
+    
     public static void main(String[] args) {
-        Test_definition_classes();
+        //Test_definition_classes();
         //Test_Classe_Point();
         //Test_Position_Appui();
         //Test_CompteurId_Points();
         //Test_Angles();
+        TestAngle2();
     }
 }
