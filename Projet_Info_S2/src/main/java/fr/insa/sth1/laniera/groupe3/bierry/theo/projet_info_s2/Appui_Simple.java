@@ -43,7 +43,8 @@ public class Appui_Simple extends Appui{
         //Ensuite, on cherche lequel des deux points du segment est le plus haut, s'ils sont à la même hauteur, alors il est triviale de dire que l'angle est pi/2
         Point P0 = S.getExtremite(0);
         Point P1 = S.getExtremite(1);
-        Point P; //On va stocker ici, le pooint qui ser le plus haut par rapport à notre appui, pour pouvoir ensuite calculer l'angle
+        Point Ps; //On va stocker ici, le point qui sera le plus haut par rapport à notre appui, pour pouvoir ensuite calculer l'angle
+        Point Pi; //On va stocker ici l point le plus bas, Point Inférieur
         double P0x = P0.getAbscisse();
         double P0y = P0.getOrdonnee();
         double P1x = P1.getAbscisse();
@@ -51,12 +52,22 @@ public class Appui_Simple extends Appui{
         if(P0x == P1x && P0y == P1y){
             return Math.PI;
         } else if(P0y > P1y){ //Ici, on compare les ordonnes des points, le point qui a la plus grande ordonée, est le plus haut et donc on va se serivr de lui pour faire le claulu d'angle
-            P = P0;
+            Ps = P0;
+            Pi = P1;
         } else{
-            P = P1;
+            Ps = P1;
+            Pi = P0;
         }
-        double AngleHorizontal = this.Angle(P);
-        double AngleNormal = AngleHorizontal + Math.PI;
+        double AngleHorizontal = this.Angle(Ps);
+        double AngleNormal;
+        //Pour l'angle Normal, tout va dépendre des coordonées selon x des points Pi et Ps, si Psx > Pix alors on fait +pi/2, mais si Psx < Pix alors on fait - pi/2
+        
+        if (Ps.getAbscisse() > Pi.getAbscisse()) {
+            AngleNormal = AngleHorizontal + (Math.PI)/2;
+        } else {
+            AngleNormal = AngleHorizontal - (Math.PI)/2;
+        }
+        
         return AngleNormal;
     }
     
