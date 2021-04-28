@@ -133,7 +133,7 @@ public class TopBorderPane extends BorderPane{
         
         
         
-        Aide.setText("C'est ici que seront les infos attendues de par l'utilisateur");
+        Aide.setText("C'est ici que seront les infos attendues de l'utilisateur");
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
         HBox coteBas = new HBox (this.Aide);
@@ -147,8 +147,7 @@ public class TopBorderPane extends BorderPane{
 //        this.setCenter(Dessin);
 // Voir comment mettre le canvas au centre de la border pane
         
-        
-          //insets (4 valeurs d'espace    mets l'espace entre les boutons
+
     }
     
 }
