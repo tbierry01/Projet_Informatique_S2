@@ -19,16 +19,18 @@ public abstract class Noeud {
     private Force ForceNoeud;
 
 
-    public Noeud(Treillis T, int Iden) {
+    public Noeud(Treillis T, int Iden, Force FN) {
         Treillis_Noeud = T;
         Id = Iden;
         Barres_Noeud = new ArrayList<>();
         T.addNoeuds_Treillis(this);
+        ForceNoeud = FN;
     }
 
     public Noeud() { //C'est juste un constructeur pour les tests
         Treillis_Noeud = null;
         Id = 0;
+        Barres_Noeud = new ArrayList<>();
     }
 
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
