@@ -49,6 +49,7 @@ public class ResolutionContrainteNoeuds {
             }
         }
         FormatDeRetourSystemNoeuds FRreturn = new FormatDeRetourSystemNoeuds(SystemeEquation, Equivalence);
+        System.out.println("Matrice avant travail : "+FRreturn);
         return FRreturn;
     }
     
