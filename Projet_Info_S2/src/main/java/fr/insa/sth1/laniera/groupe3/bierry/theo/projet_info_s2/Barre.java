@@ -29,6 +29,15 @@ public class Barre {
         T.addBarre_Treillis(this);
     }
     
+    public Barre(int Iden, Noeud N1, Noeud N2){
+        Id = Iden;
+        Noeuds_Barre = new Noeud[2];
+        Noeuds_Barre[0] = N1;
+        Noeuds_Barre[1] = N2;
+        N1.addBarre(this);
+        N2.addBarre(this);
+    }
+    
     public Barre(Noeud N1, Noeud N2){
         Noeuds_Barre = new Noeud[2];
         Noeuds_Barre[0] = N1;
