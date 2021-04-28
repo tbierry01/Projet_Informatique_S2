@@ -37,41 +37,8 @@ public class Appui_Simple extends Appui{
     public int getId() {
         return super.getId();
     }
-    
-    public double getAngleNormal(){ //ATTENTION ATTENTION ATTENTION, cette méthode n'est pas la meilleure, en effet, on ne va considerer ici que nous n'avons que des appuis sur les parties supérieurs des triangles, pas sur des parties inférieures
-        Segment S = super.getSegment(); //On récupère le segment auquel appartient l'appui
-        //Ensuite, on cherche lequel des deux points du segment est le plus haut, s'ils sont à la même hauteur, alors il est triviale de dire que l'angle est pi/2
-        Point P0 = S.getExtremite(0);
-        Point P1 = S.getExtremite(1);
-        Point Ps; //On va stocker ici, le point qui sera le plus haut par rapport à notre appui, pour pouvoir ensuite calculer l'angle
-        Point Pi; //On va stocker ici l point le plus bas, Point Inférieur
-        double P0x = P0.getAbscisse();
-        double P0y = P0.getOrdonnee();
-        double P1x = P1.getAbscisse();
-        double P1y = P1.getOrdonnee();
-        if(P0x == P1x && P0y == P1y){
-            return Math.PI;
-        } else if(P0y > P1y){ //Ici, on compare les ordonnes des points, le point qui a la plus grande ordonée, est le plus haut et donc on va se serivr de lui pour faire le claulu d'angle
-            Ps = P0;
-            Pi = P1;
-        } else{
-            Ps = P1;
-            Pi = P0;
-        }
-        double AngleHorizontal = this.Angle(Ps);
-        double AngleNormal;
-        //Pour l'angle Normal, tout va dépendre des coordonées selon x des points Pi et Ps, si Psx > Pix alors on fait +pi/2, mais si Psx < Pix alors on fait - pi/2
-        
-        if (Ps.getAbscisse() > Pi.getAbscisse()) {
-            AngleNormal = AngleHorizontal + (Math.PI)/2;
-        } else {
-            AngleNormal = AngleHorizontal - (Math.PI)/2;
-        }
-        
-        return AngleNormal;
-    }
-    
-    
+   
+   
     @Override
     public FormatDeRetourSystemNoeuds Generation_Syteme(int Colones, int Pos) {
         //On commence par remplir la matrice de l'égalité avec les forces qui nous sont données. ATTENTION, comme ici, on passe toutes les forces données de l'autre côté de l'égalité alors on inverse le signe
@@ -88,7 +55,7 @@ public class Appui_Simple extends Appui{
         Donc ce que l'on va faire c'est que l'on va parcourir toute l'ArrayList des barres de notre noeuds, et à chaque fois on va placer dans la colone de la matrice équivalente à la valeur de l'identificateur
         On va faire ca deux fois, une fois pour la valeur selon les abscisses où l'on multipliera par le cos de l'angle et une fois selon les ordonnée où on multiplirea par le sin de l'angle
         On ne se préoccupe pas de l'ordre entre le tableau des angle et l'ArrayList des barres du noeuds car ils sont de même dimensions et normalement dans le même ordre
-        Différence avec l'appui simple c'est que l'on a une inconnue en plus qui est la resistance normale
+        Différence avec l'appui double c'est que l'on a une inconnue en plus qui est la resistance normale
         */
         
         Matrice SystemeNoeud = new Matrice(2, Colones);
@@ -100,11 +67,12 @@ public class Appui_Simple extends Appui{
         for (int i = 0; i < Barres_Noeud.size(); i++) {
             SystemeNoeud.set(1, Barres_Noeud.get(i).getId(), Math.sin(TableauAngle[i]));// On met à la ligne 0, colone qui a pour valeur l'identifiacteur de la barre B, la valeur du sin de l'angle de la barre B
         }
-        //Dans cette partie qui suit, on rajoute la récation normale à notre système 
-        SystemeNoeud.set(0, Pos, Math.cos(this.getAngleNormal()));
-        SystemeNoeud.set(1, Pos, Math.sin(this.getAngleNormal()));
+        
+        //Dans les deux lignes qui suivent, on complete le system avec les inconnus en x et en y de la réaction de l'appui simple, respectivement dans les colones pos et pos + 1 
+        SystemeNoeud.set(0, Pos, 1);
+        SystemeNoeud.set(1, Pos+1, 1);
+        
         FormatDeRetourSystemNoeuds FR = new FormatDeRetourSystemNoeuds(SystemeNoeud, Egalite);
         return FR;
     }
-    
 }
