@@ -513,15 +513,38 @@ public class Matrice {
         }
     }
 
-    public int lignePlusGrandPivot(int nc) {
-        int nl = 0; // La valeur de la ligne du plus grand pivot
+//    public int lignePlusGrandPivot(int nc) {
+//        int nl = 0; // La valeur de la ligne du plus grand pivot
+//        double EPSILON_PIVOT = Math.pow(10, -8);
+//        for (int i = nc; i < this.nbrLig; i++) {
+//            if (Math.abs(this.coeffs[i][nc]) > nl) { //J'ai elenvé la valeur absolue car je trouve ca mieux Math.abs(this.coeffs[i][nc]) > nl
+//                nl = i;
+//                System.out.println("Nl "+nl);
+//            }
+//        }
+//        if (nl <= EPSILON_PIVOT) {
+//            nl = -1;
+//        }
+//        return nl;
+//    }
+    
+     public int lignePlusGrandPivot(int nc) {
+        int nl = nc; // nl est la valeur de la ligne du plus grand pivot, on l'initialise à la valeur de la ligne de départ qui est en l'occurence égale à la valeur de la colone de départ
         double EPSILON_PIVOT = Math.pow(10, -8);
-        for (int i = nc; i < this.nbrLig; i++) {
-            if (Math.abs(this.coeffs[i][nc]) > nl) { //J'ai elenvé la valeur absolue car je trouve ca mieux Math.abs(this.coeffs[i][nc]) > nl
-                nl = i;
+        double Tampon = Math.abs(this.coeffs[nl][nc]); //Ici, on stocke une valeur temporaire qui va nous permettre de savoir si le plus grand pivot est nul ou pas
+        for (int i = nc; i < this.nbrLig; i++) { //On parcours toutes les lignes pour trouver le plus grand pivot en valeur absolue
+            //System.out.println("Tampon dans boucle for : "+Tampon);
+            //System.out.println("Math.abs(this.coeffs[i][nc]) "+Math.abs(this.coeffs[i][nc]));
+            if (Math.abs(this.coeffs[i][nc]) > Math.abs(this.coeffs[nl][nc])) { //On compare cahque case à celle ou il y a le plus grand pivot actuel pour voir si elle n'est pas plus grande
+                nl = i; //Si la case de la ligne en cours à une valeur plus grande que la case de pivot actuel, alors on chage la ligne du pivot
+                //System.out.println("Nl "+nl);
+                //System.out.println("Math.abs(this.coeffs[i][nc]) dans boulce if  "+Math.abs(this.coeffs[i][nc]));
+                Tampon = Math.abs(this.coeffs[i][nc]); //On change aussi la valeur du tampon, ce n'est pas utile à chauqe fois mais il faut au moins le faire une fois pour qu'il soit plus grand que EPSILLON_PIVOT et ne pas rentrer dans la boucle if finale
+                //System.out.println("Tampon dans boulce if : "+Tampon);
             }
         }
-        if (nl <= EPSILON_PIVOT) {
+        //System.out.println("Tampon : "+Tampon);
+        if (Tampon <= EPSILON_PIVOT) { //Si toutes les cases de la ligne sont nulles, alors on renvoit -1 pour la valeur de la ligne
             nl = -1;
         }
         return nl;
@@ -533,9 +556,9 @@ public class Matrice {
         int Ligne_pivot;
 
         for (int j = 0; j < this.nbrLig; j++) { //On travail là sur les colones mais on met nbrLig car on veut une matrice carré
-            //System.out.println("-----------Travail sur la colone " + j + "----------- ");
+            System.out.println("-----------Travail sur la colone " + j + "----------- ");
             Ligne_pivot = this.lignePlusGrandPivot(j); //On cherche la ligne du plus grand pivot de la colone j
-            //System.out.println("Ligne pivot " + Ligne_pivot);
+            System.out.println("Ligne pivot " + Ligne_pivot);
             if (Ligne_pivot == -1) {
                 Signature = -1 * Signature;
                 //System.out.println("Signature dans la boucle if : "+ Signature);
@@ -544,12 +567,12 @@ public class Matrice {
                 if (j != Ligne_pivot) {
                     Signature = Signature * this.permutLigne(j, Ligne_pivot); //on permute la ligne du plus grand pivot avec la ligne égale  la colone actuelle car  chaque fois, le plus grand pivot doit être sur le même numéro de ligne que celui de la colone ou l'on est actuellement
                     //System.out.println("Signature  " + Signature);
-                    //System.out.println("Matrice (ligne 535), après permutation ligne " + j + " avec ligne " + Ligne_pivot + "\n" + this);
-                }
+                    System.out.println("Matrice après permutation ligne " + j + " avec ligne " + Ligne_pivot + "\n" + this);
+                } 
                 for (int i = j + 1; i < this.nbrLig; i++) {
                     if (this.coeffs[i][j] != 0) {
                         this.transvection(j, i); //On fait la transvection de la ligne j qui est maintenant la ligne du pivot avec la ligne i
-                        //System.out.println("Matrice transvection (ligne 540), ligne " + i + " avec ligne " + j + "\n" + this);
+                        System.out.println("Matrice transvection ligne " + i + " avec ligne " + j + "\n" + this);
                     }
                 }
             }
@@ -593,15 +616,15 @@ public class Matrice {
             //for (int j = this.nbrCol - 2; j >= 0; j--) { // - 2 car -1 de déalage habituelle et -1 car on ne prend pas la dernière colone puisaue c4est le vecteur solution
             int j = k;    //En fait, la ligne du pivot et la colone sur laquelle on travil sont intimement liée et c'est donc pour cela qu'il sont identiques
             for (int i = j - 1; i >= 0; i--) { // k-1 car on ne travaill que avec l'emesemble des ligne strictement au dessus de la ligne annexe
-                //System.out.println("\n Remplacement avant procédure Ligne : "+i+ " Colone : "+j+" Ligne pivot : "+k+ "\n"+this);
+                System.out.println("\n Remplacement avant procédure Ligne : "+i+ " Colone : "+j+" Ligne pivot : "+k+ " Coeff : "+this.coeffs[i][j]+"\n"+this);
                 Remplacement_Ligne(i, k, this.coeffs[i][j]);
-                //System.out.println("\n Remplacement Ligne : "+i+ " Colone : "+j+" Ligne pivot : "+k+ "\n"+this);
+                System.out.println("\n Remplacement Ligne : "+i+ " Colone : "+j+" Ligne pivot : "+k+"\n"+this);
             }
 
             //}
         }
 
-        //System.out.println("Descente de gauss 1 \n"+this);
+        System.out.println("Descente de gauss 1 \n"+this);
         for (int i = 0; i < Stockage.nbrLig; i++) { //Cette boucle permet de remplir le tableau "Stockage" de tous les coeffs de la dernières colone, cad les valeur des pivots
             Stockage.coeffs[i][0] = this.coeffs[i][this.nbrCol - 1]; //-1 car décalage de 1 case
 
