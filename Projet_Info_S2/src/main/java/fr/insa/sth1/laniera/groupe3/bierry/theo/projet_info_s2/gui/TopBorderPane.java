@@ -43,7 +43,7 @@ public class TopBorderPane extends BorderPane {
     private TextField Abscisse;
     private TextField Ordonnee;
     private Label Aide;
-    private Canvas Dessin;
+//    private DessinCanvas Dessin;
 
     public TopBorderPane() {
 
@@ -65,7 +65,7 @@ public class TopBorderPane extends BorderPane {
         this.Abscisse = new TextField();
         this.Ordonnee = new TextField();
         this.Aide = new Label();
-        this.Dessin = new Canvas();
+//        this.Dessin = new DessinCanvas(200, 200);
 
         this.Terrain.setPrefSize(100, 100);
         this.Segment.setPrefSize(100, 50);
@@ -135,7 +135,7 @@ public class TopBorderPane extends BorderPane {
 
         this.setBottom(coteBas);
 
-        this.setCenter(Dessin);
+ //       this.setCenter(Dessin);
 // Voir comment mettre le canvas au centre de la border pane
 
     }
