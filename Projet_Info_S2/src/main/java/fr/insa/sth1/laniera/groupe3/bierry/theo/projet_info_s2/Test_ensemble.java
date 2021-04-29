@@ -281,8 +281,8 @@ public class Test_ensemble {
         Barre B3 = new Barre(2, AD, AS, T, TB);
         TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
         ArrayList<Noeud> ARN = new ArrayList<>();
-        ARN.add(AS);
         ARN.add(AD);
+        ARN.add(AS);
         ARN.add(NS);
         ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(ARN);
         Matrice M = RCN.Resolution();
