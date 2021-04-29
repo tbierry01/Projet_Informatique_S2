@@ -18,7 +18,7 @@ public class DessinCanvas extends Canvas {
     public DessinCanvas (double w, double h) {
         super (w,h);
         GraphicsContext context = this.getGraphicsContext2D();
-        context.setFill(Color.LIGHTCYAN);
+        context.setFill(Color.BLUE);
         context.fillRect (0, 0, this.getWidth(), this.getHeight());
     }
     
