@@ -101,7 +101,7 @@ public class Appui_Double extends Appui{
             SystemeNoeud.set(1, Barres_Noeud.get(i).getId(), Math.sin(TableauAngle[i]));// On met à la ligne 0, colone qui a pour valeur l'identifiacteur de la barre B, la valeur du sin de l'angle de la barre B
         }
         //Dans cette partie qui suit, on rajoute la récation normale à notre système 
-        System.out.println("Angle : "+this.getAngleNormal());
+        //System.out.println("Angle : "+this.getAngleNormal());
         SystemeNoeud.set(0, Pos, Math.cos(this.getAngleNormal()));
         SystemeNoeud.set(1, Pos, Math.sin(this.getAngleNormal()));
         FormatDeRetourSystemNoeuds FR = new FormatDeRetourSystemNoeuds(SystemeNoeud, Egalite);
