@@ -43,7 +43,7 @@ public class TopBorderPane extends BorderPane {
     private TextField Abscisse;
     private TextField Ordonnee;
     private Label Aide;
-    private DessinCanvas1 Dessin;
+    private DessinCanvas Dessin;
 
     public TopBorderPane() {
 
@@ -65,7 +65,7 @@ public class TopBorderPane extends BorderPane {
         this.Abscisse = new TextField();
         this.Ordonnee = new TextField();
         this.Aide = new Label();
-        this.Dessin = new DessinCanvas1(200, 200);
+        this.Dessin = new DessinCanvas();
 
         this.Terrain.setPrefSize(100, 100);
         this.Segment.setPrefSize(100, 50);
