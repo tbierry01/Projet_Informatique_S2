@@ -22,14 +22,21 @@ public class DessinCanvas extends Pane {
         this.realCanvas = new Canvas (this.getWidth(),this.getHeight()); 
         this.realCanvas.heightProperty().bind(this.heightProperty());
         this.realCanvas.heightProperty().addListener((o) -> {
+            System.out.println("w = " + this.realCanvas.getWidth() + " ; h = " + this.realCanvas.getHeight());
+            this.redrawAll();
+        });
+        
+        this.realCanvas.widthProperty().bind(this.widthProperty());
+        this.realCanvas.widthProperty().addListener((o) -> {
             this.redrawAll();
         });
         this.redrawAll();
     }
     
+    
     public void redrawAll() {
         GraphicsContext context = this.realCanvas.getGraphicsContext2D();
         context.setFill(Color.BLUE);
-        context.fillRect (0, 0, this.getWidth(), this.getHeight());
+        context.fillRect (0, 0, this.realCanvas.getWidth(), this.realCanvas.getHeight());
     }
 }
