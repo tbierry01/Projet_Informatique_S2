@@ -5,6 +5,8 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -85,7 +87,7 @@ public class GlobalPane extends BorderPane {
         this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
         this.Barres.setPrefSize(100, 50);
-        this.Couleur.setPrefSize(120, 25);
+//        this.Couleur.setPrefSize(120, 25);
         this.Eppaisseur.setPrefSize(120, 25);
         this.Traits.setPrefSize(120, 25);
         this.Abscisse.setPrefSize(100, 25);
@@ -142,6 +144,15 @@ public class GlobalPane extends BorderPane {
         
         
         // Concerne les éléments de la partie gauche de l'interface
+        
+        ChoixCouleur bleu = new ChoixCouleur ("Bleu");
+        ChoixCouleur vert = new ChoixCouleur ("Vert");
+        ChoixCouleur orange = new ChoixCouleur ("Orange");
+        ChoixCouleur noir = new ChoixCouleur ("Noir");
+        
+        ObservableList<ChoixCouleur>couleurs = FXCollections.observableArrayList(bleu, vert, orange, noir);
+        ChoiceBox<ChoixCouleur>cbCouleurs = new ChoiceBox<ChoixCouleur>(couleurs);
+        cbCouleurs.setPrefSize(120, 25);
 
         HBox pAbscisses = new HBox(this.X, this.Abscisse);
         HBox pOrdonnee = new HBox(this.Y, this.Ordonnee);
@@ -158,7 +169,7 @@ public class GlobalPane extends BorderPane {
         this.Style.setFont(javafx.scene.text.Font.font(15));
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
-        VBox coteGauche = new VBox(hStyle, this.Couleur, this.Eppaisseur,
+        VBox coteGauche = new VBox(hStyle, cbCouleurs, this.Eppaisseur,
                 this.Traits, hPositions, pAbscisses, pOrdonnee);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
@@ -272,7 +283,6 @@ public class GlobalPane extends BorderPane {
             AppuiDouble.setDisable(false);
             Noeuds.setDisable(false);
         });
-        
         
     }
 
