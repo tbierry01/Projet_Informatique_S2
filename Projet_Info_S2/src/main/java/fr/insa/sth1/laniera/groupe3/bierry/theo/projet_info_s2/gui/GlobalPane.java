@@ -215,6 +215,22 @@ public class GlobalPane extends BorderPane {
         
         
         
+        // Concerne les instructions attendues lorqu'on clique sur Appui Simple
+        
+        AppuiSimple.setOnAction((t) -> {
+            Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
+        });
+        
+        
+        
+        // Concerne les instructions attendues lorqu'on clique sur Appui Double
+        
+        AppuiDouble.setOnAction((t) -> {
+            Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
+        });
+        
+        
+        
         // Concerne les instructions attendues lorqu'on clique sur Terrain
         
         Terrain.setOnAction((t) -> {
@@ -232,7 +248,7 @@ public class GlobalPane extends BorderPane {
         // Concerne les instructions attendues lorqu'on clique sur Pont
         
         Pont.setOnAction((t) -> {
-            Aide.setText("Cliquez sur le bouton Noeuds, Appuis ou Barres pour modéliser votre pont");
+            Aide.setText("Cliquez sur le bouton Noeuds, Appui (Simple/Double) ou Barres pour modéliser votre pont");
             Point.setDisable(true);
             Segment.setDisable(true);
             Barres.setDisable(false);
