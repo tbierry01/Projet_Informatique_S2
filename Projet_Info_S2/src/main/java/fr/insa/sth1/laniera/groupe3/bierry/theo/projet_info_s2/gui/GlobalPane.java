@@ -145,6 +145,8 @@ public class GlobalPane extends BorderPane {
         
         // Concerne les éléments de la partie gauche de l'interface
         
+            // Définit les choix de la ChoiceBox en définissant la couleur Noir par défaut
+        
         ChoixCouleur bleu = new ChoixCouleur ("Bleu");
         ChoixCouleur vert = new ChoixCouleur ("Vert");
         ChoixCouleur orange = new ChoixCouleur ("Orange");
@@ -155,7 +157,8 @@ public class GlobalPane extends BorderPane {
         cbCouleurs.getSelectionModel().select(noir);
         cbCouleurs.setPrefSize(120, 25);
         
-        
+            // Définit les choix de la ChoiceBox en définissant le trait plein par défaut
+
         ChoixStyleTrait traitPlein = new ChoixStyleTrait ("Trait plein");
         ChoixStyleTrait traitPointilles = new ChoixStyleTrait ("Trait pointillé");
         
@@ -163,6 +166,8 @@ public class GlobalPane extends BorderPane {
         ChoiceBox<ChoixStyleTrait>cbTrait = new ChoiceBox<ChoixStyleTrait>(styleTrait);
         cbTrait.getSelectionModel().select(traitPlein);
         cbTrait.setPrefSize(120, 25);
+        
+            // On place les différents éléments qui composent la partie gauche
 
         HBox pAbscisses = new HBox(this.X, this.Abscisse);
         HBox pOrdonnee = new HBox(this.Y, this.Ordonnee);
