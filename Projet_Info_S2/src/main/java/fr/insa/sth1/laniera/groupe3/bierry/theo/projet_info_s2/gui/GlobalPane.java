@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -101,6 +103,10 @@ public class GlobalPane extends BorderPane {
         boolean etatTerrain = false;
         boolean etatPont = false;
 
+//        Image image = new Image (getClass().getResource("Image_Terrain").toExternalForm());
+        ImageView icon = new ImageView(new Image("http://icons.iconarchive.com/icons/eponas-deeway/colobrush/128/heart-2-icon.png"));
+//        Terrain.setGraphic(icon);
+        this.Terrain = new ToggleButton("Terrain", icon);
         
         
         // Concerne les éléments de la partie haute de l'interface
@@ -215,7 +221,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-        
+
         // Concerne l'activation et la désactivation des boutons en fonctions des boutons Terrain et Pont
         
         Point.setDisable(true);
