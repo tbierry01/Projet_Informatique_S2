@@ -60,14 +60,11 @@ public class GlobalPane extends BorderPane {
         this.Segment = new ToggleButton("Segment");
         this.Point = new ToggleButton("Point");
         this.Pont = new ToggleButton("Pont");
- //       this.Appuis = new ChoiceBox();
         this.AppuiSimple = new ToggleButton("Appui Simple");
         this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
-//        this.Couleur = new ChoiceBox();
         this.Eppaisseur = new ChoiceBox();
-//        this.Traits = new ChoiceBox();
         this.Style = new Label("Style");
         this.Positions = new Label("Position");
         this.X = new Label("X : ");
@@ -84,14 +81,11 @@ public class GlobalPane extends BorderPane {
         this.Segment.setPrefSize(100, 50);
         this.Point.setPrefSize(100, 50);
         this.Pont.setPrefSize(100, 100);
- //       this.Appuis.setPrefSize(100, 50);
         this.AppuiSimple.setPrefSize(100, 50);
         this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
         this.Barres.setPrefSize(100, 50);
-//        this.Couleur.setPrefSize(120, 25);
         this.Eppaisseur.setPrefSize(120, 25);
-//        this.Traits.setPrefSize(120, 25);
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
@@ -104,7 +98,7 @@ public class GlobalPane extends BorderPane {
         boolean etatPont = false;
 
 //        Image image = new Image (getClass().getResource("Image_Terrain").toExternalForm());
-        ImageView icon = new ImageView(new Image("http://icons.iconarchive.com/icons/eponas-deeway/colobrush/128/heart-2-icon.png"));
+        ImageView icon = new ImageView(new Image("file:Image_Terrain.png"));
 //        Terrain.setGraphic(icon);
         this.Terrain = new ToggleButton("Terrain", icon);
         
