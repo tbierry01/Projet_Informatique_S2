@@ -196,6 +196,9 @@ public class GlobalPane extends BorderPane {
         Barres.setToggleGroup(gPont);
         AppuiSimple.setToggleGroup(gPont);
         AppuiDouble.setToggleGroup(gPont);
+        
+
+
         // Concerne les instructions attendues lorqu'on clique sur Point
         
         Point.setOnAction((t) -> {
