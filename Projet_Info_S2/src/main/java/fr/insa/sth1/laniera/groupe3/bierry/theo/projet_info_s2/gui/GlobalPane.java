@@ -10,6 +10,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -28,7 +29,9 @@ public class GlobalPane extends BorderPane {
     private ToggleButton Segment;
     private ToggleButton Point;
     private ToggleButton Pont;
-    private ChoiceBox Appuis;
+//    private ChoiceBox Appuis;
+    private ToggleButton AppuiSimple;
+    private ToggleButton AppuiDouble;
     private ToggleButton Noeuds;
     private ToggleButton Barres;
     private ChoiceBox Couleur;
@@ -52,7 +55,9 @@ public class GlobalPane extends BorderPane {
         this.Segment = new ToggleButton("Segment");
         this.Point = new ToggleButton("Point");
         this.Pont = new ToggleButton("Pont");
-        this.Appuis = new ChoiceBox();
+ //       this.Appuis = new ChoiceBox();
+        this.AppuiSimple = new ToggleButton("Appui Simple");
+        this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
         this.Couleur = new ChoiceBox();
@@ -74,7 +79,9 @@ public class GlobalPane extends BorderPane {
         this.Segment.setPrefSize(100, 50);
         this.Point.setPrefSize(100, 50);
         this.Pont.setPrefSize(100, 100);
-        this.Appuis.setPrefSize(100, 50);
+ //       this.Appuis.setPrefSize(100, 50);
+        this.AppuiSimple.setPrefSize(100, 50);
+        this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
         this.Barres.setPrefSize(100, 50);
         this.Couleur.setPrefSize(120, 25);
@@ -87,14 +94,17 @@ public class GlobalPane extends BorderPane {
         this.Enregistrer.setPrefSize(50, 50);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
+        
+        boolean etatTerrain = false;
+        boolean etatPont = false;
 
         
         
         // Concerne les éléments de la partie haute de l'interface
         
         VBox bTerrain = new VBox(this.Segment, this.Point);
-        VBox bPont1 = new VBox(this.Appuis, this.Barres);
-        VBox bPont2 = new VBox(this.Noeuds);
+        VBox bPont1 = new VBox(this.AppuiSimple, this.AppuiDouble);
+        VBox bPont2 = new VBox(this.Noeuds, this.Barres);
         
         VBox vOptions = new VBox (this.Ouvrir, this.Enregistrer);
 
@@ -163,6 +173,29 @@ public class GlobalPane extends BorderPane {
         
         
         
+        
+        // Concerne l'activation et la désactivation des boutons en fonctions des boutons Terrain et Pont
+        
+        Point.setDisable(true);
+        Segment.setDisable(true);
+        Barres.setDisable(true);
+        AppuiSimple.setDisable(true);
+        AppuiDouble.setDisable(true);
+        Noeuds.setDisable(true);
+        
+        ToggleGroup gPointSegment = new ToggleGroup();
+        Segment.setToggleGroup(gPointSegment);
+        Point.setToggleGroup(gPointSegment);
+        
+        ToggleGroup gTerrainPont = new ToggleGroup();
+        Terrain.setToggleGroup(gTerrainPont);
+        Pont.setToggleGroup(gTerrainPont);
+        
+        ToggleGroup gPont = new ToggleGroup();
+        Noeuds.setToggleGroup(gPont);
+        Barres.setToggleGroup(gPont);
+        AppuiSimple.setToggleGroup(gPont);
+        AppuiDouble.setToggleGroup(gPont);
         // Concerne les instructions attendues lorqu'on clique sur Point
         
         Point.setOnAction((t) -> {
@@ -183,6 +216,12 @@ public class GlobalPane extends BorderPane {
         
         Terrain.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Point ou Segment afin de modéliser votre terrain");
+            Point.setDisable(false);
+            Segment.setDisable(false);
+            Barres.setDisable(true);
+            AppuiSimple.setDisable(true);
+            AppuiDouble.setDisable(true);
+            Noeuds.setDisable(true);
         });
         
         
@@ -191,9 +230,15 @@ public class GlobalPane extends BorderPane {
         
         Pont.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Noeuds, Appuis ou Barres pour modéliser votre pont");
+            Point.setDisable(true);
+            Segment.setDisable(true);
+            Barres.setDisable(false);
+            AppuiSimple.setDisable(false);
+            AppuiDouble.setDisable(false);
+            Noeuds.setDisable(false);
         });
         
-
+        
     }
 
 }
