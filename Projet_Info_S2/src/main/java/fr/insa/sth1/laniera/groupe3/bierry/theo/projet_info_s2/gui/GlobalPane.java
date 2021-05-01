@@ -202,8 +202,8 @@ public class GlobalPane extends BorderPane {
 
         HBox coteBas = new HBox(this.Aide);
 
-        Background bgLightGrey2 = new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, null));
-        coteBas.setBackground(bgLightGrey2);
+        Background bgLightBlue2 = new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, null));
+        coteBas.setBackground(bgLightBlue2);
 
         this.setBottom(coteBas);
         
