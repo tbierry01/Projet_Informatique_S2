@@ -97,11 +97,10 @@ public class GlobalPane extends BorderPane {
         boolean etatTerrain = false;
         boolean etatPont = false;
 
-//        Image image = new Image (getClass().getResource("Image_Terrain").toExternalForm());
-        ImageView icon = new ImageView(new Image("file:Image_Terrain.png"));
-//        Terrain.setGraphic(icon);
-        this.Terrain = new ToggleButton("Terrain", icon);
         
+        ImageView icon = new ImageView(new Image("file:Image_Terrain.png"));
+        this.Terrain = new ToggleButton("Terrain", icon);
+
         
         // Concerne les éléments de la partie haute de l'interface
         
