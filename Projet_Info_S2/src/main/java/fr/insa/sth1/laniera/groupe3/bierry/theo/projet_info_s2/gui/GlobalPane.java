@@ -118,25 +118,25 @@ public class GlobalPane extends BorderPane {
         hPont.setSpacing(8);
         
         Rectangle rectangle1 = new Rectangle ();
-        rectangle1.setWidth(10);
+        rectangle1.setWidth(5);
         rectangle1.setHeight(100);
-        rectangle1.setFill(Color.LAVENDER);
+        rectangle1.setFill(Color.LIGHTSEAGREEN);
         
         Rectangle rectangle2 = new Rectangle ();
         rectangle2.setWidth(5);
         rectangle2.setHeight(100);
-        rectangle2.setFill(Color.LAVENDER);
+        rectangle2.setFill(Color.LIGHTSEAGREEN);
         
         Rectangle rectangle3 = new Rectangle ();
         rectangle3.setWidth(5);
         rectangle3.setHeight(100);
-        rectangle3.setFill(Color.LAVENDER);
+        rectangle3.setFill(Color.LIGHTSEAGREEN);
 
         HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.Simulation);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
-        Background bgBlue = new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, null));
+        Background bgBlue = new Background(new BackgroundFill(Color.CADETBLUE, CornerRadii.EMPTY, null));
         entete.setBackground(bgBlue);
 
         this.setTop(entete);
@@ -188,7 +188,7 @@ public class GlobalPane extends BorderPane {
                 cbTrait, hPositions, pAbscisses, pOrdonnee);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
-        Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, null));
+        Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
         coteGauche.setBackground(bgLightBlue);
 
         this.setLeft(coteGauche);
@@ -284,7 +284,6 @@ public class GlobalPane extends BorderPane {
             AppuiDouble.setDisable(true);
             Noeuds.setDisable(true);
         });
-        
         
         
         // Concerne les instructions attendues lorqu'on clique sur Pont
