@@ -187,6 +187,12 @@ public class GlobalPane extends BorderPane {
         
         
         
+        // Concerne les instructions attendues lorqu'on clique sur Pont
+        
+        Pont.setOnAction((t) -> {
+            Aide.setText("Cliquez sur le bouton Noeuds, Appuis ou Barres pour modéliser votre pont");
+        });
+        
 
     }
 
