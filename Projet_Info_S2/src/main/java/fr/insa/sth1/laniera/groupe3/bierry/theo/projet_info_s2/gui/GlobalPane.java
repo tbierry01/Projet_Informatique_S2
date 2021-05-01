@@ -5,7 +5,6 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -80,8 +79,13 @@ public class GlobalPane extends BorderPane {
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
+        
+        this.Aide.setFont(javafx.scene.text.Font.font(15));
 
-//        this.Style.setFont(javafx.scene.text.Font.font("Magneto", 30));
+        
+        
+        // Concerne les éléments de la partie haute de l'interface
+        
         VBox bTerrain = new VBox(this.Segment, this.Point);
         VBox bPont1 = new VBox(this.Appuis, this.Barres);
         VBox bPont2 = new VBox(this.Noeuds);
@@ -100,6 +104,10 @@ public class GlobalPane extends BorderPane {
         entete.setBackground(bgGrey);
 
         this.setTop(entete);
+        
+        
+        
+        // Concerne les éléments de la partie gauche de l'interface
 
         HBox pAbscisses = new HBox(this.X, this.Abscisse);
         HBox pOrdonnee = new HBox(this.Y, this.Ordonnee);
@@ -124,9 +132,13 @@ public class GlobalPane extends BorderPane {
         coteGauche.setBackground(bgLightGrey);
 
         this.setLeft(coteGauche);
+        
+        
+        
+        // Concerne les éléments de la partie inférieure de l'interface
 
         Aide.setText("C'est ici que seront les infos attendues de l'utilisateur");
-        this.Aide.setFont(javafx.scene.text.Font.font(15));
+        
 
         HBox coteBas = new HBox(this.Aide);
 
@@ -134,9 +146,28 @@ public class GlobalPane extends BorderPane {
         coteBas.setBackground(bgLightGrey2);
 
         this.setBottom(coteBas);
+        
+        
+        
+        // Concerne la position centrale du canvas
 
-       this.setCenter(Dessin);
-// Voir comment mettre le canvas au centre de la border pane
+        this.setCenter(Dessin);
+        
+        
+        
+        // Concerne les instructions attendues lorqu'on clique sur point
+        
+        Point.setOnAction((t) -> {
+            Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
+        });
+        
+        
+        
+        // Concerne les instructions attendues lorqu'on clique sur segment
+        
+        Segment.setOnAction((t) -> {
+            Aide.setText("Placer 2 points pour créer un segment ou reliez 2 points déjà existants");
+        });
 
     }
 
