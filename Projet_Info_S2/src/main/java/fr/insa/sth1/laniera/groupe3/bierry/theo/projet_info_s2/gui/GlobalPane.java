@@ -43,6 +43,8 @@ public class GlobalPane extends BorderPane {
     private TextField Ordonnee;
     private Label Aide;
     private DessinCanvas Dessin;
+    private Button Ouvrir;
+    private Button Enregistrer;
 
     public GlobalPane() {
 
@@ -65,6 +67,8 @@ public class GlobalPane extends BorderPane {
         this.Ordonnee = new TextField();
         this.Aide = new Label();
         this.Dessin = new DessinCanvas();
+        this.Ouvrir = new Button("Ouvrir");
+        this.Enregistrer = new Button("Enregistrer");
 
         this.Terrain.setPrefSize(100, 100);
         this.Segment.setPrefSize(100, 50);
@@ -79,6 +83,8 @@ public class GlobalPane extends BorderPane {
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
+        this.Ouvrir.setPrefSize(50, 50);
+        this.Enregistrer.setPrefSize(50, 50);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
 
@@ -89,6 +95,8 @@ public class GlobalPane extends BorderPane {
         VBox bTerrain = new VBox(this.Segment, this.Point);
         VBox bPont1 = new VBox(this.Appuis, this.Barres);
         VBox bPont2 = new VBox(this.Noeuds);
+        
+        VBox vOptions = new VBox (this.Ouvrir, this.Enregistrer);
 
         HBox hTerrain = new HBox(this.Terrain, bTerrain);
         HBox hPont = new HBox(this.Pont, bPont1, bPont2);
@@ -96,7 +104,7 @@ public class GlobalPane extends BorderPane {
         hTerrain.setSpacing(8);
         hPont.setSpacing(8);
 
-        HBox entete = new HBox(hTerrain, hPont, this.Simulation);
+        HBox entete = new HBox(vOptions, hTerrain, hPont, this.Simulation);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
