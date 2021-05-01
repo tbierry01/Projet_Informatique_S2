@@ -155,7 +155,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les instructions attendues lorqu'on clique sur point
+        // Concerne les instructions attendues lorqu'on clique sur Point
         
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
@@ -163,11 +163,22 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les instructions attendues lorqu'on clique sur segment
+        // Concerne les instructions attendues lorqu'on clique sur Segment
         
         Segment.setOnAction((t) -> {
-            Aide.setText("Placer 2 points pour créer un segment ou reliez 2 points déjà existants");
+            Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
         });
+        
+        
+        
+        // Concerne les instructions attendues lorqu'on clique sur Terrain
+        
+        Terrain.setOnAction((t) -> {
+            Aide.setText("Cliquez sur le bouton Point ou Segment afin de modéliser votre terrain");
+        });
+        
+        
+        
 
     }
 
