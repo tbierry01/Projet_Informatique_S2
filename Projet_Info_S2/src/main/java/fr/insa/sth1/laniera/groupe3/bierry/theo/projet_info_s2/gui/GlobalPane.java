@@ -37,9 +37,9 @@ public class GlobalPane extends BorderPane {
     private ToggleButton AppuiDouble;
     private ToggleButton Noeuds;
     private ToggleButton Barres;
-    private ChoiceBox Couleur;
+//    private ChoiceBox Couleur;
     private ChoiceBox Eppaisseur;
-    private ChoiceBox Traits;
+//    private ChoiceBox Traits;
     private Label Style;
     private Label Positions;
     private Label X;
@@ -63,9 +63,9 @@ public class GlobalPane extends BorderPane {
         this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
-        this.Couleur = new ChoiceBox();
+//        this.Couleur = new ChoiceBox();
         this.Eppaisseur = new ChoiceBox();
-        this.Traits = new ChoiceBox();
+//        this.Traits = new ChoiceBox();
         this.Style = new Label("Style");
         this.Positions = new Label("Position");
         this.X = new Label("X : ");
@@ -89,7 +89,7 @@ public class GlobalPane extends BorderPane {
         this.Barres.setPrefSize(100, 50);
 //        this.Couleur.setPrefSize(120, 25);
         this.Eppaisseur.setPrefSize(120, 25);
-        this.Traits.setPrefSize(120, 25);
+//        this.Traits.setPrefSize(120, 25);
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
@@ -152,7 +152,17 @@ public class GlobalPane extends BorderPane {
         
         ObservableList<ChoixCouleur>couleurs = FXCollections.observableArrayList(bleu, vert, orange, noir);
         ChoiceBox<ChoixCouleur>cbCouleurs = new ChoiceBox<ChoixCouleur>(couleurs);
+        cbCouleurs.getSelectionModel().select(noir);
         cbCouleurs.setPrefSize(120, 25);
+        
+        
+        ChoixStyleTrait traitPlein = new ChoixStyleTrait ("Trait plein");
+        ChoixStyleTrait traitPointilles = new ChoixStyleTrait ("Trait pointillé");
+        
+        ObservableList<ChoixStyleTrait>styleTrait = FXCollections.observableArrayList(traitPlein, traitPointilles);
+        ChoiceBox<ChoixStyleTrait>cbTrait = new ChoiceBox<ChoixStyleTrait>(styleTrait);
+        cbTrait.getSelectionModel().select(traitPlein);
+        cbTrait.setPrefSize(120, 25);
 
         HBox pAbscisses = new HBox(this.X, this.Abscisse);
         HBox pOrdonnee = new HBox(this.Y, this.Ordonnee);
@@ -170,7 +180,7 @@ public class GlobalPane extends BorderPane {
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
         VBox coteGauche = new VBox(hStyle, cbCouleurs, this.Eppaisseur,
-                this.Traits, hPositions, pAbscisses, pOrdonnee);
+                cbTrait, hPositions, pAbscisses, pOrdonnee);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, null));
