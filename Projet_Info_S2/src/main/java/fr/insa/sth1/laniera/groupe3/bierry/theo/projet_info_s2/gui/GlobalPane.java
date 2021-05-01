@@ -18,6 +18,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -113,13 +114,28 @@ public class GlobalPane extends BorderPane {
 
         hTerrain.setSpacing(8);
         hPont.setSpacing(8);
+        
+        Rectangle rectangle1 = new Rectangle ();
+        rectangle1.setWidth(10);
+        rectangle1.setHeight(100);
+        rectangle1.setFill(Color.LAVENDER);
+        
+        Rectangle rectangle2 = new Rectangle ();
+        rectangle2.setWidth(5);
+        rectangle2.setHeight(100);
+        rectangle2.setFill(Color.LAVENDER);
+        
+        Rectangle rectangle3 = new Rectangle ();
+        rectangle3.setWidth(5);
+        rectangle3.setHeight(100);
+        rectangle3.setFill(Color.LAVENDER);
 
-        HBox entete = new HBox(vOptions, hTerrain, hPont, this.Simulation);
+        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.Simulation);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
-        Background bgGrey = new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, null));
-        entete.setBackground(bgGrey);
+        Background bgBlue = new Background(new BackgroundFill(Color.CORNFLOWERBLUE, CornerRadii.EMPTY, null));
+        entete.setBackground(bgBlue);
 
         this.setTop(entete);
         
@@ -146,8 +162,8 @@ public class GlobalPane extends BorderPane {
                 this.Traits, hPositions, pAbscisses, pOrdonnee);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
-        Background bgLightGrey = new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, null));
-        coteGauche.setBackground(bgLightGrey);
+        Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, null));
+        coteGauche.setBackground(bgLightBlue);
 
         this.setLeft(coteGauche);
         
@@ -155,7 +171,7 @@ public class GlobalPane extends BorderPane {
         
         // Concerne les éléments de la partie inférieure de l'interface
 
-        Aide.setText("C'est ici que seront les infos attendues de l'utilisateur");
+        Aide.setText("Cliquez sur un bouton pour modéliser votre pont");
         
 
         HBox coteBas = new HBox(this.Aide);
