@@ -5,6 +5,8 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import javafx.scene.canvas.GraphicsContext;
+
 /**
  *
  * @author theob
@@ -80,6 +82,11 @@ public class Barre extends ClassDessin{
      */
     public TypeBarre getType_de_Barre() {
         return Type_de_Barre;
+    }
+
+    @Override
+    public void DessineToiNomDeDieu(GraphicsContext Context) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
