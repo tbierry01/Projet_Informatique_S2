@@ -5,20 +5,23 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
 /**
  *
  * @author drumm
  */
 public class DessinCanvas extends Pane {
+    
+    private GlobalPane main;
   
     private Canvas realCanvas ;
     
-    public DessinCanvas () {
+    public DessinCanvas (GlobalPane main) {
+        this.main = main;
         this.realCanvas = new Canvas (this.getWidth(),this.getHeight()); 
         this.getChildren().add(this.realCanvas);
         this.realCanvas.heightProperty().bind(this.heightProperty());
@@ -37,7 +40,9 @@ public class DessinCanvas extends Pane {
     
     public void redrawAll() {
         GraphicsContext context = this.realCanvas.getGraphicsContext2D();
-        context.setFill(Color.CORNSILK);
-        context.fillRect (0, 0, this.realCanvas.getWidth(), this.realCanvas.getHeight());
+    //    context.setFill(Color.CORNSILK);
+    //    context.fillRect (0, 0, this.realCanvas.getWidth(), this.realCanvas.getHeight());
+        ClassDessin model = this.main.getModel();
+        model.MaisDessineToutPuree(context);
     }
 }
