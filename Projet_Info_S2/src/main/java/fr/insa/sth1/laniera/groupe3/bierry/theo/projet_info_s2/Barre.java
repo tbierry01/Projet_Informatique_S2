@@ -9,7 +9,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
  *
  * @author theob
  */
-public class Barre {
+public class Barre extends ClassDessin{
     
     private int Id;
     private Noeud [] Noeuds_Barre;
