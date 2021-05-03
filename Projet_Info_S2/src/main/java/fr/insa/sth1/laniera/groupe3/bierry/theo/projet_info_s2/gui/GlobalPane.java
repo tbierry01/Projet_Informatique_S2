@@ -53,10 +53,6 @@ public class GlobalPane extends BorderPane {
 
     public GlobalPane() {
 
-    //    this.Terrain = new ToggleButton("Terrain");
-    //    this.Segment = new ToggleButton("Segment");
-    //    this.Point = new ToggleButton("Point");
-    //    this.Pont = new ToggleButton("Pont");
         this.AppuiSimple = new ToggleButton("Appui Simple");
         this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
@@ -70,11 +66,7 @@ public class GlobalPane extends BorderPane {
         this.Ordonnee = new TextField();
         this.Aide = new Label();
         this.Dessin = new DessinCanvas();
-    //    this.Ouvrir = new Button("Ouvrir");
-    //    this.Enregistrer = new Button("Enregistrer");
 
-//        this.Segment.setPrefSize(100, 50);
-//        this.Point.setPrefSize(100, 50);
         this.AppuiSimple.setPrefSize(100, 50);
         this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
@@ -82,55 +74,53 @@ public class GlobalPane extends BorderPane {
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
-//        this.Ouvrir.setPrefSize(120, 50);
-//        this.Enregistrer.setPrefSize(120, 50);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
         
         
-        // Concerne les insertions des icons dans les différents boutons
+//----------- Concerne les insertions des icons dans les différents boutons ainsi que leur taille -----------//
         
-            // Bouton Terrain
+    //----------- Bouton Terrain -----------//
 
         ImageView iconTerrain = new ImageView(new Image("file:Image_Terrain.png"));
         this.Terrain = new ToggleButton("Terrain", iconTerrain);
         this.Terrain.setContentDisplay(ContentDisplay.TOP);
         this.Terrain.setPrefSize(100, 100);
         
-            // Bouton Pont
+    //----------- Bouton Pont -----------//
         
         ImageView iconPont = new ImageView(new Image("file:Image_Pont.png"));
         this.Pont = new ToggleButton("Pont", iconPont);
         this.Pont.setContentDisplay(ContentDisplay.TOP);
         this.Pont.setPrefSize(100, 100);
         
-            // Bouton Ouvrir
+    //----------- Bouton Ouvrir -----------//
             
         ImageView iconOuvrir = new ImageView(new Image("file:Image_Ouvrir.png"));
         this.Ouvrir = new Button("    Ouvrir", iconOuvrir);
         this.Ouvrir.setPrefSize(120, 50);
         
-            // Bouton Enregistrer
+    //----------- Bouton Enregistrer -----------//
             
         ImageView iconEnregistrer = new ImageView(new Image("file:Image_Enregistrer.png"));
         this.Enregistrer = new Button("Enregistrer", iconEnregistrer);
         this.Enregistrer.setPrefSize(120, 50);
         
-            // Bouton Segment
+    //----------- Bouton Segment -----------//
             
         ImageView iconSegment = new ImageView(new Image("file:Image_Segment.png"));
         this.Segment = new ToggleButton("Segment", iconSegment);
         this.Segment.setPrefSize(100, 50);
         
-            // Bouton point
+    //----------- Bouton point -----------//
             
         ImageView iconPoint = new ImageView(new Image("file:Image_Point.png"));
         this.Point = new ToggleButton("    Point", iconPoint);
         this.Point.setPrefSize(100, 50);
 
         
-        // Concerne les éléments de la partie haute de l'interface
+//----------- Concerne les éléments de la partie haute de l'interface -----------//
         
         VBox bTerrain = new VBox(this.Segment, this.Point);
         VBox bPont1 = new VBox(this.AppuiSimple, this.AppuiDouble);
@@ -170,9 +160,9 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les éléments de la partie gauche de l'interface
+//----------- Concerne les éléments de la partie gauche de l'interface -----------//
         
-            // Définit les choix de la ChoiceBox en définissant la couleur Noir par défaut
+    //----------- Définit les choix de la ChoiceBox en définissant la couleur Noir par défaut -----------//
         
         ChoixCouleur bleu = new ChoixCouleur ("Bleu");
         ChoixCouleur vert = new ChoixCouleur ("Vert");
@@ -184,7 +174,7 @@ public class GlobalPane extends BorderPane {
         cbCouleurs.getSelectionModel().select(noir);
         cbCouleurs.setPrefSize(120, 25);
         
-            // Définit les choix de la ChoiceBox en définissant le trait plein par défaut
+    //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
 
         ChoixStyleTrait traitPlein = new ChoixStyleTrait ("Trait plein");
         ChoixStyleTrait traitPointilles = new ChoixStyleTrait ("Trait pointillé");
@@ -194,7 +184,7 @@ public class GlobalPane extends BorderPane {
         cbTrait.getSelectionModel().select(traitPlein);
         cbTrait.setPrefSize(120, 25);
         
-            // Définit les choix de la ChoiceBox en définissant le trait plein par défaut
+    //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
             
         ChoixEpaisseur fin = new ChoixEpaisseur("Trait fin");
         ChoixEpaisseur moyen = new ChoixEpaisseur("Trait moyen");
@@ -205,7 +195,7 @@ public class GlobalPane extends BorderPane {
         cbEpaisseur.getSelectionModel().select(moyen);
         cbEpaisseur.setPrefSize(120, 25);
         
-            // On place les différents éléments qui composent la partie gauche
+    //----------- On place les différents éléments qui composent la partie gauche -----------//
 
         HBox pAbscisses = new HBox(this.X, this.Abscisse);
         HBox pOrdonnee = new HBox(this.Y, this.Ordonnee);
@@ -233,7 +223,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les éléments de la partie inférieure de l'interface
+//----------- Concerne les éléments de la partie inférieure de l'interface -----------//
 
         Aide.setText("Cliquez sur un bouton pour modéliser votre pont");
         
@@ -247,14 +237,14 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne la position centrale du canvas
+//----------- Concerne la position centrale du canvas -----------//
 
         this.setCenter(Dessin);
         
         
         
 
-        // Concerne l'activation et la désactivation des boutons en fonctions des boutons Terrain et Pont
+//----------- Concerne l'activation et la désactivation des boutons en fonctions des boutons Terrain et Pont -----------//
         
         Point.setDisable(true);
         Segment.setDisable(true);
@@ -279,7 +269,7 @@ public class GlobalPane extends BorderPane {
         
 
 
-        // Concerne les instructions attendues lorqu'on clique sur Point
+//----------- Concerne les instructions attendues lorqu'on clique sur Point -----------//
         
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
@@ -287,7 +277,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les instructions attendues lorqu'on clique sur Segment
+//----------- Concerne les instructions attendues lorqu'on clique sur Segment -----------//
         
         Segment.setOnAction((t) -> {
             Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
@@ -295,7 +285,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les instructions attendues lorqu'on clique sur Appui Simple
+//----------- Concerne les instructions attendues lorqu'on clique sur Appui Simple -----------//
         
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
@@ -303,7 +293,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les instructions attendues lorqu'on clique sur Appui Double
+//----------- Concerne les instructions attendues lorqu'on clique sur Appui Double -----------//
         
         AppuiDouble.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
@@ -311,7 +301,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-        // Concerne les instructions attendues lorqu'on clique sur Terrain
+//----------- Concerne les instructions attendues lorqu'on clique sur Terrain -----------//
         
         Terrain.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Point ou Segment afin de modéliser votre terrain");
@@ -324,7 +314,7 @@ public class GlobalPane extends BorderPane {
         });
         
         
-        // Concerne les instructions attendues lorqu'on clique sur Pont
+//----------- Concerne les instructions attendues lorqu'on clique sur Pont -----------//
         
         Pont.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Noeuds, Appui (Simple/Double) ou Barres pour modéliser votre pont");
