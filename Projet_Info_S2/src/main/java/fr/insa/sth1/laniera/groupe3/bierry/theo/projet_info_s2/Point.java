@@ -7,6 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Point extends ClassDessin{
     private double abscisse;
     private double ordonnee;
     private int Id;
+    private Color Couleur;
     private ArrayList<Segment> Segment_Point; //Cela permet de stocker l'ensemble des segments liés à un point dans un tableau dynamique
     
     public Point(double x, double y, int Iden) {
@@ -25,12 +27,19 @@ public class Point extends ClassDessin{
         ordonnee = y;
         Id = Iden;
         Segment_Point = new ArrayList<>();
+        Couleur = Color.PINK;
+    }
+    
+    public Point(double x, double y, int Iden, Color C) {
+        this(x, y, Iden);
+        Couleur = C;
     }
 
     public Point(double x, double y) { //Ce constructeur permet de ne pas se casser la tête avec l'identificateur, il sert à créer des points qui ne sont pas vraiment des points du trerrain, mais plutôt des points pour les tests ou pour les calculs
         abscisse = x;
         ordonnee = y;
         Segment_Point = new ArrayList<>();
+        Couleur = Color.PINK;
 //        Id = CompteurId;
 //        CompteurId = CompteurId + 1;
     }
@@ -38,7 +47,7 @@ public class Point extends ClassDessin{
     @Override
     public String toString() {
         String res;
-        res = "\n --Point " + Id + "--" + "\nAbscisse : " + abscisse + "\nOrdonnée : " + ordonnee + "\nEst l'extremité des segements : ";
+        res = "\n --Point " + Id + "--" + "\nAbscisse : " + abscisse + "\nOrdonnée : " + ordonnee + "\nCouleur : "+Couleur+"\nEst l'extremité des segements : ";
         for (int i = 0; i < Segment_Point.size(); i++) {
             res = res + "\n -> " + Segment_Point.get(i).getId();
 
@@ -48,6 +57,10 @@ public class Point extends ClassDessin{
 
     public double getAbscisse() {
         return abscisse;
+    }
+
+    public Color getColor() {
+        return Couleur;
     }
 
     public void setAbscisse(double abscisse) {
@@ -107,6 +120,7 @@ public class Point extends ClassDessin{
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
+        Context.setFill(this.getColor());
         Context.fillOval(abscisse - RAYON_POINT, ordonnee-RAYON_POINT, RAYON_POINT, RAYON_POINT);
     }
 }
