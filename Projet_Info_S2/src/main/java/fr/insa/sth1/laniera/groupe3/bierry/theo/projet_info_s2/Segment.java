@@ -5,6 +5,8 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import javafx.scene.canvas.GraphicsContext;
+
 /**
  *
  * @author theob
@@ -57,6 +59,11 @@ public class Segment extends ClassDessin{
         EquationDroite ED;
         ED = Extremite[0].Droite_deuxPoints(Extremite[1]); //On fait la méthode droitedeuxPoints que l'on applique aux deux extémité du segment;
         return ED;
+    }
+
+    @Override
+    public void DessineToiNomDeDieu(GraphicsContext Context) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
