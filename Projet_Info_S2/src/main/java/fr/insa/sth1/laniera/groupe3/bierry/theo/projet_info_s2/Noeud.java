@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author theob
  */
-public abstract class Noeud {
+public abstract class Noeud extends ClassDessin{
 
     private int Id;
     protected ArrayList<Barre> Barres_Noeud; //Portected pour que ce soit plus simple avec les sous classes
