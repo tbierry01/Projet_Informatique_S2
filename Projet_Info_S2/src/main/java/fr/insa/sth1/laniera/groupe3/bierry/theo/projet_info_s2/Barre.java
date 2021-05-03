@@ -6,6 +6,7 @@
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Barre extends ClassDessin{
     private Noeud [] Noeuds_Barre;
     private Treillis Treillis_Barre;
     private TypeBarre Type_de_Barre;
+    private Color Couleur;
     
     public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB){
         Id = Iden;
@@ -31,6 +33,11 @@ public class Barre extends ClassDessin{
         T.addBarre_Treillis(this);
     }
     
+    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB, Color C){
+        this(Iden, N1, N2, T, TB);
+        Couleur = C;
+    }
+    
     public Barre(int Iden, Noeud N1, Noeud N2){
         Id = Iden;
         Noeuds_Barre = new Noeud[2];
@@ -38,6 +45,7 @@ public class Barre extends ClassDessin{
         Noeuds_Barre[1] = N2;
         N1.addBarre(this);
         N2.addBarre(this);
+        Couleur = Color.BROWN;
     }
     
     public Barre(Noeud N1, Noeud N2){
@@ -59,6 +67,9 @@ public class Barre extends ClassDessin{
         return Id;
     }
 
+    public Color getColor(){
+        return Couleur;
+    }
     /**
      * @return the Noeuds_Barre
      */
@@ -86,7 +97,8 @@ public class Barre extends ClassDessin{
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Context.setStroke(this.getColor());
+        Context.strokeLine(Noeuds_Barre[0].getPos().getAbscisse(), Noeuds_Barre[0].getPos().getOrdonnee(), Noeuds_Barre[1].getPos().getAbscisse(), Noeuds_Barre[1].getPos().getOrdonnee());
     }
     
 }
