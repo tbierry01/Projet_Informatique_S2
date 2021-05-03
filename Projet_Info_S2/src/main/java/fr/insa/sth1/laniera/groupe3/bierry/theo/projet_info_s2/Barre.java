@@ -31,6 +31,7 @@ public class Barre extends ClassDessin{
         N1.addBarre(this);
         N2.addBarre(this);
         T.addBarre_Treillis(this);
+        Couleur = Color.BROWN;
     }
     
     public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB, Color C){
