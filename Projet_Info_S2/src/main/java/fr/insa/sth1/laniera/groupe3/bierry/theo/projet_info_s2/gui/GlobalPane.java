@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -52,10 +53,10 @@ public class GlobalPane extends BorderPane {
 
     public GlobalPane() {
 
-        this.Terrain = new ToggleButton("Terrain");
-        this.Segment = new ToggleButton("Segment");
-        this.Point = new ToggleButton("Point");
-        this.Pont = new ToggleButton("Pont");
+    //    this.Terrain = new ToggleButton("Terrain");
+    //    this.Segment = new ToggleButton("Segment");
+    //    this.Point = new ToggleButton("Point");
+    //    this.Pont = new ToggleButton("Pont");
         this.AppuiSimple = new ToggleButton("Appui Simple");
         this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
@@ -69,13 +70,11 @@ public class GlobalPane extends BorderPane {
         this.Ordonnee = new TextField();
         this.Aide = new Label();
         this.Dessin = new DessinCanvas();
-        this.Ouvrir = new Button("Ouvrir");
-        this.Enregistrer = new Button("Enregistrer");
+    //    this.Ouvrir = new Button("Ouvrir");
+    //    this.Enregistrer = new Button("Enregistrer");
 
-        this.Terrain.setPrefSize(100, 100);
-        this.Segment.setPrefSize(100, 50);
-        this.Point.setPrefSize(100, 50);
-        this.Pont.setPrefSize(100, 100);
+//        this.Segment.setPrefSize(100, 50);
+//        this.Point.setPrefSize(100, 50);
         this.AppuiSimple.setPrefSize(100, 50);
         this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
@@ -83,19 +82,52 @@ public class GlobalPane extends BorderPane {
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
-        this.Ouvrir.setPrefSize(50, 50);
-        this.Enregistrer.setPrefSize(50, 50);
+//        this.Ouvrir.setPrefSize(120, 50);
+//        this.Enregistrer.setPrefSize(120, 50);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
-        boolean etatTerrain = false;
-        boolean etatPont = false;
-
         
-        ImageView icon = new ImageView(new Image("file:Image_Terrain.png"));
-        icon.setScaleX(0.3);
-        icon.setScaleY(0.3);
-        this.Terrain = new ToggleButton("Terrain", icon);
+        
+        // Concerne les insertions des icons dans les différents boutons
+        
+            // Bouton Terrain
+
+        ImageView iconTerrain = new ImageView(new Image("file:Image_Terrain.png"));
+        this.Terrain = new ToggleButton("Terrain", iconTerrain);
+        this.Terrain.setContentDisplay(ContentDisplay.TOP);
+        this.Terrain.setPrefSize(100, 100);
+        
+            // Bouton Pont
+        
+        ImageView iconPont = new ImageView(new Image("file:Image_Pont.png"));
+        this.Pont = new ToggleButton("Pont", iconPont);
+        this.Pont.setContentDisplay(ContentDisplay.TOP);
+        this.Pont.setPrefSize(100, 100);
+        
+            // Bouton Ouvrir
+            
+        ImageView iconOuvrir = new ImageView(new Image("file:Image_Ouvrir.png"));
+        this.Ouvrir = new Button("Ouvrir", iconOuvrir);
+        this.Ouvrir.setPrefSize(120, 50);
+        
+            // Bouton Enregistrer
+            
+        ImageView iconEnregistrer = new ImageView(new Image("file:Image_Enregistrer.png"));
+        this.Enregistrer = new Button("Enregistrer", iconEnregistrer);
+        this.Enregistrer.setPrefSize(120, 50);
+        
+            // Bouton Segment
+            
+        ImageView iconSegment = new ImageView(new Image("file:Image_Segment.png"));
+        this.Segment = new ToggleButton("Segment", iconSegment);
+        this.Segment.setPrefSize(100, 50);
+        
+            // Bouton point
+            
+        ImageView iconPoint = new ImageView(new Image("file:Image_Point.png"));
+        this.Point = new ToggleButton("Point", iconPoint);
+        this.Point.setPrefSize(100, 50);
 
         
         // Concerne les éléments de la partie haute de l'interface
