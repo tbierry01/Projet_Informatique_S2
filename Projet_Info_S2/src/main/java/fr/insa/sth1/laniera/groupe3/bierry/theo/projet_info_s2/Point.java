@@ -6,6 +6,7 @@
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import java.util.ArrayList;
+import javafx.scene.canvas.GraphicsContext;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Point extends ClassDessin{
 
+    public static double RAYON_POINT = 10;
     private double abscisse;
     private double ordonnee;
     private int Id;
@@ -101,5 +103,10 @@ public class Point extends ClassDessin{
         double Angle;
         Angle = Math.atan(Math.abs((P2.getOrdonnee()-this.getOrdonnee())/(P2.getAbscisse()-this.getAbscisse())));//Ici, on calcul l'angle entre les deux angles en applicant la tangente avec Cote Opposé/Coté Adjacent. Avec a<b Pour calculer Cote Adjacent : xb-xa, Cote Opposé : yb - ya. Ensuite, on applique l'arctan avec la commande atan
         return Angle;
+    }
+
+    @Override
+    public void DessineToiNomDeDieu(GraphicsContext Context) {
+        Context.fillOval(abscisse - RAYON_POINT, ordonnee-RAYON_POINT, RAYON_POINT, RAYON_POINT);
     }
 }
