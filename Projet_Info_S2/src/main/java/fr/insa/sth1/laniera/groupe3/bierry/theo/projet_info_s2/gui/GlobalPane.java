@@ -108,7 +108,7 @@ public class GlobalPane extends BorderPane {
             // Bouton Ouvrir
             
         ImageView iconOuvrir = new ImageView(new Image("file:Image_Ouvrir.png"));
-        this.Ouvrir = new Button("Ouvrir", iconOuvrir);
+        this.Ouvrir = new Button("    Ouvrir", iconOuvrir);
         this.Ouvrir.setPrefSize(120, 50);
         
             // Bouton Enregistrer
@@ -126,7 +126,7 @@ public class GlobalPane extends BorderPane {
             // Bouton point
             
         ImageView iconPoint = new ImageView(new Image("file:Image_Point.png"));
-        this.Point = new ToggleButton("Point", iconPoint);
+        this.Point = new ToggleButton("    Point", iconPoint);
         this.Point.setPrefSize(100, 50);
 
         
