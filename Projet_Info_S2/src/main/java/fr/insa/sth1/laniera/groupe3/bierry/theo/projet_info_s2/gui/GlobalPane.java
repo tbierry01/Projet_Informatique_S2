@@ -50,11 +50,12 @@ public class GlobalPane extends BorderPane {
     private DessinCanvas Dessin;
     private Button Ouvrir;
     private Button Enregistrer;
+    
 
     public GlobalPane() {
 
-        this.AppuiSimple = new ToggleButton("Appui Simple");
-        this.AppuiDouble = new ToggleButton("Appui Double");
+//        this.AppuiSimple = new ToggleButton("Appui Simple");
+//        this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
         this.Style = new Label("Style");
@@ -67,8 +68,8 @@ public class GlobalPane extends BorderPane {
         this.Aide = new Label();
         this.Dessin = new DessinCanvas();
 
-        this.AppuiSimple.setPrefSize(100, 50);
-        this.AppuiDouble.setPrefSize(100, 50);
+//        this.AppuiSimple.setPrefSize(100, 50);
+//        this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
         this.Barres.setPrefSize(100, 50);
         this.Abscisse.setPrefSize(100, 25);
@@ -79,7 +80,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les insertions des icons dans les différents boutons ainsi que leur taille -----------//
+//----------- Concerne les insertions des icones dans les différents boutons ainsi que leur taille -----------//
         
     //----------- Bouton Terrain -----------//
 
@@ -113,11 +114,23 @@ public class GlobalPane extends BorderPane {
         this.Segment = new ToggleButton("Segment", iconSegment);
         this.Segment.setPrefSize(100, 50);
         
-    //----------- Bouton point -----------//
+    //----------- Bouton Point -----------//
             
         ImageView iconPoint = new ImageView(new Image("file:Image_Point.png"));
         this.Point = new ToggleButton("    Point", iconPoint);
         this.Point.setPrefSize(100, 50);
+        
+    //----------- Bouton Appui Simple -----------//
+            
+        ImageView iconAppuiSimple = new ImageView(new Image("file:Image_Appui_Simple.png"));
+        this.AppuiSimple = new ToggleButton("Appui Simple", iconAppuiSimple);
+        this.AppuiSimple.setPrefSize(100, 50);
+    
+    //----------- Bouton Appui Double -----------//
+            
+        ImageView iconAppuiDouble = new ImageView(new Image("file:Image_Appui_Double.png"));
+        this.AppuiDouble = new ToggleButton("Appui Double", iconAppuiDouble);
+        this.AppuiDouble.setPrefSize(100, 50);
 
         
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
