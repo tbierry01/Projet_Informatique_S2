@@ -5,6 +5,9 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -51,11 +54,19 @@ public class GlobalPane extends BorderPane {
     private Button Ouvrir;
     private Button Enregistrer;
     
+    private ClassDessin model;
+    private Controleur controleur;
+    
+    private ArrayList<Figure> EnsembleFigures;
+    
+    public GlobalPane () {
+        this(new ClassDessin(EnsembleFigures));  
+    }
+    
+    public GlobalPane(ClassDessin model) {
+        this.model = model;
+        this.controleur = new Controleur(this);
 
-    public GlobalPane() {
-
-//        this.AppuiSimple = new ToggleButton("Appui Simple");
-//        this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
         this.Style = new Label("Style");
@@ -66,10 +77,8 @@ public class GlobalPane extends BorderPane {
         this.Abscisse = new TextField();
         this.Ordonnee = new TextField();
         this.Aide = new Label();
-        this.Dessin = new DessinCanvas();
+        this.Dessin = new DessinCanvas(this);
 
-//        this.AppuiSimple.setPrefSize(100, 50);
-//        this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
         this.Barres.setPrefSize(100, 50);
         this.Abscisse.setPrefSize(100, 25);
@@ -351,6 +360,20 @@ public class GlobalPane extends BorderPane {
             Noeuds.setDisable(false);
         });
         
+    }
+
+    /**
+     * @return the model
+     */
+    public ClassDessin getModel() {
+        return model;
+    }
+
+    /**
+     * @return the controleur
+     */
+    public Controleur getControleur() {
+        return controleur;
     }
 
 }
