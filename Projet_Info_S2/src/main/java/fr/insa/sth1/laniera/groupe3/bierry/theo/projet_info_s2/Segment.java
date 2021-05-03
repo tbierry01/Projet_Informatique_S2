@@ -9,7 +9,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
  *
  * @author theob
  */
-public class Segment {
+public class Segment extends ClassDessin{
     
     private int Id;
     private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
