@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author theob
  */
-public class Point {
+public class Point extends ClassDessin{
 
     private double abscisse;
     private double ordonnee;
