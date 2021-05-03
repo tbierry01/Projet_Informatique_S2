@@ -137,6 +137,12 @@ public class GlobalPane extends BorderPane {
         ImageView iconNoeuds = new ImageView(new Image("file:Image_Noeuds.png"));
         this.Noeuds = new ToggleButton("Noeuds", iconNoeuds);
         this.Noeuds.setPrefSize(100, 50);
+        
+    //----------- Bouton Barres -----------//
+            
+        ImageView iconBarres = new ImageView(new Image("file:Image_Barres.png"));
+        this.Barres = new ToggleButton(" Barres", iconBarres);
+        this.Barres.setPrefSize(100, 50);
 
         
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
