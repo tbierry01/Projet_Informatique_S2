@@ -123,14 +123,20 @@ public class GlobalPane extends BorderPane {
     //----------- Bouton Appui Simple -----------//
             
         ImageView iconAppuiSimple = new ImageView(new Image("file:Image_Appui_Simple.png"));
-        this.AppuiSimple = new ToggleButton("Appui Simple", iconAppuiSimple);
+        this.AppuiSimple = new ToggleButton(" Appui \n Simple", iconAppuiSimple);
         this.AppuiSimple.setPrefSize(100, 50);
     
     //----------- Bouton Appui Double -----------//
             
         ImageView iconAppuiDouble = new ImageView(new Image("file:Image_Appui_Double.png"));
-        this.AppuiDouble = new ToggleButton("Appui Double", iconAppuiDouble);
+        this.AppuiDouble = new ToggleButton(" Appui \n Double", iconAppuiDouble);
         this.AppuiDouble.setPrefSize(100, 50);
+        
+    //----------- Bouton Noeuds -----------//
+            
+        ImageView iconNoeuds = new ImageView(new Image("file:Image_Noeuds.png"));
+        this.Noeuds = new ToggleButton("Noeuds", iconNoeuds);
+        this.Noeuds.setPrefSize(100, 50);
 
         
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
