@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  *
  * @author theob
  */
-public class Barre extends ClassDessin{
+public class Barre extends Figure{
     
     private int Id;
     private Noeud [] Noeuds_Barre;
