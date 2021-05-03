@@ -34,14 +34,10 @@ public class GlobalPane extends BorderPane {
     private ToggleButton Segment;
     private ToggleButton Point;
     private ToggleButton Pont;
-//    private ChoiceBox Appuis;
     private ToggleButton AppuiSimple;
     private ToggleButton AppuiDouble;
     private ToggleButton Noeuds;
     private ToggleButton Barres;
-//    private ChoiceBox Couleur;
-    private ChoiceBox Eppaisseur;
-//    private ChoiceBox Traits;
     private Label Style;
     private Label Positions;
     private Label X;
@@ -64,7 +60,6 @@ public class GlobalPane extends BorderPane {
         this.AppuiDouble = new ToggleButton("Appui Double");
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
-        this.Eppaisseur = new ChoiceBox();
         this.Style = new Label("Style");
         this.Positions = new Label("Position");
         this.X = new Label("X : ");
@@ -85,7 +80,6 @@ public class GlobalPane extends BorderPane {
         this.AppuiDouble.setPrefSize(100, 50);
         this.Noeuds.setPrefSize(100, 50);
         this.Barres.setPrefSize(100, 50);
-        this.Eppaisseur.setPrefSize(120, 25);
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
@@ -99,6 +93,8 @@ public class GlobalPane extends BorderPane {
 
         
         ImageView icon = new ImageView(new Image("file:Image_Terrain.png"));
+        icon.setScaleX(0.3);
+        icon.setScaleY(0.3);
         this.Terrain = new ToggleButton("Terrain", icon);
 
         
@@ -166,6 +162,17 @@ public class GlobalPane extends BorderPane {
         cbTrait.getSelectionModel().select(traitPlein);
         cbTrait.setPrefSize(120, 25);
         
+            // Définit les choix de la ChoiceBox en définissant le trait plein par défaut
+            
+        ChoixEpaisseur fin = new ChoixEpaisseur("Trait fin");
+        ChoixEpaisseur moyen = new ChoixEpaisseur("Trait moyen");
+        ChoixEpaisseur épais = new ChoixEpaisseur("Trait épais");
+        
+        ObservableList<ChoixEpaisseur>epaisseur = FXCollections.observableArrayList(fin, moyen, épais);
+        ChoiceBox<ChoixEpaisseur>cbEpaisseur = new ChoiceBox<ChoixEpaisseur>(epaisseur);
+        cbEpaisseur.getSelectionModel().select(moyen);
+        cbEpaisseur.setPrefSize(120, 25);
+        
             // On place les différents éléments qui composent la partie gauche
 
         HBox pAbscisses = new HBox(this.X, this.Abscisse);
@@ -183,7 +190,7 @@ public class GlobalPane extends BorderPane {
         this.Style.setFont(javafx.scene.text.Font.font(15));
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
-        VBox coteGauche = new VBox(hStyle, cbCouleurs, this.Eppaisseur,
+        VBox coteGauche = new VBox(hStyle, cbCouleurs, cbEpaisseur,
                 cbTrait, hPositions, pAbscisses, pOrdonnee);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
