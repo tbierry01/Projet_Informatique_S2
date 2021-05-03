@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  *
  * @author theob
  */
-public class Point extends ClassDessin{
+public class Point extends Figure{
 
     public static double RAYON_POINT = 10;
     private double abscisse;
