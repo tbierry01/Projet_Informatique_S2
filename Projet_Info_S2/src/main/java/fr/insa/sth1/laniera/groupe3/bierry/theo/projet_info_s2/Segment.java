@@ -6,6 +6,7 @@
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -16,7 +17,8 @@ public class Segment extends ClassDessin{
     private int Id;
     private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
     private TriangleTerrain TT;
-            
+    private Color Couleur;
+    
     public Segment (int Iden, Point P1, Point P2){
         Id = Iden;
         Extremite = new Point[2];
@@ -24,6 +26,7 @@ public class Segment extends ClassDessin{
         Extremite[1] = P2;
         P1.addSegment(this);
         P2.addSegment(this);
+        Couleur = Color.BEIGE;
     }
 
     @Override
@@ -63,7 +66,9 @@ public class Segment extends ClassDessin{
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Context.setStroke(Couleur);
+        Context.strokeLine(Extremite[0].getAbscisse(), Extremite[0].getOrdonnee(), Extremite[1].getAbscisse(), Extremite[1].getOrdonnee());
+
     }
     
     
