@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  *
  * @author theob
  */
-public class Segment extends ClassDessin{
+public class Segment extends Figure{
     
     private int Id;
     private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
