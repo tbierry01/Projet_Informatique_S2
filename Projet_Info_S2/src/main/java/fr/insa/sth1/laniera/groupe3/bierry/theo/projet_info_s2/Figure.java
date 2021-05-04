@@ -7,29 +7,17 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  *
  * @author theob
  */
 public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est des objets visuellement élémentaires pour faire le Treillis, à savoir: Point, Noeud, Barre, Segment
-    private ArrayList<Figure> Objet;
+    private Color Couleur;
     
     public Figure(){
-        Objet = new ArrayList<>();
-    }
-    
-    public String toString(){
-        String res = "";
-        for (int i = 0; i < Objet.size(); i++) {
-            res = res +"\n"+Objet.get(i);;
-            
-        }
-        return res;
-    }
-    
-    public void addFigure(Figure F){
-        Objet.add(F);
+        Couleur= Color.BLACK;
     }
     
     public static ArrayList<Figure> GenerationListFigure(){
