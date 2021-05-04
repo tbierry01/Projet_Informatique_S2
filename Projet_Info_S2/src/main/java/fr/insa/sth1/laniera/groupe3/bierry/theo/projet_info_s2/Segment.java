@@ -83,6 +83,18 @@ public class Segment extends Figure{
         Distance = Milieu.Distance2Points(P); //On cherche la distance entre les deux points
         return Distance;
     }
+
+    @Override
+    public double getDistance(Point P) {
+        double Distance;
+        //Ici, on calcul la distance par rapport au centre du segment
+        double Xmoitie, Ymoitie;
+        Xmoitie = (Extremite[0].getAbscisse()+Extremite[1].getAbscisse())/2; //On fait la formule classique pour avoir la position selon X du point de la moitié du segment
+        Ymoitie = (Extremite[0].getOrdonnee()+Extremite[1].getOrdonnee())/2; //On fait la formule classique pour avoir la position selon Y du point de la moitié du segment
+        Point Milieu = new Point(Xmoitie, Ymoitie); //On créé le point du miieu du segment
+        Distance = Milieu.Distance2Points(P); //On cherche la distance entre les deux points
+        return Distance;
+    }
     
    
 }
