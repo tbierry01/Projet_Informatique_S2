@@ -23,6 +23,11 @@ public class  ClassDessin {
     public ClassDessin(){
         Contenu = Figure.GenerationListFigure();
     }
+
+    public ArrayList<Figure> getContenu() {
+        return Contenu;
+    }
+    
     
     public void MaisDessineToutPuree(GraphicsContext Context){
         for (Figure Fig : Contenu) {
