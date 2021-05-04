@@ -68,7 +68,7 @@ public class GlobalPane extends BorderPane {
     private int IDNoeuds;
     
     public GlobalPane () {
-        this(new ClassDessin(EnsembleFigures));  
+        this(new ClassDessin());  
     }
     
     public GlobalPane(ClassDessin model) {
