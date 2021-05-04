@@ -76,9 +76,6 @@ public class Noeud_Simple extends Noeud{
         Context.fillOval(Pos.getAbscisse() - RAYON_POINT, Pos.getOrdonnee()-RAYON_POINT, 5*RAYON_POINT, 5*RAYON_POINT);
     }
 
-    @Override
-    public double getDistance(double x, double y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }
