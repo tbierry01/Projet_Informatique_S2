@@ -20,6 +20,10 @@ public class  ClassDessin {
         Contenu = Fig;
     }
     
+    public ClassDessin(){
+        Contenu = Figure.GenerationListFigure();
+    }
+    
     public void MaisDessineToutPuree(GraphicsContext Context){
         for (Figure Fig : Contenu) {
             Fig.DessineToiNomDeDieu(Context);
