@@ -28,6 +28,9 @@ public class  ClassDessin {
         return Contenu;
     }
     
+    public void addFigure(Figure F){
+        Contenu.add(F);
+    }
     
     public void MaisDessineToutPuree(GraphicsContext Context){
         for (Figure Fig : Contenu) {
