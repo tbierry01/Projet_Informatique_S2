@@ -108,6 +108,12 @@ public abstract class Noeud extends Figure{
     }
     
     public abstract FormatDeRetourSystemNoeuds Generation_Syteme(int Colones, int Pos); //Cette classe permet de créer des petites matrices de 2 de haut et du nombre voulu de large pour avoir les equation selon X et Y de chaque noeud. Le pos ne sert que pour les appuis, pour savoir ou positionner les inconnus
+
+    @Override
+    public double getDistance(double x, double y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
 
 ///Pour faire arctan  Math.atan
