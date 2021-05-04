@@ -385,7 +385,7 @@ public class GlobalPane extends BorderPane {
         
         Grouper.setOnAction((t) -> {
             Aide.setText("Sélectionnez les éléments que vous voulez grouper");
-            Controleur.boutonGrouper(t);
+            controleur.boutonGrouper(t);
         });
         
     }
