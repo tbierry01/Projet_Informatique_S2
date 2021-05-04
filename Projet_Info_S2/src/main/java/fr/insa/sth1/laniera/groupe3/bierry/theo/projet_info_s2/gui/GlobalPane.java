@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -53,6 +54,7 @@ public class GlobalPane extends BorderPane {
     private DessinCanvas Dessin;
     private Button Ouvrir;
     private Button Enregistrer;
+    private ColorPicker Couleur;
     
     private ClassDessin model;
     private Controleur controleur;
@@ -216,7 +218,12 @@ public class GlobalPane extends BorderPane {
         ChoiceBox<ChoixCouleur>cbCouleurs = new ChoiceBox<ChoixCouleur>(couleurs);
         cbCouleurs.getSelectionModel().select(noir);
         cbCouleurs.setPrefSize(120, 25);
-        
+       
+    /*    Couleur = new ColorPicker(Color.BLACK);
+        Couleur.setOnAction((t) -> {
+            controleur.changeColor(Couleur.getValue());
+        });
+    */    
     //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
 
         ChoixStyleTrait traitPlein = new ChoixStyleTrait ("Trait plein");
