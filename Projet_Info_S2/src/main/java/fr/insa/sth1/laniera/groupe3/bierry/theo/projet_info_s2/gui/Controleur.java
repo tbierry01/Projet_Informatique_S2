@@ -5,10 +5,12 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
-import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Appui_Simple;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -23,8 +25,11 @@ public class Controleur {
     private int etat;
     private double pos1 [] = new double [2];
     
+    private List<Figure> selection;
+    
     public Controleur (GlobalPane vue) {
         this.vue = vue;
+        this.selection = new ArrayList<>();
     }
     
     public void changeEtat (int nouvelEtat) {
@@ -55,7 +60,10 @@ public class Controleur {
     }
 
     void clicDansZoneDessin(MouseEvent t) {
-        if (etat == 30) {              // 30 correspond à l'état Point //
+        if (etat == 20) {
+            Point pClic = new Point (t.getX(), t.getY());
+            Figure proche = vue.getModel().plusProche(pClic, 5);
+        }else if (etat == 30) {              // 30 correspond à l'état Point //
             double px = t.getX();
             double py = t.getY();
             ClassDessin model = this.vue.getModel();
