@@ -62,7 +62,23 @@ public class Controleur {
     void clicDansZoneDessin(MouseEvent t) {
         if (etat == 20) {
             Point pClic = new Point (t.getX(), t.getY());
-            Figure proche = vue.getModel().plusProche(pClic, 5);
+            Figure proche = vue.getModel().plusProche(pClic, 5); 
+            if(proche != null) {
+                if(t.isShiftDown()) {
+                    selection.add(proche);
+                } else if (t.isControlDown()) {
+                    if(selection.contains(proche)) {
+                        selection.remove(proche);
+                    } else {
+                        selection.add(proche);
+                    }
+                } else {
+                    selection.clear();
+                    selection.add(proche);
+                }
+                this.activeBoutonsSuivantSelection();
+                vue.redrawAll();
+            }
         }else if (etat == 30) {              // 30 correspond à l'état Point //
             double px = t.getX();
             double py = t.getY();
@@ -88,6 +104,24 @@ public class Controleur {
     
     void boutonSegment (ActionEvent t) {
         changeEtat(40);
+    }
+    
+    private void activeBoutonsSuivantSelection() {
+        if(selection.size() < 2) {
+            vue.getGrouper().setDisable(true);
+        } else {
+            vue.getGrouper().setDisable(false);
+        }
+    }
+    
+    public void boutonGrouper(ActionEvent t) {
+        if (this.etat == 20 && this.selection.size() > 1) {
+            // normalement le bouton est disabled dans le cas contraire
+            ClassDessin ssGroupe = this.vue.getModel().sousGroupe(selection);
+            this.selection.clear();
+            this.selection.add(ssGroupe);
+            this.vue.redrawAll();
+        }
     }
     
 }
