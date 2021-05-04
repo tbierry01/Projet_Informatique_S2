@@ -7,6 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,6 +60,13 @@ public class GlobalPane extends BorderPane {
     
     private ArrayList<Figure> EnsembleFigures;
     
+    private int IDSegment;
+    private int IDPoint;
+    private int IDAppuiSimple;
+    private int IDAppuiDouble;
+    private int IDBarres;
+    private int IDNoeuds;
+    
     public GlobalPane () {
         this(new ClassDessin(EnsembleFigures));  
     }
@@ -86,6 +94,8 @@ public class GlobalPane extends BorderPane {
         this.Simulation.setPrefSize(100, 100);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
+        
+        IDPoint = 0;
         
         
         
@@ -307,6 +317,12 @@ public class GlobalPane extends BorderPane {
         
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
+            
+            if(Dessin.isPressed()) {
+                Point P = new Point(getLayoutX(), getLayoutY(), IDPoint);
+                IDPoint = IDPoint + 1;
+            }
+            System.out.println(IDPoint);
         });
         
         
