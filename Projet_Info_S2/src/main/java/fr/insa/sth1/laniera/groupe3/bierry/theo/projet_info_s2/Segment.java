@@ -70,6 +70,14 @@ public class Segment extends Figure{
         Context.strokeLine(Extremite[0].getAbscisse(), Extremite[0].getOrdonnee(), Extremite[1].getAbscisse(), Extremite[1].getOrdonnee());
 
     }
+
+    @Override
+    public double getDistance(double x, double y) {
+        double Distance;
+        //Ici, on calcul la distance par rapport au centre du segment
+        Distance = 10;
+        return Distance;
+    }
     
     
 }
