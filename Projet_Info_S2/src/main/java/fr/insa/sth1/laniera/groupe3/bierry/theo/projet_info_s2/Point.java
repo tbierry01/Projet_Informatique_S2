@@ -143,4 +143,11 @@ public class Point extends Figure{
         Distance = this.Distance2Points(P);
         return Distance;
     }
+
+   @Override
+    public double getDistance(Point P) {
+        double Distance;
+        Distance = this.Distance2Points(P);
+        return Distance;
+    }
 }
