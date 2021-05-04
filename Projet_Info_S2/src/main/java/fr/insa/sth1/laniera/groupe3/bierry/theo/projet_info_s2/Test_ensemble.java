@@ -289,6 +289,11 @@ public class Test_ensemble {
         System.out.println("Matrice : \n"+M);
     }
     
+    public static void TestClassDessin(){
+        ClassDessin CD = new ClassDessin();
+        System.out.println("Contenu : "+CD.getContenu());
+    }
+    
     public static void main(String[] args) {
         //Test_definition_classes();
         //Test_Classe_Point();
@@ -297,6 +302,7 @@ public class Test_ensemble {
         //Test_Angles();
         //TestAngle2();
         //TestAngleNormal();
-        TestResolutionContrainte();
+        //TestResolutionContrainte();
+        TestClassDessin();
     }
 }
