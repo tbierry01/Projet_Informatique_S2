@@ -372,6 +372,10 @@ public class GlobalPane extends BorderPane {
         });
         
     }
+    
+    public void redrawAll() {
+            this.Dessin.redrawAll ();
+        }
 
     /**
      * @return the model
@@ -387,8 +391,6 @@ public class GlobalPane extends BorderPane {
         return controleur;
     }
     
-    public void redrawAll() {
-            this.Dessin.redrawAll ();
-        }
+    
 
 }
