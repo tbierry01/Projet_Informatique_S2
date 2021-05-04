@@ -52,4 +52,26 @@ public class  ClassDessin {
             return dist;
         }
     }
+    
+    public Figure plusProche(Point p, double distMax) {
+        if (this.Contenu.isEmpty()) {
+            return null;
+        } else {
+            Figure fmin = this.Contenu.get(0);
+            double min = fmin.getDistance(p);
+            for (int i = 1; i < this.Contenu.size(); i++) {
+                Figure fcur = this.Contenu.get(i);
+                double cur = fcur.getDistance(p);
+                if (cur < min) {
+                    min = cur;
+                    fmin = fcur;
+                }
+            }
+            if (min <= distMax) {
+                return fmin;
+            } else {
+                return null;
+            }
+        }
+    }
 }
