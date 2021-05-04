@@ -25,7 +25,7 @@ public class Controleur {
         double px = t.getX();
         double py = t.getY();
         ClassDessin model = this.vue.getModel();
-        model.add(new Point(px, py));
+        model.addFigure(new Point(px, py));
     }
     
 }
