@@ -26,7 +26,7 @@ public class Segment extends Figure{
         Extremite[1] = P2;
         P1.addSegment(this);
         P2.addSegment(this);
-        Couleur = Color.BEIGE;
+        Couleur = Color.GREENYELLOW;
     }
 
     @Override
