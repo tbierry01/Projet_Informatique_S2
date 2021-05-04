@@ -55,6 +55,7 @@ public class GlobalPane extends BorderPane {
     private Button Ouvrir;
     private Button Enregistrer;
     private ColorPicker Couleur;
+    private Button Grouper;
     
     private ClassDessin model;
     private Controleur controleur;
@@ -378,6 +379,15 @@ public class GlobalPane extends BorderPane {
             Noeuds.setDisable(false);
         });
         
+        
+        
+//----------- Concerne les instructions attendues lorqu'on clique sur Grouper -----------//
+        
+        Grouper.setOnAction((t) -> {
+            Aide.setText("Sélectionnez les éléments que vous voulez grouper");
+            Controleur.boutonGrouper(t);
+        });
+        
     }
     
     public void redrawAll() {
@@ -466,6 +476,13 @@ public class GlobalPane extends BorderPane {
      */
     public Button getEnregistrer() {
         return Enregistrer;
+    }
+
+    /**
+     * @return the Grouper
+     */
+    public Button getGrouper() {
+        return Grouper;
     }
     
     
