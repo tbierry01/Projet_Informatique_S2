@@ -37,4 +37,19 @@ public class  ClassDessin {
             Fig.DessineToiNomDeDieu(Context);
         }
     }
+    
+    public double distancePoint(Point p) {
+        if (this.Contenu.isEmpty()) {
+            return new Point(0, 0).getDistance(p);
+        } else {
+            double dist = this.Contenu.get(0).getDistance(p);
+            for (int i = 1; i < this.Contenu.size(); i++) {
+                double cur = this.Contenu.get(i).getDistance(p);
+                if (cur < dist) {
+                    dist = cur;
+                }
+            }
+            return dist;
+        }
+    }
 }
