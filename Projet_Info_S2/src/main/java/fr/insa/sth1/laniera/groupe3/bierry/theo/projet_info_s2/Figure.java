@@ -49,4 +49,6 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
     public abstract void DessineToiNomDeDieu(GraphicsContext Context);
     
     public abstract double getDistance(double x, double y); //Cette méthode premet d'obtenir la distance d'une figure par rapport à des coordonées données
+    
+    public abstract double getDistance(Point P); //Cette méthode premet d'obtenir la distance d'une figure par rapport à un point donné
 }
