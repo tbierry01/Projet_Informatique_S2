@@ -7,8 +7,6 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
-import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
-import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -167,14 +165,14 @@ public class GlobalPane extends BorderPane {
         
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
         
-        VBox bTerrain = new VBox(this.Segment, this.Point);
-        VBox bPont1 = new VBox(this.AppuiSimple, this.AppuiDouble);
-        VBox bPont2 = new VBox(this.Noeuds, this.Barres);
+        VBox bTerrain = new VBox(this.getSegment(), this.getPoint());
+        VBox bPont1 = new VBox(this.getAppuiSimple(), this.getAppuiDouble());
+        VBox bPont2 = new VBox(this.getNoeuds(), this.getBarres());
         
-        VBox vOptions = new VBox (this.Ouvrir, this.Enregistrer);
+        VBox vOptions = new VBox (this.Ouvrir, this.getEnregistrer());
 
-        HBox hTerrain = new HBox(this.Terrain, bTerrain);
-        HBox hPont = new HBox(this.Pont, bPont1, bPont2);
+        HBox hTerrain = new HBox(this.getTerrain(), bTerrain);
+        HBox hPont = new HBox(this.getPont(), bPont1, bPont2);
 
         hTerrain.setSpacing(8);
         hPont.setSpacing(8);
@@ -194,7 +192,7 @@ public class GlobalPane extends BorderPane {
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
 
-        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.Simulation);
+        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation());
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
@@ -318,6 +316,7 @@ public class GlobalPane extends BorderPane {
         
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
+            controleur.boutonPoint(t);
         });
         
         
@@ -326,6 +325,7 @@ public class GlobalPane extends BorderPane {
         
         Segment.setOnAction((t) -> {
             Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
+            controleur.boutonSegment(t);
         });
         
         
@@ -389,6 +389,76 @@ public class GlobalPane extends BorderPane {
      */
     public Controleur getControleur() {
         return controleur;
+    }
+
+    /**
+     * @return the Terrain
+     */
+    public ToggleButton getTerrain() {
+        return Terrain;
+    }
+
+    /**
+     * @return the Segment
+     */
+    public ToggleButton getSegment() {
+        return Segment;
+    }
+
+    /**
+     * @return the Point
+     */
+    public ToggleButton getPoint() {
+        return Point;
+    }
+
+    /**
+     * @return the Pont
+     */
+    public ToggleButton getPont() {
+        return Pont;
+    }
+
+    /**
+     * @return the AppuiSimple
+     */
+    public ToggleButton getAppuiSimple() {
+        return AppuiSimple;
+    }
+
+    /**
+     * @return the AppuiDouble
+     */
+    public ToggleButton getAppuiDouble() {
+        return AppuiDouble;
+    }
+
+    /**
+     * @return the Noeuds
+     */
+    public ToggleButton getNoeuds() {
+        return Noeuds;
+    }
+
+    /**
+     * @return the Barres
+     */
+    public ToggleButton getBarres() {
+        return Barres;
+    }
+
+    /**
+     * @return the Simulation
+     */
+    public Button getSimulation() {
+        return Simulation;
+    }
+
+    /**
+     * @return the Enregistrer
+     */
+    public Button getEnregistrer() {
+        return Enregistrer;
     }
     
     
