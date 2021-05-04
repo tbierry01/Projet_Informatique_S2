@@ -128,4 +128,9 @@ public class Point extends Figure{
         Context.setFill(C);
         Context.fillOval(abscisse - RAYON_POINT, ordonnee-RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
     }
+
+    @Override
+    public double getDistance(double x, double y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
