@@ -129,8 +129,18 @@ public class Point extends Figure{
         Context.fillOval(abscisse - RAYON_POINT, ordonnee-RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
     }
 
+  
+    public double Distance2Points(Point P) { //Cette méthode permet de calculer la distance entre 2 points
+        double Distance;
+        Distance = Math.abs(Math.sqrt((Math.pow(P.getAbscisse() - abscisse, 2))+(Math.pow(P.getOrdonnee() - ordonnee, 2)))); //Ici, on calcul la distance algebrique avec racine(xa-xb)²+(ya-yb)²
+        return Distance;
+    }
+    
     @Override
     public double getDistance(double x, double y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double Distance;
+        Point P = new Point(x, y);
+        Distance = this.Distance2Points(P);
+        return Distance;
     }
 }
