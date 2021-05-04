@@ -89,8 +89,5 @@ public class Appui_Simple extends Appui{
         Context.fillOval(this.getPos().getAbscisse() - RAYON_POINT, this.getPos().getOrdonnee()-RAYON_POINT, 5*RAYON_POINT, 5*RAYON_POINT);
     }
 
-    @Override
-    public double getDistance(double x, double y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
