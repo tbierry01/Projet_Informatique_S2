@@ -12,7 +12,7 @@ import javafx.scene.canvas.GraphicsContext;
  *
  * @author theob
  */
-public abstract class Figure {
+public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est des objets visuellement élémentaires pour faire le Treillis, à savoir: Point, Noeud, Barre, Segment
     private ArrayList<Figure> Objet;
     
     public Figure(){
@@ -21,5 +21,5 @@ public abstract class Figure {
     
     public abstract void DessineToiNomDeDieu(GraphicsContext Context);
     
-    
+    public abstract double getDistance(double x, double y); //Cette méthode premet d'obtenir la distance d'une figure par rapport à des coordonées données
 }
