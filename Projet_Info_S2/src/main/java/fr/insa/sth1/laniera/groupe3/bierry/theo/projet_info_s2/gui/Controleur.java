@@ -79,7 +79,7 @@ public class Controleur {
                 }
                 vue.redrawAll();
             }
-        }else if (etat == 30) {              // 30 correspond à l'état Point //
+        } else if (etat == 30) {              // 30 correspond à l'état Point //
             double px = t.getX();
             double py = t.getY();
             ClassDessin model = this.vue.getModel();
