@@ -127,4 +127,8 @@ public class Controleur {
     public List<Figure> getSelection() {
         return selection;
     }
+    
+    public void boutonSélectionner (ActionEvent t) {
+        changeEtat(20);
+    }
 }
