@@ -20,6 +20,10 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
         Couleur= Color.BLACK;
     }
     
+    public Figure(Color Coul){
+        Couleur = Coul;
+    }
+    
     public static ArrayList<Figure> GenerationListFigure(){
         ArrayList<Figure> AR = new ArrayList<>();
         Point P0 = new Point(500, 500, 0);
