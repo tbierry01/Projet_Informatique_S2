@@ -12,15 +12,15 @@ import javafx.scene.paint.Color;
  *
  * @author theob
  */
-public class Barre extends Figure{
-    
+public class Barre extends Figure {
+
     private int Id;
-    private Noeud [] Noeuds_Barre;
+    private Noeud[] Noeuds_Barre;
     private Treillis Treillis_Barre;
     private TypeBarre Type_de_Barre;
     private Color Couleur;
-    
-    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB){
+
+    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB) {
         Id = Iden;
         Noeuds_Barre = new Noeud[2];
         Noeuds_Barre[0] = N1;
@@ -33,13 +33,13 @@ public class Barre extends Figure{
         T.addBarre_Treillis(this);
         Couleur = Color.BROWN;
     }
-    
-    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB, Color C){
+
+    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB, Color C) {
         this(Iden, N1, N2, T, TB);
         Couleur = C;
     }
-    
-    public Barre(int Iden, Noeud N1, Noeud N2){
+
+    public Barre(int Iden, Noeud N1, Noeud N2) {
         Id = Iden;
         Noeuds_Barre = new Noeud[2];
         Noeuds_Barre[0] = N1;
@@ -48,16 +48,16 @@ public class Barre extends Figure{
         N2.addBarre(this);
         Couleur = Color.BROWN;
     }
-    
-    public Barre(Noeud N1, Noeud N2){
+
+    public Barre(Noeud N1, Noeud N2) {
         Noeuds_Barre = new Noeud[2];
         Noeuds_Barre[0] = N1;
         Noeuds_Barre[1] = N2;
     }
-    
-    public String toString(){
+
+    public String toString() {
         String res;
-        res = "\n --Barre "+getId()+"--"+"\nExtremités : "+"\n-> "+Noeuds_Barre[0].getId()+"\n-> "+Noeuds_Barre[1].getId()+"\nAppartient au Treillis : "+Treillis_Barre.getId()+"\nLa Barre est de type : "+Type_de_Barre.getId();
+        res = "\n --Barre " + getId() + "--" + "\nExtremités : " + "\n-> " + Noeuds_Barre[0].getId() + "\n-> " + Noeuds_Barre[1].getId() + "\nAppartient au Treillis : " + Treillis_Barre.getId() + "\nLa Barre est de type : " + Type_de_Barre.getId();
         return res;
     }
 
@@ -68,16 +68,17 @@ public class Barre extends Figure{
         return Id;
     }
 
-    public Color getColor(){
+    public Color getColor() {
         return Couleur;
     }
+
     /**
      * @return the Noeuds_Barre
      */
     public Noeud[] getNoeuds_Barre() {
         return Noeuds_Barre;
     }
-    
+
     public Noeud getNoeuds_Barre(int i) {
         return Noeuds_Barre[i];
     }
@@ -104,12 +105,34 @@ public class Barre extends Figure{
 
     @Override
     public double getDistance(double x, double y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double Distance;
+        //On commence par faire comme pour les segements, à savoir calculer leur point médian
+        double P0x = Noeuds_Barre[0].getPos().getAbscisse();
+        double P0y = Noeuds_Barre[0].getPos().getOrdonnee();
+        double P1x = Noeuds_Barre[1].getPos().getAbscisse();
+        double P1y = Noeuds_Barre[1].getPos().getOrdonnee();
+        double PMilieuX = (P0x + P1x) / 2;
+        double PMilieuY = (P0y + P1y) / 2;
+        Point P2 = new Point(PMilieuX, PMilieuY);
+        Point P = new Point(x, y);//On fait un nouveau point ave les valeurs données en entré
+        Distance = P2.Distance2Points(P);
+        return Distance;
     }
 
     @Override
     public double getDistance(Point P) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double Distance;
+        //On commence par faire comme pour les segements, à savoir calculer leur point médian
+        double P0x = Noeuds_Barre[0].getPos().getAbscisse();
+        double P0y = Noeuds_Barre[0].getPos().getOrdonnee();
+        double P1x = Noeuds_Barre[1].getPos().getAbscisse();
+        double P1y = Noeuds_Barre[1].getPos().getOrdonnee();
+        double PMilieuX = (P0x + P1x) / 2;
+        double PMilieuY = (P0y + P1y) / 2;
+        Point P2 = new Point(PMilieuX, PMilieuY);
+        Distance = P2.Distance2Points(P);
+        return Distance;
+
     }
-    
+
 }
