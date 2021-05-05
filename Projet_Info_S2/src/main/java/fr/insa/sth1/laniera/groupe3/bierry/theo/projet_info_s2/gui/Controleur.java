@@ -79,11 +79,11 @@ public class Controleur {
                 }
                 vue.redrawAll();
             }
-        } else if (etat == 30) {              // 30 correspond à l'état Point //
+        } else if (etat == 30) {            // 30 correspond à l'état Point //
             double px = t.getX();
             double py = t.getY();
             ClassDessin model = this.vue.getModel();
-            model.addFigure(new Point(px, py));
+            model.addFigure(new Point(px, py, 0, vue.getCouleur().getValue()));
             this.vue.redrawAll();
         } else if (etat == 40) {            // 40 correspond à l'état Segment //
             pos1[0] = t.getX();
@@ -92,7 +92,7 @@ public class Controleur {
         } else if (etat == 41) {
             double px2 = t.getX();
             double py2 = t.getY();
-            vue.getModel().addFigure(new Segment(0, new Point(pos1[0], pos1[1]), new Point(px2, py2)));     // Changer 0 par l'indentificateur //
+            vue.getModel().addFigure(new Segment(0, new Point(pos1[0], pos1[1]), new Point(px2, py2), vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
             this.vue.redrawAll();
             this.changeEtat(40);
         } 
