@@ -210,18 +210,8 @@ public class GlobalPane extends BorderPane {
         
 //----------- Concerne les éléments de la partie gauche de l'interface -----------//
         
-    //----------- Définit les choix de la ChoiceBox en définissant la couleur Noir par défaut -----------//
-        
-    /*    ChoixCouleur bleu = new ChoixCouleur ("Bleu");
-        ChoixCouleur vert = new ChoixCouleur ("Vert");
-        ChoixCouleur orange = new ChoixCouleur ("Orange");
-        ChoixCouleur noir = new ChoixCouleur ("Noir");
-        
-        ObservableList<ChoixCouleur>couleurs = FXCollections.observableArrayList(bleu, vert, orange, noir);
-        ChoiceBox<ChoixCouleur>cbCouleurs = new ChoiceBox<ChoixCouleur>(couleurs);
-        cbCouleurs.getSelectionModel().select(noir);
-        cbCouleurs.setPrefSize(120, 25);
-    */   
+    //----------- Définit le bouton Couleur en définissant la couleur Noir par défaut -----------//
+           
         Couleur = new ColorPicker(Color.BLACK);
         Couleur.setOnAction((t) -> {
             controleur.changeColor(Couleur.getValue());
@@ -266,7 +256,7 @@ public class GlobalPane extends BorderPane {
         this.Style.setFont(javafx.scene.text.Font.font(15));
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
-        VBox coteGauche = new VBox(hStyle, Couleur, cbEpaisseur,
+        VBox coteGauche = new VBox(hStyle, getCouleur(), cbEpaisseur,
                 cbTrait, hPositions, pAbscisses, pOrdonnee, this.Sélectionner);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
@@ -578,6 +568,13 @@ public class GlobalPane extends BorderPane {
      */
     public Button getEnregistrer() {
         return Enregistrer;
+    }
+
+    /**
+     * @return the Couleur
+     */
+    public ColorPicker getCouleur() {
+        return Couleur;
     }
 
     /**
