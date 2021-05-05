@@ -55,6 +55,7 @@ public class GlobalPane extends BorderPane {
     private Button Ouvrir;
     private Button Enregistrer;
     private ColorPicker Couleur;
+    private ToggleButton Sélectionner;
 //    private Button Grouper;
     
     private ClassDessin model;
@@ -88,12 +89,14 @@ public class GlobalPane extends BorderPane {
         this.Ordonnee = new TextField();
         this.Aide = new Label();
         this.Dessin = new DessinCanvas(this);
+        this.Sélectionner = new ToggleButton("Sélectionner");
 
         this.Noeuds.setPrefSize(100, 50);
         this.Barres.setPrefSize(100, 50);
         this.Abscisse.setPrefSize(100, 25);
         this.Ordonnee.setPrefSize(100, 25);
         this.Simulation.setPrefSize(100, 100);
+        this.Sélectionner.setPrefSize(120, 25);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
@@ -264,7 +267,7 @@ public class GlobalPane extends BorderPane {
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
         VBox coteGauche = new VBox(hStyle, cbCouleurs, cbEpaisseur,
-                cbTrait, hPositions, pAbscisses, pOrdonnee);
+                cbTrait, hPositions, pAbscisses, pOrdonnee, this.Sélectionner);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
@@ -377,6 +380,11 @@ public class GlobalPane extends BorderPane {
             AppuiSimple.setDisable(false);
             AppuiDouble.setDisable(false);
             Noeuds.setDisable(false);
+        });
+        
+        
+        Sélectionner.setOnAction((t) -> {
+            this.controleur.boutonSélectionner(t);
         });
         
         
