@@ -56,7 +56,6 @@ public class GlobalPane extends BorderPane {
     private Button Enregistrer;
     private ColorPicker Couleur;
     private ToggleButton Sélectionner;
-//    private Button Grouper;
     
     private ClassDessin model;
     private Controleur controleur;
@@ -213,7 +212,7 @@ public class GlobalPane extends BorderPane {
         
     //----------- Définit les choix de la ChoiceBox en définissant la couleur Noir par défaut -----------//
         
-        ChoixCouleur bleu = new ChoixCouleur ("Bleu");
+    /*    ChoixCouleur bleu = new ChoixCouleur ("Bleu");
         ChoixCouleur vert = new ChoixCouleur ("Vert");
         ChoixCouleur orange = new ChoixCouleur ("Orange");
         ChoixCouleur noir = new ChoixCouleur ("Noir");
@@ -222,12 +221,13 @@ public class GlobalPane extends BorderPane {
         ChoiceBox<ChoixCouleur>cbCouleurs = new ChoiceBox<ChoixCouleur>(couleurs);
         cbCouleurs.getSelectionModel().select(noir);
         cbCouleurs.setPrefSize(120, 25);
-       
-    /*    Couleur = new ColorPicker(Color.BLACK);
+    */   
+        Couleur = new ColorPicker(Color.BLACK);
         Couleur.setOnAction((t) -> {
             controleur.changeColor(Couleur.getValue());
         });
-    */    
+        Couleur.setPrefSize(120, 25);
+        
     //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
 
         ChoixStyleTrait traitPlein = new ChoixStyleTrait ("Trait plein");
@@ -266,7 +266,7 @@ public class GlobalPane extends BorderPane {
         this.Style.setFont(javafx.scene.text.Font.font(15));
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
-        VBox coteGauche = new VBox(hStyle, cbCouleurs, cbEpaisseur,
+        VBox coteGauche = new VBox(hStyle, Couleur, cbEpaisseur,
                 cbTrait, hPositions, pAbscisses, pOrdonnee, this.Sélectionner);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
@@ -324,10 +324,18 @@ public class GlobalPane extends BorderPane {
 
 
 //----------- Concerne les instructions attendues lorqu'on clique sur Point -----------//
-        
+       
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
             controleur.boutonPoint(t);
+            
+            if (Segment.isDisabled() == true) {
+                Segment.setDisable(false);
+                Sélectionner.setDisable(false);
+            } else {
+                Segment.setDisable(true);
+                Sélectionner.setDisable(true);
+            }
         });
         
         
@@ -337,6 +345,14 @@ public class GlobalPane extends BorderPane {
         Segment.setOnAction((t) -> {
             Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
             controleur.boutonSegment(t);
+            
+            if (Point.isDisabled() == true) {
+                Point.setDisable(false);
+                Sélectionner.setDisable(false);
+            } else {
+                Point.setDisable(true);
+                Sélectionner.setDisable(true);
+            }
         });
         
         
@@ -345,6 +361,18 @@ public class GlobalPane extends BorderPane {
         
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
+            
+            if (Barres.isDisabled() == true) {
+                Barres.setDisable(false);
+                AppuiDouble.setDisable(false);
+                Noeuds.setDisable(false);
+                Sélectionner.setDisable(false);
+            } else {
+                Barres.setDisable(true);
+                AppuiDouble.setDisable(true);
+                Noeuds.setDisable(true);
+                Sélectionner.setDisable(true);
+            }
         });
         
         
@@ -353,7 +381,59 @@ public class GlobalPane extends BorderPane {
         
         AppuiDouble.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
+            
+            if (Barres.isDisabled() == true) {
+                Barres.setDisable(false);
+                AppuiSimple.setDisable(false);
+                Noeuds.setDisable(false);
+                Sélectionner.setDisable(false);
+            } else {
+                Barres.setDisable(true);
+                AppuiSimple.setDisable(true);
+                Noeuds.setDisable(true);
+                Sélectionner.setDisable(true);
+            }
         });
+        
+        
+        
+//----------- Concerne les instructions attendues lorqu'on clique sur Barres -----------//
+        
+        Barres.setOnAction((t) -> {
+            Aide.setText("-------------------------------");
+            
+            if (Noeuds.isDisabled() == true) {
+                AppuiDouble.setDisable(false);
+                AppuiSimple.setDisable(false);
+                Noeuds.setDisable(false);
+                Sélectionner.setDisable(false);
+            } else {
+                AppuiDouble.setDisable(true);
+                AppuiSimple.setDisable(true);
+                Noeuds.setDisable(true);
+                Sélectionner.setDisable(true);
+            }
+        }); 
+        
+        
+        
+//----------- Concerne les instructions attendues lorqu'on clique sur Noeuds -----------//
+        
+        Noeuds.setOnAction((t) -> {
+            Aide.setText("-------------------------------");
+            
+            if (Barres.isDisabled() == true) {
+                Barres.setDisable(false);
+                AppuiSimple.setDisable(false);
+                AppuiDouble.setDisable(false);
+                Sélectionner.setDisable(false);
+            } else {
+                Barres.setDisable(true);
+                AppuiSimple.setDisable(true);
+                AppuiDouble.setDisable(true);
+                Sélectionner.setDisable(true);
+            }
+        });        
         
         
         
@@ -361,12 +441,18 @@ public class GlobalPane extends BorderPane {
         
         Terrain.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Point ou Segment afin de modéliser votre terrain");
-            Point.setDisable(false);
-            Segment.setDisable(false);
             Barres.setDisable(true);
             AppuiSimple.setDisable(true);
             AppuiDouble.setDisable(true);
             Noeuds.setDisable(true);
+            
+            if(Segment.isDisabled() == true) {
+                Segment.setDisable(false);
+                Point.setDisable(false);
+            } else {
+                Segment.setDisable(true);
+                Point.setDisable(true);
+            }
         });
         
         
@@ -376,10 +462,18 @@ public class GlobalPane extends BorderPane {
             Aide.setText("Cliquez sur le bouton Noeuds, Appui (Simple/Double) ou Barres pour modéliser votre pont");
             Point.setDisable(true);
             Segment.setDisable(true);
-            Barres.setDisable(false);
-            AppuiSimple.setDisable(false);
-            AppuiDouble.setDisable(false);
-            Noeuds.setDisable(false);
+            
+            if(Barres.isDisabled() == true) {
+                Barres.setDisable(false);
+                AppuiSimple.setDisable(false);
+                AppuiDouble.setDisable(false);
+                Noeuds.setDisable(false);
+            } else {
+                Barres.setDisable(true);
+                AppuiSimple.setDisable(true);
+                AppuiDouble.setDisable(true);
+                Noeuds.setDisable(true);
+            }
         });
         
         
