@@ -16,18 +16,20 @@ import javafx.scene.paint.Color;
 public class Noeud_Simple extends Noeud{
 
     private Point Pos;
-    private Color Couleur;
     
     public Noeud_Simple (Point P, Treillis T, int Id, Force FN){
         super(T, Id, FN);
         this.Pos = P;
-        this.Couleur = Color.BLACK;
+    }
+    
+    public Noeud_Simple (Point P, Treillis T, int Id, Force FN, Color Couleur){
+        super(T, Id, FN, Couleur);
+        this.Pos = P;
     }
     
     public Noeud_Simple (Point P){
         super();
         this.Pos = P;
-        this.Couleur = Color.BLACK;
     }
     
     public void addBarre(Barre B) {
@@ -72,7 +74,7 @@ public class Noeud_Simple extends Noeud{
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
-        Context.setFill(Couleur);
+        Context.setFill(super.getColor());
         Context.fillOval(Pos.getAbscisse() - RAYON_POINT, Pos.getOrdonnee()-RAYON_POINT, 5*RAYON_POINT, 5*RAYON_POINT);
     }
 
