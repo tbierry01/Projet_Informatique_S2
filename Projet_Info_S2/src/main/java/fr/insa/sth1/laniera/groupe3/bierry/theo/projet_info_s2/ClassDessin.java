@@ -7,6 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -39,12 +40,12 @@ public class  ClassDessin {
     }
     
     public double distancePoint(Point p) {
-        if (this.Contenu.isEmpty()) {
+        if (Contenu.isEmpty()) {
             return new Point(0, 0).getDistance(p);
         } else {
-            double dist = this.Contenu.get(0).getDistance(p);
-            for (int i = 1; i < this.Contenu.size(); i++) {
-                double cur = this.Contenu.get(i).getDistance(p);
+            double dist = Contenu.get(0).getDistance(p);
+            for (int i = 1; i < Contenu.size(); i++) {
+                double cur = Contenu.get(i).getDistance(p);
                 if (cur < dist) {
                     dist = cur;
                 }
@@ -54,13 +55,13 @@ public class  ClassDessin {
     }
     
     public Figure plusProche(Point p, double distMax) {
-        if (this.Contenu.isEmpty()) {
+        if (Contenu.isEmpty()) {
             return null;
         } else {
-            Figure fmin = this.Contenu.get(0);
+            Figure fmin = Contenu.get(0);
             double min = fmin.getDistance(p);
-            for (int i = 1; i < this.Contenu.size(); i++) {
-                Figure fcur = this.Contenu.get(i);
+            for (int i = 1; i < Contenu.size(); i++) {
+                Figure fcur = Contenu.get(i);
                 double cur = fcur.getDistance(p);
                 if (cur < min) {
                     min = cur;
@@ -72,6 +73,12 @@ public class  ClassDessin {
             } else {
                 return null;
             }
+        }
+    }
+    
+    public void changeCouleur (Color value) {
+        for (Figure f : Contenu) {
+            f.setColor(value);
         }
     }
 }
