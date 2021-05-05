@@ -6,6 +6,8 @@
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
+import java.util.List;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
@@ -49,5 +51,11 @@ public class DessinCanvas extends Pane {
     //    context.fillRect (0, 0, this.realCanvas.getWidth(), this.realCanvas.getHeight());
         ClassDessin model = this.main.getModel();
         model.MaisDessineToutPuree(context);
+        List<Figure> select = main.getControleur().getSelection();
+        if (! select.isEmpty()) {
+            for (Figure f : select) {
+                f.DessineToiNomDeDieu(context);
+            }
+        }   
     }
 }
