@@ -17,16 +17,19 @@ public class Segment extends Figure{
     private int Id;
     private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
     private TriangleTerrain TT;
-    private Color Couleur;
     
-    public Segment (int Iden, Point P1, Point P2){
+    public Segment (int Iden, Point P1, Point P2, Color Couleur){
+        super(Couleur);
         Id = Iden;
         Extremite = new Point[2];
         Extremite[0] = P1; //On rempli le tableau des extremité avec les points P1 et P2
         Extremite[1] = P2;
         P1.addSegment(this);
         P2.addSegment(this);
-        Couleur = Color.GREENYELLOW;
+    }
+    
+    public Segment (int Iden, Point P1, Point P2){
+        this(Iden, P1, P2, Color.BLACK);
     }
 
     @Override
@@ -66,7 +69,7 @@ public class Segment extends Figure{
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
-        Context.setStroke(Couleur);
+        Context.setStroke(super.getColor());
         Context.strokeLine(Extremite[0].getAbscisse(), Extremite[0].getOrdonnee(), Extremite[1].getAbscisse(), Extremite[1].getOrdonnee());
 
     }
