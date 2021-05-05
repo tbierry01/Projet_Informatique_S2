@@ -18,9 +18,13 @@ public class Barre extends Figure {
     private Noeud[] Noeuds_Barre;
     private Treillis Treillis_Barre;
     private TypeBarre Type_de_Barre;
-    private Color Couleur;
 
     public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB) {
+        this(Iden, N1, N2, T, TB, Color.BLACK);
+    }
+
+    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB, Color C) {
+        super(C);
         Id = Iden;
         Noeuds_Barre = new Noeud[2];
         Noeuds_Barre[0] = N1;
@@ -31,12 +35,6 @@ public class Barre extends Figure {
         N1.addBarre(this);
         N2.addBarre(this);
         T.addBarre_Treillis(this);
-        Couleur = Color.BROWN;
-    }
-
-    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB, Color C) {
-        this(Iden, N1, N2, T, TB);
-        Couleur = C;
     }
 
     public Barre(int Iden, Noeud N1, Noeud N2) {
@@ -46,7 +44,6 @@ public class Barre extends Figure {
         Noeuds_Barre[1] = N2;
         N1.addBarre(this);
         N2.addBarre(this);
-        Couleur = Color.BROWN;
     }
 
     public Barre(Noeud N1, Noeud N2) {
@@ -68,9 +65,6 @@ public class Barre extends Figure {
         return Id;
     }
 
-    public Color getColor() {
-        return Couleur;
-    }
 
     /**
      * @return the Noeuds_Barre
@@ -99,7 +93,7 @@ public class Barre extends Figure {
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
-        Context.setStroke(this.getColor());
+        Context.setStroke(super.getColor());
         Context.strokeLine(Noeuds_Barre[0].getPos().getAbscisse(), Noeuds_Barre[0].getPos().getOrdonnee(), Noeuds_Barre[1].getPos().getAbscisse(), Noeuds_Barre[1].getPos().getOrdonnee());
     }
 
