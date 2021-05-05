@@ -76,7 +76,7 @@ public class Controleur {
                     selection.clear();
                     selection.add(proche);
                 }
-                this.activeBoutonsSuivantSelection();
+//                this.activeBoutonsSuivantSelection();
                 vue.redrawAll();
             }
         }else if (etat == 30) {              // 30 correspond à l'état Point //
@@ -85,7 +85,7 @@ public class Controleur {
             ClassDessin model = this.vue.getModel();
             model.addFigure(new Point(px, py));
             this.vue.redrawAll();
-        } else if (etat == 40) {       // 40 correspond à l'état Segment //
+        } else if (etat == 40) {            // 40 correspond à l'état Segment //
             pos1[0] = t.getX();
             pos1[1] = t.getY();
             changeEtat(41);                 // 41 correspond au 2e point de l'état Segment //
@@ -106,7 +106,7 @@ public class Controleur {
         changeEtat(40);
     }
     
-    private void activeBoutonsSuivantSelection() {
+ /*   private void activeBoutonsSuivantSelection() {
         if(selection.size() < 2) {
             vue.getGrouper().setDisable(true);
         } else {
@@ -123,5 +123,8 @@ public class Controleur {
             this.vue.redrawAll();
         }
     }
-    
+ */
+    public List<Figure> getSelection() {
+        return selection;
+    }
 }
