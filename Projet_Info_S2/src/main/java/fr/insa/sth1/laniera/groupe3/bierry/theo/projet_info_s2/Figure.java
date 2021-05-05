@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est des objets visuellement élémentaires pour faire le Treillis, à savoir: Point, Noeud, Barre, Segment
     private Color Couleur;
     
+
     public Figure(){
         Couleur= Color.BLACK;
     }
@@ -43,4 +44,14 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
     public abstract double getDistance(double x, double y); //Cette méthode premet d'obtenir la distance d'une figure par rapport à des coordonées données
     
     public abstract double getDistance(Point P); //Cette méthode premet d'obtenir la distance d'une figure par rapport à un point donné
+
+    public Color getColor() {
+        return Couleur;
+    }
+
+    public void setColor(Color Couleur) {
+        this.Couleur = Couleur;
+    }
+
+      
 }
