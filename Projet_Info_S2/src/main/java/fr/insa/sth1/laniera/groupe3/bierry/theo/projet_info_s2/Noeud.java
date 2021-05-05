@@ -6,6 +6,7 @@
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -18,12 +19,17 @@ public abstract class Noeud extends Figure {
     private Treillis Treillis_Noeud;
     private Force ForceNoeud;
 
-    public Noeud(Treillis T, int Iden, Force FN) {
+    public Noeud(Treillis T, int Iden, Force FN, Color Couleur) {
+        super(Couleur);
         Treillis_Noeud = T;
         Id = Iden;
         Barres_Noeud = new ArrayList<>();
         T.addNoeuds_Treillis(this);
         ForceNoeud = FN;
+    }
+    
+    public Noeud(Treillis T, int Iden, Force FN) {
+        this(T, Iden, FN, Color.BLACK); //Si l'on ne donne pas de couleur, elle est par défaut Noir
     }
 
     public Noeud() { //C'est juste un constructeur pour les tests
