@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -62,7 +63,7 @@ public class Controleur {
     void clicDansZoneDessin(MouseEvent t) {
         if (etat == 20) {
             Point pClic = new Point (t.getX(), t.getY());
-            Figure proche = vue.getModel().plusProche(pClic, 5); 
+            Figure proche = vue.getModel().plusProche(pClic, 10); 
             if(proche != null) {
                 if(t.isShiftDown()) {
                     selection.add(proche);
@@ -76,7 +77,6 @@ public class Controleur {
                     selection.clear();
                     selection.add(proche);
                 }
-//                this.activeBoutonsSuivantSelection();
                 vue.redrawAll();
             }
         }else if (etat == 30) {              // 30 correspond à l'état Point //
@@ -98,6 +98,15 @@ public class Controleur {
         } 
     }
     
+    void changeColor (Color value) {
+        if(etat == 20) {
+            for (Figure f : selection) {
+                f.setColor(value);
+            }
+            vue.redrawAll();
+        }
+    }
+    
     void boutonPoint (ActionEvent t) {
         changeEtat(30);
     }
@@ -106,24 +115,6 @@ public class Controleur {
         changeEtat(40);
     }
     
- /*   private void activeBoutonsSuivantSelection() {
-        if(selection.size() < 2) {
-            vue.getGrouper().setDisable(true);
-        } else {
-            vue.getGrouper().setDisable(false);
-        }
-    }
-    
-    public void boutonGrouper(ActionEvent t) {
-        if (this.etat == 20 && this.selection.size() > 1) {
-            // normalement le bouton est disabled dans le cas contraire
-            ClassDessin ssGroupe = this.vue.getModel().sousGroupe(selection);
-            this.selection.clear();
-            this.selection.add(ssGroupe);
-            this.vue.redrawAll();
-        }
-    }
- */
     public List<Figure> getSelection() {
         return selection;
     }
