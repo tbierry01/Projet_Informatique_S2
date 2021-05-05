@@ -11,13 +11,12 @@ import java.util.ArrayList;
  *
  * @author theob
  */
-public abstract class Noeud extends Figure{
+public abstract class Noeud extends Figure {
 
     private int Id;
     protected ArrayList<Barre> Barres_Noeud; //Portected pour que ce soit plus simple avec les sous classes
     private Treillis Treillis_Noeud;
     private Force ForceNoeud;
-
 
     public Noeud(Treillis T, int Iden, Force FN) {
         Treillis_Noeud = T;
@@ -61,7 +60,6 @@ public abstract class Noeud extends Figure{
         return Treillis_Noeud;
     }
 
-    
     public abstract Point getPos();
 
     public double[] AnglesBarres() {
@@ -94,8 +92,8 @@ public abstract class Noeud extends Figure{
         }
         return Angles;
     }
-    
-    public double Angle(Point P){
+
+    public double Angle(Point P) {
         Point N = this.getPos();
         double Nx = N.getAbscisse();
         double Ny = N.getOrdonnee();
@@ -106,19 +104,26 @@ public abstract class Noeud extends Figure{
         double Angle = Math.atan2(CO, CA);
         return Angle;
     }
-    
+
     public abstract FormatDeRetourSystemNoeuds Generation_Syteme(int Colones, int Pos); //Cette classe permet de créer des petites matrices de 2 de haut et du nombre voulu de large pour avoir les equation selon X et Y de chaque noeud. Le pos ne sert que pour les appuis, pour savoir ou positionner les inconnus
 
     @Override
     public double getDistance(double x, double y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double Distance;
+        Point P0 = getPos(); //On recupére la position du noeud actuel avec this.getPos()
+        Point P = new Point(x, y); //On créé le point P avc les valeurs données en entré
+        Distance = P0.Distance2Points(P);
+        return Distance;
     }
-    
+
     @Override
     public double getDistance(Point P) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double Distance;
+        Point P0 = getPos(); //On recupére la position du noeud actuel avec this.getPos()
+        Distance = P0.Distance2Points(P);
+        return Distance;
     }
-    
+
 }
 
 ///Pour faire arctan  Math.atan
