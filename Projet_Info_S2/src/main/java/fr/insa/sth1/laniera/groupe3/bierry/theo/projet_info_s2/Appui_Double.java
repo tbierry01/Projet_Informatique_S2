@@ -15,16 +15,17 @@ import javafx.scene.paint.Color;
  */
 public class Appui_Double extends Appui{
     
-    private Color Couleur;
     
     public Appui_Double(Treillis T, int iden, double alpha, Segment S, Force FN){
         super(T, iden, alpha, S, FN);
-        Couleur = Color.CORAL;
+    }
+    
+    public Appui_Double(Treillis T, int iden, double alpha, Segment S, Force FN, Color Couleur){
+        super(T, iden, alpha, S, FN, Couleur);
     }
     
     public Appui_Double(double alpha, Segment S){
         super(alpha, S);
-        Couleur = Color.CORAL;
     }
      
     @Override
@@ -117,7 +118,7 @@ public class Appui_Double extends Appui{
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
-        Context.setFill(Couleur);
+        Context.setFill(super.getColor());
         Context.fillOval(this.getPos().getAbscisse() - RAYON_POINT, this.getPos().getOrdonnee()-RAYON_POINT, 2*RAYON_POINT, 2*RAYON_POINT);
     }
 
