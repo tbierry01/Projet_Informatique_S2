@@ -54,6 +54,12 @@ public class Segment extends Figure{
     public void setTriangleTerrain(TriangleTerrain TTer){
         TT = TTer;
     }
+
+    public TriangleTerrain getTriangleTerrain() {
+        return TT;
+    }
+    
+    
     
     public double LongueurSegment(){
         double dist;
@@ -97,6 +103,11 @@ public class Segment extends Figure{
         Point Milieu = new Point(Xmoitie, Ymoitie); //On créé le point du miieu du segment
         Distance = Milieu.Distance2Points(P); //On cherche la distance entre les deux points
         return Distance;
+    }
+
+    @Override
+    public String Enregistrement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
    
