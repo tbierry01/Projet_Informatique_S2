@@ -52,6 +52,7 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
     public void setColor(Color Couleur) {
         this.Couleur = Couleur;
     }
-
-      
+    
+    public abstract String Enregistrement(); //Cette classe va permettre de faire des Strings pour pouvoir s'enregistrer
+    
 }
