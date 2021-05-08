@@ -143,4 +143,9 @@ public class Point extends Figure{
         Distance = this.Distance2Points(P);
         return Distance;
     }
+
+    @Override
+    public String Enregistrement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
