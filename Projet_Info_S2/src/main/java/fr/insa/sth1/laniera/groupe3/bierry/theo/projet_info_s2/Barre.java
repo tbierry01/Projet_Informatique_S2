@@ -129,4 +129,11 @@ public class Barre extends Figure {
 
     }
 
+    @Override
+    public String Enregistrement() {
+        String S;
+        S = "Barre ; "+Id+" ; "+Type_de_Barre.getId()+" ; "+Noeuds_Barre[0].getId()+" ; "+Noeuds_Barre[1].getId()+"\n";
+        return S;
+    }
+
 }
