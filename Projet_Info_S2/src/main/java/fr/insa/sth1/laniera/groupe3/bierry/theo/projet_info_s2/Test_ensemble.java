@@ -294,6 +294,34 @@ public class Test_ensemble {
         System.out.println("Contenu : "+CD.getContenu());
     }
     
+    private static ClassDessin Generation_Liste_Figure (){
+        ZoneConstructible ZC = new ZoneConstructible(0, 0, 100, 100);
+        Treillis T  = new Treillis(0, ZC);
+        TypeBarre TB = new TypeBarre(0);
+        Force FN = new Force(50, 0);
+        ArrayList<Figure> AF = new ArrayList<>();
+        Point P0 = new Point(0, 0, 0);
+        AF.add(P0);
+        Point P1 = new Point(1, 1, 1);
+        AF.add(P1);
+        Segment S0 = new Segment(0, P0, P1);
+        AF.add(S0);
+        Noeud_Simple NS0 = new Noeud_Simple(P0, T, 0, FN);
+        AF.add(NS0);
+        Appui_Simple AS0 = new Appui_Simple(T, 0, 0.5, S0, FN);
+        AF.add(AS0);
+        Barre B0 = new Barre(0, NS0, AS0, T, TB);
+        AF.add(B0);
+        ClassDessin CD = new ClassDessin(AF);
+        return CD;
+    }
+    
+    public static void Test_Tri_Figure(){
+        ClassDessin CD = Generation_Liste_Figure();
+        ArrayList<Noeud> AN = CD.Tri_Des_Noeuds();
+        System.out.println("Liste : " + AN);
+    }
+    
     public static void main(String[] args) {
         //Test_definition_classes();
         //Test_Classe_Point();
@@ -303,6 +331,7 @@ public class Test_ensemble {
         //TestAngle2();
         //TestAngleNormal();
         //TestResolutionContrainte();
-        TestClassDessin();
+        //TestClassDessin();
+        Test_Tri_Figure();
     }
 }
