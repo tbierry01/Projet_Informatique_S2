@@ -78,6 +78,13 @@ public class Noeud_Simple extends Noeud{
         Context.fillOval(Pos.getAbscisse() - RAYON_POINT, Pos.getOrdonnee()-RAYON_POINT, 5*RAYON_POINT, 5*RAYON_POINT);
     }
 
+    @Override
+    public String Enregistrement() {
+        String S;
+        S = "NoeudsSimple ; "+super.getId()+" ; "+this.getPos();
+        return S;
+    }
+
    
     
 }
