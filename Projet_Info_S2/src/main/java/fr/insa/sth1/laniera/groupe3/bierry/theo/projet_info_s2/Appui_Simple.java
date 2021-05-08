@@ -90,5 +90,12 @@ public class Appui_Simple extends Appui{
         Context.fillOval(this.getPos().getAbscisse() - RAYON_POINT, this.getPos().getOrdonnee()-RAYON_POINT, 5*RAYON_POINT, 5*RAYON_POINT);
     }
 
+    @Override
+    public String Enregistrement() {
+        String S;
+        S = "AppuiSimple ; "+super.getId()+" ; "+ super.getSegment().getTriangleTerrain()+" ; ";
+        return S;
+    }
+
     
 }
