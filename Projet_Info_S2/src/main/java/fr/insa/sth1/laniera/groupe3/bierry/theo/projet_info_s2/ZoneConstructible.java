@@ -74,4 +74,9 @@ public class ZoneConstructible {
         this.Treillis_ZoneConstructible = Treillis_ZoneConstructible;
     }
 
+    public String Enregistrement() {
+        String S;
+        S = "ZoneConstructible ; "+ Xmin + "  ; "+ Xmax + " ; " + Ymin +" ; " + Ymax+ "\n";
+        return S;
+    }
 }
