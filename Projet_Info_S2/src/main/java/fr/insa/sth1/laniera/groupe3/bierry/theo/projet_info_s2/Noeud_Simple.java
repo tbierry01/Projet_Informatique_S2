@@ -81,7 +81,8 @@ public class Noeud_Simple extends Noeud{
     @Override
     public String Enregistrement() {
         String S;
-        S = "NoeudsSimple ; "+super.getId()+" ; "+this.getPos();
+        double Coul [] = super.getColorTab();
+        S = "NoeudsSimple ; "+super.getId()+ " ; " + super.getTreillis_Noeud().getId()+ " ; "+this.getPos().getId()+" ; " + Coul[0]+ " ; " +Coul[1]+ " ; "+ Coul[2]+"\n";
         return S;
     }
 
