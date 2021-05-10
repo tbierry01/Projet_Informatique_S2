@@ -54,6 +54,10 @@ public class TriangleTerrain {
     public Segment getSeg(int i){ //Ici, on ne retourne que un seul segment précisé
         return Seg[i];
     }
+
+    public ZoneConstructible getZCTrinagleTerrain() {
+        return ZCTrinagleTerrain;
+    }
     
     
     
