@@ -45,9 +45,18 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
     
     public abstract double getDistance(Point P); //Cette méthode premet d'obtenir la distance d'une figure par rapport à un point donné
 
+    public double [] getColorTab() { //Cela renvoit un tableau RGB
+        double  [] Coul = new double  [3];
+        Coul[0] = Couleur.getRed();
+        Coul[1] = Couleur.getGreen();
+        Coul[2] = Couleur.getBlue();
+        return Coul;
+    }
+
     public Color getColor() {
         return Couleur;
     }
+    
 
     public void setColor(Color Couleur) {
         this.Couleur = Couleur;
