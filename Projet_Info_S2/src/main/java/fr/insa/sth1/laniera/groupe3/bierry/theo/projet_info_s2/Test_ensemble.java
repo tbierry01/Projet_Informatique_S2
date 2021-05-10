@@ -5,6 +5,8 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -306,6 +308,23 @@ public class Test_ensemble {
         AF.add(P1);
         Segment S0 = new Segment(0, P0, P1);
         AF.add(S0);
+        Point P2 = new Point(2, 0, 0);
+        AF.add(P2);
+        Point P3 = new Point(3, 1, 1);
+        AF.add(P3);
+        Segment S1 = new Segment(1, P2, P3);
+        AF.add(S1);
+        Point P4 = new Point(4, 0, 0);
+        AF.add(P4);
+        Point P5 = new Point(5, 1, 1);
+        AF.add(P5);
+        Segment S2 = new Segment(2, P0, P1);
+        AF.add(S2);
+        Segment[] S = new Segment[3];
+        S[0] = S0;
+        S[1] = S1;
+        S[2] = S2;
+        TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
         Noeud_Simple NS0 = new Noeud_Simple(P0, T, 0, FN);
         AF.add(NS0);
         Appui_Simple AS0 = new Appui_Simple(T, 0, 0.5, S0, FN);
@@ -322,7 +341,13 @@ public class Test_ensemble {
         System.out.println("Liste : " + AN);
     }
     
-    public static void main(String[] args) {
+    private static void Test_Enregistrement() throws IOException{
+        ClassDessin CD = Generation_Liste_Figure();
+        File F = new File ("Test.txt");
+        CD.Enregistrement(F);
+    }
+    
+    public static void main(String[] args) throws IOException{
         //Test_definition_classes();
         //Test_Classe_Point();
         //Test_Position_Appui();
@@ -332,6 +357,9 @@ public class Test_ensemble {
         //TestAngleNormal();
         //TestResolutionContrainte();
         //TestClassDessin();
-        Test_Tri_Figure();
+        //Test_Tri_Figure();
+        Test_Enregistrement();
     }
+
+    
 }
