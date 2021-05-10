@@ -57,6 +57,12 @@ public abstract class Appui extends Noeud {
         return SegAppui;
     }
 
+    public double getAlpha() {
+        return alpha;
+    }
+    
+    
+
     public Point getPos() { //On renvoit le point où se trouve l'appui et comme ca, on aura ses coordonées et se sera plus simple pour le claul d'angle
         Point P;
         if (SegAppui.getExtremite(0).getAbscisse() == SegAppui.getExtremite(1).getAbscisse()) { //Ici, on prend en compte le cas particulier de si les deux points ont la même abcsisse, auquel cas, on ne peut pas faire l'équation de la droite et tout et tout 
