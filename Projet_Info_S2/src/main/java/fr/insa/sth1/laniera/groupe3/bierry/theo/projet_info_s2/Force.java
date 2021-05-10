@@ -12,10 +12,16 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 public class Force {
     private double Norme;
     private double Angle;
+    private int Id;
     
-    public Force(double N, double A){
+    public Force(double N, double A, int Id){
         Norme = N;
         Angle = A;
+        this.Id = Id;
+    }
+    
+    public Force(double N, double A){
+        this(N, A, 0);
     }
 
     public double getNorme() {
@@ -24,6 +30,16 @@ public class Force {
 
     public double getAngle() {
         return Angle;
+    }
+
+    public int getId() {
+        return Id;
+    }
+    
+    public String Enregistrement() {
+        String S;
+        S = "Force ; "+this.getId()+" ; "+ this.getNorme() + " ; " + this.getAngle()+ "\n";
+        return S;
     }
     
     
