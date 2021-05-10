@@ -124,7 +124,10 @@ public class Appui_Double extends Appui{
 
     @Override
     public String Enregistrement() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String S;
+        double [] Coul = super.getColorTab();
+        S = "AppuiDouble ; "+super.getId()+" ; " + super.getTreillis_Noeud().getId()+ " ; "+ super.getSegment().getId()+" ; " + super.getAlpha() + " ; "+ super.getForceNoeud().getId()+" ; " +Coul[0] + " ; " + Coul[1] + " ; " + Coul[2] + "\n";
+        return S;
     }
 
     
