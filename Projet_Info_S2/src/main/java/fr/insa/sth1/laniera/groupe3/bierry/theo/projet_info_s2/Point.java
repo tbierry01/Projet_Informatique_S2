@@ -146,6 +146,9 @@ public class Point extends Figure{
 
     @Override
     public String Enregistrement() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String S;
+        double [] Coul = super.getColorTab();
+        S = "Point ; " + Id + " ; " + abscisse + " ; " + ordonnee + " ; "+ Coul[0] + " ; " + Coul[1] + " ; " + Coul[2] + "\n";
+        return S;
     }
 }
