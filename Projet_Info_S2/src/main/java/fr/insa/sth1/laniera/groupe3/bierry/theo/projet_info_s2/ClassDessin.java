@@ -5,6 +5,10 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -92,4 +96,74 @@ public class  ClassDessin { //Cette classe porte en fait mal son nom, de base, e
         }
         return AN;
     }
+    
+    public ArrayList<Barre> Tri_Des_Barres (){ 
+        ArrayList<Barre> AB = new ArrayList<Barre>();
+        for (int i = 0; i < Contenu.size(); i++) { 
+            if (Contenu.get(i) instanceof Barre) { 
+                AB.add((Barre) Contenu.get(i)); 
+            }
+            
+        }
+        return AB;
+    }
+    
+    public ArrayList<Point> Tri_Des_Point (){ 
+        ArrayList<Point> AP = new ArrayList<Point>();
+        for (int i = 0; i < Contenu.size(); i++) { 
+            if (Contenu.get(i) instanceof Point) { 
+                AP.add((Point) Contenu.get(i)); 
+            }
+            
+        }
+        return AP;
+    }
+    
+    public ArrayList<Segment> Tri_Des_Segment (){ 
+        ArrayList<Segment> AS = new ArrayList<Segment>();
+        for (int i = 0; i < Contenu.size(); i++) { 
+            if (Contenu.get(i) instanceof Segment) { 
+                AS.add((Segment) Contenu.get(i)); 
+            }
+            
+        }
+        return AS;
+    }
+    
+    public void Enregistrement(File file) throws IOException{
+        //D'abord, on créer toutes les arraylistes des différentes figures
+        ArrayList<Noeud> AN = Tri_Des_Noeuds();
+        ArrayList<Point> AP = Tri_Des_Point();
+        ArrayList<Barre> AB = Tri_Des_Barres();
+        ArrayList<Segment> AS = Tri_Des_Segment();
+        //Maintenant que toutes les figures sont triées, on va faire apparaitre tous ce qui ne sont pas des figures mais qui doivent etre enregistré
+        ArrayList<Force> AF = new ArrayList<>();
+        for (Noeud N : AN){
+            Force F  = N.getForceNoeud();
+            if (!AF.contains(F)){ //On teste si la liste ne contient pas F, et au cas ou, on l'ajoute
+                AF.add(F);
+            }
+        }
+        //Une fois que l'on a toutes les listes, on peut commencer l'enregistrement
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+            if(AS.get(0) == null){
+                throw new Error ("Le fichier ne peut pas être sauvegardé, il faut au moins un segement");
+            }
+            bw.append(AS.get(0).getTriangleTerrain().getZCTrinagleTerrain().Enregistrement()); //La, on enregistre d'abord la zone constructible
+            //TODO enregistrer aussi les type de barre
+            for(Point P : AP){
+                bw.append(P.Enregistrement());
+            }
+            for(Segment S : AS){
+                bw.append(S.Enregistrement());
+            }
+            for(Noeud N : AN){
+                bw.append(N.Enregistrement());
+            }
+            for(Barre B : AB){
+                bw.append(B.Enregistrement());
+            }
+            bw.write("FIN");
+            bw.close();
+    }}
 }
