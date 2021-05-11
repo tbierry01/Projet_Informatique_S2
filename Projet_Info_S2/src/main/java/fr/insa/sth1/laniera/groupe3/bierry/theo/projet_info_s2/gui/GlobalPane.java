@@ -211,7 +211,7 @@ public class GlobalPane extends BorderPane {
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
 
-        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation(), logoINSA);
+        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation());
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
