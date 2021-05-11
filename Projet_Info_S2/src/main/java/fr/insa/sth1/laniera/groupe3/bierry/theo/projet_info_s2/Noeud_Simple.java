@@ -27,6 +27,16 @@ public class Noeud_Simple extends Noeud{
         this.Pos = P;
     }
     
+    public Noeud_Simple (Point P, Treillis T, int Id, Force FN, double r, double g , double b){
+        this(P, T, Id, FN);
+        super.setColorRGB(r, g, b);
+    }
+    
+    public Noeud_Simple (double x, double y, Treillis T, int Id, Force FN, double r, double g , double b){
+        this(new Point(x, y), T, Id, FN, r, g, b);
+
+    }
+    
     public Noeud_Simple (Point P){
         super();
         this.Pos = P;
@@ -82,7 +92,7 @@ public class Noeud_Simple extends Noeud{
     public String Enregistrement() {
         String S;
         double Coul [] = super.getColorTab();
-        S = "NoeudsSimple ; "+super.getId()+ " ; " + super.getTreillis_Noeud().getId()+ " ; "+this.getPos().getId()+" ; " + Coul[0]+ " ; " +Coul[1]+ " ; "+ Coul[2]+"\n";
+        S = "NoeudsSimple ; "+super.getId()+ " ; " + super.getTreillis_Noeud().getId()+ " ; "+this.getPos().getAbscisse()+" ; "+this.getPos().getOrdonnee()+" ; "+this.getForceNoeud().getId()+" ; " + Coul[0]+ " ; " +Coul[1]+ " ; "+ Coul[2]+"\n";
         return S;
     }
 
