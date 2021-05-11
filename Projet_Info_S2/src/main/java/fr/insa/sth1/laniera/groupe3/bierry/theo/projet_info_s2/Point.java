@@ -28,6 +28,11 @@ public class Point extends Figure{
         Segment_Point = new ArrayList<>();
     }
     
+    public Point(double x, double y, int Iden, double  r, double  g, double  b) {
+        this(x, y, Iden);
+        super.setColorRGB(r, g, b);
+    }
+    
     public Point(double x, double y, int Iden, Color C) {
         this(x, y, Iden);
         super.setColor(C);
