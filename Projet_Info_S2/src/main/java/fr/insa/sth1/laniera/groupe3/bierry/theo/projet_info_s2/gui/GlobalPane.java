@@ -7,6 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -173,7 +174,13 @@ public class GlobalPane extends BorderPane {
         ImageView iconBarres = new ImageView(new Image("file:Image_Barres.png"));
         this.Barres = new ToggleButton(" Barres", iconBarres);
         this.Barres.setPrefSize(100, 50);
-
+        
+    // ----------- Logo INSA -----------//
+        
+/*        InputStream iconINSA= getClass().getResourceAsStream("E:\\INSA\\1ère année\\S2\\Informatique\\Projet NetBeans\\TP\\Projet_Informatique_S2\\Projet_Info_S2\\Image_INSA.png");
+        Image image = new Image(iconINSA);
+        ImageView logoINSA = new ImageView(image);
+*/
         
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
         
@@ -204,7 +211,7 @@ public class GlobalPane extends BorderPane {
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
 
-        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation());
+        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation(), logoINSA);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
