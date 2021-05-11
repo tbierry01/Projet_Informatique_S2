@@ -31,6 +31,16 @@ public class Segment extends Figure{
     public Segment (int Iden, Point P1, Point P2){
         this(Iden, P1, P2, Color.BLACK);
     }
+    
+    public Segment (int Iden, Point P1, Point P2, double r, double g, double b){
+        Id = Iden;
+        Extremite = new Point[2];
+        Extremite[0] = P1; //On rempli le tableau des extremité avec les points P1 et P2
+        Extremite[1] = P2;
+        P1.addSegment(this);
+        P2.addSegment(this);
+        super.setColorRGB(r, g, b);
+    }
 
     @Override
     public String toString(){
