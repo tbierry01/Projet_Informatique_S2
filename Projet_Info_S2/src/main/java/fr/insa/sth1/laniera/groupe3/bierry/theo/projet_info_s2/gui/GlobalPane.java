@@ -7,7 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
-import java.io.InputStream;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -181,6 +181,7 @@ public class GlobalPane extends BorderPane {
         Image image = new Image(iconINSA);
         ImageView logoINSA = new ImageView(image);
 */
+        ImageView iconINSA = new ImageView(new Image("file:Image_INSA.png"));
         
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
         
@@ -211,7 +212,7 @@ public class GlobalPane extends BorderPane {
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
 
-        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation());
+        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation(), iconINSA);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
