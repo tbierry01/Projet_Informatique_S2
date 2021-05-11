@@ -54,6 +54,7 @@ public class GlobalPane extends BorderPane {
     private DessinCanvas Dessin;
     private Button Ouvrir;
     private Button Enregistrer;
+    private Button Nouveau;
     private ColorPicker Couleur;
     private ToggleButton Sélectionner;
     
@@ -122,14 +123,20 @@ public class GlobalPane extends BorderPane {
     //----------- Bouton Ouvrir -----------//
             
         ImageView iconOuvrir = new ImageView(new Image("file:Image_Ouvrir.png"));
-        this.Ouvrir = new Button("    Ouvrir", iconOuvrir);
-        this.Ouvrir.setPrefSize(120, 50);
+        this.Ouvrir = new Button("  Ouvrir", iconOuvrir);
+        this.Ouvrir.setPrefSize(120, 33);
         
     //----------- Bouton Enregistrer -----------//
             
         ImageView iconEnregistrer = new ImageView(new Image("file:Image_Enregistrer.png"));
-        this.Enregistrer = new Button("Enregistrer", iconEnregistrer);
-        this.Enregistrer.setPrefSize(120, 50);
+        this.Enregistrer = new Button("  Enregistrer", iconEnregistrer);
+        this.Enregistrer.setPrefSize(120, 33);
+        
+    //----------- Bouton Nouveau -----------//
+            
+        ImageView iconNouveau = new ImageView(new Image("file:Image_Nouveau.png"));
+        this.Nouveau = new Button("  Nouveau", iconNouveau);
+        this.Nouveau.setPrefSize(120, 33);
         
     //----------- Bouton Segment -----------//
             
@@ -174,7 +181,7 @@ public class GlobalPane extends BorderPane {
         VBox bPont1 = new VBox(this.getAppuiSimple(), this.getAppuiDouble());
         VBox bPont2 = new VBox(this.getNoeuds(), this.getBarres());
         
-        VBox vOptions = new VBox (this.Ouvrir, this.getEnregistrer());
+        VBox vOptions = new VBox (this.Nouveau, this.Ouvrir, this.getEnregistrer());
 
         HBox hTerrain = new HBox(this.getTerrain(), bTerrain);
         HBox hPont = new HBox(this.getPont(), bPont1, bPont2);
