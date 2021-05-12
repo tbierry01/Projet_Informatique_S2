@@ -26,7 +26,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("BRIDGE");
 //      Scene scene = new Scene(new MainDessinPane());
-        Scene scene = new Scene(new GlobalPane());
+        Scene scene = new Scene(new GlobalPane(primaryStage));
         primaryStage.setScene(scene);
         primaryStage.show();
 
