@@ -257,6 +257,17 @@ public class GlobalPane extends BorderPane {
         cbEpaisseur.getSelectionModel().select(moyen);
         cbEpaisseur.setPrefSize(120, 25);
         
+    //----------- Définit les choix de la ChoiceBox en définissant le acier par défaut -----------//
+
+        ChoixMatériaux matAcier = new ChoixMatériaux ("Acier");
+        ChoixMatériaux matBois = new ChoixMatériaux ("Bois");
+        ChoixMatériaux matPolystyrène = new ChoixMatériaux ("Polystyrène");
+        
+        ObservableList<ChoixMatériaux>matériaux = FXCollections.observableArrayList(matAcier, matBois, matPolystyrène);
+        ChoiceBox<ChoixMatériaux>cbMatériaux = new ChoiceBox<ChoixMatériaux>(matériaux);
+        cbMatériaux.getSelectionModel().select(matAcier);
+        cbMatériaux.setPrefSize(120, 25);
+        
     //----------- On place les différents éléments qui composent la partie gauche -----------//
 
         HBox pAbscisses = new HBox(this.X, this.Abscisse);
@@ -275,7 +286,7 @@ public class GlobalPane extends BorderPane {
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
         VBox coteGauche = new VBox(hStyle, getCouleur(), cbEpaisseur,
-                cbTrait, hPositions, pAbscisses, pOrdonnee, this.Sélectionner);
+                cbTrait, cbMatériaux, hPositions, pAbscisses, pOrdonnee, this.Sélectionner);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
