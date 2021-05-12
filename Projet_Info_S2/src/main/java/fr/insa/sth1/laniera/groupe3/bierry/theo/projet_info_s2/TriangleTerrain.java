@@ -10,7 +10,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
  * @author theob
  */
 public class TriangleTerrain {
-    
+    /*
     private int Id;
     private Segment [] Seg; // On stocke ici les 3 segments qui forment notre triangle terrain
     private ZoneConstructible ZCTriangleTerrain;
@@ -58,7 +58,7 @@ public class TriangleTerrain {
     public ZoneConstructible getZCTriangleTerrain() {
         return ZCTriangleTerrain;
     }
-    
+    */
     
     
 }
