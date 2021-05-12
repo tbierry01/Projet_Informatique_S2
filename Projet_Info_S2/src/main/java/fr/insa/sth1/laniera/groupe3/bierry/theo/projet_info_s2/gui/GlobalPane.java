@@ -177,11 +177,14 @@ public class GlobalPane extends BorderPane {
         
     // ----------- Logo INSA -----------//
         
-/*        InputStream iconINSA= getClass().getResourceAsStream("E:\\INSA\\1ère année\\S2\\Informatique\\Projet NetBeans\\TP\\Projet_Informatique_S2\\Projet_Info_S2\\Image_INSA.png");
-        Image image = new Image(iconINSA);
-        ImageView logoINSA = new ImageView(image);
-*/
         ImageView iconINSA = new ImageView(new Image("file:Image_INSA.png"));
+        
+    //----------- Bouton Pont -----------//
+        
+        ImageView iconSimulation = new ImageView(new Image("file:Image_Simulation.png"));
+        this.Simulation = new Button("Simulation", iconSimulation);
+        this.Simulation.setContentDisplay(ContentDisplay.TOP);
+        this.Simulation.setPrefSize(100, 100);
         
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
         
