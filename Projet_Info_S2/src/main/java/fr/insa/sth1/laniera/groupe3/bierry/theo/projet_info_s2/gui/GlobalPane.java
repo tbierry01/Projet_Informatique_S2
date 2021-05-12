@@ -64,6 +64,8 @@ public class GlobalPane extends BorderPane {
     private Controleur controleur;
     
     private ArrayList<Figure> EnsembleFigures;
+    private File curFile;
+    private Stage inStage;
     
     private int IDSegment;
     private int IDPoint;
@@ -72,10 +74,10 @@ public class GlobalPane extends BorderPane {
     private int IDBarres;
     private int IDNoeuds;
     
-    public GlobalPane () {
+    /*public GlobalPane () {
         this(new ClassDessin());  
     }
-    
+    */
      public GlobalPane(Stage inStage) {
         this(inStage, new ClassDessin());
     }
@@ -508,18 +510,10 @@ public class GlobalPane extends BorderPane {
         
         Sélectionner.setOnAction((t) -> {
             this.controleur.boutonSélectionner(t);
-        });
-        
-        
-        
-//----------- Concerne les instructions attendues lorqu'on clique sur Grouper -----------//
-        
-/*        Grouper.setOnAction((t) -> {
-            Aide.setText("Sélectionnez les éléments que vous voulez grouper");
- //           controleur.boutonGrouper(t);
-        });
- */       
+        });      
     }
+    
+    
     
     public void redrawAll() {
             this.Dessin.redrawAll ();
@@ -616,13 +610,17 @@ public class GlobalPane extends BorderPane {
         return Couleur;
     }
 
-    /**
-     * @return the Grouper
-     */
-/*    public Button getGrouper() {
-        return Grouper;
+    public File getCurFile() {
+        return curFile;
     }
- */   
+    
+    public void setCurFile(File curFile) {
+        this.curFile = curFile;
+    }
+    
+    public Stage getInStage() {
+        return inStage;
+    }
     
 
 }
