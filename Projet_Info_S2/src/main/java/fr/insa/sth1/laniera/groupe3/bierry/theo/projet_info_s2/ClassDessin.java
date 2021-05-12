@@ -171,7 +171,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                 throw new Error("Le fichier ne peut pas être sauvegardé, il faut au moins un segement");
             }
             bw.append(AS.get(0).getTriangleTerrain().getZCTriangleTerrain().Enregistrement()); //La, on enregistre d'abord la zone constructible
-            //TODO enregistrer aussi les type de barres
+            //bw.append(AN.get(0).getTreillis_Noeud().E)
             for (Force F : AF) {
                 bw.append(F.Enregistrement());
             }
@@ -205,47 +205,61 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             Map<Integer, Force> MF = new TreeMap<>(); 
             Map<Integer, TypeBarre> MTB = new TreeMap<>();
             Map<Integer, Noeud> MN = new TreeMap<>();
+            Map<Integer, Segment> MS = new TreeMap<>();
             while ((Ligne = br.readLine()) != null && !Ligne.equals("FIN")) {
                 String[] Contient = Ligne.split(";");
+                for (int i = 0; i < Contient.length; i++) {
+                    System.out.println("Contient["+i+"] "+Contient[i]);;
+                    
+                }
+//                for (int i = 1; i < Contient.length; i++) {
+//                    System.out.println("Contient["+i+"] "+(int) Double.parseDouble(Contient[i]));
+//                    
+//                }
                 switch (Contient[0]) {
-                    case "ZoneConstructible":
-                        ZoneConstructible ZC = new ZoneConstructible(Integer.parseInt(Contient[1]), Integer.parseInt(Contient[2]), Integer.parseInt(Contient[3]), Integer.parseInt(Contient[4]));
+                    case "ZoneConstructible ":
+                        ZoneConstructible ZC = new ZoneConstructible((int) Double.parseDouble(Contient[1]), (int) Double.parseDouble(Contient[2]), (int) Double.parseDouble(Contient[3]), (int) Double.parseDouble(Contient[4]));
                         FRE.setZC(ZC);
                         Treillis T = new Treillis(0, ZC);
                         MT.put(T.getId(), T);
                         FRE.setT(T);
                         break;
-                    case "Point":
-                        Point P = new Point(Double.parseDouble(Contient[2]), Double.parseDouble(Contient[3]), Integer.parseInt(Contient[1]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Double.parseDouble(Contient[6]));
-                        MP.put(Integer.parseInt(Contient[1]), P); //On fait une nouvelle Map ou l'on ajoute le point en fonction de son identificateur
+                    case "Point ":
+                        Point P = new Point(Double.parseDouble(Contient[2]), Double.parseDouble(Contient[3]), (int) Double.parseDouble(Contient[1]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Double.parseDouble(Contient[6]));
+                        MP.put(P.getId(), P); //On fait une nouvelle Map ou l'on ajoute le point en fonction de son identificateur
                         AF.add(P);
                         break;
-                    case "Segment":
-                        Segment S = new Segment(Integer.parseInt(Contient[1]), MP.get(Integer.parseInt(Contient[2])), MP.get(Integer.parseInt(Contient[3])), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Double.parseDouble(Contient[6]));
+                    case "Segment ":
+                        Segment S = new Segment((int) Double.parseDouble(Contient[1]), MP.get((int) Double.parseDouble(Contient[2])), MP.get((int) Double.parseDouble(Contient[3])), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Double.parseDouble(Contient[6]));
                         AF.add(S);
+                        MS.put(S.getId(), S);
                         break;
-                    case "NoeudSimple":
-                        Noeud_Simple NS = new Noeud_Simple(Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), MT.get(Integer.parseInt(Contient[2])), Integer.parseInt(Contient[1]), MF.get(Integer.parseInt(Contient[5])),Double.parseDouble(Contient[6]) , Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
+                    case "NoeudSimple ":
+                        Noeud_Simple NS = new Noeud_Simple(Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), MT.get((int) Double.parseDouble(Contient[2])), (int) Double.parseDouble(Contient[1]), MF.get((int) Double.parseDouble(Contient[5])),Double.parseDouble(Contient[6]) , Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(NS);
                         MN.put(NS.getId(), NS);
                         break;
-                    case "Force":
-                        Force F = new Force(Double.parseDouble(Contient[2]), Double.parseDouble(Contient[3]), Integer.parseInt(Contient[1]));
+                    case "Force ":
+                        Force F = new Force(Double.parseDouble(Contient[2]), Double.parseDouble(Contient[3]), (int) Double.parseDouble(Contient[1]));
                         MF.put(F.getId(), F);
                         break;
-                    case "TypeBarre" :
-                        TypeBarre TB = new TypeBarre(Integer.parseInt(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6]);
+                    case "TypeBarre " :
+                        TypeBarre TB = new TypeBarre((int) Double.parseDouble(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6]);
                         MTB.put(TB.getId(), TB);
                         break;
-                    case "Barre" : 
-                        Barre B = new Barre(Integer.parseInt(Contient[1]), MN.get(Integer.parseInt(Contient[4])), MN.get(Integer.parseInt(Contient[5])), MT.get(Integer.parseInt(Contient[2])), MTB.get(Integer.parseInt(Contient[3])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
+                    case "Barre " : 
+                        Barre B = new Barre((int) Double.parseDouble(Contient[1]), MN.get((int) Double.parseDouble(Contient[4])), MN.get((int) Double.parseDouble(Contient[5])), MT.get((int) Double.parseDouble(Contient[2])), MTB.get((int) Double.parseDouble(Contient[3])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(B);
                         break;
-                    case "AppuiSimple" :
-                        //TODO
+                    case "AppuiSimple " :
+                        Appui_Simple AS = new Appui_Simple(MT.get((int) Double.parseDouble(Contient[2])), (int) Double.parseDouble(Contient[1]), Double.parseDouble(Contient[4]), MS.get((int) Double.parseDouble(Contient[3])), MF.get((int) Double.parseDouble(Contient[5])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
+                        AF.add(AS);
+                        MN.put(AS.getId(), AS);
                         break;
-                    case "AppuiDouble" :
-                        //TODO
+                    case "AppuiDouble " :
+                        Appui_Double AD = new Appui_Double(MT.get((int) Double.parseDouble(Contient[2])), (int) Double.parseDouble(Contient[1]), Double.parseDouble(Contient[4]), MS.get((int) Double.parseDouble(Contient[3])), MF.get((int) Double.parseDouble(Contient[5])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
+                        AF.add(AD);
+                        MN.put(AD.getId(), AD);
                         break;
                         
                     default:
@@ -253,7 +267,8 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                 }
 
             }
-
+            FRE.setAF(AF);
+            
             return FRE;
         }
     }
