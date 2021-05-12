@@ -7,7 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
-import java.io.FileInputStream;
+import java.io.File;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +29,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 /**
  *
@@ -75,7 +76,15 @@ public class GlobalPane extends BorderPane {
         this(new ClassDessin());  
     }
     
-    public GlobalPane(ClassDessin model) {
+     public GlobalPane(Stage inStage) {
+        this(inStage, new ClassDessin());
+    }
+     
+    public GlobalPane(Stage inStage, ClassDessin model) {
+        this(inStage, null, model);
+    }
+    
+    public GlobalPane(Stage inStage, File fromFile, ClassDessin model) {
         this.model = model;
         this.controleur = new Controleur(this);
 
@@ -380,6 +389,7 @@ public class GlobalPane extends BorderPane {
         
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
+            controleur.boutonAppuiSimple(t);
             
             if (Barres.isDisabled() == true) {
                 Barres.setDisable(false);
