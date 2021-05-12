@@ -170,7 +170,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             if (AS.get(0) == null) {
                 throw new Error("Le fichier ne peut pas être sauvegardé, il faut au moins un segement");
             }
-            bw.append(AS.get(0).getTriangleTerrain().getZCTriangleTerrain().Enregistrement()); //La, on enregistre d'abord la zone constructible
+            bw.append(AS.get(0).getZoneConstructible().Enregistrement()); //La, on enregistre d'abord la zone constructible
             //bw.append(AN.get(0).getTreillis_Noeud().E)
             for (Force F : AF) {
                 bw.append(F.Enregistrement());
@@ -206,6 +206,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             Map<Integer, TypeBarre> MTB = new TreeMap<>();
             Map<Integer, Noeud> MN = new TreeMap<>();
             Map<Integer, Segment> MS = new TreeMap<>();
+            ZoneConstructible Zone_Construcible_Fichier = new ZoneConstructible(0, 0, 0, 0);
             while ((Ligne = br.readLine()) != null && !Ligne.equals("FIN")) {
                 String[] Contient = Ligne.split(";");
                 for (int i = 0; i < Contient.length; i++) {
@@ -222,6 +223,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         FRE.setZC(ZC);
                         Treillis T = new Treillis(0, ZC);
                         MT.put(T.getId(), T);
+                        Zone_Construcible_Fichier = ZC;
                         FRE.setT(T);
                         break;
                     case "Point ":
@@ -230,7 +232,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         AF.add(P);
                         break;
                     case "Segment ":
-                        Segment S = new Segment((int) Double.parseDouble(Contient[1]), MP.get((int) Double.parseDouble(Contient[2])), MP.get((int) Double.parseDouble(Contient[3])), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Double.parseDouble(Contient[6]));
+                        Segment S = new Segment((int) Double.parseDouble(Contient[1]), Zone_Construcible_Fichier, MP.get((int) Double.parseDouble(Contient[2])), MP.get((int) Double.parseDouble(Contient[3])), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Double.parseDouble(Contient[6]));
                         AF.add(S);
                         MS.put(S.getId(), S);
                         break;
