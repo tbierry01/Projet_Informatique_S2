@@ -56,5 +56,15 @@ public class FormatRetourEnregistrement {
         this.AF = AF;
     }
     
+    public String toString(){
+        String res;
+        res = "#--#--# FRE #--#--#\n"+ZC.toString()+"\n"+T.toString()+"\n";
+        for(Figure F : AF){
+            res = res+F.toString()+"\n";
+        }
+        res = res + "\n#--#--# FIN #--#--#\n";
+        return res;
+    }
+    
     
 }
