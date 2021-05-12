@@ -37,6 +37,20 @@ public class Barre extends Figure {
         T.addBarre_Treillis(this);
     }
 
+    public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB, double r, double g, double b) {
+        super(r, g, b);
+        Id = Iden;
+        Noeuds_Barre = new Noeud[2];
+        Noeuds_Barre[0] = N1;
+        Noeuds_Barre[1] = N2;
+        Treillis_Barre = T;
+        Type_de_Barre = TB;
+        TB.addBarre_TypeBarre(this); // On complète les listes de chaque élements
+        N1.addBarre(this);
+        N2.addBarre(this);
+        T.addBarre_Treillis(this);
+    }
+    
     public Barre(int Iden, Noeud N1, Noeud N2) {
         Id = Iden;
         Noeuds_Barre = new Noeud[2];
