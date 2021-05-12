@@ -238,6 +238,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         break;
                     case "Barre" : 
                         //Barre B = new Barre
+                        //TODO
                         break;
                     default:
                         throw new Error("Le fichier n'est pas pris en compte, cet element n'est pas réalisable");
