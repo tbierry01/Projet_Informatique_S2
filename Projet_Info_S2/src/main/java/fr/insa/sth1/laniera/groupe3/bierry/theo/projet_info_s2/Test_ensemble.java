@@ -356,6 +356,60 @@ public class Test_ensemble {
         
     }
     
+    private  static ArrayList<Figure> Generation_AF(){
+        ArrayList<Figure> AF = new ArrayList<>();
+        ZoneConstructible ZC = new ZoneConstructible(-5, 5, -5, 5);
+        Point P0 = new Point(0, -2, 0);
+        AF.add(P0);
+        Point P1 = new Point(0, 2, 1);
+        AF.add(P1);
+        Point P2 = new Point(-1, 0, 2);
+        AF.add(P2);
+        Point P3 = new Point(1, 1, 3);
+        AF.add(P3);
+        Segment S0 = new Segment(0, ZC, P0, P1, 0, 0, 1);
+        AF.add(S0);
+        Segment S1 = new Segment(1, ZC, P1, P2, 1, 0, 0);
+        AF.add(S1);
+        Segment S2 = new Segment(2, ZC, P2, P0, 0, 1, 0);
+        AF.add(S2);
+        Segment [] S = new Segment [3];
+        S[0] = S0;
+        S[1] = S1;
+        S[2] = S2;
+        Treillis T = new Treillis(0, ZC);
+        Force F0 = new Force(0, 0, 0);
+        Force F1 = new Force(-1000, Math.PI/2, 1);
+        Appui_Double AD = new Appui_Double(T, 0 , 0.5, S0, F0);
+        AF.add(AD);
+        Appui_Simple AS = new Appui_Simple(T, 1, 1, S0, F0);
+        AF.add(AS);
+        Noeud_Simple NS = new Noeud_Simple(P3, T, 2, F1);
+        AF.add(NS);
+        TypeBarre TB = new TypeBarre(0);
+        Barre B1 = new Barre(0, AS, NS, T, TB);
+        AF.add(B1);
+        Barre B2 = new Barre(1, AD, NS, T, TB);
+        AF.add(B2);
+        Barre B3 = new Barre(2, AD, AS, T, TB);
+        AF.add(B3);
+        return AF;
+    }
+    
+    public static void TestEnrLecRes() throws IOException{
+        ArrayList<Figure> AF = Generation_AF();
+        ClassDessin CD = new ClassDessin(AF);
+        File file = new File("Test1.txt");
+        CD.Enregistrement(file);
+        FormatRetourEnregistrement FRE = CD.Lecture_Fichier(file);
+        ClassDessin CD1 = new ClassDessin(FRE.getAF());
+        ArrayList<Noeud> AN = CD1.Tri_Des_Noeuds();
+        ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(AN);
+        Matrice M = RCN.Resolution();
+        System.out.println("Matrice : \n"+M);
+        
+    }
+    
     public static void main(String[] args) throws IOException{
         //Test_definition_classes();
         //Test_Classe_Point();
@@ -364,11 +418,14 @@ public class Test_ensemble {
         //Test_Angles();
         //TestAngle2();
         //TestAngleNormal();
-        TestResolutionContrainte();
+        TestResolutionContrainte();        
         //TestClassDessin();
         //Test_Tri_Figure();
         //Test_Enregistrement();
         //Test_Letcure();
+        //TestEnrLecRes();
+        
+       
         
     }
 
