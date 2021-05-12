@@ -73,4 +73,5 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
         this.Couleur = Color.color(r, g, b);
     }
     
+    
 }
