@@ -87,10 +87,12 @@ public class TypeBarre {
         res = "\n --Type Barre "+getId()+"--"+"\n- Section : "+Section+"\n- Longueur min : "+Lmin+"\n- Longueur max : "+Lmax+"\n- Resistance à la compression : "+RmC
                 +"\n- Resistance à la torsion : "+RmT+"\n- Materiau : "+Materiaux;
         res = res+"\nLes barres suivantes sont de ce type : ";
+        /*
         for (int i = 0; i < Barre_TypeBarre.size(); i++) {
             res = res+"\n-> "+Barre_TypeBarre.get(i);
             
         }
+        */
         
         return res;
     }
@@ -104,7 +106,7 @@ public class TypeBarre {
 
     public String Enregistrement() {
         String S;
-        S = "TypeBarre ; "+this.getId() + " ; " + this.getSection() + " ; " + this.getCout()+ " ; "+this.getRmC()+" ; "+ this.getRmT()+ " ; "+this.getMateriaux();
+        S = "TypeBarre ; "+this.getId() + " ; " + this.getSection() + " ; " + this.getCout()+ " ; "+this.getRmC()+" ; "+ this.getRmT()+ " ; "+this.getMateriaux()+"\n";
         return S;
     }
 }
