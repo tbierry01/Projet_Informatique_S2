@@ -281,7 +281,7 @@ public class Test_ensemble {
         Barre B1 = new Barre(0, AS, NS, T, TB);
         Barre B2 = new Barre(1, AD, NS, T, TB);
         Barre B3 = new Barre(2, AD, AS, T, TB);
-        TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
+        //TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
         ArrayList<Noeud> ARN = new ArrayList<>();
         ARN.add(AD);
         ARN.add(AS);
@@ -306,26 +306,26 @@ public class Test_ensemble {
         AF.add(P0);
         Point P1 = new Point(1, 1, 1);
         AF.add(P1);
-        Segment S0 = new Segment(0, P0, P1);
+        Segment S0 = new Segment(0, ZC, P0, P1, 0, 1, 1);
         
         AF.add(S0);
         Point P2 = new Point(2, 0, 0);
         AF.add(P2);
         Point P3 = new Point(3, 1, 1);
         AF.add(P3);
-        Segment S1 = new Segment(1, P2, P3);
+        Segment S1 = new Segment(1, ZC, P2, P3, 1, 1, 0);
         AF.add(S1);
         Point P4 = new Point(4, 0, 0);
         AF.add(P4);
         Point P5 = new Point(5, 1, 1);
         AF.add(P5);
-        Segment S2 = new Segment(2, P0, P1);
+        Segment S2 = new Segment(2, ZC, P0, P1, 0, 0, 0);
         AF.add(S2);
         Segment[] S = new Segment[3];
         S[0] = S0;
         S[1] = S1;
         S[2] = S2;
-        TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
+        //TriangleTerrain TT = new TriangleTerrain(0, S, ZC);
         Noeud_Simple NS0 = new Noeud_Simple(P0, T, 0, FN);
         AF.add(NS0);
         Appui_Simple AS0 = new Appui_Simple(T, 0, 0.5, S0, FN);
@@ -353,6 +353,7 @@ public class Test_ensemble {
         File F = new File ("Test.txt");
         FormatRetourEnregistrement FRE = CD.Lecture_Fichier(F);
         System.out.println(FRE);
+        
     }
     
     public static void main(String[] args) throws IOException{
@@ -363,11 +364,11 @@ public class Test_ensemble {
         //Test_Angles();
         //TestAngle2();
         //TestAngleNormal();
-        //TestResolutionContrainte();
+        TestResolutionContrainte();
         //TestClassDessin();
         //Test_Tri_Figure();
-        Test_Enregistrement();
-        Test_Letcure();
+        //Test_Enregistrement();
+        //Test_Letcure();
         
     }
 
