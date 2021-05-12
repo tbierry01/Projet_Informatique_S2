@@ -5,14 +5,16 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+import static java.lang.System.load;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 /**
  *
  * @author drumm
  */
-public class MainMenu {
+public class MainMenu extends MenuBar{
     
     private GlobalPane main;
     
@@ -38,6 +40,18 @@ public class MainMenu {
         sauvegarderSous.setOnAction((t) -> {
             main.getControleur().menuSauvegarderSous(t);
         });
+        fichier.getItems().addAll(nouveau,ouvrir, sauvegarder,sauvegarderSous);
+        
+        
+        Menu aide = new Menu ("Aide");
+        MenuItem aPropos = new MenuItem ("A Propos");
+        
+        aPropos.setOnAction((t) -> {
+            main.getControleur().menuAPropos(t);
+        });
+        aide.getItems().addAll(aPropos);
+        
+        this.getMenus().addAll(fichier,aide);
     }
     
 }
