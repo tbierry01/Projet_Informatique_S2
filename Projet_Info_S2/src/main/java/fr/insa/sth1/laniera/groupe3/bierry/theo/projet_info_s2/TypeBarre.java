@@ -35,6 +35,49 @@ public class TypeBarre {
         Materiaux = "Fer";
         Barre_TypeBarre = new ArrayList<>();
     }
+    
+    public TypeBarre(int Iden, String S, double C, double ResiMC, double ResiMT, String Mat){ //On s'en fout de ce qu'il y a dedans c'est juste pour dire qu'il y a un truc quoi
+        Id = Iden;
+        Section = S;
+        Cout = C;
+        RmC = ResiMC;
+        RmT = ResiMT;
+        Materiaux = Mat;
+        Barre_TypeBarre = new ArrayList<>();
+    }
+
+    public String getSection() {
+        return Section;
+    }
+
+    public double getLmin() {
+        return Lmin;
+    }
+
+    public double getLmax() {
+        return Lmax;
+    }
+
+    public double getCout() {
+        return Cout;
+    }
+
+    public double getRmC() {
+        return RmC;
+    }
+
+    public double getRmT() {
+        return RmT;
+    }
+
+    public String getMateriaux() {
+        return Materiaux;
+    }
+
+    public ArrayList<Barre> getBarre_TypeBarre() {
+        return Barre_TypeBarre;
+    }
+    
     public void addBarre_TypeBarre(Barre B){
         Barre_TypeBarre.add(B);
     }
@@ -57,5 +100,11 @@ public class TypeBarre {
      */
     public int getId() {
         return Id;
+    }
+
+    public String Enregistrement() {
+        String S;
+        S = "TypeBarre ; "+this.getId() + " ; " + this.getSection() + " ; " + this.getCout()+ " ; "+this.getRmC()+" ; "+ this.getRmT()+ " ; "+this.getMateriaux();
+        return S;
     }
 }
