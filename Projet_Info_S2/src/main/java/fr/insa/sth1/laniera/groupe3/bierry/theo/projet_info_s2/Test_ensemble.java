@@ -297,7 +297,7 @@ public class Test_ensemble {
     }
     
     private static ClassDessin Generation_Liste_Figure (){
-        ZoneConstructible ZC = new ZoneConstructible(0, 0, 100, 100);
+        ZoneConstructible ZC = new ZoneConstructible(10, 0, 100, 100);
         Treillis T  = new Treillis(0, ZC);
         TypeBarre TB = new TypeBarre(0);
         Force FN = new Force(50, 0);
@@ -307,6 +307,7 @@ public class Test_ensemble {
         Point P1 = new Point(1, 1, 1);
         AF.add(P1);
         Segment S0 = new Segment(0, P0, P1);
+        
         AF.add(S0);
         Point P2 = new Point(2, 0, 0);
         AF.add(P2);
@@ -346,6 +347,13 @@ public class Test_ensemble {
         File F = new File ("Test.txt");
         CD.Enregistrement(F);
     }
+   
+    private static void Test_Letcure() throws IOException{
+        ClassDessin CD = Generation_Liste_Figure();
+        File F = new File ("Test.txt");
+        FormatRetourEnregistrement FRE = CD.Lecture_Fichier(F);
+        System.out.println(FRE);
+    }
     
     public static void main(String[] args) throws IOException{
         //Test_definition_classes();
@@ -359,7 +367,12 @@ public class Test_ensemble {
         //TestClassDessin();
         //Test_Tri_Figure();
         Test_Enregistrement();
+        Test_Letcure();
+        
     }
 
     
 }
+
+
+
