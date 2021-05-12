@@ -25,6 +25,11 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
         Couleur = Coul;
     }
     
+    public Figure(double r, double g, double b){
+        this(); //On créer une couleur donc on s'en fiche 
+        setColorRGB(r, g, b);
+    }
+    
     public static ArrayList<Figure> GenerationListFigure(){
         ArrayList<Figure> AR = new ArrayList<>();
         Point P0 = new Point(500, 500, 0);
