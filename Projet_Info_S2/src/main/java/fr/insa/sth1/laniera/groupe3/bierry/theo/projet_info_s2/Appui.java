@@ -109,5 +109,10 @@ public abstract class Appui extends Noeud {
         
         return P;
     }
+    
+    /*public double getAlphaNoeud(Point P, Segment S){
+        
+    }
+*/
 
 }
