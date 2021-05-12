@@ -76,7 +76,7 @@ public class ZoneConstructible {
 
     public String Enregistrement() {
         String S;
-        S = "ZoneConstructible ; "+ Xmin + "  ; "+ Xmax + " ; " + Ymin +" ; " + Ymax+ "\n";
+        S = "ZoneConstructible ;"+ Xmin + ";"+ Xmax + ";" + Ymin +";" + Ymax+ "\n";
         return S;
     }
 }
