@@ -24,6 +24,10 @@ public class Appui_Simple extends Appui{
         super(T, iden, alpha, S, FN, Couleur);
     }
     
+    public Appui_Simple(Treillis T, int iden, double alpha, Segment S, Force FN, double r, double g, double b){
+        super(T, iden, alpha, S, FN, r, g, b);
+    }
+    
     public Appui_Simple(double alpha, Segment S){
         super(alpha, S);
     }
