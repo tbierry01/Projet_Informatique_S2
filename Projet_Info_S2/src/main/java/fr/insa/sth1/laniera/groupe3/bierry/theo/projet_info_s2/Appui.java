@@ -33,6 +33,16 @@ public abstract class Appui extends Noeud {
         alpha = coeff;
         SegAppui = Seg;
     }
+    
+    public Appui(Treillis T, int Iden, double coeff, Segment Seg, Force FN, double r, double g, double b) {
+        super(T, Iden, FN);
+        if (coeff > 1 || coeff < 0) {
+            throw new Error("Le coefficient n'est pas dans le bon intervalle, celui ci doit être compris entre 0 et 1");
+        }
+        alpha = coeff;
+        SegAppui = Seg;
+        super.setColorRGB(r, g, b);
+    }
 
     public Appui(double coeff, Segment Seg) {
         super();
