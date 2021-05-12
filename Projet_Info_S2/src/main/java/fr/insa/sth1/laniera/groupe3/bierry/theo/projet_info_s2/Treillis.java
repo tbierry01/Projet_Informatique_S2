@@ -64,6 +64,12 @@ public class Treillis {
         return Id;
     }
     
+    public String Enregistrement(){
+        String res;
+        res = "Treillis ; "+this.getId();
+        return res;
+    }
+    
     
     
 
