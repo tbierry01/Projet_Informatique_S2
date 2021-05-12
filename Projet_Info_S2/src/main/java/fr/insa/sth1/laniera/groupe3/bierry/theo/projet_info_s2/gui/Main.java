@@ -9,7 +9,8 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
 
 /**
@@ -17,11 +18,13 @@ import javafx.stage.Stage;
  * @author theob
  */
 public class Main extends Application {
+    
+    private Label titre;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.setTitle("Le meilleur logiciel du monde entier voire même de l'Univers by moi");
+        primaryStage.setTitle("BRIDE");
 //      Scene scene = new Scene(new MainDessinPane());
         Scene scene = new Scene(new GlobalPane());
         primaryStage.setScene(scene);
