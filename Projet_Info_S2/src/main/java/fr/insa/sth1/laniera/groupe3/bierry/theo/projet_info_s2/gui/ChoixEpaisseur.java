@@ -11,7 +11,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
  */
 public class ChoixEpaisseur {
     
-     private String Epaisseur;
+    private String Epaisseur;
     
     public ChoixEpaisseur (String Epaisseur) {
         this.Epaisseur = Epaisseur;
