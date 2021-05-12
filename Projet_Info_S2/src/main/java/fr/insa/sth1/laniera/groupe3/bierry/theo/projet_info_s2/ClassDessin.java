@@ -133,6 +133,28 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
         return AS;
     }
+    
+    public ArrayList<Force> Recup_Force(ArrayList<Noeud> AN){ //Cette classe rend la liste de toutes les force dans les noeuds
+        ArrayList<Force> AF = new ArrayList<>();
+        for(Noeud N : AN){ //On parcours la liste du nom
+            Force F = N.getForceNoeud(); //On prend la force du noeud
+            if(!AF.contains(F)){ //On test si la force est déjà dan sla liste ou pas
+                AF.add(F); //Au cas ou, si la force n'est pas dans la liste, on l'ajoute
+            }
+        }
+        return AF;
+    }
+    
+    public ArrayList<TypeBarre> Recup_TypeBarre(ArrayList<Barre> AB){ //Cette classe rend la liste de tous les types de barres utilisés
+        ArrayList<TypeBarre> ATB = new ArrayList<>();
+        for(Barre B : AB){ //On parcours la liste de barre
+            TypeBarre TB = B.getType_de_Barre(); //On prend le type de la barre
+            if(!ATB.contains(TB)){ //On test si le type de barre est dans la liste
+                ATB.add(TB); //Au cas ou, s'il ne l'est pas, on l'ajoute
+            }
+        }
+        return ATB;
+    }
 
     public void Enregistrement(File file) throws IOException {
         //D'abord, on créer toutes les arraylistes des différentes figures
@@ -141,21 +163,21 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         ArrayList<Barre> AB = Tri_Des_Barres();
         ArrayList<Segment> AS = Tri_Des_Segment();
         //Maintenant que toutes les figures sont triées, on va faire apparaitre tous ce qui ne sont pas des figures mais qui doivent etre enregistré
-        ArrayList<Force> AF = new ArrayList<>();
-        for (Noeud N : AN) {
-            Force F = N.getForceNoeud();
-            if (!AF.contains(F)) { //On teste si la liste ne contient pas F, et au cas ou, on l'ajoute
-                AF.add(F);
-            }
-        }
+        ArrayList<Force> AF = Recup_Force(AN);
+        ArrayList<TypeBarre> ATB = Recup_TypeBarre(AB);
         //Une fois que l'on a toutes les listes, on peut commencer l'enregistrement
         try ( BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             if (AS.get(0) == null) {
                 throw new Error("Le fichier ne peut pas être sauvegardé, il faut au moins un segement");
             }
-            bw.append(AS.get(0).getTriangleTerrain().getZCTrinagleTerrain().Enregistrement()); //La, on enregistre d'abord la zone constructible
-            //TODO enregistrer aussi les type de barre
-            //TODO enregistrer aussi les Forces
+            bw.append(AS.get(0).getTriangleTerrain().getZCTriangleTerrain().Enregistrement()); //La, on enregistre d'abord la zone constructible
+            //TODO enregistrer aussi les type de barres
+            for (Force F : AF) {
+                bw.append(F.Enregistrement());
+            }
+            for(TypeBarre TB : ATB){
+                bw.append(TB.Enregistrement());
+            }
             for (Point P : AP) {
                 bw.append(P.Enregistrement());
             }
@@ -181,6 +203,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             Map<Integer, Point> MP = new TreeMap<>();
             Map<Integer, Treillis> MT = new TreeMap<>();
             Map<Integer, Force> MF = new TreeMap<>(); 
+            Map<Integer, TypeBarre> MTB = new TreeMap<>();
             while ((Ligne = br.readLine()) != null && !Ligne.equals("FIN")) {
                 String[] Contient = Ligne.split(";");
                 switch (Contient[0]) {
@@ -204,7 +227,18 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         Noeud_Simple NS = new Noeud_Simple(Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), MT.get(Integer.parseInt(Contient[2])), Integer.parseInt(Contient[1]), MF.get(Integer.parseInt(Contient[5])),Double.parseDouble(Contient[6]) , Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(NS);
                         break;
-                        //TODO case Force, APS, APD, Barre
+                        //TODO case APS, APD, Barre
+                    case "Force":
+                        Force F = new Force(Double.parseDouble(Contient[2]), Double.parseDouble(Contient[3]), Integer.parseInt(Contient[1]));
+                        MF.put(F.getId(), F);
+                        break;
+                    case "TypeBarre" :
+                        TypeBarre TB = new TypeBarre(Integer.parseInt(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6]);
+                        MTB.put(TB.getId(), TB);
+                        break;
+                    case "Barre" : 
+                        //Barre B = new Barre
+                        break;
                     default:
                         throw new Error("Le fichier n'est pas pris en compte, cet element n'est pas réalisable");
                 }
