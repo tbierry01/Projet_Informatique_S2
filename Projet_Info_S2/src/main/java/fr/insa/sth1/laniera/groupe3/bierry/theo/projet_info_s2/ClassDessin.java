@@ -204,6 +204,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             Map<Integer, Treillis> MT = new TreeMap<>();
             Map<Integer, Force> MF = new TreeMap<>(); 
             Map<Integer, TypeBarre> MTB = new TreeMap<>();
+            Map<Integer, Noeud> MN = new TreeMap<>();
             while ((Ligne = br.readLine()) != null && !Ligne.equals("FIN")) {
                 String[] Contient = Ligne.split(";");
                 switch (Contient[0]) {
@@ -226,8 +227,8 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                     case "NoeudSimple":
                         Noeud_Simple NS = new Noeud_Simple(Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), MT.get(Integer.parseInt(Contient[2])), Integer.parseInt(Contient[1]), MF.get(Integer.parseInt(Contient[5])),Double.parseDouble(Contient[6]) , Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(NS);
+                        MN.put(NS.getId(), NS);
                         break;
-                        //TODO case APS, APD, Barre
                     case "Force":
                         Force F = new Force(Double.parseDouble(Contient[2]), Double.parseDouble(Contient[3]), Integer.parseInt(Contient[1]));
                         MF.put(F.getId(), F);
@@ -237,9 +238,16 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         MTB.put(TB.getId(), TB);
                         break;
                     case "Barre" : 
-                        //Barre B = new Barre
+                        Barre B = new Barre(Integer.parseInt(Contient[1]), MN.get(Integer.parseInt(Contient[4])), MN.get(Integer.parseInt(Contient[5])), MT.get(Integer.parseInt(Contient[2])), MTB.get(Integer.parseInt(Contient[3])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
+                        AF.add(B);
+                        break;
+                    case "AppuiSimple" :
                         //TODO
                         break;
+                    case "AppuiDouble" :
+                        //TODO
+                        break;
+                        
                     default:
                         throw new Error("Le fichier n'est pas pris en compte, cet element n'est pas réalisable");
                 }
