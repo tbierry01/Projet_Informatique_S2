@@ -145,6 +145,7 @@ public class Controleur {
         nouveau.show();
     }
     
+    /*
     public void menuOuvrir(ActionEvent t) {
         FileChooser chooser = new FileChooser();
         File f = chooser.showOpenDialog(this.vue.getInStage());
@@ -169,6 +170,7 @@ public class Controleur {
             }
         }
     }
+*/
     
     private void realSauvegarder(File f) {
         try {
