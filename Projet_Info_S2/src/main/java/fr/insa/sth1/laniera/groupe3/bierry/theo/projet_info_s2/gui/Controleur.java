@@ -172,7 +172,7 @@ public class Controleur {
     
     private void realSauvegarder(File f) {
         try {
-            this.vue.getModel().sauvegarde(f);
+            this.vue.getModel().Enregistrement(f);
             this.vue.setCurFile(f);
             this.vue.getInStage().setTitle(f.getName());
         } catch (IOException ex) {
