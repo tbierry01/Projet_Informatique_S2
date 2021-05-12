@@ -12,8 +12,10 @@ import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  *
@@ -95,7 +97,10 @@ public class Controleur {
             vue.getModel().addFigure(new Segment(0, new Point(pos1[0], pos1[1]), new Point(px2, py2), vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
             this.vue.redrawAll();
             this.changeEtat(40);
-        } 
+        } else if (etat ==  50) {
+            double px = t.getX();           // A revoir
+            double py = t.getY();
+        }
     }
     
     void changeColor (Color value) {
@@ -121,5 +126,17 @@ public class Controleur {
     
     public void boutonSélectionner (ActionEvent t) {
         changeEtat(20);
+    }
+    
+    public void boutonAppuiSimple (ActionEvent t) {
+        changeEtat(50);
+    }
+    
+    public void menuNouveau (ActionEvent t) {
+        Stage nouveau = new Stage ();
+        nouveau.setTitle("Nouveau");
+        Scene sc = new Scene(new GlobalPane(nouveau));
+        nouveau.setScene(sc);
+        nouveau.show();
     }
 }
