@@ -24,7 +24,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.setTitle("BRIDE");
+        primaryStage.setTitle("BRIDGE");
 //      Scene scene = new Scene(new MainDessinPane());
         Scene scene = new Scene(new GlobalPane());
         primaryStage.setScene(scene);
