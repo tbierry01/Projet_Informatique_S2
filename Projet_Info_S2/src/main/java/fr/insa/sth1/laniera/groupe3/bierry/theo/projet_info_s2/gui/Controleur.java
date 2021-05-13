@@ -32,7 +32,7 @@ public class Controleur {
     private GlobalPane vue;
     
     private int etat;
-    private double pos1 [] = new double [2];
+    private Point pos1 [] = new Point [2];
     
     private List<Figure> selection;
     
@@ -89,26 +89,27 @@ public class Controleur {
                 vue.redrawAll();
             }
         } else if (etat == 30) {            // 30 correspond à l'état Point //
-            Point pClic = new Point (t.getX(), t.getY());
-            Figure proche = vue.getModel().plusProche(pClic, Double.MAX_VALUE); 
             double px = t.getX();
             double py = t.getY();
             ClassDessin model = this.vue.getModel();
             this.vue.getModel().addFigure(new Point(px, py, 0, vue.getCouleur().getValue()));
             this.vue.redrawAll();
         } else if (etat == 40) {            // 40 correspond à l'état Segment //
-            pos1[0] = t.getX();
-            pos1[1] = t.getY();
+            Point pClic = new Point (t.getX(), t.getY());
+            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE); 
+            pos1[0] = proche;
             changeEtat(41);                 // 41 correspond au 2e point de l'état Segment //
         } else if (etat == 41) {
-            double px2 = t.getX();
-            double py2 = t.getY();
-            vue.getModel().addFigure(new Segment(0, new Point(pos1[0], pos1[1]), new Point(px2, py2), vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+            Point pClic = new Point (t.getX(), t.getY());
+            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE); 
+            pos1[1] = proche;
+            vue.getModel().addFigure(new Segment(0, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
             this.vue.redrawAll();
             this.changeEtat(40);
-        } else if (etat ==  50) {
-            double px = t.getX();           // A revoir
-            double py = t.getY();
+        } else if (etat ==  80) {
+            Point pClic = new Point (t.getX(), t.getY());
+            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE); 
+            vue.getModel().addFigure(new Noeud_Simple ());
         }
     }
     
