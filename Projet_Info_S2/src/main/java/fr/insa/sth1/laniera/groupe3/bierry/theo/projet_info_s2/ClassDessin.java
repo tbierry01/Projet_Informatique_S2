@@ -106,6 +106,29 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             }
         }
     }
+    
+    public Noeud NoeudPlusProche(Point p, double distMax) {
+        if (Contenu.isEmpty()) {
+            return null;
+        } else {
+            ArrayList<Noeud> AS = Tri_Des_Noeuds();
+            Noeud Nmin = AS.get(0);
+            double min = Nmin.getDistance(p);
+            for (int i = 1; i < AS.size(); i++) {
+                Noeud Ncur = AS.get(i);
+                double cur = Ncur.getDistance(p);
+                if (cur < min) {
+                    min = cur;
+                    Nmin = Ncur;
+                }
+            }
+            if (min <= distMax) {
+                return Nmin;
+            } else {
+                return null;
+            }
+        }
+    }
 
     public void changeCouleur(Color value) {
         for (Figure f : Contenu) {
