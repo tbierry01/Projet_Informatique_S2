@@ -409,10 +409,12 @@ public class GlobalPane extends BorderPane {
         
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
-            if (Point.isDisabled() == true) {
+            if (Point.isDisabled() == false) { //TODO j'ai changé true ne false
                 controleur.boutonEtatNeutre(t);
+                System.out.println("1");
             } else {
                 controleur.boutonAppuiSimple(t);
+                System.out.println("2");
             }
             
             if (Barres.isDisabled() == true) {
@@ -420,11 +422,13 @@ public class GlobalPane extends BorderPane {
                 AppuiDouble.setDisable(false);
                 Noeuds.setDisable(false);
                 Sélectionner.setDisable(false);
+                System.out.println("3");
             } else {
                 Barres.setDisable(true);
                 AppuiDouble.setDisable(true);
                 Noeuds.setDisable(true);
                 Sélectionner.setDisable(true);
+                System.out.println("4");
             }
         });
         
@@ -434,7 +438,7 @@ public class GlobalPane extends BorderPane {
         
         AppuiDouble.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
-            if (Point.isDisabled() == true) {
+            if (Point.isDisabled() == false) { //TODO j'ai chaghé true en false
                 controleur.boutonEtatNeutre(t);
             } else {
                 controleur.boutonAppuiDouble(t);
