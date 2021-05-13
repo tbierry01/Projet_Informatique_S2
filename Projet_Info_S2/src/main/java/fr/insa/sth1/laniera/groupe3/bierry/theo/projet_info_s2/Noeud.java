@@ -28,6 +28,12 @@ public abstract class Noeud extends Figure {
         ForceNoeud = FN;
     }
     
+    public Noeud(int Iden, Color Couleur) {
+        super(Couleur);
+        Id = Iden;
+        Barres_Noeud = new ArrayList<>();
+    }
+    
     public Noeud(Treillis T, int Iden, Force FN) {
         this(T, Iden, FN, Color.BLACK); //Si l'on ne donne pas de couleur, elle est par défaut Noir
     }
