@@ -281,10 +281,13 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             return FRE;
         }
     }
+    
     /*
     public void ColorationSimulation(this.Resolution_ClassDessin()){
-        
+        ArrayList
     }
 
 */
+
+
 }
