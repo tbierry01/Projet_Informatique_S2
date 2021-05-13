@@ -707,5 +707,9 @@ public class GlobalPane extends BorderPane {
         return menu;
     }
     
+    public void setTextByMoi(String text) {
+        Aide.setText(text);
+    }
+    
 
 }
