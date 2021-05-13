@@ -83,6 +83,29 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             }
         }
     }
+    
+    public Figure PointPlusProche(Point p, double distMax) {
+        if (Contenu.isEmpty()) {
+            return null;
+        } else {
+            ArrayList<Point> AP = Tri_Des_Point();
+            Point Pmin = AP.get(0);
+            double min = Pmin.getDistance(p);
+            for (int i = 1; i < AP.size(); i++) {
+                Point Pcur = AP.get(i);
+                double cur = Pcur.getDistance(p);
+                if (cur < min) {
+                    min = cur;
+                    Pmin = Pcur;
+                }
+            }
+            if (min <= distMax) {
+                return Pmin;
+            } else {
+                return null;
+            }
+        }
+    }
 
     public void changeCouleur(Color value) {
         for (Figure f : Contenu) {
@@ -287,7 +310,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         ArrayList
     }
 
-*/
+*/                     
 
 
 }
