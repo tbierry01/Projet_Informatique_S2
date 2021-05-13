@@ -140,7 +140,7 @@ public class Controleur {
     
     public void menuNouveau (ActionEvent t) {
         Stage nouveau = new Stage ();
-        nouveau.setTitle("Nouveau");
+        nouveau.setTitle("BRIDGE");
         Scene sc = new Scene(new GlobalPane(nouveau));
         nouveau.setScene(sc);
         nouveau.show();
@@ -155,10 +155,8 @@ public class Controleur {
                 FormatRetourEnregistrement FRE = ClassDessin.Lecture_Fichier(f);
                 ArrayList<Figure> af = FRE.getAF();
                 ClassDessin cdOuvrir = new ClassDessin(af);
-/*                Figure lue = Figure.Lecture_Fichier(f);
-                Groupe glu = (Groupe)lue;
-*/               Stage nouveau = new Stage();
-                nouveau.setTitle(f.getName());
+                Stage nouveau = new Stage();
+                nouveau.setTitle("BRIDGE " + f.getName());
                 Scene sc = new Scene(new GlobalPane(nouveau, f, cdOuvrir));
                 nouveau.setScene(sc);
                 nouveau.show();
@@ -180,7 +178,7 @@ public class Controleur {
         try {
             this.vue.getModel().Enregistrement(f);
             this.vue.setCurFile(f);
-            this.vue.getInStage().setTitle(f.getName());
+            this.vue.getInStage().setTitle("BRIDGE" + f.getName());
         } catch (IOException ex) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Erreur");
