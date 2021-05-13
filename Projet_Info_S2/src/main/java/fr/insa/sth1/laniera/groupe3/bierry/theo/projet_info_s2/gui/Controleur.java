@@ -157,9 +157,11 @@ public class Controleur {
                 ClassDessin cdOuvrir = new ClassDessin(af);
                 Stage nouveau = new Stage();
                 nouveau.setTitle("BRIDGE " + f.getName());
-                Scene sc = new Scene(new GlobalPane(nouveau, f, cdOuvrir));
+                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir);
+                Scene sc = new Scene(GP);
                 nouveau.setScene(sc);
                 nouveau.show();
+                GP.redrawAll();
             } catch (Exception ex) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Erreur");
