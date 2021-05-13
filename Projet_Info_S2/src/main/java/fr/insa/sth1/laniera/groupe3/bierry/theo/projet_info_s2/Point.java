@@ -28,6 +28,11 @@ public class Point extends Figure{
         Segment_Point = new ArrayList<>();
     }
     
+    public Point(){
+        abscisse = 0;
+        ordonnee = 0;
+        Id = 0;
+    }
     public Point(double x, double y, int Iden, double  r, double  g, double  b) {
         this(x, y, Iden);
         super.setColorRGB(r, g, b);
@@ -119,12 +124,12 @@ public class Point extends Figure{
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
         Context.setFill(super.getColor());
-        Context.fillOval(abscisse - RAYON_POINT, ordonnee-RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
+        Context.fillOval(abscisse - 1.5*RAYON_POINT, ordonnee- 1.5*RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
     }
     
     public void DessineToiNomDeDieu(GraphicsContext Context, Color C) {
         Context.setFill(C);
-        Context.fillOval(abscisse - RAYON_POINT, ordonnee-RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
+        Context.fillOval(abscisse - 1.5*RAYON_POINT, ordonnee- 1.5*RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
     }
 
   
