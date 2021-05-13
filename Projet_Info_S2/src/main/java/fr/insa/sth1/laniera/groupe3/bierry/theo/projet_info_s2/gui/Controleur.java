@@ -8,6 +8,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.FormatRetourEnregistrement;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Noeud_Simple;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
 import java.io.File;
@@ -104,12 +105,19 @@ public class Controleur {
             Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE); 
             pos1[1] = proche;
             vue.getModel().addFigure(new Segment(0, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
-            this.vue.redrawAll();
-            this.changeEtat(40);
+            vue.redrawAll();
+            changeEtat(40);
+        } else if (etat == 50) {
+            
+        } else if (etat == 60) {
+            
+        } else if (etat == 70) {
+            
         } else if (etat ==  80) {
             Point pClic = new Point (t.getX(), t.getY());
             Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE); 
-            vue.getModel().addFigure(new Noeud_Simple ());
+            vue.getModel().addFigure(new Noeud_Simple());
+            vue.redrawAll();
         }
     }
     
