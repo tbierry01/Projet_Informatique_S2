@@ -458,7 +458,12 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les instructions attendues lorqu'on clique sur Barres -----------//
         
         Barres.setOnAction((t) -> {
-            Aide.setText("-------------------------------");
+            Aide.setText("Cliquez sur 2 noeurs pour créer une barre");
+            if (Noeuds.isDisabled() == true) {
+                controleur.boutonEtatNeutre(t);
+            } else {
+                controleur.boutonBarres(t);
+            }
             
             if (Noeuds.isDisabled() == true) {
                 AppuiDouble.setDisable(false);
