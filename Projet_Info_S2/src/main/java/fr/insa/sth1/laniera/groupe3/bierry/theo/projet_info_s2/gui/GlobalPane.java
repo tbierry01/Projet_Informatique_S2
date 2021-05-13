@@ -351,6 +351,7 @@ public class GlobalPane extends BorderPane {
         Terrain.setToggleGroup(gTerrainPont);
         Pont.setToggleGroup(gTerrainPont);
         Simulation.setToggleGroup(gTerrainPont);
+        Sélectionner.setToggleGroup(gTerrainPont);
         
         ToggleGroup gPont = new ToggleGroup();
         Noeuds.setToggleGroup(gPont);
