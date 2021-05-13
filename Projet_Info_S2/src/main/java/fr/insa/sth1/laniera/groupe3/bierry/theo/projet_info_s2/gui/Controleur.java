@@ -7,6 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.FormatRetourEnregistrement;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
 import java.io.File;
@@ -151,11 +152,14 @@ public class Controleur {
         File f = chooser.showOpenDialog(this.vue.getInStage());
         if (f != null) {
             try {
-                Figure lue = Figure.Lecture_Fichier(f);
+                FormatRetourEnregistrement FRE = ClassDessin.Lecture_Fichier(f);
+                ArrayList<Figure> af = FRE.getAF();
+                ClassDessin cdOuvrir = new ClassDessin(af);
+/*                Figure lue = Figure.Lecture_Fichier(f);
                 Groupe glu = (Groupe)lue;
-                Stage nouveau = new Stage();
+*/               Stage nouveau = new Stage();
                 nouveau.setTitle(f.getName());
-                Scene sc = new Scene(new MainPane(nouveau, f, glu));
+                Scene sc = new Scene(new GlobalPane(nouveau, f, cdOuvrir));
                 nouveau.setScene(sc);
                 nouveau.show();
             } catch (Exception ex) {
