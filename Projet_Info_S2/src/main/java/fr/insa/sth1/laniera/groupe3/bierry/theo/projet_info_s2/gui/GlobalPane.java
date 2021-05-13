@@ -89,6 +89,7 @@ public class GlobalPane extends BorderPane {
     }
     
     public GlobalPane(Stage inStage, File fromFile, ClassDessin model) {
+        this.inStage = inStage;
         this.model = model;
         this.controleur = new Controleur(this);
 
