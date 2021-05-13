@@ -120,39 +120,9 @@ public abstract class Appui extends Noeud {
         return P;
     }
     
-    /*
-    public Appui CreationAppuiPossibleOuPas(Segment S, Point P){ //Cette méthode permet de savoir si la création d'un appui est possible ou pas en focntion de ou l'utilisateur clique
-        Point [] Ext = new Point [2]; //On met dans un tableau les deux extremités du segment
-        Ext[0] = S.getExtremite(0);
-        Ext[1] = S.getExtremite(1);
-        //On va voir l'orientation du segment
-        String Orientation;
-        if(Ext[0].getAbscisse() < Ext[1].getAbscisse() && Ext[0].getOrdonnee() != Ext[1].getOrdonnee() ){
-            Orientation= "Vers la droite";
-        } else if(Ext[0].getAbscisse() > Ext[1].getAbscisse() && Ext[0].getOrdonnee() != Ext[1].getOrdonnee()){
-            Orientation = "Vers la gauche";
-        } else if(Ext[0].getAbscisse() == Ext[1].getAbscisse() && Ext[0].getOrdonnee() != Ext[1].getOrdonnee() ){
-            Orientation = "Verticale";
-        } else if(Ext[0].getOrdonnee() == Ext[1].getOrdonnee()){
-            Orientation = "Horizontale";
-        } else{
-            throw new Error ("Ce n'est pas un dessin");
-        }
-        
-        switch (Orientation) {
-            case "Vers la droite":
-                if(P.getAbscisse() < Ext[0].getAbscisse()){
-                    return null;
-                } else{
-                    EquationDroite ED = S.EquationSegment();
-                    
-                }
-                break;
-            default:
-                throw new AssertionError();
-        }
-    }
-    */
+    
+    
+    
     
     /*public double getAlphaNoeud(Point P, Segment S){
         TODO
