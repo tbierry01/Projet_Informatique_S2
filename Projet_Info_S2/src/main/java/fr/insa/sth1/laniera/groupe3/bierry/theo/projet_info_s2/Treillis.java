@@ -26,6 +26,13 @@ public class Treillis {
         ZC.setTreillisZoneConstructible(this);
         
     }
+    
+    public Treillis(int Iden, ArrayList<Noeud> AN, ArrayList<Barre> AB) {
+        Id = Iden;
+        Barre_Treillis = AB;
+        Noeuds_Treillis = AN;
+        
+    }
 
     public String toString() {
         String res;
