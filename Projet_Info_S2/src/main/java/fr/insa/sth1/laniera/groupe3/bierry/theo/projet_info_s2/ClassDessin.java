@@ -129,7 +129,51 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             }
         }
     }
+    
+     public Segment SegmentPlusProche(Point p, double distMax) {
+        if (Contenu.isEmpty()) {
+            return null;
+        } else {
+            ArrayList<Segment> AS = Tri_Des_Segment();
+            Segment Smin = AS.get(0);
+            double min = Smin.getDistance(p);
+            for (int i = 1; i < AS.size(); i++) {
+                Segment Scur = AS.get(i);
+                double cur = Scur.getDistance(p);
+                if (cur < min) {
+                    min = cur;
+                    Smin = Scur;
+                }
+            }
+            if (min <= distMax) {
+                return Smin;
+            } else {
+                return null;
+            }
+        }
+    }
 
+    public Treillis getTreillisCD(){ //Cette classe permet de généré le treillis d'une ClasseDessin et de en même temps mettre le treillis de ses composants
+        ArrayList<Noeud> AN = new ArrayList<>();
+        ArrayList<Barre> AB = new ArrayList<>();
+        //D'abord on établi le treillis
+        for(Figure F : Contenu){
+            if (F instanceof Noeud) {
+                AN.add((Noeud) F);
+            } else if(F instanceof Barre){
+                AB.add((Barre) F);
+            }
+        }
+        Treillis T = new Treillis(0, AN, AB);
+        //Et maintenant on met bien la double relation en mettant tous les treillis des figure à T
+        for(Barre B : T.getBarre_Treillis()){
+            B.setTreillisBarre(T);
+        }
+        for(Noeud N : T.getNoeuds_Treillis()){
+            N.setTreillisNoeud(T);
+        }
+        return T;
+    }
     public void changeCouleur(Color value) {
         for (Figure f : Contenu) {
             f.setColor(value);
