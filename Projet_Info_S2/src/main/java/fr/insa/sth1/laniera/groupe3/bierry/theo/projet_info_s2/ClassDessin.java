@@ -83,7 +83,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             }
         }
     }
-    
+
     public Point PointPlusProche(Point p, double distMax) {
         if (Contenu.isEmpty()) {
             return null;
@@ -106,7 +106,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             }
         }
     }
-    
+
     public Noeud NoeudPlusProche(Point p, double distMax) {
         if (Contenu.isEmpty()) {
             return null;
@@ -179,23 +179,23 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
         return AS;
     }
-    
-    public ArrayList<Force> Recup_Force(ArrayList<Noeud> AN){ //Cette classe rend la liste de toutes les force dans les noeuds
+
+    public ArrayList<Force> Recup_Force(ArrayList<Noeud> AN) { //Cette classe rend la liste de toutes les force dans les noeuds
         ArrayList<Force> AF = new ArrayList<>();
-        for(Noeud N : AN){ //On parcours la liste du nom
+        for (Noeud N : AN) { //On parcours la liste du nom
             Force F = N.getForceNoeud(); //On prend la force du noeud
-            if(!AF.contains(F)){ //On test si la force est déjà dan sla liste ou pas
+            if (!AF.contains(F)) { //On test si la force est déjà dan sla liste ou pas
                 AF.add(F); //Au cas ou, si la force n'est pas dans la liste, on l'ajoute
             }
         }
         return AF;
     }
-    
-    public ArrayList<TypeBarre> Recup_TypeBarre(ArrayList<Barre> AB){ //Cette classe rend la liste de tous les types de barres utilisés
+
+    public ArrayList<TypeBarre> Recup_TypeBarre(ArrayList<Barre> AB) { //Cette classe rend la liste de tous les types de barres utilisés
         ArrayList<TypeBarre> ATB = new ArrayList<>();
-        for(Barre B : AB){ //On parcours la liste de barre
+        for (Barre B : AB) { //On parcours la liste de barre
             TypeBarre TB = B.getType_de_Barre(); //On prend le type de la barre
-            if(!ATB.contains(TB)){ //On test si le type de barre est dans la liste
+            if (!ATB.contains(TB)) { //On test si le type de barre est dans la liste
                 ATB.add(TB); //Au cas ou, s'il ne l'est pas, on l'ajoute
             }
         }
@@ -221,7 +221,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             for (Force F : AF) {
                 bw.append(F.Enregistrement());
             }
-            for(TypeBarre TB : ATB){
+            for (TypeBarre TB : ATB) {
                 bw.append(TB.Enregistrement());
             }
             for (Point P : AP) {
@@ -240,8 +240,8 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             bw.close();
         }
     }
-    
-    public Matrice Resolution_ClassDessin(){ //Cette classe permet de resoudre entièrement le système et renvoie les solutions
+
+    public Matrice Resolution_ClassDessin() { //Cette classe permet de resoudre entièrement le système et renvoie les solutions
         ArrayList<Noeud> AN = Tri_Des_Noeuds(); //On prend tous les noeuds qui sont parmis les figures
         ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(AN);
         Matrice M = RCN.Resolution();
@@ -255,7 +255,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             ArrayList<Figure> AF = new ArrayList<>();
             Map<Integer, Point> MP = new TreeMap<>();
             Map<Integer, Treillis> MT = new TreeMap<>();
-            Map<Integer, Force> MF = new TreeMap<>(); 
+            Map<Integer, Force> MF = new TreeMap<>();
             Map<Integer, TypeBarre> MTB = new TreeMap<>();
             Map<Integer, Noeud> MN = new TreeMap<>();
             Map<Integer, Segment> MS = new TreeMap<>();
@@ -263,8 +263,8 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             while ((Ligne = br.readLine()) != null && !Ligne.equals("FIN")) {
                 String[] Contient = Ligne.split(";");
                 for (int i = 0; i < Contient.length; i++) {
-                    System.out.println("Contient["+i+"] "+Contient[i]);;
-                    
+                    System.out.println("Contient[" + i + "] " + Contient[i]);;
+
                 }
 //                for (int i = 1; i < Contient.length; i++) {
 //                    System.out.println("Contient["+i+"] "+(int) Double.parseDouble(Contient[i]));
@@ -290,7 +290,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         MS.put(S.getId(), S);
                         break;
                     case "NoeudSimple ":
-                        Noeud_Simple NS = new Noeud_Simple(Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), MT.get((int) Double.parseDouble(Contient[2])), (int) Double.parseDouble(Contient[1]), MF.get((int) Double.parseDouble(Contient[5])),Double.parseDouble(Contient[6]) , Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
+                        Noeud_Simple NS = new Noeud_Simple(Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), MT.get((int) Double.parseDouble(Contient[2])), (int) Double.parseDouble(Contient[1]), MF.get((int) Double.parseDouble(Contient[5])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(NS);
                         MN.put(NS.getId(), NS);
                         break;
@@ -298,42 +298,40 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         Force F = new Force(Double.parseDouble(Contient[2]), Double.parseDouble(Contient[3]), (int) Double.parseDouble(Contient[1]));
                         MF.put(F.getId(), F);
                         break;
-                    case "TypeBarre " :
+                    case "TypeBarre ":
                         TypeBarre TB = new TypeBarre((int) Double.parseDouble(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6]);
                         MTB.put(TB.getId(), TB);
                         break;
-                    case "Barre " : 
+                    case "Barre ":
                         Barre B = new Barre((int) Double.parseDouble(Contient[1]), MN.get((int) Double.parseDouble(Contient[4])), MN.get((int) Double.parseDouble(Contient[5])), MT.get((int) Double.parseDouble(Contient[2])), MTB.get((int) Double.parseDouble(Contient[3])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(B);
                         break;
-                    case "AppuiSimple " :
+                    case "AppuiSimple ":
                         Appui_Simple AS = new Appui_Simple(MT.get((int) Double.parseDouble(Contient[2])), (int) Double.parseDouble(Contient[1]), Double.parseDouble(Contient[4]), MS.get((int) Double.parseDouble(Contient[3])), MF.get((int) Double.parseDouble(Contient[5])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(AS);
                         MN.put(AS.getId(), AS);
                         break;
-                    case "AppuiDouble " :
+                    case "AppuiDouble ":
                         Appui_Double AD = new Appui_Double(MT.get((int) Double.parseDouble(Contient[2])), (int) Double.parseDouble(Contient[1]), Double.parseDouble(Contient[4]), MS.get((int) Double.parseDouble(Contient[3])), MF.get((int) Double.parseDouble(Contient[5])), Double.parseDouble(Contient[6]), Double.parseDouble(Contient[7]), Double.parseDouble(Contient[8]));
                         AF.add(AD);
                         MN.put(AD.getId(), AD);
                         break;
-                        
+
                     default:
                         throw new Error("Le fichier n'est pas pris en compte, cet element n'est pas réalisable");
                 }
 
             }
             FRE.setAF(AF);
-            
+
             return FRE;
         }
     }
-    
+
     /*
     public void ColorationSimulation(this.Resolution_ClassDessin()){
         ArrayList
     }
 
-*/                     
-
-
+     */
 }
