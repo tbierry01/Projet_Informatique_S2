@@ -50,26 +50,29 @@ public class Controleur {
         } else if (nouvelEtat == 41) {                  // On est dans l'état Segment pour créer le 2e point //
 //            this.vue.getPoint().setDisable(true);
         } else if (nouvelEtat == 50) {                  // On est dans l'état Appui Simple donc on désactive les boutons Appui Double, Barres et Noeuds  //
-            this.vue.getAppuiDouble().setDisable(true);
+/*            this.vue.getAppuiDouble().setDisable(true);
             this.vue.getBarres().setDisable(true);
             this.vue.getNoeuds().setDisable(true);
-        } else if (nouvelEtat == 60) {                  // On est dans l'état Appui Double donc on désactive les boutons Appui Simple, Barres et Noeuds  //
-            this.vue.getAppuiSimple().setDisable(true);
+*/        } else if (nouvelEtat == 60) {                  // On est dans l'état Appui Double donc on désactive les boutons Appui Simple, Barres et Noeuds  //
+/*            this.vue.getAppuiSimple().setDisable(true);
             this.vue.getBarres().setDisable(true);
             this.vue.getNoeuds().setDisable(true);
-        } else if (nouvelEtat == 70) {                  // On est dans l'état Barres donc on désactive les boutons Appui Simple, Appui Double et Noeuds  //
-            this.vue.getAppuiDouble().setDisable(true);
+*/        } else if (nouvelEtat == 70) {                  // On est dans l'état Barres donc on désactive les boutons Appui Simple, Appui Double et Noeuds  //
+/*            this.vue.getAppuiDouble().setDisable(true);
             this.vue.getAppuiSimple().setDisable(true);
             this.vue.getNoeuds().setDisable(true);
-        } else if (nouvelEtat == 80) {                  // On est dans l'état Noeuds donc on désactive les boutons Appui Simple, Appui Double et Barres  //
-            this.vue.getAppuiSimple().setDisable(true);
+*/        } else if (nouvelEtat == 80) {                  // On est dans l'état Noeuds donc on désactive les boutons Appui Simple, Appui Double et Barres  //
+/*            this.vue.getAppuiSimple().setDisable(true);
             this.vue.getAppuiDouble().setDisable(true);
             this.vue.getBarres().setDisable(true);
-        }
+ */       }
         this.etat = nouvelEtat;
     }
 
     void clicDansZoneDessin(MouseEvent t) {
+        if(etat == 10) {
+            System.out.println("Je suis là");
+        }
         if (etat == 20) {
             Point pClic = new Point (t.getX(), t.getY());
             Figure proche = vue.getModel().plusProche(pClic, Double.MAX_VALUE); 
@@ -115,8 +118,9 @@ public class Controleur {
             
         } else if (etat ==  80) {
             Point pClic = new Point (t.getX(), t.getY());
-            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE); 
-            vue.getModel().addFigure(new Noeud_Simple());
+            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
+            System.out.println("je mets un petit message " + proche);
+            vue.getModel().addFigure(new Noeud_Simple(proche, 0, vue.getCouleur().getValue()));
             vue.redrawAll();
         }
     }
@@ -128,6 +132,10 @@ public class Controleur {
             }
             vue.redrawAll();
         }
+    }
+    
+    void boutonEtatNeutre (ActionEvent t) {
+        changeEtat(10);
     }
     
     void boutonPoint (ActionEvent t) {
@@ -148,6 +156,10 @@ public class Controleur {
     
     public void boutonAppuiSimple (ActionEvent t) {
         changeEtat(50);
+    }
+    
+    public void boutonNoeuds (ActionEvent t) {
+        changeEtat(80);
     }
     
     public void menuNouveau (ActionEvent t) {
