@@ -32,6 +32,7 @@ public abstract class Noeud extends Figure {
         super(Couleur);
         Id = Iden;
         Barres_Noeud = new ArrayList<>();
+        ForceNoeud = new Force();
     }
     
     public Noeud(Treillis T, int Iden, Force FN) {
