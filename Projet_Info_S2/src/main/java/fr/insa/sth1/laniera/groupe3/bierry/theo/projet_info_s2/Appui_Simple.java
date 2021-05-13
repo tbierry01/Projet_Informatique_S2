@@ -88,7 +88,7 @@ public class Appui_Simple extends Appui {
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
         Context.setFill(super.getColor());
-        Context.fillOval(this.getPos().getAbscisse() - RAYON_POINT, this.getPos().getOrdonnee() - RAYON_POINT, 5 * RAYON_POINT, 5 * RAYON_POINT);
+        Context.fillOval(this.getPos().getAbscisse() - 2.5*RAYON_POINT, this.getPos().getOrdonnee() - 2.5*RAYON_POINT, 5 * RAYON_POINT, 5 * RAYON_POINT);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Appui_Simple extends Appui {
         return S;
     }
 
-    public Appui_Simple CreationAppuiPossibleOuPas(Segment S, Point P) { //Cette méthode permet de savoir si la création d'un appui est possible ou pas en focntion de ou l'utilisateur clique
+    public static Appui_Simple CreationAppuiPossibleOuPas(Segment S, Point P) { //Cette méthode permet de savoir si la création d'un appui est possible ou pas en focntion de ou l'utilisateur clique
         Point[] Ext = new Point[2]; //On met dans un tableau les deux extremités du segment
         Ext[0] = S.getExtremite(0);
         Ext[1] = S.getExtremite(1);
