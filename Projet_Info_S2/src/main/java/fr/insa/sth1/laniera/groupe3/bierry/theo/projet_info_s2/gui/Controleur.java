@@ -110,9 +110,15 @@ public class Controleur {
             Point pClic = new Point (t.getX(), t.getY());
             Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE); 
             pos1[1] = proche;
-            vue.getModel().addFigure(new Segment(0, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
-            vue.redrawAll();
-            changeEtat(40);
+            if(pos1[0] == pos1[1]) {
+                changeEtat(41);
+                vue.setTextByMoi("Vous ne pouvez pas créer de segment entre deux points en même position");
+            } else {
+                vue.getModel().addFigure(new Segment(0, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                vue.redrawAll();
+                vue.setTextByMoi("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
+                changeEtat(40);
+            }
         } else if (etat == 50) {
             
         } else if (etat == 60) {
@@ -126,9 +132,15 @@ public class Controleur {
             Point pClic = new Point (t.getX(), t.getY());
             Noeud proche = vue.getModel().NoeudPlusProche(pClic, Double.MAX_VALUE); 
             pos2[1] = proche;
-            vue.getModel().addFigure(new Barre(0, pos2[0], pos2[1]));     // Changer 0 par l'indentificateur //
-            vue.redrawAll();
-            changeEtat(70);
+            if (pos2[0] == pos2[1]) {
+                changeEtat(70);
+                vue.setTextByMoi("Vous ne pouvez pas créer de barre entre deux noeuds en même position");
+            } else {
+                vue.getModel().addFigure(new Barre(0, pos2[0], pos2[1]));     // Changer 0 par l'indentificateur //
+                vue.redrawAll();
+                vue.setTextByMoi("Placez 2 points pour créer une barre ou reliez 2 noeuds déjà existants");
+                changeEtat(70);
+            }
         } else if (etat ==  80) {
             Point pClic = new Point (t.getX(), t.getY());
             vue.getModel().addFigure(new Noeud_Simple(pClic, 0, vue.getCouleur().getValue()));
