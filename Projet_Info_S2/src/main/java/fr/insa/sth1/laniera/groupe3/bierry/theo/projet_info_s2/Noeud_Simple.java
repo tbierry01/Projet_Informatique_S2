@@ -27,6 +27,11 @@ public class Noeud_Simple extends Noeud{
         this.Pos = P;
     }
     
+    public Noeud_Simple (Point P, int Id, Color Couleur){
+        super(Id, Couleur);
+        this.Pos = P;
+    }
+    
     public Noeud_Simple (Point P, Treillis T, int Id, Force FN, double r, double g , double b){
         this(P, T, Id, FN);
         super.setColorRGB(r, g, b);
