@@ -42,7 +42,7 @@ public class MainMenu extends MenuBar{
         sauvegarderSous.setOnAction((t) -> {
             main.getControleur().menuSauvegarderSous(t);
         });
-        fichier.getItems().addAll(nouveau,ouvrir, sauvegarder,sauvegarderSous);
+        fichier.getItems().addAll(nouveau, ouvrir, sauvegarder, sauvegarderSous);
         
         
         Menu aide = new Menu ("Aide");
