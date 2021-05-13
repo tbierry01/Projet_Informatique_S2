@@ -42,6 +42,11 @@ public class Noeud_Simple extends Noeud{
 
     }
     
+    public Noeud_Simple (double x, double y, int Id, Color Couleur){
+        this(new Point(x, y), Id, Couleur);
+
+    }
+    
     public Noeud_Simple (Point P){
         super();
         this.Pos = P;
