@@ -148,7 +148,7 @@ public class Barre extends Figure {
     public String Enregistrement() {
         String S;
         double Coul[] = super.getColorTab();
-        S = "Barre ; "+Id+ " ; " + Treillis_Barre.getId()+ " ; "+Type_de_Barre.getId()+" ; "+Noeuds_Barre[0].getId()+" ; "+Noeuds_Barre[1].getId()+" ;"+Coul[0]+" ; " + Coul[1] + " ; " +Coul[2] + "\n";
+        S = "Barre ; "+Id+ " ; " + Treillis_Barre.getId()+ " ; "+Type_de_Barre.getId()+" ; "+Noeuds_Barre[0].getId()+" ; "+Noeuds_Barre[1].getId()+" ; "+Coul[0]+" ; " + Coul[1] + " ; " +Coul[2] + "\n";
         return S;
     }
 
