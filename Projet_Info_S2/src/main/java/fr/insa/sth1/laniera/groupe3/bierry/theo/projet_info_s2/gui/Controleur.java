@@ -151,11 +151,11 @@ public class Controleur {
         File f = chooser.showOpenDialog(this.vue.getInStage());
         if (f != null) {
             try {
-                Figure lue = Figure.lecture(f);
-                Groupe glu = (Groupe) lue;
+                Figure lue = Figure.Lecture_Fichier(f);
+                Groupe glu = (Groupe)lue;
                 Stage nouveau = new Stage();
                 nouveau.setTitle(f.getName());
-                Scene sc = new Scene(new MainPane(nouveau, f, glu), 800, 600);
+                Scene sc = new Scene(new MainPane(nouveau, f, glu));
                 nouveau.setScene(sc);
                 nouveau.show();
             } catch (Exception ex) {
