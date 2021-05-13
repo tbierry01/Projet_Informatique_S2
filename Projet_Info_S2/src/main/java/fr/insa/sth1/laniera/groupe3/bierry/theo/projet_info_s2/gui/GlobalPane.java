@@ -74,6 +74,8 @@ public class GlobalPane extends BorderPane {
     private int IDBarres;
     private int IDNoeuds;
     
+    private MainMenu menu;
+    
     /*public GlobalPane () {
         this(new ClassDessin());  
     }
@@ -229,11 +231,14 @@ public class GlobalPane extends BorderPane {
         HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation(), iconINSA);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
+        
+        this.menu = new MainMenu(this);
+        VBox barreMenus = new VBox (menu, entete);
 
         Background bgBlue = new Background(new BackgroundFill(Color.CADETBLUE, CornerRadii.EMPTY, null));
-        entete.setBackground(bgBlue);
+        barreMenus.setBackground(bgBlue);
 
-        this.setTop(entete);
+        this.setTop(barreMenus);
         
         
         
@@ -510,7 +515,8 @@ public class GlobalPane extends BorderPane {
         
         Sélectionner.setOnAction((t) -> {
             this.controleur.boutonSélectionner(t);
-        });      
+        });   
+        
     }
     
     
@@ -620,6 +626,10 @@ public class GlobalPane extends BorderPane {
     
     public Stage getInStage() {
         return inStage;
+    }
+    
+    public MainMenu getMenu() {
+        return menu;
     }
     
 
