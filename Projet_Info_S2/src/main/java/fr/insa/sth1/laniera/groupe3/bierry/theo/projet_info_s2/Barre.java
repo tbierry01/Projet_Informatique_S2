@@ -151,4 +151,18 @@ public class Barre extends Figure {
         return S;
     }
 
+    public double getEffort(Matrice M){
+        return M.get(Id, 0);
+    }
+    
+    public boolean isBroken(Matrice M){
+        
+        if (Type_de_Barre.getRmC() > getEffort(M) || Type_de_Barre.getRmT() < getEffort(M)) {
+            //super.setColor(Color.RED);
+            return true;
+        } else {
+            //super.setColor(Color.GREEN);
+            return false;
+        }
+    }
 }
