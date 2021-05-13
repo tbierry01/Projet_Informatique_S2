@@ -195,7 +195,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
     }
 
-    public FormatRetourEnregistrement Lecture_Fichier(File file) throws IOException {
+    public static FormatRetourEnregistrement Lecture_Fichier(File file) throws IOException {
         try ( BufferedReader br = new BufferedReader(new FileReader(file))) {
             FormatRetourEnregistrement FRE = new FormatRetourEnregistrement();
             String Ligne;
