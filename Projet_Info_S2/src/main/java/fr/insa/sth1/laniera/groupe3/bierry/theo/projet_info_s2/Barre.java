@@ -58,6 +58,7 @@ public class Barre extends Figure {
         Noeuds_Barre[1] = N2;
         N1.addBarre(this);
         N2.addBarre(this);
+        Type_de_Barre = new TypeBarre(0);
     }
 
     public Barre(Noeud N1, Noeud N2) {
@@ -164,5 +165,9 @@ public class Barre extends Figure {
             //super.setColor(Color.GREEN);
             return false;
         }
+    }
+
+    public void setTreillisBarre(Treillis T) {
+        Treillis_Barre = T;
     }
 }
