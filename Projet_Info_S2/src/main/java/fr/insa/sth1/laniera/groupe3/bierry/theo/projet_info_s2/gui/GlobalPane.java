@@ -49,7 +49,7 @@ public class GlobalPane extends BorderPane {
     private Label Positions;
     private Label X;
     private Label Y;
-    private Button Simulation;
+    private ToggleButton Simulation;
     private TextField Abscisse;
     private TextField Ordonnee;
     private Label Aide;
@@ -98,7 +98,7 @@ public class GlobalPane extends BorderPane {
         this.Positions = new Label("Position");
         this.X = new Label("X : ");
         this.Y = new Label("Y : ");
-        this.Simulation = new Button("Simulation");
+        this.Simulation = new ToggleButton("Simulation");
         this.Abscisse = new TextField();
         this.Ordonnee = new TextField();
         this.Aide = new Label();
@@ -195,7 +195,7 @@ public class GlobalPane extends BorderPane {
     //----------- Bouton Pont -----------//
         
         ImageView iconSimulation = new ImageView(new Image("file:Image_Simulation.png"));
-        this.Simulation = new Button("Simulation", iconSimulation);
+        this.Simulation = new ToggleButton("Simulation", iconSimulation);
         this.Simulation.setContentDisplay(ContentDisplay.TOP);
         this.Simulation.setPrefSize(100, 100);
         
@@ -349,6 +349,7 @@ public class GlobalPane extends BorderPane {
         ToggleGroup gTerrainPont = new ToggleGroup();
         Terrain.setToggleGroup(gTerrainPont);
         Pont.setToggleGroup(gTerrainPont);
+        Simulation.setToggleGroup(gTerrainPont);
         
         ToggleGroup gPont = new ToggleGroup();
         Noeuds.setToggleGroup(gPont);
@@ -515,7 +516,35 @@ public class GlobalPane extends BorderPane {
         
         Sélectionner.setOnAction((t) -> {
             this.controleur.boutonSélectionner(t);
-        });   
+        }); 
+        
+        
+//----------- Concerne les instructions attendues lorqu'on clique sur Terrain -----------//
+
+        Nouveau.setOnAction((t) -> {
+            controleur.menuNouveau(t);
+        });
+ 
+        
+//----------- Concerne les instructions attendues lorqu'on clique sur Ouvrir -----------//  
+        
+        Ouvrir.setOnAction((t) -> {
+            controleur.menuOuvrir(t);
+        });
+        
+        
+//----------- Concerne les instructions attendues lorqu'on clique sur Nouveau -----------//  
+        
+        Nouveau.setOnAction((t) -> {
+            controleur.menuNouveau(t);
+        });
+        
+        
+//----------- Concerne les instructions attendues lorqu'on clique sur Sauvegarder -----------//  
+        
+        Enregistrer.setOnAction((t) -> {
+            controleur.menuSauvegarder(t);
+        });        
         
     }
     
@@ -598,7 +627,7 @@ public class GlobalPane extends BorderPane {
     /**
      * @return the Simulation
      */
-    public Button getSimulation() {
+    public ToggleButton getSimulation() {
         return Simulation;
     }
 
