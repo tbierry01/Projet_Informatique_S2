@@ -71,7 +71,8 @@ public class Controleur {
     void clicDansZoneDessin(MouseEvent t) {
         if (etat == 20) {
             Point pClic = new Point (t.getX(), t.getY());
-            Figure proche = vue.getModel().plusProche(pClic, 10); 
+            Figure proche = vue.getModel().plusProche(pClic, Double.MAX_VALUE); 
+            System.out.println("je mets un petit message " + proche);
             if(proche != null) {
                 if(t.isShiftDown()) {
                     selection.add(proche);
@@ -88,10 +89,12 @@ public class Controleur {
                 vue.redrawAll();
             }
         } else if (etat == 30) {            // 30 correspond à l'état Point //
+            Point pClic = new Point (t.getX(), t.getY());
+            Figure proche = vue.getModel().plusProche(pClic, Double.MAX_VALUE); 
             double px = t.getX();
             double py = t.getY();
             ClassDessin model = this.vue.getModel();
-            model.addFigure(new Point(px, py, 0, vue.getCouleur().getValue()));
+            this.vue.getModel().addFigure(new Point(px, py, 0, vue.getCouleur().getValue()));
             this.vue.redrawAll();
         } else if (etat == 40) {            // 40 correspond à l'état Segment //
             pos1[0] = t.getX();
