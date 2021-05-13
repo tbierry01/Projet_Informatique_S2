@@ -50,7 +50,7 @@ public class Barre extends Figure {
         N2.addBarre(this);
         T.addBarre_Treillis(this);
     }
-    
+                                                                                // TO DO : FAIRE UN CONSTRUCTEUR AVEC ID, N1, N2 ET COULEUR
     public Barre(int Iden, Noeud N1, Noeud N2) {
         Id = Iden;
         Noeuds_Barre = new Noeud[2];
