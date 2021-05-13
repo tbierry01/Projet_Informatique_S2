@@ -84,7 +84,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
     }
     
-    public Figure PointPlusProche(Point p, double distMax) {
+    public Point PointPlusProche(Point p, double distMax) {
         if (Contenu.isEmpty()) {
             return null;
         } else {
