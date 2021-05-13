@@ -16,7 +16,7 @@ public class Segment extends Figure{
     
     private int Id;
     private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
-    private ZoneConstructible ZC;
+    private ZoneConstructible ZC = new ZoneConstructible(0, 0, 100, 100);
     
     public Segment (int Iden, Point P1, Point P2, Color Couleur){
         super(Couleur);
