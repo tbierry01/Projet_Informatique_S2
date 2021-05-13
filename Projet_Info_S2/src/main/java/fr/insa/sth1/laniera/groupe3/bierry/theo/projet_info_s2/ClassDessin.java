@@ -167,7 +167,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         ArrayList<TypeBarre> ATB = Recup_TypeBarre(AB);
         //Une fois que l'on a toutes les listes, on peut commencer l'enregistrement
         try ( BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            if (AS.get(0) == null) {
+            if (AS.size() == 0) {
                 throw new Error("Le fichier ne peut pas être sauvegardé, il faut au moins un segement");
             }
             bw.append(AS.get(0).getZoneConstructible().Enregistrement()); //La, on enregistre d'abord la zone constructible
