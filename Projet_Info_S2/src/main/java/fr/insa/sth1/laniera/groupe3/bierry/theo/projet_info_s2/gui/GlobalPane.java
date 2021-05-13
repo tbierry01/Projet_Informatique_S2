@@ -365,7 +365,13 @@ public class GlobalPane extends BorderPane {
        
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
-            controleur.boutonPoint(t);
+            
+            if (Segment.isDisabled() == true) {
+                controleur.boutonEtatNeutre(t);
+            } else {
+                controleur.boutonPoint(t);
+            }
+            
             
             if (Segment.isDisabled() == true) {
                 Segment.setDisable(false);
@@ -382,7 +388,11 @@ public class GlobalPane extends BorderPane {
         
         Segment.setOnAction((t) -> {
             Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
-            controleur.boutonSegment(t);
+            if (Point.isDisabled() == true) {
+                controleur.boutonEtatNeutre(t);
+            } else {
+                controleur.boutonSegment(t);
+            }
             
             if (Point.isDisabled() == true) {
                 Point.setDisable(false);
@@ -459,7 +469,12 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les instructions attendues lorqu'on clique sur Noeuds -----------//
         
         Noeuds.setOnAction((t) -> {
-            Aide.setText("-------------------------------");
+            Aide.setText("Cliquez sur un point pour créer un noeud");
+            if (Barres.isDisabled() == true) {
+                controleur.boutonEtatNeutre(t);
+            } else {
+                controleur.boutonNoeuds(t);
+            }
             
             if (Barres.isDisabled() == true) {
                 Barres.setDisable(false);
