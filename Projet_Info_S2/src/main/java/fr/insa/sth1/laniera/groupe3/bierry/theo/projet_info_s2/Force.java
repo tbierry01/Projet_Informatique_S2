@@ -23,6 +23,10 @@ public class Force {
     public Force(double N, double A){
         this(N, A, 0);
     }
+    
+    public Force(){
+        this(0, 0, 0);
+    }
 
     public double getNorme() {
         return Norme;
