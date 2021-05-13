@@ -520,6 +520,21 @@ public class GlobalPane extends BorderPane {
             this.controleur.boutonSélectionner(t);
         }); 
         
+
+//----------- Concerne les instructions attendues lorqu'on clique sur Terrain -----------//
+
+        Sélectionner.setOnAction((t) -> {
+            Aide.setText("Cliquez sur des éléments pour les sélectionner");
+            
+            if (Segment.isDisabled() == false || Barres.isDisabled() == false) {
+                Segment.setDisable(true);
+                Point.setDisable(true);
+                AppuiSimple.setDisable(true);
+                AppuiDouble.setDisable(true);
+                Barres.setDisable(true);
+                Noeuds.setDisable(true);
+            }
+        });
         
 //----------- Concerne les instructions attendues lorqu'on clique sur Terrain -----------//
 
