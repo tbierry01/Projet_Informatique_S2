@@ -361,7 +361,7 @@ public class GlobalPane extends BorderPane {
         
 
 
-//----------- Concerne les instructions attendues lorqu'on clique sur Point -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Point -----------//
        
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
@@ -384,7 +384,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Segment -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Segment -----------//
         
         Segment.setOnAction((t) -> {
             Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
@@ -405,7 +405,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Appui Simple -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Appui Simple -----------//
         
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
@@ -430,7 +430,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Appui Double -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Appui Double -----------//
         
         AppuiDouble.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
@@ -455,7 +455,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Barres -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Barres -----------//
         
         Barres.setOnAction((t) -> {
             Aide.setText("Cliquez sur 2 noeurs pour créer une barre");
@@ -480,7 +480,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Noeuds -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Noeuds -----------//
         
         Noeuds.setOnAction((t) -> {
             Aide.setText("Cliquez sur un point pour créer un noeud");
@@ -505,7 +505,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Terrain -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
         
         Terrain.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Point ou Segment afin de modéliser votre terrain");
@@ -524,7 +524,7 @@ public class GlobalPane extends BorderPane {
         });
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Pont -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Pont -----------//
         
         Pont.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Noeuds, Appui (Simple/Double) ou Barres pour modéliser votre pont");
@@ -550,7 +550,7 @@ public class GlobalPane extends BorderPane {
         }); 
         
 
-//----------- Concerne les instructions attendues lorqu'on clique sur Terrain -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Sélectionner -----------//
 
         Sélectionner.setOnAction((t) -> {
             Aide.setText("Cliquez sur des éléments pour les sélectionner");
@@ -565,28 +565,28 @@ public class GlobalPane extends BorderPane {
             }
         });
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Terrain -----------//
+//----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
 
         Nouveau.setOnAction((t) -> {
             controleur.menuNouveau(t);
         });
  
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Ouvrir -----------//  
+//----------- Concerne les instructions attendues lorsqu'on clique sur Ouvrir -----------//  
         
         Ouvrir.setOnAction((t) -> {
             controleur.menuOuvrir(t);
         });
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Nouveau -----------//  
+//----------- Concerne les instructions attendues lorsqu'on clique sur Nouveau -----------//  
         
         Nouveau.setOnAction((t) -> {
             controleur.menuNouveau(t);
         });
         
         
-//----------- Concerne les instructions attendues lorqu'on clique sur Sauvegarder -----------//  
+//----------- Concerne les instructions attendues lorsqu'on clique sur Sauvegarder -----------//  
         
         Enregistrer.setOnAction((t) -> {
             controleur.menuSauvegarder(t);
