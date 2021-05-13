@@ -43,6 +43,7 @@ public abstract class Noeud extends Figure {
         Treillis_Noeud = null;
         Id = 0;
         Barres_Noeud = new ArrayList<>();
+        ForceNoeud = new Force();
     }
 
     public abstract void addBarre(Barre B);//{Barres_Noeud.add(B);}
