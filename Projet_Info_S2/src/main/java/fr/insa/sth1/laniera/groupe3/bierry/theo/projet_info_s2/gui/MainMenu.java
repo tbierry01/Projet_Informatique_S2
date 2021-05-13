@@ -31,11 +31,11 @@ public class MainMenu extends MenuBar{
         nouveau.setOnAction((t) -> {
             main.getControleur().menuNouveau(t);
         });
-        /*
+        
         ouvrir.setOnAction((t) -> {
             main.getControleur().menuOuvrir(t);
         });
-*/
+
         sauvegarder.setOnAction((t) -> {
             main.getControleur().menuSauvegarder(t);
         });
