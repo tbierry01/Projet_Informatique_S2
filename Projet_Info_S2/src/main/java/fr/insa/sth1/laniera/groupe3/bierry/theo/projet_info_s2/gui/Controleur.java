@@ -61,7 +61,8 @@ public class Controleur {
 /*            this.vue.getAppuiDouble().setDisable(true);
             this.vue.getAppuiSimple().setDisable(true);
             this.vue.getNoeuds().setDisable(true);
-*/        } else if (nouvelEtat == 80) {                  // On est dans l'état Noeuds donc on désactive les boutons Appui Simple, Appui Double et Barres  //
+*/        } else if (nouvelEtat == 71) { 
+          } else if (nouvelEtat == 80) {                  // On est dans l'état Noeuds donc on désactive les boutons Appui Simple, Appui Double et Barres  //
 /*            this.vue.getAppuiSimple().setDisable(true);
             this.vue.getAppuiDouble().setDisable(true);
             this.vue.getBarres().setDisable(true);
@@ -71,7 +72,6 @@ public class Controleur {
 
     void clicDansZoneDessin(MouseEvent t) {
         if(etat == 10) {
-            System.out.println("Je suis là");
         }
         if (etat == 20) {
             Point pClic = new Point (t.getX(), t.getY());
@@ -115,12 +115,12 @@ public class Controleur {
         } else if (etat == 60) {
             
         } else if (etat == 70) {
-            
+            Point pClic = new Point (t.getX(), t.getY());
+            Noeuds proche = vue.getModel().NoeudPlusProche();
+        } else if (etat == 70) {
         } else if (etat ==  80) {
             Point pClic = new Point (t.getX(), t.getY());
-            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
-            System.out.println("je mets un petit message " + proche);
-            vue.getModel().addFigure(new Noeud_Simple(proche, 0, vue.getCouleur().getValue()));
+            vue.getModel().addFigure(new Noeud_Simple(pClic, 0, vue.getCouleur().getValue()));
             vue.redrawAll();
         }
     }
@@ -138,6 +138,10 @@ public class Controleur {
         changeEtat(10);
     }
     
+    public void boutonSélectionner (ActionEvent t) {
+        changeEtat(20);
+    }
+    
     void boutonPoint (ActionEvent t) {
         changeEtat(30);
     }
@@ -146,20 +150,24 @@ public class Controleur {
         changeEtat(40);
     }
     
-    public List<Figure> getSelection() {
-        return selection;
-    }
-    
-    public void boutonSélectionner (ActionEvent t) {
-        changeEtat(20);
-    }
-    
     public void boutonAppuiSimple (ActionEvent t) {
         changeEtat(50);
     }
     
+    public void boutonAppuiDouble (ActionEvent t) {
+        changeEtat(60);
+    }
+    
+    public void boutonBarres (ActionEvent t) {
+        changeEtat(70);
+    }
+    
     public void boutonNoeuds (ActionEvent t) {
         changeEtat(80);
+    }
+    
+    public List<Figure> getSelection() {
+        return selection;
     }
     
     public void menuNouveau (ActionEvent t) {
