@@ -60,6 +60,17 @@ public class Barre extends Figure {
         N2.addBarre(this);
         Type_de_Barre = new TypeBarre(0);
     }
+    
+    public Barre(int Iden, Noeud N1, Noeud N2, Color C) {
+        super(C);
+        Id = Iden;
+        Noeuds_Barre = new Noeud[2];
+        Noeuds_Barre[0] = N1;
+        Noeuds_Barre[1] = N2;
+        N1.addBarre(this);
+        N2.addBarre(this);
+        Type_de_Barre = new TypeBarre(0);
+    }
 
     public Barre(Noeud N1, Noeud N2) {
         Noeuds_Barre = new Noeud[2];
@@ -159,10 +170,10 @@ public class Barre extends Figure {
     public boolean isBroken(Matrice M){
         
         if (Type_de_Barre.getRmC() > getEffort(M) || Type_de_Barre.getRmT() < getEffort(M)) {
-            //super.setColor(Color.RED);
+            super.setColor(Color.RED);
             return true;
         } else {
-            //super.setColor(Color.GREEN);
+            super.setColor(Color.GREEN);
             return false;
         }
     }
