@@ -390,6 +390,28 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
         return AB;
     }
+    
+    public boolean isIsostatic(){ //Cette classe permet de savoir si le calcul de treillis est possible ou pas
+        boolean B;
+        ArrayList<Barre> AB = this.Tri_Des_Barres(); //Cette liste permet de connaitre le nombre de barres
+        ArrayList<Noeud> AN = this.Tri_Des_Noeuds(); //Cette liste permet de connaitre le nombre de Noued
+        ArrayList<Appui_Double> AAD = new ArrayList<>();
+        ArrayList<Appui_Simple> AAS = new ArrayList<>();
+        ArrayList<Noeud_Simple> ANS = new ArrayList<>();
+        for (Noeud N : AN) { //Dans cette boucle for, on parcour la liste de Noeud et on regarde de quels types sont t-ils pour pouvoir faire les listes des noeuds appui simples et des noeuds appui doubles
+            if (N instanceof Appui_Double){ //On complète la liste des neouds appuis double
+                AAD.add((Appui_Double) N);
+            } else if (N instanceof Appui_Simple){ //On complète la liste des noeuds appui double
+                AAS.add((Appui_Simple) N);
+            } 
+        }
+        if(2*AN.size() == AB.size() + AAS.size() + 2*AAD.size()){ //On teste si cela répond à la formule du polycopié
+            B = true;
+        } else{
+            B = false;
+        }
+        return B; //On renvoit si finalement, c'est isostatic ou pas
+    }
 
     
 }
