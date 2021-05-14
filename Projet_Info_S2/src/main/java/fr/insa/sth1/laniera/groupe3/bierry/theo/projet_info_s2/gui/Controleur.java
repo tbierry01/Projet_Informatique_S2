@@ -81,19 +81,24 @@ public class Controleur {
         if (etat == 20) {
             Point pClic = new Point(t.getX(), t.getY());
             Figure proche = vue.getModel().plusProche(pClic, Double.MAX_VALUE);
+            Color C = proche.getColor();
             System.out.println("je mets un petit message " + proche);
             if (proche != null) {
                 if (t.isShiftDown()) {
                     selection.add(proche);
+                    proche.setColor(Color.BLUE);
                 } else if (t.isControlDown()) {
                     if (selection.contains(proche)) {
                         selection.remove(proche);
+                        proche.setColor(Color.PINK);
                     } else {
                         selection.add(proche);
+                        proche.setColor(Color.BLUE);
                     }
                 } else {
                     selection.clear();
                     selection.add(proche);
+                    proche.setColor(Color.BLUE);
                 }
                 vue.redrawAll();
             }
@@ -187,6 +192,7 @@ public class Controleur {
     }
 
     public void boutonSélectionner(ActionEvent t) {
+        System.out.println("Je passe par là");
         changeEtat(20);
     }
 
@@ -292,7 +298,7 @@ public class Controleur {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("A propos");
         alert.setHeaderText(null);
-        alert.setContentText("Test");
+        alert.setContentText("Yo Cocorico, j'ai une blague : \nf et f' sont sur un bateau, f tombe à l'eau, que se passe t-il?\n\n\nLe bateau dérive \nmdrrr");
 
         alert.showAndWait();
     }
