@@ -52,6 +52,15 @@ public abstract class Appui extends Noeud {
         alpha = coeff;
         SegAppui = Seg;
     }
+    
+    public Appui(int Id, double coeff, Segment Seg, Color C) {
+        super(Id, C);
+        if (coeff > 1 || coeff < 0) {
+            throw new Error("Le coefficient n'est pas dans le bon intervalle, celui ci doit être compris entre 0 et 1");
+        }
+        alpha = coeff;
+        SegAppui = Seg;
+    }
 
     public String toString() {
         String res;
