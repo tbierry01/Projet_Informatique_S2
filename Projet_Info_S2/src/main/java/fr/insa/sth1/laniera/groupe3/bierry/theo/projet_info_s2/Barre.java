@@ -177,6 +177,17 @@ public class Barre extends Figure {
             return false;
         }
     }
+    
+    public boolean isBroken(double val){
+        
+        if (Type_de_Barre.getRmT() > val || Type_de_Barre.getRmC() < val) {
+            super.setColor(Color.RED);
+            return true;
+        } else {
+            super.setColor(Color.GREEN);
+            return false;
+        }
+    }
 
     public void setTreillisBarre(Treillis T) {
         Treillis_Barre = T;
