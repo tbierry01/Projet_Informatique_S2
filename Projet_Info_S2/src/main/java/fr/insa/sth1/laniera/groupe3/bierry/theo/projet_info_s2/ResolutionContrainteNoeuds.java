@@ -57,13 +57,13 @@ public class ResolutionContrainteNoeuds {
         return FRreturn;
     }
     
-    public Matrice Resolution(){
+    public Remonte_Inversion Resolution(){ //Changer le type de retour
         FormatDeRetourSystemNoeuds FR = CreationSystemeEnsembleTreillis(); //On fait la méthode CreationSystemEnsembleTreillis
         System.out.println("Format de retour : "+FR);
         Remonte_Inversion RI = FR.getSysteme().Resolution_complete(FR.getEgalite()); //On résoud le système composé de la matrice principale et de l'équivalence
         //System.out.println("FR Sytem : "+ FR.getSysteme());
         System.out.println("Remonte Inversion: "+ RI);
-        return RI.getSolution();
+        return RI;
     }
     
     //ATTENTION, on n'a un problème de résolution lorsque l'on inverse l'ordre
