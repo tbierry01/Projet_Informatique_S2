@@ -243,6 +243,7 @@ public class GlobalPane extends BorderPane {
         
         
         
+        
 //----------- Concerne les éléments de la partie gauche de l'interface -----------//
         
     //----------- Définit le bouton Couleur en définissant la couleur Noir par défaut -----------//
@@ -594,7 +595,7 @@ public class GlobalPane extends BorderPane {
         
         Enregistrer.setOnAction((t) -> {
             controleur.menuSauvegarder(t);
-        });        
+        });
         
     }
     
@@ -715,5 +716,5 @@ public class GlobalPane extends BorderPane {
         Aide.setText(text);
     }
     
-
+    
 }
