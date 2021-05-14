@@ -30,6 +30,10 @@ public class Appui_Simple extends Appui {
     public Appui_Simple(double alpha, Segment S) {
         super(alpha, S);
     }
+    
+    public Appui_Simple(int Id,double alpha, Segment S, Color C) {
+        super(Id, alpha, S, C);
+    }
 
     @Override
     public void addBarre(Barre B) {
