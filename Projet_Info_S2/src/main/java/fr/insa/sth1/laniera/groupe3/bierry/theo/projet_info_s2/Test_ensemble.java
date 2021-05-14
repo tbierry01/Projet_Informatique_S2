@@ -287,7 +287,8 @@ public class Test_ensemble {
         ARN.add(AS);
         ARN.add(NS);
         ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(ARN);
-        Matrice M = RCN.Resolution();
+        Remonte_Inversion RI = RCN.Resolution();
+        Matrice M = RI.getSolution();
         System.out.println("Matrice : \n"+M);
     }
     
@@ -405,7 +406,8 @@ public class Test_ensemble {
         ClassDessin CD1 = new ClassDessin(FRE.getAF());
         ArrayList<Noeud> AN = CD1.Tri_Des_Noeuds();
         ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(AN);
-        Matrice M = RCN.Resolution();
+        Remonte_Inversion RI = RCN.Resolution();
+        Matrice M = RI.getSolution();
         System.out.println("Matrice : \n"+M);
         
     }
