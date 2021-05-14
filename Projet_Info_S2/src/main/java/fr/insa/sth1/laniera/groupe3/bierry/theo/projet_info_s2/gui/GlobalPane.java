@@ -559,7 +559,7 @@ public class GlobalPane extends BorderPane {
 
         Sélectionner.setOnAction((t) -> {
             Aide.setText("Cliquez sur des éléments pour les sélectionner");
-            
+            this.controleur.boutonSélectionner(t);
             if (Segment.isDisabled() == false || Barres.isDisabled() == false) {
                 Segment.setDisable(true);
                 Point.setDisable(true);
