@@ -57,7 +57,7 @@ public class ResolutionContrainteNoeuds {
         return FRreturn;
     }
     
-    public Remonte_Inversion Resolution(){ //Changer le type de retour
+    public Remonte_Inversion Resolution(){ //Cette classe permet de renvoyer une instance di type Remonte_Inversion avec la possibilité ou pas et la matrice si c'est bon
         FormatDeRetourSystemNoeuds FR = CreationSystemeEnsembleTreillis(); //On fait la méthode CreationSystemEnsembleTreillis
         System.out.println("Format de retour : "+FR);
         Remonte_Inversion RI = FR.getSysteme().Resolution_complete(FR.getEgalite()); //On résoud le système composé de la matrice principale et de l'équivalence
