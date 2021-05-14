@@ -135,7 +135,7 @@ public class Appui_Double extends Appui {
         return S;
     }
 
-    public static Appui_Double CreationAppuiPossibleOuPas(Segment S, Point P) { //Cette méthode permet de savoir si la création d'un appui est possible ou pas en focntion de ou l'utilisateur clique
+    public static Appui_Double CreationAppuiPossibleOuPas(int Id, Segment S, Point P, Color C) { //Cette méthode permet de savoir si la création d'un appui est possible ou pas en focntion de ou l'utilisateur clique
         Point[] Ext = new Point[2]; //On met dans un tableau les deux extremités du segment
         Ext[0] = S.getExtremite(0);
         Ext[1] = S.getExtremite(1);
@@ -252,7 +252,7 @@ public class Appui_Double extends Appui {
                 throw new Error("Le segment a un problème");
         }
         //On a donc tout pour créer un appui
-        Appui_Double AR = new Appui_Double(A, S);
+        Appui_Double AR = new Appui_Double(Id, A, S, C);
         return AR;
     }
 
