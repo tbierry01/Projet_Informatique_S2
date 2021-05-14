@@ -285,11 +285,11 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
     }
 
-    public Matrice Resolution_ClassDessin() { //Cette classe permet de resoudre entièrement le système et renvoie les solutions
+    public Remonte_Inversion Resolution_ClassDessin() { //Cette classe permet de resoudre entièrement le système et renvoie les solutions
         ArrayList<Noeud> AN = Tri_Des_Noeuds(); //On prend tous les noeuds qui sont parmis les figures
         ResolutionContrainteNoeuds RCN = new ResolutionContrainteNoeuds(AN);
-        Matrice M = RCN.Resolution();
-        return M;
+        Remonte_Inversion RI = RCN.Resolution();
+        return RI;
     }
 
     public static FormatRetourEnregistrement Lecture_Fichier(File file) throws IOException {
