@@ -129,8 +129,8 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             }
         }
     }
-    
-     public Segment SegmentPlusProche(Point p, double distMax) {
+
+    public Segment SegmentPlusProche(Point p, double distMax) {
         if (Contenu.isEmpty()) {
             return null;
         } else {
@@ -153,27 +153,28 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
     }
 
-    public Treillis getTreillisCD(){ //Cette classe permet de généré le treillis d'une ClasseDessin et de en même temps mettre le treillis de ses composants
+    public Treillis getTreillisCD() { //Cette classe permet de généré le treillis d'une ClasseDessin et de en même temps mettre le treillis de ses composants
         ArrayList<Noeud> AN = new ArrayList<>();
         ArrayList<Barre> AB = new ArrayList<>();
         //D'abord on établi le treillis
-        for(Figure F : Contenu){
+        for (Figure F : Contenu) {
             if (F instanceof Noeud) {
                 AN.add((Noeud) F);
-            } else if(F instanceof Barre){
+            } else if (F instanceof Barre) {
                 AB.add((Barre) F);
             }
         }
         Treillis T = new Treillis(0, AN, AB);
         //Et maintenant on met bien la double relation en mettant tous les treillis des figure à T
-        for(Barre B : T.getBarre_Treillis()){
+        for (Barre B : T.getBarre_Treillis()) {
             B.setTreillisBarre(T);
         }
-        for(Noeud N : T.getNoeuds_Treillis()){
+        for (Noeud N : T.getNoeuds_Treillis()) {
             N.setTreillisNoeud(T);
         }
         return T;
     }
+
     public void changeCouleur(Color value) {
         for (Figure f : Contenu) {
             f.setColor(value);
@@ -372,11 +373,10 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
     }
 
-
-    public ArrayList<Boolean> ColorationSimulation(Matrice M){ //Cette méthode permet de colorer les barres pour savoir si elles supportent ou pas l'éffort. Cette méthode prend en entier une matrice colone qui est en fait le vecteur de résolution du treillis
+    public ArrayList<Boolean> ColorationSimulation(Matrice M) { //Cette méthode permet de colorer les barres pour savoir si elles supportent ou pas l'éffort. Cette méthode prend en entier une matrice colone qui est en fait le vecteur de résolution du treillis
         Map<Integer, Barre> MB = new TreeMap<>();// Cette Map va permettre de trier dans l'ordre en fonction de leur identificateur, les barres
-        for(Figure F : Contenu){ //On recupère toute les barres, comme une barre ne peut pas être créée s'il n'y a pas déjà deux neoud, alors on n'est qasiment certain d'avoir le même nombre de barres entre la liste que l'on va avoir là et le nombre de lignes de notre vecteur solution. De plus, on est presuqe sur de ne pas avoir deux fois la même barre car normalement, chaque barre a sont propre Id
-            if(F instanceof Barre){
+        for (Figure F : Contenu) { //On recupère toute les barres, comme une barre ne peut pas être créée s'il n'y a pas déjà deux neoud, alors on n'est qasiment certain d'avoir le même nombre de barres entre la liste que l'on va avoir là et le nombre de lignes de notre vecteur solution. De plus, on est presuqe sur de ne pas avoir deux fois la même barre car normalement, chaque barre a sont propre Id
+            if (F instanceof Barre) {
                 Barre B = (Barre) F;
                 MB.put(B.getId(), B);
             }
@@ -390,8 +390,8 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
         return AB;
     }
-    
-    public boolean isIsostatic(){ //Cette classe permet de savoir si le calcul de treillis est possible ou pas
+
+    public boolean isIsostatic() { //Cette classe permet de savoir si le calcul de treillis est possible ou pas
         boolean B;
         ArrayList<Barre> AB = this.Tri_Des_Barres(); //Cette liste permet de connaitre le nombre de barres
         ArrayList<Noeud> AN = this.Tri_Des_Noeuds(); //Cette liste permet de connaitre le nombre de Noued
@@ -399,19 +399,45 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         ArrayList<Appui_Simple> AAS = new ArrayList<>();
         ArrayList<Noeud_Simple> ANS = new ArrayList<>();
         for (Noeud N : AN) { //Dans cette boucle for, on parcour la liste de Noeud et on regarde de quels types sont t-ils pour pouvoir faire les listes des noeuds appui simples et des noeuds appui doubles
-            if (N instanceof Appui_Double){ //On complète la liste des neouds appuis double
+            if (N instanceof Appui_Double) { //On complète la liste des neouds appuis double
                 AAD.add((Appui_Double) N);
-            } else if (N instanceof Appui_Simple){ //On complète la liste des noeuds appui double
+            } else if (N instanceof Appui_Simple) { //On complète la liste des noeuds appui double
                 AAS.add((Appui_Simple) N);
-            } 
+            }
         }
-        if(2*AN.size() == AB.size() + AAS.size() + 2*AAD.size()){ //On teste si cela répond à la formule du polycopié
+        if (2 * AN.size() == AB.size() + AAS.size() + 2 * AAD.size()) { //On teste si cela répond à la formule du polycopié
             B = true;
-        } else{
+        } else {
             B = false;
         }
         return B; //On renvoit si finalement, c'est isostatic ou pas
     }
 
-    
+    public void MAJ_Ids(Figure F, int Id) {
+
+        if (F instanceof Barre) {
+            for (Figure F0 : Contenu) {
+                F0 = (Barre) F0;//On caste F0 en barre
+                F0.MAJ_Identifiacteurs(Id);
+            }
+        } else if (F instanceof Noeud) {
+            for (Figure F0 : Contenu) {
+                F0 = (Noeud) F0;//On caste F0 en noeud
+                F0.MAJ_Identifiacteurs(Id);
+            }
+
+        } else if (F instanceof Point) {
+            for (Figure F0 : Contenu) {
+                F0 = (Point) F0;//On caste F0 en noeud
+                F0.MAJ_Identifiacteurs(Id);
+            }
+        } else if (F instanceof Segment) {
+            for (Figure F0 : Contenu) {
+                F0 = (Segment) F0;//On caste F0 en noeud
+                F0.MAJ_Identifiacteurs(Id);
+            }
+        }
+
+    }
+
 }
