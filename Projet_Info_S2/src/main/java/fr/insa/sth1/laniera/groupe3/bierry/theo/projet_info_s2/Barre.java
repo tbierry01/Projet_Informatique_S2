@@ -192,4 +192,15 @@ public class Barre extends Figure {
     public void setTreillisBarre(Treillis T) {
         Treillis_Barre = T;
     }
+    
+    @Override
+    public void MAJ_Identifiacteurs (int Id){
+        if (this.getId() > Id){
+            this.setId(Id - 1);
+        }
+    } 
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
 }
