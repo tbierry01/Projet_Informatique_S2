@@ -666,7 +666,16 @@ public class GlobalPane extends BorderPane {
                 Norme.setDisable(true);
                 Valider.setDisable(true);
             }
-        });        
+        }); 
+        
+        
+//----------- Concerne les instructions attendues lorsqu'on clique sur Simulation -----------//
+
+        Simulation.setOnAction((t) -> {
+            System.out.println("Je suis là");
+            controleur.boutonSimulation(t);
+        });
+        
         
 //----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
 
