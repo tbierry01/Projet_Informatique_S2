@@ -43,7 +43,7 @@ public class Appui_Simple extends Appui {
 
     public String toString() {
         String res;
-        res = "\n --Appui Simple--" + super.toString();
+        res = "\n --Appui Simple "+super.getId()+"--" + super.toString();
 
         return res;
     }
