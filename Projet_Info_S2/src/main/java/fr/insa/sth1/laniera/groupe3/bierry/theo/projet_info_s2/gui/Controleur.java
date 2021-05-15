@@ -14,6 +14,7 @@ import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.FormatRetourEnreg
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Noeud;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Noeud_Simple;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Remonte_Inversion;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
 import java.io.File;
 import java.io.IOException;
@@ -80,6 +81,7 @@ public class Controleur {
     }
 
     void clicDansZoneDessin(MouseEvent t) {
+        System.out.println("Je suis dedans");
         if (etat == 10) {
         }
         if (etat == 20) {
@@ -222,6 +224,13 @@ public class Controleur {
                 vue.getModel().addFigure(new Noeud_Simple(t.getX(), Ord, 0, vue.getCouleur().getValue()));
                 vue.redrawAll();
             }
+        } else if (etat==110) {
+            Remonte_Inversion ri = vue.getModel().Simulation();
+            if(ri.isPossible() == false){
+                vue.setTextByMoi("Le treillis n'est pas isostatique");
+            } else {
+                vue.redrawAll();
+            };
         }
     }
 
@@ -273,6 +282,11 @@ public class Controleur {
     
     public void boutonHorizontal (ActionEvent t) {
         changeEtat(100);
+    }
+    
+    public void boutonSimulation (ActionEvent t) {
+        System.out.println("OKay par là");
+        changeEtat(110);
     }
 
     public List<Figure> getSelection() {
