@@ -43,7 +43,7 @@ public class Appui_Double extends Appui {
 
     public String toString() {
         String res;
-        res = "\n --Appui Double--" + super.toString();
+        res = "\n --Appui Double "+super.getId()+"--" + super.toString();
 
         return res;
     }
