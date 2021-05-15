@@ -61,6 +61,7 @@ public class GlobalPane extends BorderPane {
     private Button Valider;
     private TextField Norme;
     private TextField Angle;
+    private Button Supprimer;
     
     private ClassDessin model;
     private Controleur controleur;
@@ -109,6 +110,7 @@ public class GlobalPane extends BorderPane {
         this.Valider = new Button ("Valider");
         this.Norme = new TextField("Entrer Norme");
         this.Angle = new TextField("Entrer Angle en rad");
+        this.Supprimer = new Button("Supprimer");
 
         this.Vertical.setPrefSize(120, 25);
         this.Horizontal.setPrefSize(120,25);
@@ -117,6 +119,7 @@ public class GlobalPane extends BorderPane {
         this.Force.setPrefSize(100, 50);
         this.Valider.setPrefSize(100, 50);
         this.Angle.setPrefSize(100, 50);
+        this.Supprimer.setPrefSize(120, 25);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
@@ -318,7 +321,7 @@ public class GlobalPane extends BorderPane {
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
         VBox coteGauche = new VBox(hStyle, getCouleur(), cbEpaisseur,
-                cbTrait, cbMatériaux, hPositions,this.Vertical, this.Horizontal, this.Sélectionner);
+                cbTrait, cbMatériaux, hPositions,this.Vertical, this.Horizontal, this.Sélectionner, Supprimer);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
@@ -675,6 +678,21 @@ public class GlobalPane extends BorderPane {
             System.out.println("Je suis là");
             controleur.boutonSimulation(t);
         });
+        
+        
+//----------- Concerne les instructions attendues lorsqu'on clique sur Supprimer -----------//
+
+        Supprimer.setOnAction((t) -> {
+            System.out.println("\n\nListe Selection\n\n");
+            for (Figure f : controleur.getSelection()) {
+                controleur.getVue().getModel().Remove(f);
+                System.out.println("\nListe\n"+controleur.getVue().getModel());
+                System.out.println("hcsagyuivdguulob ghoif ");
+                
+            }
+            controleur.getVue().redrawAll();
+        });
+        
         
         
 //----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//

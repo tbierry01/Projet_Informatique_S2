@@ -403,6 +403,9 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         //return AB;
     }
     
+    public void Remove(Figure F){
+        Contenu.remove(F);
+    }
     
     public Remonte_Inversion Simulation(){
         Remonte_Inversion RI = new Remonte_Inversion();

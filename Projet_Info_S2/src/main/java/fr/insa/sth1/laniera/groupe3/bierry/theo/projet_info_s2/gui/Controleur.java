@@ -86,7 +86,7 @@ public class Controleur {
         }
         if (etat == 20) {
             Point pClic = new Point(t.getX(), t.getY());
-            Figure proche = vue.getModel().plusProche(pClic, Double.MAX_VALUE);
+            Figure proche = getVue().getModel().plusProche(pClic, Double.MAX_VALUE);
             Color C = proche.getColor();
             System.out.println("je mets un petit message " + proche);
             if (proche != null) {
@@ -106,130 +106,130 @@ public class Controleur {
                     selection.add(proche);
                     proche.setColor(Color.BLUE);
                 }
-                vue.redrawAll();
+                getVue().redrawAll();
             }
         } else if (etat == 30) {            // 30 correspond à l'état Point //
             double px = t.getX();
             double py = t.getY();
-            ClassDessin model = this.vue.getModel();
-            this.vue.getModel().addFigure(new Point(px, py, IdPoint, vue.getCouleur().getValue()));
+            ClassDessin model = this.getVue().getModel();
+            this.getVue().getModel().addFigure(new Point(px, py, IdPoint, getVue().getCouleur().getValue()));
             IdPoint++;
-            System.out.println("\n"+vue.getModel());
-            this.vue.redrawAll();
+            System.out.println("\n"+getVue().getModel());
+            this.getVue().redrawAll();
         } else if (etat == 40) {            // 40 correspond à l'état Segment //
             Point pClic = new Point(t.getX(), t.getY());
-            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
+            Point proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             pos1[0] = proche;
             changeEtat(41);                 // 41 correspond au 2e point de l'état Segment //
         } else if (etat == 41) {
             Point pClic = new Point(t.getX(), t.getY());
-            Point proche = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
+            Point proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             pos1[1] = proche;
             if (pos1[0] == pos1[1]) {
                 changeEtat(41);
-                vue.setTextByMoi("Vous ne pouvez pas créer de segment entre deux points en même position");
+                getVue().setTextByMoi("Vous ne pouvez pas créer de segment entre deux points en même position");
             } else {
-                vue.getModel().addFigure(new Segment(IdSegment, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                getVue().getModel().addFigure(new Segment(IdSegment, pos1[0], pos1[1], getVue().getCouleur().getValue()));     // Changer 0 par l'indentificateur //
                 IdSegment++;
-                vue.redrawAll();
-                System.out.println("\n"+vue.getModel());
-                vue.setTextByMoi("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
+                getVue().redrawAll();
+                System.out.println("\n"+getVue().getModel());
+                getVue().setTextByMoi("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
                 changeEtat(40);
             }
         } else if (etat == 50) {
             Point pClic = new Point(t.getX(), t.getY());
-            Segment S = vue.getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
-            Appui_Simple AS = Appui_Simple.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, vue.getCouleur().getValue());
+            Segment S = getVue().getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
+            Appui_Simple AS = Appui_Simple.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, getVue().getCouleur().getValue());
             
             if (AS == null) {
                 changeEtat(50);
-                vue.setTextByMoi("La création de l'appui n'est pas possible");
+                getVue().setTextByMoi("La création de l'appui n'est pas possible");
             } else {
-                vue.getModel().addFigure(AS);
+                getVue().getModel().addFigure(AS);
                 IdNoeud ++;
                 System.out.println("Alpha1 : "+AS.getAlpha());
-                System.out.println("\n"+vue.getModel());
-                vue.redrawAll();
-                vue.setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
+                System.out.println("\n"+getVue().getModel());
+                getVue().redrawAll();
+                getVue().setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
             }
         } else if (etat == 60) {
             //System.out.println("Ok on passe par l'état 60");
             Point pClic = new Point(t.getX(), t.getY());
-            Segment S = vue.getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
-            Appui_Double AS = Appui_Double.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, vue.getCouleur().getValue());
+            Segment S = getVue().getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
+            Appui_Double AS = Appui_Double.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, getVue().getCouleur().getValue());
             if (AS == null) {
                 changeEtat(60);
-                vue.setTextByMoi("La création de l'appui n'est pas possible");
+                getVue().setTextByMoi("La création de l'appui n'est pas possible");
             } else {
-                vue.getModel().addFigure(AS);
+                getVue().getModel().addFigure(AS);
                 IdNoeud++;
                 System.out.println("Alpha2 : "+AS.getAlpha());
-                System.out.println("\n"+vue.getModel());
-                vue.redrawAll();
-                vue.setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
+                System.out.println("\n"+getVue().getModel());
+                getVue().redrawAll();
+                getVue().setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
             }
         } else if (etat == 70) {
             Point pClic = new Point(t.getX(), t.getY());
-            Noeud proche = vue.getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
+            Noeud proche = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             pos2[0] = proche;
             changeEtat(71);
         } else if (etat == 71) {
             Point pClic = new Point(t.getX(), t.getY());
-            Noeud proche = vue.getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
+            Noeud proche = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             pos2[1] = proche;
             if (pos2[0] == pos2[1]) {
                 changeEtat(70);
-                vue.setTextByMoi("Vous ne pouvez pas créer de barre entre deux noeuds en même position");
+                getVue().setTextByMoi("Vous ne pouvez pas créer de barre entre deux noeuds en même position");
             } else {
-                vue.getModel().addFigure(new Barre(IdBarre, pos2[0], pos2[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                getVue().getModel().addFigure(new Barre(IdBarre, pos2[0], pos2[1], getVue().getCouleur().getValue()));     // Changer 0 par l'indentificateur //
                 IdBarre++;
-                System.out.println("\n"+vue.getModel());
-                vue.redrawAll();
-                vue.setTextByMoi("Placez 2 points pour créer une barre ou reliez 2 noeuds déjà existants");
+                System.out.println("\n"+getVue().getModel());
+                getVue().redrawAll();
+                getVue().setTextByMoi("Placez 2 points pour créer une barre ou reliez 2 noeuds déjà existants");
                 changeEtat(70);
             }
         } else if (etat == 80) {
             Point pClic = new Point(t.getX(), t.getY());
-            vue.getModel().addFigure(new Noeud_Simple(pClic, IdNoeud, vue.getCouleur().getValue()));
+            getVue().getModel().addFigure(new Noeud_Simple(pClic, IdNoeud, getVue().getCouleur().getValue()));
             IdNoeud++;
-            System.out.println("\n"+vue.getModel());
-            vue.redrawAll();
+            System.out.println("\n"+getVue().getModel());
+            getVue().redrawAll();
         } else if (etat == 90) {
             Point pClic = new Point(t.getX(), t.getY());
-            Point P = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
-            Noeud N = vue.getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
+            Point P = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
+            Noeud N = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             double D0 = P.getDistance(pClic);
             double D1 = N.getDistance(pClic);
             if(D0 < D1){
                 double Abs = P.getAbscisse();
-                vue.getModel().addFigure(new Point(Abs, t.getY()));
-                vue.redrawAll();
+                getVue().getModel().addFigure(new Point(Abs, t.getY()));
+                getVue().redrawAll();
             } else{
                 double Abs = N.getPos().getAbscisse();
-                vue.getModel().addFigure(new Noeud_Simple(Abs, t.getY(), 0, vue.getCouleur().getValue()));
-                vue.redrawAll();
+                getVue().getModel().addFigure(new Noeud_Simple(Abs, t.getY(), 0, getVue().getCouleur().getValue()));
+                getVue().redrawAll();
             }
         } else if (etat == 100) {
             Point pClic = new Point(t.getX(), t.getY());
-            Point P = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
-            Noeud N = vue.getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
+            Point P = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
+            Noeud N = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             double D0 = P.getDistance(pClic);
             double D1 = N.getDistance(pClic);
             if(D0 < D1){
                 double Ord = P.getOrdonnee();
-                vue.getModel().addFigure(new Point(t.getX(), Ord));
-                vue.redrawAll();
+                getVue().getModel().addFigure(new Point(t.getX(), Ord));
+                getVue().redrawAll();
             } else{
                 double Ord = N.getPos().getOrdonnee();
-                vue.getModel().addFigure(new Noeud_Simple(t.getX(), Ord, 0, vue.getCouleur().getValue()));
-                vue.redrawAll();
+                getVue().getModel().addFigure(new Noeud_Simple(t.getX(), Ord, 0, getVue().getCouleur().getValue()));
+                getVue().redrawAll();
             }
         } else if (etat==110) {
-            Remonte_Inversion ri = vue.getModel().Simulation();
+            Remonte_Inversion ri = getVue().getModel().Simulation();
             if(ri.isPossible() == false){
-                vue.setTextByMoi("Le treillis n'est pas isostatique");
+                getVue().setTextByMoi("Le treillis n'est pas isostatique");
             } else {
-                vue.redrawAll();
+                getVue().redrawAll();
             };
         }
     }
@@ -239,7 +239,7 @@ public class Controleur {
             for (Figure f : selection) {
                 f.setColor(value);
             }
-            vue.redrawAll();
+            getVue().redrawAll();
         }
     }
 
@@ -303,7 +303,7 @@ public class Controleur {
 
     public void menuOuvrir(ActionEvent t) {
         FileChooser chooser = new FileChooser();
-        File f = chooser.showOpenDialog(this.vue.getInStage());
+        File f = chooser.showOpenDialog(this.getVue().getInStage());
         if (f != null) {
             try {
                 FormatRetourEnregistrement FRE = ClassDessin.Lecture_Fichier(f);
@@ -331,10 +331,10 @@ public class Controleur {
 
     private void realSauvegarder(File f) {
         try {
-            this.vue.getModel().getTreillisCD();
-            this.vue.getModel().Enregistrement(f);
-            this.vue.setCurFile(f);
-            this.vue.getInStage().setTitle("BRIDGE" + f.getName());
+            this.getVue().getModel().getTreillisCD();
+            this.getVue().getModel().Enregistrement(f);
+            this.getVue().setCurFile(f);
+            this.getVue().getInStage().setTitle("BRIDGE" + f.getName());
         } catch (IOException ex) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -348,16 +348,16 @@ public class Controleur {
     }
 
     public void menuSauvegarder(ActionEvent t) {
-        if (this.vue.getCurFile() == null) {
+        if (this.getVue().getCurFile() == null) {
             this.menuSauvegarderSous(t);
         } else {
-            this.realSauvegarder(this.vue.getCurFile());
+            this.realSauvegarder(this.getVue().getCurFile());
         }
     }
 
     public void menuSauvegarderSous(ActionEvent t) {
         FileChooser chooser = new FileChooser();
-        File f = chooser.showSaveDialog(this.vue.getInStage());
+        File f = chooser.showSaveDialog(this.getVue().getInStage());
         if (f != null) {
             this.realSauvegarder(f);
         }
@@ -370,5 +370,12 @@ public class Controleur {
         alert.setContentText("Yo Cocorico, j'ai une blague : \nf et f' sont sur un bateau, f tombe à l'eau, que se passe t-il?\n\n\nLe bateau dérive \nmdrrr");
 
         alert.showAndWait();
+    }
+
+    /**
+     * @return the vue
+     */
+    public GlobalPane getVue() {
+        return vue;
     }
 }

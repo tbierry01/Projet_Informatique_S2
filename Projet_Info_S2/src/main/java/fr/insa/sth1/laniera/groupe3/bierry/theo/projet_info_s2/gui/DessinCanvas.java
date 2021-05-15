@@ -11,6 +11,7 @@ import java.util.List;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -47,11 +48,13 @@ public class DessinCanvas extends Pane {
     
     public void redrawAll() {
         GraphicsContext context = this.realCanvas.getGraphicsContext2D();
+        context.setFill(Color.WHITE);
+        context.fillRect(0, 0, realCanvas.getWidth(), realCanvas.getHeight());
     //    context.setFill(Color.CORNSILK);
     //    context.fillRect (0, 0, this.realCanvas.getWidth(), this.realCanvas.getHeight());
         ClassDessin model = this.main.getModel();
         model.MaisDessineToutPuree(context);
-        List<Figure> select = main.getControleur().getSelection();
+        List<Figure> select = main.getControleur().getVue().getModel().getContenu();
         if (! select.isEmpty()) {
             for (Figure f : select) {
                 f.DessineToiNomDeDieu(context);
