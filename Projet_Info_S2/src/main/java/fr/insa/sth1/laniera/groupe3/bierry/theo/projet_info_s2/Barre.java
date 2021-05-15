@@ -220,6 +220,7 @@ public class Barre extends Figure {
     
     public double getCout(){
         double C = 0;
+        double dist = Noeuds_Barre[0].getDistance(Noeuds_Barre[1].getPos()); //Là on obtient la longeur de la barre
         
         return C;
     }
