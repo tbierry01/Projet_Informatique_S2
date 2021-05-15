@@ -73,5 +73,7 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
         this.Couleur = Color.color(r, g, b);
     }
     
+    public abstract void MAJ_Identifiacteurs (int Id); //Cette méthode va permettre de mettre à jours les identificateurs pour quand on va supprimer des figures
+    
     
 }
