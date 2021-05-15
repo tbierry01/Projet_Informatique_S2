@@ -30,7 +30,7 @@ public class TypeBarre {
         Lmin = 3;
         Lmax = 4;
         Cout = 200;
-        RmC = 100;
+        RmC = -100;
         RmT = 50;
         Materiaux = "Fer";
         Barre_TypeBarre = new ArrayList<>();
