@@ -112,6 +112,7 @@ public class Controleur {
             ClassDessin model = this.vue.getModel();
             this.vue.getModel().addFigure(new Point(px, py, IdPoint, vue.getCouleur().getValue()));
             IdPoint++;
+            System.out.println("\n"+vue.getModel());
             this.vue.redrawAll();
         } else if (etat == 40) {            // 40 correspond à l'état Segment //
             Point pClic = new Point(t.getX(), t.getY());
@@ -129,6 +130,7 @@ public class Controleur {
                 vue.getModel().addFigure(new Segment(IdSegment, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
                 IdSegment++;
                 vue.redrawAll();
+                System.out.println("\n"+vue.getModel());
                 vue.setTextByMoi("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
                 changeEtat(40);
             }
@@ -144,6 +146,7 @@ public class Controleur {
                 vue.getModel().addFigure(AS);
                 IdNoeud ++;
                 System.out.println("Alpha1 : "+AS.getAlpha());
+                System.out.println("\n"+vue.getModel());
                 vue.redrawAll();
                 vue.setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
             }
@@ -159,6 +162,7 @@ public class Controleur {
                 vue.getModel().addFigure(AS);
                 IdNoeud++;
                 System.out.println("Alpha2 : "+AS.getAlpha());
+                System.out.println("\n"+vue.getModel());
                 vue.redrawAll();
                 vue.setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
             }
@@ -177,6 +181,7 @@ public class Controleur {
             } else {
                 vue.getModel().addFigure(new Barre(IdBarre, pos2[0], pos2[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
                 IdBarre++;
+                System.out.println("\n"+vue.getModel());
                 vue.redrawAll();
                 vue.setTextByMoi("Placez 2 points pour créer une barre ou reliez 2 noeuds déjà existants");
                 changeEtat(70);
@@ -185,6 +190,7 @@ public class Controleur {
             Point pClic = new Point(t.getX(), t.getY());
             vue.getModel().addFigure(new Noeud_Simple(pClic, IdNoeud, vue.getCouleur().getValue()));
             IdNoeud++;
+            System.out.println("\n"+vue.getModel());
             vue.redrawAll();
         } else if (etat == 90) {
             Point pClic = new Point(t.getX(), t.getY());
