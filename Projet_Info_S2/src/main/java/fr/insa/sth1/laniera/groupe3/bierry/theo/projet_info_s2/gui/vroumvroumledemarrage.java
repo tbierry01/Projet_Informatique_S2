@@ -14,4 +14,7 @@ import javafx.scene.layout.VBox;
  */
 public class vroumvroumledemarrage extends VBox{
     private Label Conseil; 
+    public static void main(String[] args) {
+        System.out.println("caa");
+    }
 }
