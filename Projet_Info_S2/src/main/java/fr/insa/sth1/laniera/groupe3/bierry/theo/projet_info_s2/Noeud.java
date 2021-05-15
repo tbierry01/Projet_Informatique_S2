@@ -138,18 +138,11 @@ public abstract class Noeud extends Figure {
         return Distance;
     }
 
+    @Override
     public void setId(int Id) {
         this.Id = Id;
     }
     
-    
-    
-    @Override
-    public void MAJ_Identifiacteurs (int Id){
-        if (this.getId() > Id){
-            this.setId(Id - 1);
-        }
-    }
 
 }
 

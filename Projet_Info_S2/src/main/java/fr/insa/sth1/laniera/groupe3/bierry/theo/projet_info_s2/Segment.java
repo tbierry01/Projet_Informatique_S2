@@ -55,6 +55,7 @@ public class Segment extends Figure{
         return ZC;
     }
     
+    @Override
     public int getId() {
         return Id;
     }
@@ -130,15 +131,9 @@ public class Segment extends Figure{
         return S;
     }
 
+    @Override
     public void setId(int Id) {
         this.Id = Id;
-    }
-    
-    @Override
-    public void MAJ_Identifiacteurs (int Id){
-        if (this.getId() > Id){
-            this.setId(Id - 1);
-        }
     }
     
    

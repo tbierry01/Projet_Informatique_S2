@@ -98,6 +98,7 @@ public class Barre extends Figure {
     /**
      * @return the Id
      */
+    @Override
     public int getId() {
         return Id;
     }
@@ -206,14 +207,8 @@ public class Barre extends Figure {
     public void setTreillisBarre(Treillis T) {
         Treillis_Barre = T;
     }
-    
-    @Override
-    public void MAJ_Identifiacteurs (int Id){
-        if (this.getId() > Id){
-            this.setId(Id - 1);
-        }
-    } 
 
+    @Override
     public void setId(int Id) {
         this.Id = Id;
     }

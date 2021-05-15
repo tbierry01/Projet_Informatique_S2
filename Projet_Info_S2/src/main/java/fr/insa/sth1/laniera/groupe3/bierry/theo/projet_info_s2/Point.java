@@ -78,10 +78,12 @@ public class Point extends Figure{
         this.ordonnee = ordonnee;
     }
 
+    @Override
     public int getId() {
         return Id;
     }
 
+    @Override
     public void setId(int Id) {
         this.Id = Id;
     }
@@ -162,10 +164,5 @@ public class Point extends Figure{
         return S;
     }
     
-    @Override
-    public void MAJ_Identifiacteurs (int Id){
-        if (this.getId() > Id){
-            this.setId(Id - 1);
-        }
-    }
+    
 }

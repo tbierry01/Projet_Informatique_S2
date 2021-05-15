@@ -30,6 +30,10 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
         setColorRGB(r, g, b);
     }
     
+    public abstract int getId();
+    
+    public abstract void setId(int Id);
+    
     public static ArrayList<Figure> GenerationListFigure(){
         ArrayList<Figure> AR = new ArrayList<>();
         Point P0 = new Point(500, 500, 0);
@@ -73,7 +77,10 @@ public abstract class Figure { //Ce que l'on appelle figure est tout ce qui est 
         this.Couleur = Color.color(r, g, b);
     }
     
-    public abstract void MAJ_Identifiacteurs (int Id); //Cette méthode va permettre de mettre à jours les identificateurs pour quand on va supprimer des figures
-    
+    public void MAJ_Identifiacteurs (int Id){ //Cette méthode va permettre de mettre à jours les identificateurs pour quand on va supprimer des figures
+        if (this.getId() > Id){
+            this.setId(this.getId() - 1);
+        }
+    }
     
 }

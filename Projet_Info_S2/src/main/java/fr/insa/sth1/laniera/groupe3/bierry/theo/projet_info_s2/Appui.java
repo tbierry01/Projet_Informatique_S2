@@ -67,7 +67,8 @@ public abstract class Appui extends Noeud {
         res = "\nCoefficient alpha : " + alpha + "\nSegment : " + SegAppui.getId();
         return res;
     }
-
+    
+    @Override
     public int getId() {
         return super.getId();
     }

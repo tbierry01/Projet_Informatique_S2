@@ -448,23 +448,22 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
 
         if (F instanceof Barre) {
             for (Figure F0 : Contenu) {
-                F0 = (Barre) F0;//On caste F0 en barre
                 F0.MAJ_Identifiacteurs(Id);
             }
         } else if (F instanceof Noeud) {
             for (Figure F0 : Contenu) {
-                F0 = (Noeud) F0;//On caste F0 en noeud
+                
                 F0.MAJ_Identifiacteurs(Id);
             }
 
         } else if (F instanceof Point) {
             for (Figure F0 : Contenu) {
-                F0 = (Point) F0;//On caste F0 en noeud
+                
                 F0.MAJ_Identifiacteurs(Id);
             }
         } else if (F instanceof Segment) {
             for (Figure F0 : Contenu) {
-                F0 = (Segment) F0;//On caste F0 en noeud
+                
                 F0.MAJ_Identifiacteurs(Id);
             }
         }

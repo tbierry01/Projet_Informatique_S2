@@ -128,6 +128,11 @@ public class Controleur {
                 }
                 getVue().redrawAll();
             }
+            String S = "Liste : ";
+            for (Figure f : vue.getModel().getContenu()){
+                S = S+f.toString();
+            }
+            System.out.println(S);
         } else if (etat == 30) {            // 30 correspond à l'état Point //
             double px = t.getX();
             double py = t.getY();
@@ -398,4 +403,40 @@ public class Controleur {
     public GlobalPane getVue() {
         return vue;
     }
+
+    public int getIdPoint() {
+        return IdPoint;
+    }
+
+    public int getIdSegment() {
+        return IdSegment;
+    }
+
+    public int getIdBarre() {
+        return IdBarre;
+    }
+
+    public int getIdNoeud() {
+        return IdNoeud;
+    }
+
+    public void setIdPoint(int IdPoint) {
+        this.IdPoint = IdPoint;
+    }
+
+    public void setIdSegment(int IdSegment) {
+        this.IdSegment = IdSegment;
+    }
+
+    public void setIdBarre(int IdBarre) {
+        this.IdBarre = IdBarre;
+    }
+
+    public void setIdNoeud(int IdNoeud) {
+        this.IdNoeud = IdNoeud;
+    }
+    
+    
+    
+    
 }

@@ -5,8 +5,12 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Barre;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Noeud;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
 import java.io.File;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
@@ -692,7 +696,19 @@ public class GlobalPane extends BorderPane {
         Supprimer.setOnAction((t) -> {
             System.out.println("\n\nListe Selection\n\n");
             for (Figure f : controleur.getSelection()) {
-                controleur.getVue().getModel().Remove(f);                                           
+                controleur.getVue().getModel().Remove(f);
+                int i = f.getId();
+                controleur.getVue().getModel().MAJ_Ids(f, i); //On met à jour les identificateurs des figures
+                //On met à jour les identificateurs dans la classe controleur
+                if(f instanceof Noeud){
+                    controleur.setIdNoeud(controleur.getIdNoeud() - 1);
+                } else if (f instanceof Barre){
+                    controleur.setIdBarre(controleur.getIdBarre() - 1);
+                }else if (f instanceof Point){
+                    controleur.setIdPoint(controleur.getIdPoint() - 1);
+                } else if (f instanceof Segment){
+                    controleur.setIdSegment(controleur.getIdSegment() - 1);
+                }
             }
             controleur.getVue().redrawAll();
         });
