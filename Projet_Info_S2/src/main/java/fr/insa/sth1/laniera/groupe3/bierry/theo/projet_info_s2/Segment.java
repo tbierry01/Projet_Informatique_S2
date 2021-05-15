@@ -129,6 +129,17 @@ public class Segment extends Figure{
         S = "Segment ; "+ Id + "  ; "+ Extremite[0].getId() + " ; " + Extremite[1].getId()+" ; " + Coul[0]+ " ; " +Coul[1]+ " ; "+ Coul[2]+ "\n";
         return S;
     }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+    
+    @Override
+    public void MAJ_Identifiacteurs (int Id){
+        if (this.getId() > Id){
+            this.setId(Id - 1);
+        }
+    }
     
    
 }
