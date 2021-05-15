@@ -363,6 +363,7 @@ public class GlobalPane extends BorderPane {
         Valider.setDisable(true);
         Norme.setDisable(true);
         Angle.setDisable(true);
+        Supprimer.setDisable(true);
         
         ToggleGroup gPointSegment = new ToggleGroup();
         Segment.setToggleGroup(gPointSegment);
@@ -610,6 +611,12 @@ public class GlobalPane extends BorderPane {
                 Barres.setDisable(true);
                 Noeuds.setDisable(true);
             }
+            if(Supprimer.isDisable() == true) {
+                Supprimer.setDisable(false);
+            } else {
+                Supprimer.setDisable(true);
+            }
+            
         });
         
         
@@ -685,16 +692,12 @@ public class GlobalPane extends BorderPane {
         Supprimer.setOnAction((t) -> {
             System.out.println("\n\nListe Selection\n\n");
             for (Figure f : controleur.getSelection()) {
-                controleur.getVue().getModel().Remove(f);
+                controleur.getVue().getModel().Remove(f);                                           
             }
             controleur.getVue().redrawAll();
-            
-            if(){
-                
-            }
         });
         
-        
+    //TO POUR M BIEERY : SEAU QU Pé Dé I DENT TIF HI KA T'HEURE    
         
 //----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
 
