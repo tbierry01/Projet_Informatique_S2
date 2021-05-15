@@ -168,7 +168,6 @@ public class Barre extends Figure {
     }
     
     public boolean isBroken(Matrice M){
-        
         if (Type_de_Barre.getRmC() > getEffort(M) || Type_de_Barre.getRmT() < getEffort(M)) {
             super.setColor(Color.RED);
             return true;
@@ -179,11 +178,15 @@ public class Barre extends Figure {
     }
     
     public boolean isBroken(double val){
-        
-        if (Type_de_Barre.getRmT() > val || Type_de_Barre.getRmC() < val) {
+        System.out.println("Valeur " +val);
+        System.out.println("Valeur RmT " +Type_de_Barre.getRmT());
+        System.out.println("Valeur RmC " +Type_de_Barre.getRmC());
+        if (Type_de_Barre.getRmT() < val || Type_de_Barre.getRmC() > val) {
+            System.out.println("Okay, je passe par là");
             super.setColor(Color.RED);
             return true;
         } else {
+            System.out.println("Okay, je passe par ci");
             super.setColor(Color.GREEN);
             return false;
         }
