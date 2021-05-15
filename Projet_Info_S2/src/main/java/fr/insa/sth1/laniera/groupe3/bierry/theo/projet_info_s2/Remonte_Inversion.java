@@ -29,6 +29,10 @@ public class Remonte_Inversion {
     public Matrice getSolution() {
         return Solution;
     }
+    
+    public boolean getPossible(){
+        return Possible;
+    }
 
     /**
      * @return the Possible
@@ -41,6 +45,14 @@ public class Remonte_Inversion {
         String res;
         res = "\nPossiblité : "+Possible;
         return res;
+    }
+
+    public void setSolution(Matrice Solution) {
+        this.Solution = Solution;
+    }
+
+    public void setPossible(boolean Possible) {
+        this.Possible = Possible;
     }
     
     
