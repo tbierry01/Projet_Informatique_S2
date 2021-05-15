@@ -390,6 +390,12 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
         return AB;
     }
+    
+    /*
+    public Remonte_Inversion Simulation(){
+        
+    }
+*/
 
     public boolean isIsostatic() { //Cette classe permet de savoir si le calcul de treillis est possible ou pas
         boolean B;
