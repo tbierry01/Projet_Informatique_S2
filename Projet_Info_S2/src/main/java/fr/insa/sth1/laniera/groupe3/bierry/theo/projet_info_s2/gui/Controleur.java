@@ -175,6 +175,36 @@ public class Controleur {
             Point pClic = new Point(t.getX(), t.getY());
             vue.getModel().addFigure(new Noeud_Simple(pClic, 0, vue.getCouleur().getValue()));
             vue.redrawAll();
+        } else if (etat == 90) {
+            Point pClic = new Point(t.getX(), t.getY());
+            Point P = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
+            Noeud N = vue.getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
+            double D0 = P.getDistance(pClic);
+            double D1 = N.getDistance(pClic);
+            if(D0 < D1){
+                double Abs = P.getAbscisse();
+                vue.getModel().addFigure(new Point(Abs, t.getY()));
+                vue.redrawAll();
+            } else{
+                double Abs = N.getPos().getAbscisse();
+                vue.getModel().addFigure(new Noeud_Simple(Abs, t.getY(), 0, vue.getCouleur().getValue()));
+                vue.redrawAll();
+            }
+        } else if (etat == 100) {
+            Point pClic = new Point(t.getX(), t.getY());
+            Point P = vue.getModel().PointPlusProche(pClic, Double.MAX_VALUE);
+            Noeud N = vue.getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
+            double D0 = P.getDistance(pClic);
+            double D1 = N.getDistance(pClic);
+            if(D0 < D1){
+                double Ord = P.getOrdonnee();
+                vue.getModel().addFigure(new Point(t.getX(), Ord));
+                vue.redrawAll();
+            } else{
+                double Ord = N.getPos().getOrdonnee();
+                vue.getModel().addFigure(new Noeud_Simple(t.getX(), Ord, 0, vue.getCouleur().getValue()));
+                vue.redrawAll();
+            }
         }
     }
 
@@ -218,6 +248,14 @@ public class Controleur {
 
     public void boutonNoeuds(ActionEvent t) {
         changeEtat(80);
+    }
+    
+    public void boutonVertical (ActionEvent t) {
+        changeEtat(90);
+    }
+    
+    public void boutonHorizontal (ActionEvent t) {
+        changeEtat(100);
     }
 
     public List<Figure> getSelection() {
