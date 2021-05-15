@@ -9,8 +9,7 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -24,6 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        primaryStage.getIcons().add(new Image("file:Image_Logo.png"));
         primaryStage.setTitle("BRIDGIES");
 //      Scene scene = new Scene(new MainDessinPane());
         Scene scene = new Scene(new GlobalPane(primaryStage));
