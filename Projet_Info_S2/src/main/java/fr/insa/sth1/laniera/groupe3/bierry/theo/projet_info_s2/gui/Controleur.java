@@ -44,6 +44,7 @@ public class Controleur {
     private int IdSegment = 0;
     private int IdBarre = 0;
     private int IdNoeud = 0;
+    private Color Couleur;
 
     private List<Figure> selection;
 
@@ -52,6 +53,23 @@ public class Controleur {
         this.selection = new ArrayList<>();
     }
 
+    public void setIdPoint() {
+        IdPoint = IdPoint - 1;
+    }
+
+    public void setIdSegment() {
+        IdSegment = IdSegment - 1;
+    }
+
+    public void setIdBarre() {
+        IdBarre = IdBarre - 1;
+    }
+
+    public void setIdNoeud() {
+        IdNoeud = IdNoeud -1;
+    }
+
+    
     public void changeEtat(int nouvelEtat) {
         if (nouvelEtat == 30) {                         // On est dans l'état Point donc on désactive le bouton Segment //
 //            this.vue.getSegment().setDisable(true);
@@ -87,7 +105,9 @@ public class Controleur {
         if (etat == 20) {
             Point pClic = new Point(t.getX(), t.getY());
             Figure proche = getVue().getModel().plusProche(pClic, Double.MAX_VALUE);
-            Color C = proche.getColor();
+            if(proche.getColor() != Couleur){
+                Couleur = proche.getColor();
+            }
             System.out.println("je mets un petit message " + proche);
             if (proche != null) {
                 if (t.isShiftDown()) {
