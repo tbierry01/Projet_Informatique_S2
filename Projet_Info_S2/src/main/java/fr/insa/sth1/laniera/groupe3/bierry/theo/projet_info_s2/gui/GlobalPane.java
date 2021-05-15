@@ -47,11 +47,7 @@ public class GlobalPane extends BorderPane {
     private ToggleButton Barres;
     private Label Style;
     private Label Positions;
-    private Label X;
-    private Label Y;
     private ToggleButton Simulation;
-    private TextField Abscisse;
-    private TextField Ordonnee;
     private Label Aide;
     private DessinCanvas Dessin;
     private Button Ouvrir;
@@ -59,6 +55,12 @@ public class GlobalPane extends BorderPane {
     private Button Nouveau;
     private ColorPicker Couleur;
     private ToggleButton Sélectionner;
+    private ToggleButton Vertical;
+    private ToggleButton Horizontal;
+    private ToggleButton Force;
+    private Button Sauvegarder;
+    private TextField Norme;
+    private TextField Angle;
     
     private ClassDessin model;
     private Controleur controleur;
@@ -97,21 +99,20 @@ public class GlobalPane extends BorderPane {
         this.Barres = new ToggleButton("Barres");
         this.Style = new Label("Style");
         this.Positions = new Label("Position");
-        this.X = new Label("X : ");
-        this.Y = new Label("Y : ");
         this.Simulation = new ToggleButton("Simulation");
-        this.Abscisse = new TextField();
-        this.Ordonnee = new TextField();
         this.Aide = new Label();
         this.Dessin = new DessinCanvas(this);
         this.Sélectionner = new ToggleButton("Sélectionner");
+        this.Vertical = new ToggleButton("Vertical");
+        this.Horizontal = new ToggleButton("Horizontal");
+        this.Force = new ToggleButton("Force");
+        this.Sauvegarder = new Button ("Sauvegarder");
+        this.Norme = new TextField("Entrer Norme");
 
-        this.Noeuds.setPrefSize(100, 50);
-        this.Barres.setPrefSize(100, 50);
-        this.Abscisse.setPrefSize(100, 25);
-        this.Ordonnee.setPrefSize(100, 25);
-        this.Simulation.setPrefSize(100, 100);
+        this.Vertical.setPrefSize(120, 25);
+        this.Horizontal.setPrefSize(120,25);
         this.Sélectionner.setPrefSize(120, 25);
+        this.Norme.setPrefSize(100, 50);
         
         this.Aide.setFont(javafx.scene.text.Font.font(15));
         
@@ -229,7 +230,7 @@ public class GlobalPane extends BorderPane {
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
 
-        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation(), iconINSA);
+        HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, this.getSimulation(), Norme, iconINSA);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
         
@@ -288,12 +289,6 @@ public class GlobalPane extends BorderPane {
         
     //----------- On place les différents éléments qui composent la partie gauche -----------//
 
-        HBox pAbscisses = new HBox(this.X, this.Abscisse);
-        HBox pOrdonnee = new HBox(this.Y, this.Ordonnee);
-
-        pAbscisses.setSpacing(2);
-        pOrdonnee.setSpacing(3);
-
         HBox hStyle = new HBox(this.Style);
         hStyle.setPadding(new javafx.geometry.Insets(10, 5, 0, 0));
 
@@ -304,7 +299,7 @@ public class GlobalPane extends BorderPane {
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
         VBox coteGauche = new VBox(hStyle, getCouleur(), cbEpaisseur,
-                cbTrait, cbMatériaux, hPositions, pAbscisses, pOrdonnee, this.Sélectionner);
+                cbTrait, cbMatériaux, hPositions,this.Vertical, this.Horizontal, this.Sélectionner);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
@@ -569,6 +564,20 @@ public class GlobalPane extends BorderPane {
                 Noeuds.setDisable(true);
             }
         });
+        
+        
+//----------- Concerne les instructions attendues lorsqu'on clique sur Vertical -----------//  
+
+        Vertical.setOnAction((t) -> {
+            controleur.boutonVertical(t);
+        });
+        
+        
+//----------- Concerne les instructions attendues lorsqu'on clique sur Horizontal -----------//  
+
+        Horizontal.setOnAction((t) -> {
+            controleur.boutonHorizontal(t);
+        });        
         
 //----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
 
