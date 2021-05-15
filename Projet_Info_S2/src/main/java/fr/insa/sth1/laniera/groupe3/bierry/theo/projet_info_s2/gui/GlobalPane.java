@@ -689,7 +689,9 @@ public class GlobalPane extends BorderPane {
             }
             controleur.getVue().redrawAll();
             
-            if()
+            if(){
+                
+            }
         });
         
         
