@@ -39,6 +39,10 @@ public class Controleur {
     private int etat;
     private Point pos1[] = new Point[2];
     private Noeud pos2[] = new Noeud[2];
+    private int IdPoint = 0;
+    private int IdSegment = 0;
+    private int IdBarre = 0;
+    private int IdNoeud = 0;
 
     private List<Figure> selection;
 
@@ -106,7 +110,8 @@ public class Controleur {
             double px = t.getX();
             double py = t.getY();
             ClassDessin model = this.vue.getModel();
-            this.vue.getModel().addFigure(new Point(px, py, 0, vue.getCouleur().getValue()));
+            this.vue.getModel().addFigure(new Point(px, py, IdPoint, vue.getCouleur().getValue()));
+            IdPoint++;
             this.vue.redrawAll();
         } else if (etat == 40) {            // 40 correspond à l'état Segment //
             Point pClic = new Point(t.getX(), t.getY());
@@ -121,7 +126,8 @@ public class Controleur {
                 changeEtat(41);
                 vue.setTextByMoi("Vous ne pouvez pas créer de segment entre deux points en même position");
             } else {
-                vue.getModel().addFigure(new Segment(0, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                vue.getModel().addFigure(new Segment(IdSegment, pos1[0], pos1[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                IdSegment++;
                 vue.redrawAll();
                 vue.setTextByMoi("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
                 changeEtat(40);
@@ -129,12 +135,14 @@ public class Controleur {
         } else if (etat == 50) {
             Point pClic = new Point(t.getX(), t.getY());
             Segment S = vue.getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
-            Appui_Simple AS = Appui_Simple.CreationAppuiPossibleOuPas(0, S, pClic, vue.getCouleur().getValue());
+            Appui_Simple AS = Appui_Simple.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, vue.getCouleur().getValue());
+            
             if (AS == null) {
                 changeEtat(50);
                 vue.setTextByMoi("La création de l'appui n'est pas possible");
             } else {
                 vue.getModel().addFigure(AS);
+                IdNoeud ++;
                 System.out.println("Alpha1 : "+AS.getAlpha());
                 vue.redrawAll();
                 vue.setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
@@ -143,12 +151,13 @@ public class Controleur {
             //System.out.println("Ok on passe par l'état 60");
             Point pClic = new Point(t.getX(), t.getY());
             Segment S = vue.getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
-            Appui_Double AS = Appui_Double.CreationAppuiPossibleOuPas(0, S, pClic, vue.getCouleur().getValue());
+            Appui_Double AS = Appui_Double.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, vue.getCouleur().getValue());
             if (AS == null) {
                 changeEtat(60);
                 vue.setTextByMoi("La création de l'appui n'est pas possible");
             } else {
                 vue.getModel().addFigure(AS);
+                IdNoeud++;
                 System.out.println("Alpha2 : "+AS.getAlpha());
                 vue.redrawAll();
                 vue.setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
@@ -166,14 +175,16 @@ public class Controleur {
                 changeEtat(70);
                 vue.setTextByMoi("Vous ne pouvez pas créer de barre entre deux noeuds en même position");
             } else {
-                vue.getModel().addFigure(new Barre(0, pos2[0], pos2[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                vue.getModel().addFigure(new Barre(IdBarre, pos2[0], pos2[1], vue.getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                IdBarre++;
                 vue.redrawAll();
                 vue.setTextByMoi("Placez 2 points pour créer une barre ou reliez 2 noeuds déjà existants");
                 changeEtat(70);
             }
         } else if (etat == 80) {
             Point pClic = new Point(t.getX(), t.getY());
-            vue.getModel().addFigure(new Noeud_Simple(pClic, 0, vue.getCouleur().getValue()));
+            vue.getModel().addFigure(new Noeud_Simple(pClic, IdNoeud, vue.getCouleur().getValue()));
+            IdNoeud++;
             vue.redrawAll();
         } else if (etat == 90) {
             Point pClic = new Point(t.getX(), t.getY());
