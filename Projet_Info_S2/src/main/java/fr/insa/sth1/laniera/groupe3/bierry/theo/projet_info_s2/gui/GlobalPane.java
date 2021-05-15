@@ -686,8 +686,8 @@ public class GlobalPane extends BorderPane {
             System.out.println("\n\nListe Selection\n\n");
             for (Figure f : controleur.getSelection()) {
                 controleur.getVue().getModel().Remove(f);
-                System.out.println("\nListe\n"+controleur.getVue().getModel());
-                System.out.println("hcsagyuivdguulob ghoif ");
+                //System.out.println("\nListe\n"+controleur.getVue().getModel());
+                //System.out.println("hcsagyuivdguulob ghoif ");
                 
             }
             controleur.getVue().redrawAll();
