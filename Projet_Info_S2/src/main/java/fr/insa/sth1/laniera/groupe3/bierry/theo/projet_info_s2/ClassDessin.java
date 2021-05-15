@@ -129,6 +129,15 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             }
         }
     }
+    
+    public String toString(){
+        String res = "";
+        for (Figure F : Contenu) {
+            res = res + F.toString();
+            
+        }
+        return res;
+    }
 
     public Segment SegmentPlusProche(Point p, double distMax) {
         if (Contenu.isEmpty()) {
