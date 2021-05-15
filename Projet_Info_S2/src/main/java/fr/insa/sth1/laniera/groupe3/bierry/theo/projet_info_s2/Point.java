@@ -161,4 +161,11 @@ public class Point extends Figure{
         S = "Point ; " + Id + " ; " + abscisse + " ; " + ordonnee + " ; "+ Coul[0] + " ; " + Coul[1] + " ; " + Coul[2] + "\n";
         return S;
     }
+    
+    @Override
+    public void MAJ_Identifiacteurs (int Id){
+        if (this.getId() > Id){
+            this.setId(Id - 1);
+        }
+    }
 }
