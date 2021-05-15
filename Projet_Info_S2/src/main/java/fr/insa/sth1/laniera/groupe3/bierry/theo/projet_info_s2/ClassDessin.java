@@ -354,7 +354,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         MF.put(F.getId(), F);
                         break;
                     case "TypeBarre ":
-                        TypeBarre TB = new TypeBarre((int) Double.parseDouble(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6]);
+                        TypeBarre TB = new TypeBarre((int) Double.parseDouble(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6], + Double.parseDouble(Contient[7]));
                         MTB.put(TB.getId(), TB);
                         break;
                     case "Barre ":

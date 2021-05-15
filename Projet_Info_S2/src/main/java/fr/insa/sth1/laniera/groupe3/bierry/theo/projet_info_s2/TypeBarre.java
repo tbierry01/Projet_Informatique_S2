@@ -19,6 +19,7 @@ public class TypeBarre {
     private double Cout;
     private double RmC;
     private double RmT;
+    private double Cout_Supplementaire;
     private String Materiaux;
     private ArrayList<Barre> Barre_TypeBarre;
     
@@ -34,6 +35,7 @@ public class TypeBarre {
         RmT = 50;
         Materiaux = "Fer";
         Barre_TypeBarre = new ArrayList<>();
+        Cout_Supplementaire = 1500;
     }
     
     public TypeBarre(int Iden, String S, double C, double ResiMC, double ResiMT, String Mat){ //On s'en fout de ce qu'il y a dedans c'est juste pour dire qu'il y a un truc quoi
@@ -44,6 +46,17 @@ public class TypeBarre {
         RmT = ResiMT;
         Materiaux = Mat;
         Barre_TypeBarre = new ArrayList<>();
+    }
+    
+    public TypeBarre(int Iden, String S, double C, double ResiMC, double ResiMT, String Mat, double Cout_Sup){ //On s'en fout de ce qu'il y a dedans c'est juste pour dire qu'il y a un truc quoi
+        Id = Iden;
+        Section = S;
+        Cout = C;
+        RmC = ResiMC;
+        RmT = ResiMT;
+        Materiaux = Mat;
+        Barre_TypeBarre = new ArrayList<>();
+        Cout_Supplementaire = Cout_Sup;
     }
 
     public String getSection() {
@@ -70,6 +83,12 @@ public class TypeBarre {
         return RmT;
     }
 
+    public double getCout_Supplementaire() {
+        return Cout_Supplementaire;
+    }
+    
+    
+
     public String getMateriaux() {
         return Materiaux;
     }
@@ -85,7 +104,7 @@ public class TypeBarre {
     public String toString(){
         String res;
         res = "\n --Type Barre "+getId()+"--"+"\n- Section : "+Section+"\n- Longueur min : "+Lmin+"\n- Longueur max : "+Lmax+"\n- Resistance à la compression : "+RmC
-                +"\n- Resistance à la torsion : "+RmT+"\n- Materiau : "+Materiaux;
+                +"\n- Resistance à la torsion : "+RmT+"\n- Materiau : "+Materiaux + "\n-Cout Supllementaire Au mètre : "+Cout_Supplementaire;
         res = res+"\nLes barres suivantes sont de ce type : ";
         /*
         for (int i = 0; i < Barre_TypeBarre.size(); i++) {
@@ -106,7 +125,7 @@ public class TypeBarre {
 
     public String Enregistrement() {
         String S;
-        S = "TypeBarre ; "+this.getId() + " ; " + this.getSection() + " ; " + this.getCout()+ " ; "+this.getRmC()+" ; "+ this.getRmT()+ " ; "+this.getMateriaux()+"\n";
+        S = "TypeBarre ; "+this.getId() + " ; " + this.getSection() + " ; " + this.getCout()+ " ; "+this.getRmC()+" ; "+ this.getRmT()+ " ; "+this.getMateriaux()+ " ; " +this.getCout_Supplementaire()+"\n";
         return S;
     }
 }
