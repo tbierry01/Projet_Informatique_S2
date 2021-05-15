@@ -54,7 +54,7 @@ public abstract class Noeud extends Figure {
 
     public String toString() {
         String res;
-        res = "\n --Noeud " + Id + "--" + "\nAppartient au treillis : " + Treillis_Noeud.getId() + "\nRelie les barres : ";
+        res = "\n --Noeud " + Id + "--" +"\nRelie les barres : ";
         for (int i = 0; i < Barres_Noeud.size(); i++) {
             res = res + "\n-> " + Barres_Noeud.get(i).getId();
 
