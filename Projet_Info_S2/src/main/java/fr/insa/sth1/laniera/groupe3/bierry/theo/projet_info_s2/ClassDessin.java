@@ -30,7 +30,8 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
     }
 
     public ClassDessin() {
-        Contenu = Figure.GenerationListFigure();
+        Contenu = new ArrayList<>();
+        //Contenu = Figure.GenerationListFigure();
     }
 
     public ArrayList<Figure> getContenu() {
@@ -382,22 +383,24 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         }
     }
 
-    public ArrayList<Boolean> ColorationSimulation(Matrice M) { //Cette méthode permet de colorer les barres pour savoir si elles supportent ou pas l'éffort. Cette méthode prend en entier une matrice colone qui est en fait le vecteur de résolution du treillis
+    public void ColorationSimulation(Matrice M) { //Cette méthode permet de colorer les barres pour savoir si elles supportent ou pas l'éffort. Cette méthode prend en entier une matrice colone qui est en fait le vecteur de résolution du treillis
         Map<Integer, Barre> MB = new TreeMap<>();// Cette Map va permettre de trier dans l'ordre en fonction de leur identificateur, les barres
         for (Figure F : Contenu) { //On recupère toute les barres, comme une barre ne peut pas être créée s'il n'y a pas déjà deux neoud, alors on n'est qasiment certain d'avoir le même nombre de barres entre la liste que l'on va avoir là et le nombre de lignes de notre vecteur solution. De plus, on est presuqe sur de ne pas avoir deux fois la même barre car normalement, chaque barre a sont propre Id
             if (F instanceof Barre) {
                 Barre B = (Barre) F;
                 MB.put(B.getId(), B);
+                System.out.println("Passe là CD");
             }
         }
         //Maintenant que l'on a la liste de toutes nos Barres, on va à chaque leur associer le boolean Correspondant de si elles sont cassées ou pas
         ArrayList<Boolean> AB = new ArrayList<>();
-        for (int i = 0; i < M.getLig(); i++) {
+        for (int i = 0; i < MB.size(); i++) {
+            System.out.println("Je passe dans la deuxième boucle");
             Barre B = MB.get(i); //On récuère la barre B qui a pour identificateur i
             double Val = M.get(i, 0); //On obteint la valeur de l'effort correspondant à la bonne barre
             AB.add(B.isBroken(Val));//On rentre dans la liste, la valeur obtenu avec la méthode isBroken
         }
-        return AB;
+        //return AB;
     }
     
     
@@ -410,7 +413,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             RI.setPossible(RI1.getPossible());//J'aurais pu directement mettre true, mais je prefère faire ca come ca, on ne sait jamais, si jamais ca a réussi à rentre dans la boucle mais que ce n'est pas résolvable, c'est cohérant, sinon, on peut avoir true et en même temps, la matrice qui vaut null donc bon...
             RI.setSolution(RI1.getSolution()); //On récupère a matrice solution
             Matrice M = RI.getSolution();
-            ArrayList<Boolean> AB = this.ColorationSimulation(M); //On colore les barres
+            this.ColorationSimulation(M); //On colore les barres
             return RI;
         }
     }
