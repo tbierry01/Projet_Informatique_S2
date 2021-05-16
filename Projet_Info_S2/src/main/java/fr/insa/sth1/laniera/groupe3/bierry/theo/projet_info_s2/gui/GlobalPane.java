@@ -694,12 +694,12 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les instructions attendues lorsqu'on clique sur Supprimer -----------//
 
         Supprimer.setOnAction((t) -> {
-            System.out.println("\n\nListe Selection\n\n");
+            System.out.println("\n\nListe Selection\n\n"+controleur.getSelection());
             for (Figure f : controleur.getSelection()) {
                 controleur.getVue().getModel().Remove(f);
                 int i = f.getId();
                 System.out.println("\n\nId : "+i);
-                controleur.getVue().getModel().MAJ_Ids(f, i); //On met à jour les identificateurs des figures
+                controleur.getVue().getModel(). MAJ_Ids(f, i); //On met à jour les identificateurs des figures
                 //On met à jour les identificateurs dans la classe controleur
                 if(f instanceof Noeud){
                     controleur.setIdNoeud(controleur.getIdNoeud() - 1);
