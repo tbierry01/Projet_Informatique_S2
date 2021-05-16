@@ -6,8 +6,6 @@
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  *
@@ -32,6 +30,25 @@ public class Treillis {
         Barre_Treillis = AB;
         Noeuds_Treillis = AN;
         
+    }
+    
+    public Treillis(){
+        Id = 0;
+        Barre_Treillis = new ArrayList<>();
+        Noeuds_Treillis = new ArrayList<>();
+    }
+    
+    public void setTreillis(ClassDessin CD){
+        ArrayList<Noeud> AN = CD.Tri_Des_Noeuds();
+        ArrayList<Barre> AB = CD.Tri_Des_Barres();
+        Barre_Treillis = AB;
+        Noeuds_Treillis = AN;
+        for (Barre B : AB) {
+            B.setTreillisBarre(this);
+        }
+        for (Noeud N : AN) {
+            N.setTreillisNoeud(this);
+        }
     }
 
     public String toString() {
@@ -58,10 +75,12 @@ public class Treillis {
 
     public void addBarre_Treillis(Barre B) { //Ceci permet d'ajouter des barres dans notre list de barres
         Barre_Treillis.add(B);
+        B.setTreillisBarre(this);
     }
 
     public void addNoeuds_Treillis(Noeud N) { //Ceci permet de rajouter des noeuds dans notre list de noeuds
         Noeuds_Treillis.add(N);
+        N.setTreillisNoeud(this);
     }
 
     /**

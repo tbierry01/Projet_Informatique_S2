@@ -78,6 +78,10 @@ public class Segment extends Figure{
         APSegment.remove(A);
     }
     
+    public ArrayList<Appui> getAppui (){
+        return APSegment;
+    }
+    
     /*
     public void setTriangleTerrain(TriangleTerrain TTer){
         TT = TTer;

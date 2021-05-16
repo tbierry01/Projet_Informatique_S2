@@ -5,6 +5,7 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.*;/*
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Appui_Double;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Appui_Simple;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Barre;
@@ -15,7 +16,7 @@ import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Noeud;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Noeud_Simple;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Remonte_Inversion;
-import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;*/
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class Controleur {
     private int IdBarre = 0;
     private int IdNoeud = 0;
     private Color Couleur;
+    private Treillis TreillisControleur = new Treillis();
 
     private List<Figure> selection;
 
@@ -104,7 +106,7 @@ public class Controleur {
     }
 
     void clicDansZoneDessin(MouseEvent t) {
-        System.out.println("Je suis dedans");
+        //System.out.println("Je suis dedans");
         if (etat == 10) {
         }
         if (etat == 20) {
@@ -113,7 +115,7 @@ public class Controleur {
             if(proche.getColor() != Couleur){
                 Couleur = proche.getColor();
             }
-            System.out.println("je mets un petit message " + proche);
+            System.out.println("Selectionné: " + proche);
             if (proche != null) {
                 if (t.isShiftDown()) {
                     selection.add(proche);
@@ -277,12 +279,14 @@ public class Controleur {
             getVue().redrawAll();
         } else if (etat==110) {
             Remonte_Inversion ri = getVue().getModel().Simulation();
+            System.out.println("PAR ICI");
             if(ri.isPossible() == false){
                 getVue().setTextByMoi("Le treillis n'est pas isostatique");
             } else {
                 getVue().redrawAll();
             };
         }
+        TreillisControleur.setTreillis(vue.getModel());
     }
 
     void changeColor(Color value) {
@@ -494,6 +498,10 @@ public class Controleur {
 
     public void setIdNoeud(int IdNoeud) {
         this.IdNoeud = IdNoeud;
+    }
+    
+    public Treillis getTreillisControleur(){
+        return TreillisControleur;
     }
     
     

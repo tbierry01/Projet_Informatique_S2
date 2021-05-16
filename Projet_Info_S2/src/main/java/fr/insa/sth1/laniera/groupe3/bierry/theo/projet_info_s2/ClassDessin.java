@@ -354,7 +354,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         MF.put(F.getId(), F);
                         break;
                     case "TypeBarre ":
-                        TypeBarre TB = new TypeBarre((int) Double.parseDouble(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6], + Double.parseDouble(Contient[7]));
+                        TypeBarre TB = new TypeBarre((int) Double.parseDouble(Contient[1]), Contient[2], Double.parseDouble(Contient[3]), Double.parseDouble(Contient[4]), Double.parseDouble(Contient[5]), Contient[6], Double.parseDouble(Contient[7]));
                         MTB.put(TB.getId(), TB);
                         break;
                     case "Barre ":
@@ -405,6 +405,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
     
     public void Remove(Figure F){
         Contenu.remove(F);
+        //TODO Il faut remove tous les elements qui sont en relation par exemple quand on elève une barre, il faut aussi l'elever des listes de barrs des ses extremités
     }
     
     public Remonte_Inversion Simulation(){
@@ -447,24 +448,28 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
     public void MAJ_Ids(Figure F, int Id) {
 
         if (F instanceof Barre) {
-            for (Figure F0 : Contenu) {
-                F0.MAJ_Identifiacteurs(Id);
+            ArrayList<Barre> AB = Tri_Des_Barres();
+            for (Barre B : AB) {
+                B.MAJ_Identifiacteurs(Id);
             }
         } else if (F instanceof Noeud) {
-            for (Figure F0 : Contenu) {
+            ArrayList<Noeud> AN = Tri_Des_Noeuds();
+            for (Noeud N : AN) {
                 
-                F0.MAJ_Identifiacteurs(Id);
+                N.MAJ_Identifiacteurs(Id);
             }
 
         } else if (F instanceof Point) {
-            for (Figure F0 : Contenu) {
+            ArrayList<Point> AP = Tri_Des_Point();
+            for (Point P : AP) {
                 
-                F0.MAJ_Identifiacteurs(Id);
+                P.MAJ_Identifiacteurs(Id);
             }
         } else if (F instanceof Segment) {
-            for (Figure F0 : Contenu) {
+            ArrayList<Segment> AS = Tri_Des_Segment();
+            for (Segment S : AS) {
                 
-                F0.MAJ_Identifiacteurs(Id);
+                S.MAJ_Identifiacteurs(Id);
             }
         }
 

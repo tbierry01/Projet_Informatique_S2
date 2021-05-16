@@ -5,12 +5,13 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.*;/*
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Appui;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Barre;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.ClassDessin;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Figure;
-import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Noeud;
 import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Point;
-import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment;
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.Segment; */
 import java.io.File;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
@@ -66,37 +67,37 @@ public class GlobalPane extends BorderPane {
     private TextField Norme;
     private TextField Angle;
     private Button Supprimer;
-    private Label posX = new Label ("");
-    private Label posY = new Label ("");
-    
+    private Label posX = new Label("");
+    private Label posY = new Label("");
+
     private ClassDessin model;
     private Controleur controleur;
-    
+
     private ArrayList<Figure> EnsembleFigures;
     private File curFile;
     private Stage inStage;
-    
+
     private int IDSegment;
     private int IDPoint;
     private int IDAppuiSimple;
     private int IDAppuiDouble;
     private int IDBarres;
     private int IDNoeuds;
-    
+
     private MainMenu menu;
-    
+
     /*public GlobalPane () {
         this(new ClassDessin());  
     }
-    */
-     public GlobalPane(Stage inStage) {
+     */
+    public GlobalPane(Stage inStage) {
         this(inStage, new ClassDessin());
     }
-     
+
     public GlobalPane(Stage inStage, ClassDessin model) {
         this(inStage, null, model);
     }
-    
+
     public GlobalPane(Stage inStage, File fromFile, ClassDessin model) {
         this.inStage = inStage;
         this.model = model;
@@ -113,147 +114,131 @@ public class GlobalPane extends BorderPane {
         this.Vertical = new ToggleButton("Vertical");
         this.Horizontal = new ToggleButton("Horizontal");
         this.Force = new ToggleButton("Force");
-        this.Valider = new Button ("Valider");
+        this.Valider = new Button("Valider");
         this.Norme = new TextField("Entrer Norme");
         this.Angle = new TextField("Entrer Angle en rad");
         this.Supprimer = new Button("Supprimer");
 
         this.Vertical.setPrefSize(120, 25);
-        this.Horizontal.setPrefSize(120,25);
+        this.Horizontal.setPrefSize(120, 25);
         this.Sélectionner.setPrefSize(120, 25);
         this.Norme.setPrefSize(100, 50);
         this.Force.setPrefSize(100, 50);
         this.Valider.setPrefSize(100, 50);
         this.Angle.setPrefSize(100, 50);
         this.Supprimer.setPrefSize(120, 25);
-        
-        this.Aide.setFont(javafx.scene.text.Font.font(15));
-        
-        IDPoint = 0;
-        
-        
-//----------- Concerne les insertions des icones dans les différents boutons ainsi que leur taille -----------//
-        
-    //----------- Bouton Terrain -----------//
 
+        this.Aide.setFont(javafx.scene.text.Font.font(15));
+
+        IDPoint = 0;
+
+//----------- Concerne les insertions des icones dans les différents boutons ainsi que leur taille -----------//
+        //----------- Bouton Terrain -----------//
         ImageView iconTerrain = new ImageView(new Image("file:Image_Terrain.png"));
         this.Terrain = new ToggleButton("Terrain", iconTerrain);
         this.Terrain.setContentDisplay(ContentDisplay.TOP);
         this.Terrain.setPrefSize(100, 100);
-        
-    //----------- Bouton Pont -----------//
-        
+
+        //----------- Bouton Pont -----------//
         ImageView iconPont = new ImageView(new Image("file:Image_Pont.png"));
         this.Pont = new ToggleButton("Pont", iconPont);
         this.Pont.setContentDisplay(ContentDisplay.TOP);
         this.Pont.setPrefSize(100, 100);
-        
-    //----------- Bouton Ouvrir -----------//
-            
+
+        //----------- Bouton Ouvrir -----------//
         ImageView iconOuvrir = new ImageView(new Image("file:Image_Ouvrir.png"));
         this.Ouvrir = new Button("  Ouvrir", iconOuvrir);
         this.Ouvrir.setPrefSize(120, 33);
-        
-    //----------- Bouton Enregistrer -----------//
-            
+
+        //----------- Bouton Enregistrer -----------//
         ImageView iconEnregistrer = new ImageView(new Image("file:Image_Enregistrer.png"));
         this.Enregistrer = new Button("  Enregistrer", iconEnregistrer);
         this.Enregistrer.setPrefSize(120, 33);
-        
-    //----------- Bouton Nouveau -----------//
-            
+
+        //----------- Bouton Nouveau -----------//
         ImageView iconNouveau = new ImageView(new Image("file:Image_Nouveau.png"));
         this.Nouveau = new Button("  Nouveau", iconNouveau);
         this.Nouveau.setPrefSize(120, 33);
-        
-    //----------- Bouton Segment -----------//
-            
+
+        //----------- Bouton Segment -----------//
         ImageView iconSegment = new ImageView(new Image("file:Image_Segment.png"));
         this.Segment = new ToggleButton("Segment", iconSegment);
         this.Segment.setPrefSize(100, 50);
-        
-    //----------- Bouton Point -----------//
-            
+
+        //----------- Bouton Point -----------//
         ImageView iconPoint = new ImageView(new Image("file:Image_Point.png"));
         this.Point = new ToggleButton("    Point", iconPoint);
         this.Point.setPrefSize(100, 50);
-        
-    //----------- Bouton Appui Simple -----------//
-            
+
+        //----------- Bouton Appui Simple -----------//
         ImageView iconAppuiSimple = new ImageView(new Image("file:Image_Appui_Simple.png"));
         this.AppuiSimple = new ToggleButton(" Appui \n Simple", iconAppuiSimple);
         this.AppuiSimple.setPrefSize(100, 50);
-    
-    //----------- Bouton Appui Double -----------//
-            
+
+        //----------- Bouton Appui Double -----------//
         ImageView iconAppuiDouble = new ImageView(new Image("file:Image_Appui_Double.png"));
         this.AppuiDouble = new ToggleButton(" Appui \n Double", iconAppuiDouble);
         this.AppuiDouble.setPrefSize(100, 50);
-        
-    //----------- Bouton Noeuds -----------//
-            
+
+        //----------- Bouton Noeuds -----------//
         ImageView iconNoeuds = new ImageView(new Image("file:Image_Noeuds.png"));
         this.Noeuds = new ToggleButton("Noeuds", iconNoeuds);
         this.Noeuds.setPrefSize(100, 50);
-        
-    //----------- Bouton Barres -----------//
-            
+
+        //----------- Bouton Barres -----------//
         ImageView iconBarres = new ImageView(new Image("file:Image_Barres.png"));
         this.Barres = new ToggleButton(" Barres", iconBarres);
         this.Barres.setPrefSize(100, 50);
-        
-    // ----------- Logo INSA -----------//
-        
+
+        // ----------- Logo INSA -----------//
         ImageView iconINSA = new ImageView(new Image("file:Image_INSA.png"));
-        
-    //----------- Bouton Pont -----------//
-        
+
+        //----------- Bouton Pont -----------//
         ImageView iconSimulation = new ImageView(new Image("file:Image_Simulation.png"));
         this.Simulation = new ToggleButton("Simulation", iconSimulation);
         this.Simulation.setContentDisplay(ContentDisplay.TOP);
         this.Simulation.setPrefSize(100, 100);
-        
+
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
-        
         VBox bTerrain = new VBox(this.getSegment(), this.getPoint());
         VBox bPont1 = new VBox(this.getAppuiSimple(), this.getAppuiDouble());
         VBox bPont2 = new VBox(this.getNoeuds(), this.getBarres());
-        
-        VBox vOptions = new VBox (this.Nouveau, this.Ouvrir, this.getEnregistrer());
+
+        VBox vOptions = new VBox(this.Nouveau, this.Ouvrir, this.getEnregistrer());
 
         HBox hTerrain = new HBox(this.getTerrain(), bTerrain);
         HBox hPont = new HBox(this.getPont(), bPont1, bPont2);
 
         hTerrain.setSpacing(8);
         hPont.setSpacing(8);
-        
-        Rectangle rectangle1 = new Rectangle ();
+
+        Rectangle rectangle1 = new Rectangle();
         rectangle1.setWidth(5);
         rectangle1.setHeight(100);
         rectangle1.setFill(Color.LIGHTSEAGREEN);
-        
-        Rectangle rectangle2 = new Rectangle ();
+
+        Rectangle rectangle2 = new Rectangle();
         rectangle2.setWidth(5);
         rectangle2.setHeight(100);
         rectangle2.setFill(Color.LIGHTSEAGREEN);
-        
-        Rectangle rectangle3 = new Rectangle ();
+
+        Rectangle rectangle3 = new Rectangle();
         rectangle3.setWidth(5);
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
-        
-        VBox NormeAngle = new VBox (Norme, Angle);
-        VBox vbForce = new VBox (Force, Valider);
-        
-        HBox SimFor = new HBox (Simulation, vbForce, NormeAngle);
+
+        VBox NormeAngle = new VBox(Norme, Angle);
+        VBox vbForce = new VBox(Force, Valider);
+
+        HBox SimFor = new HBox(Simulation, vbForce, NormeAngle);
         SimFor.setSpacing(8);
 
         HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, SimFor);
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
-        
+
         this.menu = new MainMenu(this);
-        VBox barreMenus = new VBox (menu, entete);
+        VBox barreMenus = new VBox(menu, entete);
 
         Background bgBlue = new Background(new BackgroundFill(Color.CADETBLUE, CornerRadii.EMPTY, null));
         barreMenus.setBackground(bgBlue);
@@ -261,62 +246,54 @@ public class GlobalPane extends BorderPane {
         BorderPane haut = new BorderPane();
         HBox logoINSA = new HBox(iconINSA);
         logoINSA.setBackground(bgBlue);
-        HBox JeSersARien = new HBox ();
+        HBox JeSersARien = new HBox();
         JeSersARien.setBackground(bgBlue);
         haut.setLeft(entete);
         haut.setRight(logoINSA);
         haut.setTop(menu);
         haut.setCenter(JeSersARien);
         entete.setBackground(bgBlue);
-        
+
         this.setTop(haut);
-        
-        
-        
+
 //----------- Concerne les éléments de la partie gauche de l'interface -----------//
-        
-    //----------- Définit le bouton Couleur en définissant la couleur Noir par défaut -----------//
-           
+        //----------- Définit le bouton Couleur en définissant la couleur Noir par défaut -----------//
         Couleur = new ColorPicker(Color.BLACK);
         Couleur.setOnAction((t) -> {
             controleur.changeColor(Couleur.getValue());
         });
         Couleur.setPrefSize(120, 25);
-        
-    //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
 
-        ChoixStyleTrait traitPlein = new ChoixStyleTrait ("Trait plein");
-        ChoixStyleTrait traitPointilles = new ChoixStyleTrait ("Trait pointillé");
-        
-        ObservableList<ChoixStyleTrait>styleTrait = FXCollections.observableArrayList(traitPlein, traitPointilles);
-        ChoiceBox<ChoixStyleTrait>cbTrait = new ChoiceBox<ChoixStyleTrait>(styleTrait);
+        //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
+        ChoixStyleTrait traitPlein = new ChoixStyleTrait("Trait plein");
+        ChoixStyleTrait traitPointilles = new ChoixStyleTrait("Trait pointillé");
+
+        ObservableList<ChoixStyleTrait> styleTrait = FXCollections.observableArrayList(traitPlein, traitPointilles);
+        ChoiceBox<ChoixStyleTrait> cbTrait = new ChoiceBox<ChoixStyleTrait>(styleTrait);
         cbTrait.getSelectionModel().select(traitPlein);
         cbTrait.setPrefSize(120, 25);
-        
-    //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
-            
+
+        //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
         ChoixEpaisseur fin = new ChoixEpaisseur("Trait fin");
         ChoixEpaisseur moyen = new ChoixEpaisseur("Trait moyen");
         ChoixEpaisseur épais = new ChoixEpaisseur("Trait épais");
-        
-        ObservableList<ChoixEpaisseur>epaisseur = FXCollections.observableArrayList(fin, moyen, épais);
-        ChoiceBox<ChoixEpaisseur>cbEpaisseur = new ChoiceBox<ChoixEpaisseur>(epaisseur);
+
+        ObservableList<ChoixEpaisseur> epaisseur = FXCollections.observableArrayList(fin, moyen, épais);
+        ChoiceBox<ChoixEpaisseur> cbEpaisseur = new ChoiceBox<ChoixEpaisseur>(epaisseur);
         cbEpaisseur.getSelectionModel().select(moyen);
         cbEpaisseur.setPrefSize(120, 25);
-        
-    //----------- Définit les choix de la ChoiceBox en définissant le acier par défaut -----------//
 
-        ChoixMatériaux matAcier = new ChoixMatériaux ("Acier");
-        ChoixMatériaux matBois = new ChoixMatériaux ("Bois");
-        ChoixMatériaux matPolystyrène = new ChoixMatériaux ("Polystyrène");
-        
-        ObservableList<ChoixMatériaux>matériaux = FXCollections.observableArrayList(matAcier, matBois, matPolystyrène);
-        ChoiceBox<ChoixMatériaux>cbMatériaux = new ChoiceBox<ChoixMatériaux>(matériaux);
+        //----------- Définit les choix de la ChoiceBox en définissant le acier par défaut -----------//
+        ChoixMatériaux matAcier = new ChoixMatériaux("Acier");
+        ChoixMatériaux matBois = new ChoixMatériaux("Bois");
+        ChoixMatériaux matPolystyrène = new ChoixMatériaux("Polystyrène");
+
+        ObservableList<ChoixMatériaux> matériaux = FXCollections.observableArrayList(matAcier, matBois, matPolystyrène);
+        ChoiceBox<ChoixMatériaux> cbMatériaux = new ChoiceBox<ChoixMatériaux>(matériaux);
         cbMatériaux.getSelectionModel().select(matAcier);
         cbMatériaux.setPrefSize(120, 25);
-        
-    //----------- On place les différents éléments qui composent la partie gauche -----------//
-    
+
+        //----------- On place les différents éléments qui composent la partie gauche -----------//
         BorderPane gauche = new BorderPane();
 
         HBox hStyle = new HBox(this.Style);
@@ -329,42 +306,38 @@ public class GlobalPane extends BorderPane {
         this.Positions.setFont(javafx.scene.text.Font.font(15));
 
         VBox coteGauche = new VBox(hStyle, getCouleur(), cbEpaisseur,
-                cbTrait, cbMatériaux, hPositions,this.Vertical, this.Horizontal, this.Sélectionner, Supprimer);
+                cbTrait, cbMatériaux, hPositions, this.Vertical, this.Horizontal, this.Sélectionner, Supprimer);
         coteGauche.setPadding(new javafx.geometry.Insets(2, 15, 10, 10));
 
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
         coteGauche.setBackground(bgLightBlue);
-        
+
         Dessin.setOnMouseMoved((t) -> {
             double x;
             double y;
             x = t.getSceneX() - 145.6;
-            y=t.getSceneY() - 152.8;
+            y = t.getSceneY() - 152.8;
             posX.setText("X : " + x);
             posY.setText("Y : " + y);
-        /*    x = Dessin.getLayoutX();
+            /*    x = Dessin.getLayoutX();
             y = Dessin.getLayoutY();
             posX.setText("X : " + x);
             posY.setText("Y : " + y);
-      */  });
-        VBox posCurseur = new VBox (posX, posY);
+             */        });
+        VBox posCurseur = new VBox(posX, posY);
         posCurseur.setBackground(bgLightBlue);
-        
+
         VBox JeSersARienBis = new VBox();
         JeSersARienBis.setBackground(bgLightBlue);
 
         gauche.setTop(coteGauche);
         gauche.setCenter(JeSersARienBis);
         gauche.setBottom(posCurseur);
-        
-        this.setLeft(gauche);
-        
-        
-        
-//----------- Concerne les éléments de la partie inférieure de l'interface -----------//
 
+        this.setLeft(gauche);
+
+//----------- Concerne les éléments de la partie inférieure de l'interface -----------//
         Aide.setText("Cliquez sur un bouton pour modéliser votre pont");
-        
 
         HBox coteBas = new HBox(this.Aide);
 
@@ -372,18 +345,11 @@ public class GlobalPane extends BorderPane {
         coteBas.setBackground(bgLightBlue2);
 
         this.setBottom(coteBas);
-        
-        
-        
-//----------- Concerne la position centrale du canvas -----------//
 
+//----------- Concerne la position centrale du canvas -----------//
         this.setCenter(Dessin);
-        
-        
-        
 
 //----------- Concerne l'activation et la désactivation des boutons en fonctions des boutons Terrain et Pont -----------//
-        
         Point.setDisable(true);
         Segment.setDisable(true);
         Barres.setDisable(true);
@@ -394,11 +360,11 @@ public class GlobalPane extends BorderPane {
         Norme.setDisable(true);
         Angle.setDisable(true);
         Supprimer.setDisable(true);
-        
+
         ToggleGroup gPointSegment = new ToggleGroup();
         Segment.setToggleGroup(gPointSegment);
         Point.setToggleGroup(gPointSegment);
-        
+
         ToggleGroup gTerrainPont = new ToggleGroup();
         Terrain.setToggleGroup(gTerrainPont);
         Pont.setToggleGroup(gTerrainPont);
@@ -406,27 +372,23 @@ public class GlobalPane extends BorderPane {
         Sélectionner.setToggleGroup(gTerrainPont);
         Vertical.setToggleGroup(gTerrainPont);
         Horizontal.setToggleGroup(gTerrainPont);
-        
+
         ToggleGroup gPont = new ToggleGroup();
         Noeuds.setToggleGroup(gPont);
         Barres.setToggleGroup(gPont);
         AppuiSimple.setToggleGroup(gPont);
         AppuiDouble.setToggleGroup(gPont);
-        
-
 
 //----------- Concerne les instructions attendues lorsqu'on clique sur Point -----------//
-       
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
-            
+
             if (Segment.isDisabled() == true) {
                 controleur.boutonEtatNeutre(t);
             } else {
                 controleur.boutonPoint(t);
             }
-            
-            
+
             if (Segment.isDisabled() == true) {
                 Segment.setDisable(false);
                 Sélectionner.setDisable(false);
@@ -439,11 +401,8 @@ public class GlobalPane extends BorderPane {
                 Horizontal.setDisable(true);
             }
         });
-        
-        
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Segment -----------//
-        
         Segment.setOnAction((t) -> {
             Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
             if (Point.isDisabled() == true) {
@@ -451,7 +410,7 @@ public class GlobalPane extends BorderPane {
             } else {
                 controleur.boutonSegment(t);
             }
-            
+
             if (Point.isDisabled() == true) {
                 Point.setDisable(false);
                 Sélectionner.setDisable(false);
@@ -464,11 +423,8 @@ public class GlobalPane extends BorderPane {
                 Horizontal.setDisable(true);
             }
         });
-        
-        
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Appui Simple -----------//
-        
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
             if (Point.isDisabled() == false) { //TODO j'ai changé true ne false
@@ -476,7 +432,7 @@ public class GlobalPane extends BorderPane {
             } else {
                 controleur.boutonAppuiSimple(t);
             }
-            
+
             if (Barres.isDisabled() == true) {
                 Barres.setDisable(false);
                 AppuiDouble.setDisable(false);
@@ -493,11 +449,8 @@ public class GlobalPane extends BorderPane {
                 Horizontal.setDisable(true);
             }
         });
-        
-        
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Appui Double -----------//
-        
         AppuiDouble.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
             if (Point.isDisabled() == false) { //TODO j'ai chaghé true en false
@@ -505,7 +458,7 @@ public class GlobalPane extends BorderPane {
             } else {
                 controleur.boutonAppuiDouble(t);
             }
-            
+
             if (Barres.isDisabled() == true) {
                 Barres.setDisable(false);
                 AppuiSimple.setDisable(false);
@@ -522,11 +475,8 @@ public class GlobalPane extends BorderPane {
                 Horizontal.setDisable(true);
             }
         });
-        
-        
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Barres -----------//
-        
         Barres.setOnAction((t) -> {
             Aide.setText("Cliquez sur 2 noeurs pour créer une barre");
             if (Noeuds.isDisabled() == true) {
@@ -534,7 +484,7 @@ public class GlobalPane extends BorderPane {
             } else {
                 controleur.boutonBarres(t);
             }
-            
+
             if (Noeuds.isDisabled() == true) {
                 AppuiDouble.setDisable(false);
                 AppuiSimple.setDisable(false);
@@ -550,12 +500,9 @@ public class GlobalPane extends BorderPane {
                 Vertical.setDisable(true);
                 Horizontal.setDisable(true);
             }
-        }); 
-        
-        
-        
+        });
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Noeuds -----------//
-        
         Noeuds.setOnAction((t) -> {
             Aide.setText("Cliquez sur un point pour créer un noeud");
             if (Barres.isDisabled() == true) {
@@ -563,7 +510,7 @@ public class GlobalPane extends BorderPane {
             } else {
                 controleur.boutonNoeuds(t);
             }
-            
+
             if (Barres.isDisabled() == true) {
                 Barres.setDisable(false);
                 AppuiSimple.setDisable(false);
@@ -579,20 +526,17 @@ public class GlobalPane extends BorderPane {
                 Vertical.setDisable(true);
                 Horizontal.setDisable(true);
             }
-        });        
-        
-        
-        
+        });
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
-        
         Terrain.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Point ou Segment afin de modéliser votre terrain");
             Barres.setDisable(true);
             AppuiSimple.setDisable(true);
             AppuiDouble.setDisable(true);
             Noeuds.setDisable(true);
-            
-            if(Segment.isDisabled() == true) {
+
+            if (Segment.isDisabled() == true) {
                 Segment.setDisable(false);
                 Point.setDisable(false);
             } else {
@@ -600,16 +544,14 @@ public class GlobalPane extends BorderPane {
                 Point.setDisable(true);
             }
         });
-        
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Pont -----------//
-        
         Pont.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Noeuds, Appui (Simple/Double) ou Barres pour modéliser votre pont");
             Point.setDisable(true);
             Segment.setDisable(true);
-            
-            if(Barres.isDisabled() == true) {
+
+            if (Barres.isDisabled() == true) {
                 Barres.setDisable(false);
                 AppuiSimple.setDisable(false);
                 AppuiDouble.setDisable(false);
@@ -621,15 +563,12 @@ public class GlobalPane extends BorderPane {
                 Noeuds.setDisable(true);
             }
         });
-        
-        
-/*        Sélectionner.setOnAction((t) -> {
+
+        /*        Sélectionner.setOnAction((t) -> {
             this.controleur.boutonSélectionner(t);
         }); 
-*/        
-
+         */
 //----------- Concerne les instructions attendues lorsqu'on clique sur Sélectionner -----------//
-
         Sélectionner.setOnAction((t) -> {
             Aide.setText("Cliquez sur des éléments pour les sélectionner");
             this.controleur.boutonSélectionner(t);
@@ -641,20 +580,18 @@ public class GlobalPane extends BorderPane {
                 Barres.setDisable(true);
                 Noeuds.setDisable(true);
             }
-            if(Supprimer.isDisable() == true) {
+            if (Supprimer.isDisable() == true) {
                 Supprimer.setDisable(false);
             } else {
                 Supprimer.setDisable(true);
             }
-            
-        });
-        
-        
-//----------- Concerne les instructions attendues lorsqu'on clique sur Force -----------//
 
+        });
+
+//----------- Concerne les instructions attendues lorsqu'on clique sur Force -----------//
         Force.setOnAction((t) -> {
             Aide.setText("Sélectionnez le noeuds puis entrez la norme et l'angle de la force qui s'y applique");
-            if(Angle.isDisabled() == true) {
+            if (Angle.isDisabled() == true) {
                 Angle.setDisable(false);
                 Norme.setDisable(false);
                 Valider.setDisable(false);
@@ -670,11 +607,8 @@ public class GlobalPane extends BorderPane {
                 Horizontal.setDisable(false);
             }
         });
-        
-        
-        
-//----------- Concerne les instructions attendues lorsqu'on clique sur Vertical -----------//  
 
+//----------- Concerne les instructions attendues lorsqu'on clique sur Vertical -----------//  
         Vertical.setOnAction((t) -> {
             controleur.boutonVertical(t);
             if (Segment.isDisabled() == false || Barres.isDisabled() == false || Angle.isDisabled() == false) {
@@ -689,10 +623,8 @@ public class GlobalPane extends BorderPane {
                 Valider.setDisable(true);
             }
         });
-        
-        
-//----------- Concerne les instructions attendues lorsqu'on clique sur Horizontal -----------//  
 
+//----------- Concerne les instructions attendues lorsqu'on clique sur Horizontal -----------//  
         Horizontal.setOnAction((t) -> {
             controleur.boutonHorizontal(t);
             if (Segment.isDisabled() == false || Barres.isDisabled() == false || Angle.isDisabled() == false) {
@@ -706,22 +638,18 @@ public class GlobalPane extends BorderPane {
                 Norme.setDisable(true);
                 Valider.setDisable(true);
             }
-        }); 
-        
-        
-//----------- Concerne les instructions attendues lorsqu'on clique sur Simulation -----------//
+        });
 
+//----------- Concerne les instructions attendues lorsqu'on clique sur Simulation -----------//
         Simulation.setOnAction((t) -> {
             System.out.println("Je suis là");
             controleur.boutonSimulation(t);
         });
-        
-        
-//----------- Concerne les instructions attendues lorsqu'on clique sur Supprimer -----------//
 
+//----------- Concerne les instructions attendues lorsqu'on clique sur Supprimer -----------//
         Supprimer.setOnAction((t) -> {
-            System.out.println("\n\nListe Selection\n\n"+controleur.getSelection());
-            for (Figure f : controleur.getSelection()) {
+            System.out.println("\n\nListe Selection\n\n" + controleur.getSelection());
+            /*for (Figure f : controleur.getSelection()) {
                 controleur.getVue().getModel().Remove(f);
                 int i = f.getId();
                 System.out.println("\n\nId : "+i);
@@ -737,45 +665,99 @@ public class GlobalPane extends BorderPane {
                     controleur.setIdSegment(controleur.getIdSegment() - 1);
                 }
             }
+             */
+            for (Figure F : controleur.getSelection()) {
+                if (controleur.getVue().getModel().getContenu().contains(F)) { //Comme dans la suite, on va enlever des figures qui ne sont pas demander d'enlever, mais qui créent des ncohérence, alors, on vérfie si cette figure est déjà enlevé ou pas
+                    if (F instanceof Point) {
+                        ArrayList<Segment> AS = ((Point) F).getSegment_Point();
+                        for (Segment S : AS) {
+                            ArrayList<Appui> AA = S.getAppui();
+                            for (Appui A : AA) {
+                                ArrayList<Barre> AB = A.getBarre();
+                                for (Barre B : AB) {
+                                    controleur.getVue().getModel().Remove(B);
+                                    controleur.getVue().getModel().MAJ_Ids(B, B.getId());
+                                    controleur.setIdBarre(controleur.getIdBarre() - 1);
+                                    //System.out.println("\nID Barres : "+controleur.getIdBarre()+"\n");
+                                }
+                                controleur.getVue().getModel().Remove(A);
+                                controleur.getVue().getModel().MAJ_Ids(A, A.getId());
+                                controleur.setIdNoeud(controleur.getIdNoeud() - 1);
+                            }
+                            controleur.getVue().getModel().Remove(S);
+                            controleur.getVue().getModel().MAJ_Ids(S, S.getId());
+                            controleur.setIdSegment(controleur.getIdSegment() - 1);
+                        }
+                        controleur.getVue().getModel().Remove(F);
+                        controleur.getVue().getModel().MAJ_Ids(F, F.getId());
+                        controleur.setIdPoint(controleur.getIdPoint() - 1);
+                    } else if (F instanceof Segment) {
+                        ArrayList<Appui> AA = ((Segment) F).getAppui();
+                        for (Appui A : AA) {
+                            ArrayList<Barre> AB = A.getBarre();
+                            for (Barre B : AB) {
+                                controleur.getVue().getModel().Remove(B);
+                                controleur.getVue().getModel().MAJ_Ids(B, B.getId());
+                                controleur.setIdBarre(controleur.getIdBarre() - 1);
+                            }
+                            controleur.getVue().getModel().Remove(A);
+                            controleur.getVue().getModel().MAJ_Ids(A, A.getId());
+                            controleur.setIdNoeud(controleur.getIdNoeud() - 1);
+                        }
+                        controleur.getVue().getModel().Remove(F);
+                        controleur.getVue().getModel().MAJ_Ids(F, F.getId());
+                        controleur.setIdSegment(controleur.getIdSegment() - 1);
+
+                    } else if (F instanceof Noeud) {
+                        ArrayList<Barre> AB = ((Noeud) F).getBarre();
+                        for (Barre B : AB) {
+                            controleur.getVue().getModel().Remove(B);
+                            controleur.getVue().getModel().MAJ_Ids(B, B.getId());
+                            controleur.setIdBarre(controleur.getIdBarre() - 1);
+                        }
+                        controleur.getVue().getModel().Remove(F);
+                        controleur.getVue().getModel().MAJ_Ids(F, F.getId());
+                        controleur.setIdNoeud(controleur.getIdNoeud() - 1);
+
+                    } else if (F instanceof Barre) {
+                        controleur.getVue().getModel().Remove(F);
+                        controleur.getVue().getModel().MAJ_Ids(F, F.getId());
+                        controleur.setIdBarre(controleur.getIdBarre() - 1);
+                    }
+                }
+            }
+            controleur.getTreillisControleur().setTreillis(controleur.getVue().getModel());
+            System.out.println("Treilis: "+controleur.getTreillisControleur());
+            System.out.println("\n-|-|-|- ID BARRE : "+ controleur.getIdBarre()+"\n");
             controleur.getVue().redrawAll();
         });
-        
-    //TO POUR M BIEERY : SEAU QU Pé Dé I DENT TIF HI KA T'HEURE    
-        
-//----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
 
+        //TO POUR M BIEERY : SEAU QU Pé Dé I DENT TIF HI KA T'HEURE    
+//----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
         Nouveau.setOnAction((t) -> {
             controleur.menuNouveau(t);
         });
- 
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Ouvrir -----------//  
-        
         Ouvrir.setOnAction((t) -> {
             controleur.menuOuvrir(t);
         });
-        
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Nouveau -----------//  
-        
         Nouveau.setOnAction((t) -> {
             controleur.menuNouveau(t);
         });
-        
-        
+
 //----------- Concerne les instructions attendues lorsqu'on clique sur Sauvegarder -----------//  
-        
         Enregistrer.setOnAction((t) -> {
             controleur.menuSauvegarder(t);
         });
-        
+
     }
-    
-    
-    
+
     public void redrawAll() {
-            this.Dessin.redrawAll ();
-        }
+        this.Dessin.redrawAll();
+    }
 
     /**
      * @return the model
@@ -871,22 +853,21 @@ public class GlobalPane extends BorderPane {
     public File getCurFile() {
         return curFile;
     }
-    
+
     public void setCurFile(File curFile) {
         this.curFile = curFile;
     }
-    
+
     public Stage getInStage() {
         return inStage;
     }
-    
+
     public MainMenu getMenu() {
         return menu;
     }
-    
+
     public void setTextByMoi(String text) {
         Aide.setText(text);
     }
-    
-    
+
 }

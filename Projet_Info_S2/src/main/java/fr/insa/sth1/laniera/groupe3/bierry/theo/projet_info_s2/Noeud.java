@@ -73,6 +73,10 @@ public abstract class Noeud extends Figure {
     public Treillis getTreillis_Noeud() {
         return Treillis_Noeud;
     }
+    
+    public ArrayList<Barre> getBarre(){
+        return Barres_Noeud;
+    }
 
     public abstract Point getPos();
 

@@ -87,6 +87,8 @@ public class Barre extends Figure {
         Noeuds_Barre = new Noeud[2];
         Noeuds_Barre[0] = N1;
         Noeuds_Barre[1] = N2;
+        N1.addBarre(this);
+        N2.addBarre(this);
     }
 
     public String toString() {
