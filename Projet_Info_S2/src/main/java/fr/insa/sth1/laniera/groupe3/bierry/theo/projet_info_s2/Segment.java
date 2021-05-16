@@ -5,6 +5,7 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -17,6 +18,7 @@ public class Segment extends Figure{
     private int Id;
     private Point[] Extremite;  // Tableau ou l'on met les points des extrémités du segment
     private ZoneConstructible ZC = new ZoneConstructible(0, 0, 100, 100);
+    private ArrayList<Appui> APSegment = new ArrayList<>();
     
     public Segment (int Iden, Point P1, Point P2, Color Couleur){
         super(Couleur);
@@ -66,6 +68,14 @@ public class Segment extends Figure{
     
     public Point getExtremite(int Pos){
         return Extremite[Pos];
+    }
+    
+    public void addAppuui (Appui A){
+        APSegment.add(A);
+    }
+    
+    public void removeAppui (Appui A){
+        APSegment.remove(A);
     }
     
     /*

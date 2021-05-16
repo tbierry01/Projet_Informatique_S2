@@ -23,6 +23,7 @@ public abstract class Appui extends Noeud {
         }
         alpha = coeff;
         SegAppui = Seg;
+        Seg.addAppuui(this);
     }
     
     public Appui(Treillis T, int Iden, double coeff, Segment Seg, Force FN, Color Couleur) {
@@ -32,6 +33,7 @@ public abstract class Appui extends Noeud {
         }
         alpha = coeff;
         SegAppui = Seg;
+        Seg.addAppuui(this);
     }
     
     public Appui(Treillis T, int Iden, double coeff, Segment Seg, Force FN, double r, double g, double b) {
@@ -41,6 +43,7 @@ public abstract class Appui extends Noeud {
         }
         alpha = coeff;
         SegAppui = Seg;
+        Seg.addAppuui(this);
         super.setColorRGB(r, g, b);
     }
 
@@ -51,6 +54,7 @@ public abstract class Appui extends Noeud {
         }
         alpha = coeff;
         SegAppui = Seg;
+        Seg.addAppuui(this);
     }
     
     public Appui(int Id, double coeff, Segment Seg, Color C) {
@@ -60,6 +64,7 @@ public abstract class Appui extends Noeud {
         }
         alpha = coeff;
         SegAppui = Seg;
+        Seg.addAppuui(this);
     }
 
     public String toString() {
