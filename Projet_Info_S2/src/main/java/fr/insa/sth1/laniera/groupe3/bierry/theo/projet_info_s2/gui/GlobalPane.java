@@ -66,6 +66,8 @@ public class GlobalPane extends BorderPane {
     private TextField Norme;
     private TextField Angle;
     private Button Supprimer;
+    private Label posX = new Label ("");
+    private Label posY = new Label ("");
     
     private ClassDessin model;
     private Controleur controleur;
@@ -314,6 +316,8 @@ public class GlobalPane extends BorderPane {
         cbMatériaux.setPrefSize(120, 25);
         
     //----------- On place les différents éléments qui composent la partie gauche -----------//
+    
+        BorderPane gauche = new BorderPane();
 
         HBox hStyle = new HBox(this.Style);
         hStyle.setPadding(new javafx.geometry.Insets(10, 5, 0, 0));
@@ -330,8 +334,30 @@ public class GlobalPane extends BorderPane {
 
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
         coteGauche.setBackground(bgLightBlue);
+        
+        Dessin.setOnMouseMoved((t) -> {
+            double x;
+            double y;
+            x = t.getSceneX() - 145.6;
+            y=t.getSceneY() - 152.8;
+            posX.setText("X : " + x);
+            posY.setText("Y : " + y);
+        /*    x = Dessin.getLayoutX();
+            y = Dessin.getLayoutY();
+            posX.setText("X : " + x);
+            posY.setText("Y : " + y);
+      */  });
+        VBox posCurseur = new VBox (posX, posY);
+        posCurseur.setBackground(bgLightBlue);
+        
+        VBox JeSersARienBis = new VBox();
+        JeSersARienBis.setBackground(bgLightBlue);
 
-        this.setLeft(coteGauche);
+        gauche.setTop(coteGauche);
+        gauche.setCenter(JeSersARienBis);
+        gauche.setBottom(posCurseur);
+        
+        this.setLeft(gauche);
         
         
         
