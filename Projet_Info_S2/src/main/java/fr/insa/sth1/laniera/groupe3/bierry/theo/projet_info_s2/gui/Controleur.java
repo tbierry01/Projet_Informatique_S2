@@ -424,15 +424,6 @@ public class Controleur {
     }
     
     public void menuAideUtilisation (ActionEvent t) {
-/*        Alert aide = new Alert (AlertType.INFORMATION);
-        aide.setTitle("Aide Utilisation");
-        aide.setHeaderText(null);
-        aide.setContentText("Boutons Point / Segment: appuyez d'abord sur Terrain \n"
-            + "Boutons Appuis, Noeuds, Barres : appuyez d'abord sur Pont \n"
-            + "Point : appuyez où vous voulez sur la zone centrale pour placer les points qui définirons le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche) \n"
-            + "Segment : reliez deux points existants pour former le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
-        aide.showAndWait();
-*/
         Label boutonTerrain = new Label (" - Boutons Point / Segment: appuyez d'abord sur Terrain");
         Label boutonPont = new Label (" - Boutons Appuis, Noeuds, Barres : appuyez d'abord sur Pont");
         Label boutonPoint = new Label (" - Point : appuyez où vous voulez sur la zone centrale pour placer les points qui définirons le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
@@ -446,6 +437,21 @@ public class Controleur {
         Stage newWindow = new Stage();
         newWindow.getIcons().add(new Image("file:Image_Logo.png"));
         newWindow.setTitle("BRIDGIES - Fenêtre d'aide");
+        newWindow.setScene(secondScene);
+        
+        newWindow.show();
+    }
+    
+    public void menuFAQ (ActionEvent t) {
+        Label premireQuestion = new Label ("Voici la première question qui nous a été posée par Jean-Michel du 34 : Bonjour ?");
+        
+        StackPane secondaryLayout = new StackPane();
+        secondaryLayout.getChildren().add(premireQuestion);
+        Scene secondScene = new Scene(secondaryLayout);
+        
+        Stage newWindow = new Stage();
+        newWindow.getIcons().add(new Image("file:Image_Logo.png"));
+        newWindow.setTitle("BRIDGIES - FAQ");
         newWindow.setScene(secondScene);
         
         newWindow.show();
