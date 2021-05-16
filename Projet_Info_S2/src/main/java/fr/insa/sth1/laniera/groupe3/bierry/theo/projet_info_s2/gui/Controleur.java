@@ -40,6 +40,7 @@ public class Controleur {
     private int etat;
     private Point pos1[] = new Point[2];
     private Noeud pos2[] = new Noeud[2];
+    private double pos3[] = new double [2];
     private int IdPoint = 0;
     private int IdSegment = 0;
     private int IdBarre = 0;
@@ -220,35 +221,56 @@ public class Controleur {
             System.out.println("\n"+getVue().getModel());
             getVue().redrawAll();
         } else if (etat == 90) {
+            getVue().setTextByMoi("Cliquez sur la figure sur laquelle vous voulez vous baser");
             Point pClic = new Point(t.getX(), t.getY());
+            Figure proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             Point P = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             Noeud N = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             double D0 = P.getDistance(pClic);
             double D1 = N.getDistance(pClic);
             if(D0 < D1){
-                double Abs = P.getAbscisse();
-                getVue().getModel().addFigure(new Point(Abs, t.getY()));
-                getVue().redrawAll();
+                pos3[0] = P.getAbscisse();
+                changeEtat(91);
             } else{
-                double Abs = N.getPos().getAbscisse();
-                getVue().getModel().addFigure(new Noeud_Simple(Abs, t.getY(), 0, getVue().getCouleur().getValue()));
-                getVue().redrawAll();
+                pos3[0] = N.getPos().getAbscisse();
+                changeEtat(92);
             }
+        } else if(etat == 91) {
+            getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Point");
+            double Ord = t.getY();
+            getVue().getModel().addFigure(new Point(pos3[0], Ord));
+            getVue().redrawAll();
+            
+        } else if (etat == 92) {
+            getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Noeud");
+            double Ord = t.getY();
+            getVue().getModel().addFigure(new Noeud_Simple(pos3[0], Ord, IdNoeud, getVue().getCouleur().getValue()));
+            getVue().redrawAll();
         } else if (etat == 100) {
+            getVue().setTextByMoi("Cliquez sur la figure sur laquelle vous voulez vous baser");
             Point pClic = new Point(t.getX(), t.getY());
+            Figure proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             Point P = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             Noeud N = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             double D0 = P.getDistance(pClic);
             double D1 = N.getDistance(pClic);
             if(D0 < D1){
-                double Ord = P.getOrdonnee();
-                getVue().getModel().addFigure(new Point(t.getX(), Ord));
-                getVue().redrawAll();
+                pos3[0] = P.getOrdonnee();
+                changeEtat(101);
             } else{
-                double Ord = N.getPos().getOrdonnee();
-                getVue().getModel().addFigure(new Noeud_Simple(t.getX(), Ord, 0, getVue().getCouleur().getValue()));
-                getVue().redrawAll();
+                pos3[0] = N.getPos().getOrdonnee();
+                changeEtat(102);
             }
+        } else if (etat==101) {
+            getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Point");
+            double Abs = t.getX();
+            getVue().getModel().addFigure(new Point(Abs, pos3[0]));
+            getVue().redrawAll();
+        } else if (etat==102) {
+            getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Noeud");
+            double Abs = t.getX();
+            getVue().getModel().addFigure(new Noeud_Simple(Abs, pos3[0], IdNoeud, getVue().getCouleur().getValue()));
+            getVue().redrawAll();
         } else if (etat==110) {
             Remonte_Inversion ri = getVue().getModel().Simulation();
             if(ri.isPossible() == false){
