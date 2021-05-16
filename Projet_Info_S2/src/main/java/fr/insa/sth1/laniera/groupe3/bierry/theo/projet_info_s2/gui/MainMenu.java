@@ -47,11 +47,15 @@ public class MainMenu extends MenuBar{
         
         Menu aide = new Menu ("Aide");
         MenuItem aPropos = new MenuItem ("A Propos");
+        MenuItem aideUtilisation = new MenuItem("Aide Utilisation");
         
         aPropos.setOnAction((t) -> {
             main.getControleur().menuAPropos(t);
         });
-        aide.getItems().addAll(aPropos);
+        aideUtilisation.setOnAction((t) -> {
+            main.getControleur().menuAideUtilisation(t);
+        });
+        aide.getItems().addAll(aPropos, aideUtilisation);
         
         this.getMenus().addAll(fichier,aide);
     }
