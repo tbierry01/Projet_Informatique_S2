@@ -24,7 +24,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -417,6 +421,34 @@ public class Controleur {
         alert.setContentText("Yo Cocorico, j'ai une blague : \nf et f' sont sur un bateau, f tombe à l'eau, que se passe t-il?\n\n\nLe bateau dérive \nmdrrr");
 
         alert.showAndWait();
+    }
+    
+    public void menuAideUtilisation (ActionEvent t) {
+/*        Alert aide = new Alert (AlertType.INFORMATION);
+        aide.setTitle("Aide Utilisation");
+        aide.setHeaderText(null);
+        aide.setContentText("Boutons Point / Segment: appuyez d'abord sur Terrain \n"
+            + "Boutons Appuis, Noeuds, Barres : appuyez d'abord sur Pont \n"
+            + "Point : appuyez où vous voulez sur la zone centrale pour placer les points qui définirons le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche) \n"
+            + "Segment : reliez deux points existants pour former le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
+        aide.showAndWait();
+*/
+        Label boutonTerrain = new Label (" - Boutons Point / Segment: appuyez d'abord sur Terrain");
+        Label boutonPont = new Label (" - Boutons Appuis, Noeuds, Barres : appuyez d'abord sur Pont");
+        Label boutonPoint = new Label (" - Point : appuyez où vous voulez sur la zone centrale pour placer les points qui définirons le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
+        Label boutonSegment = new Label (" - Segment : reliez deux points existants pour former le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
+        VBox textInfo = new VBox (boutonTerrain, boutonPont, boutonPoint, boutonSegment);
+        
+        StackPane secondaryLayout = new StackPane();
+        secondaryLayout.getChildren().add(textInfo);
+        Scene secondScene = new Scene(secondaryLayout);
+        
+        Stage newWindow = new Stage();
+        newWindow.getIcons().add(new Image("file:Image_Logo.png"));
+        newWindow.setTitle("BRIDGIES - Fenêtre d'aide");
+        newWindow.setScene(secondScene);
+        
+        newWindow.show();
     }
 
     /**
