@@ -97,11 +97,15 @@ public class GlobalPane extends BorderPane {
     public GlobalPane(Stage inStage, ClassDessin model) {
         this(inStage, null, model);
     }
+    
+    public GlobalPane(Stage inStage, File fromFile, ClassDessin model){
+        this(inStage, fromFile, model, 0, 0, 0, 0);
+    }
 
-    public GlobalPane(Stage inStage, File fromFile, ClassDessin model) {
+    public GlobalPane(Stage inStage, File fromFile, ClassDessin model, int IDS, int IDP, int IDN, int IDB) {
         this.inStage = inStage;
         this.model = model;
-        this.controleur = new Controleur(this);
+        this.controleur = new Controleur(this, IDN, IDB, IDS, IDP);
 
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
@@ -642,13 +646,13 @@ public class GlobalPane extends BorderPane {
 
 //----------- Concerne les instructions attendues lorsqu'on clique sur Simulation -----------//
         Simulation.setOnAction((t) -> {
-            System.out.println("Je suis là");
+            //System.out.println("Je suis là");
             controleur.boutonSimulation(t);
         });
 
 //----------- Concerne les instructions attendues lorsqu'on clique sur Supprimer -----------//
         Supprimer.setOnAction((t) -> {
-            System.out.println("\n\nListe Selection\n\n" + controleur.getSelection());
+            //System.out.println("\n\nListe Selection\n\n" + controleur.getSelection());
             /*for (Figure f : controleur.getSelection()) {
                 controleur.getVue().getModel().Remove(f);
                 int i = f.getId();
@@ -666,38 +670,56 @@ public class GlobalPane extends BorderPane {
                 }
             }
              */
+            int i = 0;
             for (Figure F : controleur.getSelection()) {
                 if (controleur.getVue().getModel().getContenu().contains(F)) { //Comme dans la suite, on va enlever des figures qui ne sont pas demander d'enlever, mais qui créent des ncohérence, alors, on vérfie si cette figure est déjà enlevé ou pas
                     if (F instanceof Point) {
+                        System.out.println("+++Point");
                         ArrayList<Segment> AS = ((Point) F).getSegment_Point();
-                        for (Segment S : AS) {
-                            ArrayList<Appui> AA = S.getAppui();
-                            for (Appui A : AA) {
-                                ArrayList<Barre> AB = A.getBarre();
-                                for (Barre B : AB) {
-                                    controleur.getVue().getModel().Remove(B);
-                                    controleur.getVue().getModel().MAJ_Ids(B, B.getId());
-                                    controleur.setIdBarre(controleur.getIdBarre() - 1);
-                                   /*
-                                    for(int i = 0; i < 2 ; i++){
-                B.getNoeuds_Barre(i).removeBarre(B);
-            }*///System.out.println("\nID Barres : "+controleur.getIdBarre()+"\n");
+                        System.out.println("AS : " + AS);
+                        if (AS.size() > 0) {
+                            for (Segment S : AS) {
+                                ArrayList<Appui> AA = S.getAppui();
+                                System.out.println("AA : " + AA);
+                                if (AA.size() > 0) {
+                                    for (Appui A : AA) {
+                                        ArrayList<Barre> AB = A.getBarre();
+                                        System.out.println("AB : " + AB);
+                                        if (AB.size() > 0) {
+                                            for (Barre B : AB) {
+                                                controleur.getVue().getModel().Remove(B);
+                                                controleur.getVue().getModel().MAJ_Ids(B, B.getId());
+                                                controleur.setIdBarre(controleur.getIdBarre() - 1);
+                                                System.out.println("OK " + i + " fois");
+                                                i++;
+
+                                                for (int j = 0; j < 2; j++) {
+                                                    if (B.getNoeuds_Barre(j) != A) {
+                                                        B.getNoeuds_Barre(j).removeBarre(B);
+                                                    }
+                                                }//System.out.println("\nID Barres : "+controleur.getIdBarre()+"\n");
+                                            }
+                                        }
+                                        controleur.getVue().getModel().Remove(A);
+                                        controleur.getVue().getModel().MAJ_Ids(A, A.getId());
+                                        controleur.setIdNoeud(controleur.getIdNoeud() - 1);
+                                    }
                                 }
-                                controleur.getVue().getModel().Remove(A);
-                                controleur.getVue().getModel().MAJ_Ids(A, A.getId());
-                                controleur.setIdNoeud(controleur.getIdNoeud() - 1);
+                                controleur.getVue().getModel().Remove(S);
+                                controleur.getVue().getModel().MAJ_Ids(S, S.getId());
+                                controleur.setIdSegment(controleur.getIdSegment() - 1);
+                                for (int j = 0; j < 2; j++) {
+                                    if (S.getExtremite(j) != (Point) F) {
+                                        S.getExtremite(j).removeSegment(S);
+                                    }
+                                }
                             }
-                            controleur.getVue().getModel().Remove(S);
-                            controleur.getVue().getModel().MAJ_Ids(S, S.getId());
-                            controleur.setIdSegment(controleur.getIdSegment() - 1);
-                           /* for(int i = 0; i < 2; i++){
-                S.getExtremite(i).removeSegment(S);
-            }*/
                         }
                         controleur.getVue().getModel().Remove(F);
                         controleur.getVue().getModel().MAJ_Ids(F, F.getId());
                         controleur.setIdPoint(controleur.getIdPoint() - 1);
                     } else if (F instanceof Segment) {
+                        System.out.println("+++Segment");
                         ArrayList<Appui> AA = ((Segment) F).getAppui();
                         for (Appui A : AA) {
                             ArrayList<Barre> AB = A.getBarre();
@@ -705,11 +727,13 @@ public class GlobalPane extends BorderPane {
                                 controleur.getVue().getModel().Remove(B);
                                 controleur.getVue().getModel().MAJ_Ids(B, B.getId());
                                 controleur.setIdBarre(controleur.getIdBarre() - 1);
+                                System.out.println("OK " + i + " fois");
+                                i++;
                                 /*
                                 for(int i = 0; i < 2 ; i++){
                 B.getNoeuds_Barre(i).removeBarre(B);
-                                */
-            }
+                                 */
+                            }
                             //}
                             controleur.getVue().getModel().Remove(A);
                             controleur.getVue().getModel().MAJ_Ids(A, A.getId());
@@ -723,14 +747,28 @@ public class GlobalPane extends BorderPane {
                         for(int i = 0; i < 2; i++){
                 S.getExtremite(i).removeSegment(S);
             }*/
+                        for (int j = 0; j < 2; j++) {
+
+                            ((Segment) F).getExtremite(j).removeSegment(((Segment) F));
+
+                        }
 
                     } else if (F instanceof Noeud) {
+                        System.out.println("+++Noeud");
                         ArrayList<Barre> AB = ((Noeud) F).getBarre();
                         for (Barre B : AB) {
                             controleur.getVue().getModel().Remove(B);
                             controleur.getVue().getModel().MAJ_Ids(B, B.getId());
                             controleur.setIdBarre(controleur.getIdBarre() - 1);
-                           /* for(int i = 0; i < 2 ; i++){
+                            System.out.println("OK " + i + " fois");
+                            i++;
+
+                            for (int j = 0; j < 2; j++) {
+                                if (B.getNoeuds_Barre(j) != ((Noeud) F)) {
+                                    B.getNoeuds_Barre(j).removeBarre(B);
+                                }
+                            }
+                            /* for(int i = 0; i < 2 ; i++){
                 B.getNoeuds_Barre(i).removeBarre(B);
             }*/
                         }
@@ -739,15 +777,23 @@ public class GlobalPane extends BorderPane {
                         controleur.setIdNoeud(controleur.getIdNoeud() - 1);
 
                     } else if (F instanceof Barre) {
+                        System.out.println("+++Barre");
                         controleur.getVue().getModel().Remove(F);
                         controleur.getVue().getModel().MAJ_Ids(F, F.getId());
                         controleur.setIdBarre(controleur.getIdBarre() - 1);
+                        System.out.println("OK " + i + " fois");
+                        i++;
+                        for (int j = 0; j < 2; j++) {
+
+                            ((Barre) F).getNoeuds_Barre(j).removeBarre((Barre) F);
+
+                        }
                     }
                 }
             }
             controleur.getTreillisControleur().setTreillis(controleur.getVue().getModel());
-            System.out.println("Treilis: "+controleur.getTreillisControleur());
-            System.out.println("\n-|-|-|- ID BARRE : "+ controleur.getIdBarre()+"\n");
+            System.out.println("Treilis: " + controleur.getTreillisControleur());
+            System.out.println("\n-|-|-|- ID BARRE : " + controleur.getIdBarre() + "\n");
             controleur.getVue().redrawAll();
         });
 

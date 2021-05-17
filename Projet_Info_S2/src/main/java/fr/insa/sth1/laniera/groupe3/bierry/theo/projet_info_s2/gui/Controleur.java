@@ -59,6 +59,15 @@ public class Controleur {
         this.vue = vue;
         this.selection = new ArrayList<>();
     }
+    
+    public Controleur(GlobalPane vue, int IDN, int IDB, int IDS, int IDP) {
+        this.vue = vue;
+        this.selection = new ArrayList<>();
+        IdPoint = IDP;
+        IdSegment = IDS;
+        IdBarre = IDB;
+        IdNoeud = IDN;
+    }
 
     public void setIdPoint() {
         IdPoint = IdPoint - 1;
@@ -75,6 +84,24 @@ public class Controleur {
     public void setIdNoeud() {
         IdNoeud = IdNoeud -1;
     }
+    
+    /*
+    public void setIdNoeud(int i){
+        IdNoeud = i;
+    }
+    
+    public void setIdBarre(int i){
+        IdBarre = i;
+    }
+    
+    public void setIdPoint(int i){
+        IdPoint = i;
+    }
+    
+    public void setIdSegment(int i){
+        IdSegment = i;
+    }
+    */
 
     
     public void changeEtat(int nouvelEtat) {
@@ -115,7 +142,7 @@ public class Controleur {
             if(proche.getColor() != Couleur){
                 Couleur = proche.getColor();
             }
-            System.out.println("Selectionné: " + proche);
+            //System.out.println("Selectionné: " + proche);
             if (proche != null) {
                 if (t.isShiftDown()) {
                     selection.add(proche);
@@ -139,7 +166,7 @@ public class Controleur {
             for (Figure f : vue.getModel().getContenu()){
                 S = S+f.toString();
             }
-            System.out.println(S);
+            //System.out.println(S);
         } else if (etat == 30) {            // 30 correspond à l'état Point //
             double px = t.getX();
             double py = t.getY();
@@ -364,9 +391,13 @@ public class Controleur {
                 FormatRetourEnregistrement FRE = ClassDessin.Lecture_Fichier(f);
                 ArrayList<Figure> af = FRE.getAF();
                 ClassDessin cdOuvrir = new ClassDessin(af);
+                ArrayList<Noeud> AN = cdOuvrir.Tri_Des_Noeuds();
+                ArrayList<Barre> AB = cdOuvrir.Tri_Des_Barres();
+                ArrayList<Segment> AS = cdOuvrir.Tri_Des_Segment();
+                ArrayList<Point> AP = cdOuvrir.Tri_Des_Point();
                 Stage nouveau = new Stage();
-                nouveau.setTitle("BRIDGE " + f.getName());
-                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir);
+                nouveau.setTitle("BRIDGIES " + f.getName());
+                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size());
                 Scene sc = new Scene(GP);
                 nouveau.setScene(sc);
                 nouveau.show();

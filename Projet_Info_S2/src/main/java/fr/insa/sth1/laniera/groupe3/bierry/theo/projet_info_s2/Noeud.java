@@ -148,7 +148,15 @@ public abstract class Noeud extends Figure {
     }
     
     public void removeBarre(Barre B){
-        Barres_Noeud.remove(B);
+        //if(Barres_Noeud.contains(B)){
+            Barres_Noeud.remove(B);
+        /*} else if(Barres_Noeud.isEmpty()){
+            throw new Error ("Problème, La liste de noeud était vide");
+        } else{
+            throw new Error ("Problème, la barre n'appartenait pas au noeud");
+        }
+*/
+        
     }
 
 }
