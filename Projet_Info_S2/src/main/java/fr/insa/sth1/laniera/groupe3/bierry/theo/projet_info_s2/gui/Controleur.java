@@ -466,6 +466,7 @@ public class Controleur {
         Label boutonPont = new Label (" - Boutons Appuis, Noeuds, Barres : appuyez d'abord sur Pont");
         Label boutonPoint = new Label (" - Point : appuyez où vous voulez sur la zone centrale pour placer les points qui définirons le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
         Label boutonSegment = new Label (" - Segment : reliez deux points existants pour former le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
+        
         VBox textInfo = new VBox (boutonTerrain, boutonPont, boutonPoint, boutonSegment);
         
         StackPane secondaryLayout = new StackPane();
@@ -481,7 +482,7 @@ public class Controleur {
     }
     
     public void menuFAQ (ActionEvent t) {
-        Label premireQuestion = new Label ("Voici la première question qui nous a été posée par Jean-Michel du 34 : Bonjour ?");
+        Label premireQuestion = new Label ("\nQuelle est la différence entre un Point, un Noeud, un Appui Simple et un Appui Double?\nUn Point est l'extremité d'un segment ou le lieu d'intersection, tandis qu'un Noeud, un Appui Simple ou un Appui double sont des extrémités ou des lieu d'intersection de barres.\n\nQuelle est la différence entre une Barre et un Segment?\nUne Barre relie 2 Noeuds/Appui Simple/Appui Double, tandis qu'un segment relie 2 Points.\n\nQuelle est la différence entre un Appui Simple/Double et un Noeud?\nUn Appui Simple/Double est obligatoirement fixé à un segment tandis qu'un Noeud peut-être situé n'importe ou dans l'espace.\n\nQuelle est la différence entre un Appui Simple et un Appui Double?\nUn appui Simple peut se déplacer tangeanciellement au terrain, c'est à dire que sa réaction est perpendiculaire au terrain, par contre, un appui Double, lui, est fixe par rapport au terrain, ainsi il poossède deux valeurs de réaction inconnues et indépendantes, une selon X et la seconde selon Y.\n\nComment définir un terrain?\nUn terrain se définie simplement par un segment, il n'y a alor pas besoin de faire un triangle terrain, vous pouvez eventuellement le dessiner mais celui-ci ne rentrera pas en compte dans les calculs.\n\n");
         
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(premireQuestion);
