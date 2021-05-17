@@ -24,28 +24,27 @@ import javafx.stage.Stage;
  */
 public class vroumvroumledemarrage extends VBox {
 
-    private Label Conseil;
-    private Label Loading ;
-    private Label Password;
-
-
-    public void start(Stage fenetre) throws Exception {
-        ProgressBar progressBar = new ProgressBar();
-        ProgressIndicator progressIndicator = new ProgressIndicator(); //on crée les progressbar
-        VBox page = new VBox();
-        page.setSpacing(10);
-        page.setPadding(new javafx.geometry.Insets(15,15,15,15));
-        
-        
-        Scene scene = new Scene(page,600,300);
-        fenetre.setTitle("tkt");
-        fenetre.setScene(scene);
-        fenetre.show();
-    }
-    public static void main(String[] args) {
-        launch(args);
-    }
+//    private Label Conseil;
+//    private Label Loading ;
+//    private Label Password;
+//
+//
+//    public void start(Stage fenetre) throws Exception {
+//        ProgressBar progressBar = new ProgressBar();
+//        ProgressIndicator progressIndicator = new ProgressIndicator(); //on crée les progressbar
+//        VBox page = new VBox();
+//        page.setSpacing(10);
+//        page.setPadding(new javafx.geometry.Insets(15,15,15,15));
+//        
+//        
+//        Scene scene = new Scene(page,600,300);
+//        fenetre.setTitle("tkt");
+//        fenetre.setScene(scene);
+//        fenetre.show();
+//    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 }
 
 
-}
