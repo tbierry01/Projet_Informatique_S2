@@ -99,13 +99,13 @@ public class GlobalPane extends BorderPane {
     }
     
     public GlobalPane(Stage inStage, File fromFile, ClassDessin model){
-        this(inStage, fromFile, model, 0, 0, 0, 0);
+        this(inStage, fromFile, model, 0, 0, 0, 0, 0);
     }
 
-    public GlobalPane(Stage inStage, File fromFile, ClassDessin model, int IDS, int IDP, int IDN, int IDB) {
+    public GlobalPane(Stage inStage, File fromFile, ClassDessin model, int IDS, int IDP, int IDN, int IDB, int IDF) {
         this.inStage = inStage;
         this.model = model;
-        this.controleur = new Controleur(this, IDN, IDB, IDS, IDP);
+        this.controleur = new Controleur(this, IDN, IDB, IDS, IDP, IDF);
 
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");

@@ -50,6 +50,7 @@ public class Controleur {
     private int IdSegment = 0;
     private int IdBarre = 0;
     private int IdNoeud = 0;
+    private int IdForce = 0;
     private Color Couleur;
     private Treillis TreillisControleur = new Treillis();
 
@@ -60,13 +61,14 @@ public class Controleur {
         this.selection = new ArrayList<>();
     }
     
-    public Controleur(GlobalPane vue, int IDN, int IDB, int IDS, int IDP) {
+    public Controleur(GlobalPane vue, int IDN, int IDB, int IDS, int IDP, int IDF) {
         this.vue = vue;
         this.selection = new ArrayList<>();
         IdPoint = IDP;
         IdSegment = IDS;
         IdBarre = IDB;
         IdNoeud = IDN;
+        IdForce = IDF;
     }
 
     public void setIdPoint() {
@@ -395,9 +397,10 @@ public class Controleur {
                 ArrayList<Barre> AB = cdOuvrir.Tri_Des_Barres();
                 ArrayList<Segment> AS = cdOuvrir.Tri_Des_Segment();
                 ArrayList<Point> AP = cdOuvrir.Tri_Des_Point();
+                ArrayList<Force> AF = cdOuvrir.Recup_Force(AN);
                 Stage nouveau = new Stage();
                 nouveau.setTitle("BRIDGIES " + f.getName());
-                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size());
+                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size(), AF.size());
                 Scene sc = new Scene(GP);
                 nouveau.setScene(sc);
                 nouveau.show();
