@@ -671,53 +671,53 @@ public class GlobalPane extends BorderPane {
             }
              */
             int i = 0;
-            for (Figure F : controleur.getSelection()) {
+            for (Figure F : controleur.getSelection()) { //On récupère toutes les figures de la séléction
                 if (controleur.getVue().getModel().getContenu().contains(F)) { //Comme dans la suite, on va enlever des figures qui ne sont pas demander d'enlever, mais qui créent des ncohérence, alors, on vérfie si cette figure est déjà enlevé ou pas
-                    if (F instanceof Point) {
+                    if (F instanceof Point) { //On regarde le tupe de la figure
                         System.out.println("+++Point");
-                        ArrayList<Segment> AS = ((Point) F).getSegment_Point();
+                        ArrayList<Segment> AS = ((Point) F).getSegment_Point();//On récupère tous les segments qui touchent le point
                         System.out.println("AS : " + AS);
                         if (AS.size() > 0) {
                             for (Segment S : AS) {
-                                ArrayList<Appui> AA = S.getAppui();
+                                ArrayList<Appui> AA = S.getAppui();//On récupère tous les appuis qui touchent les segments qui touchent le point
                                 System.out.println("AA : " + AA);
                                 if (AA.size() > 0) {
                                     for (Appui A : AA) {
-                                        ArrayList<Barre> AB = A.getBarre();
+                                        ArrayList<Barre> AB = A.getBarre(); //On récupère toutes les barres de tous les appuis
                                         System.out.println("AB : " + AB);
                                         if (AB.size() > 0) {
                                             for (Barre B : AB) {
-                                                controleur.getVue().getModel().Remove(B);
-                                                controleur.getVue().getModel().MAJ_Ids(B, B.getId());
-                                                controleur.setIdBarre(controleur.getIdBarre() - 1);
+                                                controleur.getVue().getModel().Remove(B); //On enlève la barre de la liste de figure du model
+                                                controleur.getVue().getModel().MAJ_Ids(B, B.getId()); //On met à jours les identificateurs
+                                                controleur.setIdBarre(controleur.getIdBarre() - 1); //On met à jour l'identificateur pour la création de nouvelles barres ensuite
                                                 System.out.println("OK " + i + " fois");
                                                 i++;
 
-                                                for (int j = 0; j < 2; j++) {
-                                                    if (B.getNoeuds_Barre(j) != A) {
+                                                for (int j = 0; j < 2; j++) { 
+                                                    if (B.getNoeuds_Barre(j) != A) {//On prend l'autre noued que l'appui pour lui enlever la barre pour ne pas avoir de bare présente dans la liste de ce noeud alors que normalement elle n'existe plus
                                                         B.getNoeuds_Barre(j).removeBarre(B);
                                                     }
                                                 }//System.out.println("\nID Barres : "+controleur.getIdBarre()+"\n");
                                             }
                                         }
-                                        controleur.getVue().getModel().Remove(A);
-                                        controleur.getVue().getModel().MAJ_Ids(A, A.getId());
-                                        controleur.setIdNoeud(controleur.getIdNoeud() - 1);
+                                        controleur.getVue().getModel().Remove(A); //On enlève l'appui
+                                        controleur.getVue().getModel().MAJ_Ids(A, A.getId()); //On met à jour les Id des noeuds
+                                        controleur.setIdNoeud(controleur.getIdNoeud() - 1);//On met à jour l'identificateur des appuis pour pouvoir ensuite créer des noueds appui sans problème d'id
                                     }
                                 }
-                                controleur.getVue().getModel().Remove(S);
-                                controleur.getVue().getModel().MAJ_Ids(S, S.getId());
-                                controleur.setIdSegment(controleur.getIdSegment() - 1);
+                                controleur.getVue().getModel().Remove(S); //On enlève le segment
+                                controleur.getVue().getModel().MAJ_Ids(S, S.getId()); //On met à jour les id des segments
+                                controleur.setIdSegment(controleur.getIdSegment() - 1);//On met à jour l'id de création de segment
                                 for (int j = 0; j < 2; j++) {
-                                    if (S.getExtremite(j) != (Point) F) {
+                                    if (S.getExtremite(j) != (Point) F) { //On enlève le segment de la liste des segments du point qui n'est pas pris en compte ici
                                         S.getExtremite(j).removeSegment(S);
                                     }
                                 }
                             }
                         }
-                        controleur.getVue().getModel().Remove(F);
-                        controleur.getVue().getModel().MAJ_Ids(F, F.getId());
-                        controleur.setIdPoint(controleur.getIdPoint() - 1);
+                        controleur.getVue().getModel().Remove(F); //On enlève la figure
+                        controleur.getVue().getModel().MAJ_Ids(F, F.getId()); //On met à jour ses id
+                        controleur.setIdPoint(controleur.getIdPoint() - 1); //On met à jour l'Id de création
                     } else if (F instanceof Segment) {
                         System.out.println("+++Segment");
                         ArrayList<Appui> AA = ((Segment) F).getAppui();
