@@ -164,5 +164,9 @@ public class Point extends Figure{
         return S;
     }
     
+    public void removeSegment (Segment S){
+        Segment_Point.remove(S);
+    }
+    
     
 }

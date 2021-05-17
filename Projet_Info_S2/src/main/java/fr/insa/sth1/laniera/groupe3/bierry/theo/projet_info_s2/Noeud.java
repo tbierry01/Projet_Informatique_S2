@@ -147,6 +147,9 @@ public abstract class Noeud extends Figure {
         this.Id = Id;
     }
     
+    public void removeBarre(Barre B){
+        Barres_Noeud.remove(B);
+    }
 
 }
 

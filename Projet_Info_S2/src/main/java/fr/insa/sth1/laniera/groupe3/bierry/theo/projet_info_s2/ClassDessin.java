@@ -405,6 +405,19 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
     
     public void Remove(Figure F){
         Contenu.remove(F);
+        /*
+        if (F instanceof Barre){
+            Barre B = (Barre) F;
+            for(int i = 0; i < 2 ; i++){
+                B.getNoeuds_Barre(i).removeBarre(B);
+            }
+        } else if (F instanceof Segment){
+            Segment S = (Segment) F;
+            for(int i = 0; i < 2; i++){
+                S.getExtremite(i).removeSegment(S);
+            }
+        }
+*/
         //TODO Il faut remove tous les elements qui sont en relation par exemple quand on elève une barre, il faut aussi l'elever des listes de barrs des ses extremités
     }
     

@@ -678,7 +678,10 @@ public class GlobalPane extends BorderPane {
                                     controleur.getVue().getModel().Remove(B);
                                     controleur.getVue().getModel().MAJ_Ids(B, B.getId());
                                     controleur.setIdBarre(controleur.getIdBarre() - 1);
-                                    //System.out.println("\nID Barres : "+controleur.getIdBarre()+"\n");
+                                   /*
+                                    for(int i = 0; i < 2 ; i++){
+                B.getNoeuds_Barre(i).removeBarre(B);
+            }*///System.out.println("\nID Barres : "+controleur.getIdBarre()+"\n");
                                 }
                                 controleur.getVue().getModel().Remove(A);
                                 controleur.getVue().getModel().MAJ_Ids(A, A.getId());
@@ -687,6 +690,9 @@ public class GlobalPane extends BorderPane {
                             controleur.getVue().getModel().Remove(S);
                             controleur.getVue().getModel().MAJ_Ids(S, S.getId());
                             controleur.setIdSegment(controleur.getIdSegment() - 1);
+                           /* for(int i = 0; i < 2; i++){
+                S.getExtremite(i).removeSegment(S);
+            }*/
                         }
                         controleur.getVue().getModel().Remove(F);
                         controleur.getVue().getModel().MAJ_Ids(F, F.getId());
@@ -699,7 +705,12 @@ public class GlobalPane extends BorderPane {
                                 controleur.getVue().getModel().Remove(B);
                                 controleur.getVue().getModel().MAJ_Ids(B, B.getId());
                                 controleur.setIdBarre(controleur.getIdBarre() - 1);
-                            }
+                                /*
+                                for(int i = 0; i < 2 ; i++){
+                B.getNoeuds_Barre(i).removeBarre(B);
+                                */
+            }
+                            //}
                             controleur.getVue().getModel().Remove(A);
                             controleur.getVue().getModel().MAJ_Ids(A, A.getId());
                             controleur.setIdNoeud(controleur.getIdNoeud() - 1);
@@ -707,6 +718,11 @@ public class GlobalPane extends BorderPane {
                         controleur.getVue().getModel().Remove(F);
                         controleur.getVue().getModel().MAJ_Ids(F, F.getId());
                         controleur.setIdSegment(controleur.getIdSegment() - 1);
+                        /*
+                        Segment S = (Segment) F;
+                        for(int i = 0; i < 2; i++){
+                S.getExtremite(i).removeSegment(S);
+            }*/
 
                     } else if (F instanceof Noeud) {
                         ArrayList<Barre> AB = ((Noeud) F).getBarre();
@@ -714,6 +730,9 @@ public class GlobalPane extends BorderPane {
                             controleur.getVue().getModel().Remove(B);
                             controleur.getVue().getModel().MAJ_Ids(B, B.getId());
                             controleur.setIdBarre(controleur.getIdBarre() - 1);
+                           /* for(int i = 0; i < 2 ; i++){
+                B.getNoeuds_Barre(i).removeBarre(B);
+            }*/
                         }
                         controleur.getVue().getModel().Remove(F);
                         controleur.getVue().getModel().MAJ_Ids(F, F.getId());
