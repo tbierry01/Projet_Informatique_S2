@@ -55,6 +55,7 @@ public class vroumvroumledemarrage extends BorderPane {
     private Label Indication;
     private boolean CodeBon=false;
     private Hyperlink MDPOublie; 
+    private Scene scene2;
 
     
     public static String Conseil(double i) {
@@ -90,7 +91,7 @@ public class vroumvroumledemarrage extends BorderPane {
         this.barre = new ProgressBar();
        
         VBox page = new VBox(this.Bridgies,this.BoutonInutile,this.barre,this.Identifiant,this.Conseil);
-        this.setCenter(page);
+        this.setRight(page);
         page.setSpacing(25);
         page.setPadding(new javafx.geometry.Insets(15,15,15,15));
         
@@ -203,8 +204,10 @@ public class vroumvroumledemarrage extends BorderPane {
                         if (CodeBon==true) {
                             //attendre 1secondes
                             Indication.setText("Veuillez patientez...");
+                            //attendre 3 secondes
                             PasswordWindow.close();
-                            primaryStage.close();
+                            scene2 = new Scene(new GlobalPane(primaryStage));
+                            primaryStage.setScene(scene2);
                         }
                         PText.clear();
                     }
@@ -215,7 +218,7 @@ public class vroumvroumledemarrage extends BorderPane {
                 
         
         
-        
+
     }
 }
 
