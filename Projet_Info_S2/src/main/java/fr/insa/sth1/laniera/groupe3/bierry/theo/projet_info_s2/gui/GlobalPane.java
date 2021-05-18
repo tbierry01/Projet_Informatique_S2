@@ -119,8 +119,8 @@ public class GlobalPane extends BorderPane {
         this.Horizontal = new ToggleButton("Horizontal");
         this.Force = new ToggleButton("Force");
         this.Valider = new Button("Valider");
-        this.Norme = new TextField("Entrer Norme");
-        this.Angle = new TextField("Entrer Angle en rad");
+        this.Norme = new TextField("Entrer Norme (en Newton)");
+        this.Angle = new TextField("Entrer Angle (en rad)");
         this.Supprimer = new Button("Supprimer");
 
         this.Vertical.setPrefSize(120, 25);
@@ -135,6 +135,17 @@ public class GlobalPane extends BorderPane {
         this.Aide.setFont(javafx.scene.text.Font.font(15));
 
         IDPoint = 0;
+        
+        Norme.setOnMouseClicked((ti) -> {
+            if (Norme.getText().equals("Entrer Norme (en Newton)")){
+                Norme.setText("");
+            }
+        });   
+        Angle.setOnMouseClicked((ti) -> {
+            if (Angle.getText().equals("Entrer Angle (en rad)")){
+                Angle.setText("");
+            }
+        });   
 
 //----------- Concerne les insertions des icones dans les différents boutons ainsi que leur taille -----------//
         //----------- Bouton Terrain -----------//
