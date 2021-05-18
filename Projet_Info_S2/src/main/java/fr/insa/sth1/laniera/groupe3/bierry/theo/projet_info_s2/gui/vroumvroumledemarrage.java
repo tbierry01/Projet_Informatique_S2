@@ -208,6 +208,7 @@ public class vroumvroumledemarrage extends BorderPane {
                             PasswordWindow.close();
                             scene2 = new Scene(new GlobalPane(primaryStage));
                             primaryStage.setScene(scene2);
+                            primaryStage.setX(primaryStage.getX() - 500);
                         }
                         PText.clear();
                     }
