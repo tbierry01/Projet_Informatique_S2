@@ -73,6 +73,9 @@ public class GlobalPane extends BorderPane {
     private Label NormeForce = new Label();
     private Label AngleForce = new Label();
     private Label ContraintesBarres = new Label();
+    private  Label Cout = new Label("0");
+    private Label NomCout = new Label("Cout : ");
+    private Label SymboleEuro = new Label(" €");
 
     private ClassDessin model;
     private Controleur controleur;
@@ -103,10 +106,10 @@ public class GlobalPane extends BorderPane {
     }
     
     public GlobalPane(Stage inStage, File fromFile, ClassDessin model){
-        this(inStage, fromFile, model, 0, 0, 0, 0, 0);
+        this(inStage, fromFile, model, 0, 0, 0, 0, 0, 0);
     }
 
-    public GlobalPane(Stage inStage, File fromFile, ClassDessin model, int IDS, int IDP, int IDN, int IDB, int IDF) {
+    public GlobalPane(Stage inStage, File fromFile, ClassDessin model, int IDS, int IDP, int IDN, int IDB, int IDF, double  Prix) {
         this.inStage = inStage;
         this.model = model;
         this.controleur = new Controleur(this, IDN, IDB, IDS, IDP, IDF);
@@ -126,7 +129,7 @@ public class GlobalPane extends BorderPane {
         this.Norme = new TextField("Entrer Norme (en Newton)");
         this.Angle = new TextField("Entrer Angle (en rad)");
         this.Supprimer = new Button("Supprimer");
-
+        this.setCout("" + Prix);
         this.Vertical.setPrefSize(120, 25);
         this.Horizontal.setPrefSize(120, 25);
         this.Sélectionner.setPrefSize(120, 25);
@@ -346,7 +349,8 @@ public class GlobalPane extends BorderPane {
         VBox posCurseur = new VBox(posX, posY);
         posCurseur.setBackground(bgLightBlue);
         
-        VBox IndicationElement = new VBox(Type, NormeForce, AngleForce, ContraintesBarres);
+        HBox FormatPrix = new HBox(NomCout, Cout, SymboleEuro);
+        VBox IndicationElement = new VBox(Type, NormeForce, AngleForce, ContraintesBarres, FormatPrix);
         VBox Assemblage = new VBox (IndicationElement, posCurseur);
         VBox JeSersARienBis = new VBox();
         JeSersARienBis.setBackground(bgLightBlue);
@@ -986,6 +990,13 @@ public class GlobalPane extends BorderPane {
         this.ContraintesBarres.setText(S);
     }
     
+    public String getCout(){
+        return Cout.getText();
+    }
+    
+    public void setCout(String S){
+        Cout.setText(S);
+    }
     
 
 }

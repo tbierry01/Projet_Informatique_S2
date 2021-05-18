@@ -5,6 +5,7 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
+import fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui.GlobalPane;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -291,6 +292,47 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
             for (Barre B : AB) {
                 bw.append(B.Enregistrement());
             }
+            //bw.append("Cout : ")
+            bw.write("FIN");
+            bw.close();
+        }
+    }
+    
+    public void Enregistrement(File file, GlobalPane GP) throws IOException {
+        //D'abord, on créer toutes les arraylistes des différentes figures
+        ArrayList<Noeud> AN = Tri_Des_Noeuds();
+        ArrayList<Point> AP = Tri_Des_Point();
+        ArrayList<Barre> AB = Tri_Des_Barres();
+        ArrayList<Segment> AS = Tri_Des_Segment();
+        //Maintenant que toutes les figures sont triées, on va faire apparaitre tous ce qui ne sont pas des figures mais qui doivent etre enregistré
+        ArrayList<Force> AF = Recup_Force(AN);
+        ArrayList<TypeBarre> ATB = Recup_TypeBarre(AB);
+        //Une fois que l'on a toutes les listes, on peut commencer l'enregistrement
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            if (AS.size() == 0) {
+                throw new Error("Le fichier ne peut pas être sauvegardé, il faut au moins un segement");
+            }
+            bw.append(AS.get(0).getZoneConstructible().Enregistrement()); //La, on enregistre d'abord la zone constructible
+            //bw.append(AN.get(0).getTreillis_Noeud().E)
+            for (Force F : AF) {
+                bw.append(F.Enregistrement());
+            }
+            for (TypeBarre TB : ATB) {
+                bw.append(TB.Enregistrement());
+            }
+            for (Point P : AP) {
+                bw.append(P.Enregistrement());
+            }
+            for (Segment S : AS) {
+                bw.append(S.Enregistrement());
+            }
+            for (Noeud N : AN) {
+                bw.append(N.Enregistrement());
+            }
+            for (Barre B : AB) {
+                bw.append(B.Enregistrement());
+            }
+            bw.append("Cout ; "+ GP.getCout() + "\n");
             bw.write("FIN");
             bw.close();
         }
@@ -371,7 +413,9 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                         AF.add(AD);
                         MN.put(AD.getId(), AD);
                         break;
-
+                    case "Cout ":
+                        FRE.setCout(Double.parseDouble(Contient[1]));
+                        break;
                     default:
                         throw new Error("Le fichier n'est pas pris en compte, cet element n'est pas réalisable");
                 }

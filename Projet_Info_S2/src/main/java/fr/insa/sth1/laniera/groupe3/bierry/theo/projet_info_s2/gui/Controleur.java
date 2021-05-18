@@ -154,12 +154,24 @@ public class Controleur {
                 getVue().setAngleForce("");
                 getVue().setContraintesBarres("Contraintes : "+((Barre)proche).getEffort());
                 getVue().setType("Barre");
-            } else if(proche instanceof Noeud){
+            } else if(proche instanceof Noeud_Simple){
                 getVue().setNormeForce("Norme Force :"+((Noeud) proche ).getForceNoeud().getNorme());
                 getVue().setAngleForce("Angle Force : "+ (((Noeud) proche).getForceNoeud().getAngle() + Math.PI/2));
                 getVue().setContraintesBarres("");
                 getVue().setType("Noeud");
             } 
+            else if(proche instanceof Appui_Double){
+                getVue().setNormeForce("Norme Force :"+((Noeud) proche ).getForceNoeud().getNorme());
+                getVue().setAngleForce("Angle Force : "+ (((Noeud) proche).getForceNoeud().getAngle() + Math.PI/2));
+                getVue().setContraintesBarres("");
+                getVue().setType("Appui Double");
+            }
+            else if(proche instanceof Appui_Simple){
+                getVue().setNormeForce("Norme Force :"+((Noeud) proche ).getForceNoeud().getNorme());
+                getVue().setAngleForce("Angle Force : "+ (((Noeud) proche).getForceNoeud().getAngle() + Math.PI/2));
+                getVue().setContraintesBarres("");
+                getVue().setType("Appui Simple");
+            }
         }
         if (etat == 20) {
             Point pClic = new Point(t.getX(), t.getY());
@@ -265,8 +277,12 @@ public class Controleur {
                 changeEtat(70);
                 getVue().setTextByMoi("Vous ne pouvez pas créer de barre entre deux noeuds en même position");
             } else {
-                getVue().getModel().addFigure(new Barre(IdBarre, pos2[0], pos2[1], getVue().getCouleur().getValue()));     // Changer 0 par l'indentificateur //
+                Barre B = new Barre(IdBarre, pos2[0], pos2[1], getVue().getCouleur().getValue());
+                getVue().getModel().addFigure(B);     // Changer 0 par l'indentificateur //
                 IdBarre++;
+                double C = Double.parseDouble(getVue().getCout());
+                C = C + B.getCout();
+                getVue().setCout(""+C);
                 System.out.println("\n"+getVue().getModel());
                 getVue().redrawAll();
                 getVue().setTextByMoi("Placez 2 points pour créer une barre ou reliez 2 noeuds déjà existants");
@@ -433,7 +449,7 @@ public class Controleur {
                 ArrayList<Force> AF = cdOuvrir.Recup_Force(AN);
                 Stage nouveau = new Stage();
                 nouveau.setTitle("BRIDGIES " + f.getName());
-                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size(), AF.size());
+                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size(), AF.size(), FRE.getCout());
                 Scene sc = new Scene(GP);
                 nouveau.setScene(sc);
                 nouveau.show();
@@ -454,7 +470,7 @@ public class Controleur {
     private void realSauvegarder(File f) {
         try {
             this.getVue().getModel().getTreillisCD();
-            this.getVue().getModel().Enregistrement(f);
+            this.getVue().getModel().Enregistrement(f, getVue());
             this.getVue().setCurFile(f);
             this.getVue().getInStage().setTitle("BRIDGE" + f.getName());
         } catch (IOException ex) {

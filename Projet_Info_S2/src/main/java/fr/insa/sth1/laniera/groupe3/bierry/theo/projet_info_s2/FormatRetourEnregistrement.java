@@ -19,17 +19,20 @@ public class FormatRetourEnregistrement {
     private ZoneConstructible ZC;
     private Treillis T;
     private ArrayList<Figure> AF;
+    private double Cout;
 
-    public FormatRetourEnregistrement(ZoneConstructible ZC, Treillis T, ArrayList<Figure> AF) {
+    public FormatRetourEnregistrement(ZoneConstructible ZC, Treillis T, ArrayList<Figure> AF, double Prix) {
         this.ZC = ZC;
         this.T = T;
         this.AF = AF;
+        Cout = Prix;
     }
     
     public FormatRetourEnregistrement() {
         this.ZC = null;
         this.T = null;
         this.AF = null;
+        Cout = 0;
     }
 
     public ZoneConstructible getZC() {
@@ -55,6 +58,16 @@ public class FormatRetourEnregistrement {
     public void setAF(ArrayList<Figure> AF) {
         this.AF = AF;
     }
+
+    public double getCout() {
+        return Cout;
+    }
+
+    public void setCout(double Cout) {
+        this.Cout = Cout;
+    }
+    
+    
     
     public String toString(){
         String res;
