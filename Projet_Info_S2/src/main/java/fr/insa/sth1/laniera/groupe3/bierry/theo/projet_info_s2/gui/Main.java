@@ -22,6 +22,7 @@ public class Main extends Application {
     
     private Label titre;
     private Scene scene;
+    private Scene scene2;
 
     
 //
@@ -33,15 +34,15 @@ public class Main extends Application {
        
         //Scene scene = new Scene(new MainDessinPane());
         
-        
-//        scene = new Scene(new vroumvroumledemarrage(primaryStage));
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
 
-        
-        scene = new Scene(new GlobalPane(primaryStage));
+        scene = new Scene(new vroumvroumledemarrage(primaryStage));
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        
+//        scene2 = new Scene(new GlobalPane(primaryStage));
+//        primaryStage.setScene(scene2);
+//        primaryStage.show();
         
 
     }
