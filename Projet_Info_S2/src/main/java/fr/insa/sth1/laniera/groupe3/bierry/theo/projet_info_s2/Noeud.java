@@ -159,6 +159,12 @@ public abstract class Noeud extends Figure {
         
     }
 
+    public void setForceNoeud(Force ForceNoeud) {
+        this.ForceNoeud = ForceNoeud;
+    }
+    
+    
+
 }
 
 ///Pour faire arctan  Math.atan

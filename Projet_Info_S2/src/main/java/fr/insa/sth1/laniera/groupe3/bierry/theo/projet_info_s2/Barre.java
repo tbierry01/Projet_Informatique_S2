@@ -18,6 +18,7 @@ public class Barre extends Figure {
     private Noeud[] Noeuds_Barre;
     private Treillis Treillis_Barre;
     private TypeBarre Type_de_Barre;
+    private double Effort = 0;
 
     public Barre(int Iden, Noeud N1, Noeud N2, Treillis T, TypeBarre TB) {
         this(Iden, N1, N2, T, TB, Color.BLACK);
@@ -112,6 +113,10 @@ public class Barre extends Figure {
     public Noeud[] getNoeuds_Barre() {
         return Noeuds_Barre;
     }
+    
+    public void setEffort(Matrice M){
+        Effort = M.get(Id, 0);
+    }
 
     public Noeud getNoeuds_Barre(int i) {
         return Noeuds_Barre[i];
@@ -179,6 +184,10 @@ public class Barre extends Figure {
 
     public double getEffort(Matrice M){
         return M.get(Id, 0);
+    }
+    
+    public double getEffort(){
+        return Effort;
     }
     
     public boolean isBroken(Matrice M){

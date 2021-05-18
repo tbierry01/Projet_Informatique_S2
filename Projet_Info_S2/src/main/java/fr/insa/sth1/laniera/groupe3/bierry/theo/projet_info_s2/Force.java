@@ -25,7 +25,7 @@ public class Force {
     }
     
     public Force(){
-        this(0, 0, 0);
+        this(0, -Math.PI/2, 0);
     }
 
     public double getNorme() {

@@ -69,6 +69,10 @@ public class GlobalPane extends BorderPane {
     private Button Supprimer;
     private Label posX = new Label("");
     private Label posY = new Label("");
+    private Label Type = new Label("");
+    private Label NormeForce = new Label();
+    private Label AngleForce = new Label();
+    private Label ContraintesBarres = new Label();
 
     private ClassDessin model;
     private Controleur controleur;
@@ -341,13 +345,15 @@ public class GlobalPane extends BorderPane {
              */        });
         VBox posCurseur = new VBox(posX, posY);
         posCurseur.setBackground(bgLightBlue);
-
+        
+        VBox IndicationElement = new VBox(Type, NormeForce, AngleForce, ContraintesBarres);
+        VBox Assemblage = new VBox (IndicationElement, posCurseur);
         VBox JeSersARienBis = new VBox();
         JeSersARienBis.setBackground(bgLightBlue);
 
         gauche.setTop(coteGauche);
         gauche.setCenter(JeSersARienBis);
-        gauche.setBottom(posCurseur);
+        gauche.setBottom(Assemblage);
 
         this.setLeft(gauche);
 
@@ -829,6 +835,12 @@ public class GlobalPane extends BorderPane {
             controleur.menuSauvegarder(t);
         });
 
+    
+    
+//----------- Concerne les actions quand on veut valider une force -------------------------//
+        Valider.setOnAction((t) -> {
+            controleur.BoutonValider(t);
+        });
     }
 
     public void redrawAll() {
@@ -945,5 +957,35 @@ public class GlobalPane extends BorderPane {
     public void setTextByMoi(String text) {
         Aide.setText(text);
     }
+    
+    public double getChampNorme(){
+        double Val;
+        Val = Double.parseDouble(Norme.getText());
+        return Val;
+    }
+    
+    public double getChampAngle(){
+        double Val;
+        Val = Double.parseDouble(Angle.getText());
+        return Val;
+    }
+
+    public void setType(String S) {
+        this.Type.setText(S);
+    }
+
+    public void setNormeForce(String S) {
+        this.NormeForce.setText(S);
+    }
+
+    public void setAngleForce(String S) {
+        this.AngleForce.setText(S);
+    }
+
+    public void setContraintesBarres(String S) {
+        this.ContraintesBarres.setText(S);
+    }
+    
+    
 
 }

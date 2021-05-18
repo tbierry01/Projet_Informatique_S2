@@ -137,6 +137,29 @@ public class Controleur {
     void clicDansZoneDessin(MouseEvent t) {
         //System.out.println("Je suis dedans");
         if (etat == 10) {
+            Point pClic = new Point(t.getX(), t.getY());
+            Figure proche = getVue().getModel().plusProche(pClic, Double.MAX_VALUE);
+            if(proche instanceof Point){
+                getVue().setNormeForce("");
+                getVue().setAngleForce("");
+                getVue().setContraintesBarres("");
+                getVue().setType("Point");
+            } else if(proche instanceof Segment){
+                getVue().setNormeForce("");
+                getVue().setAngleForce("");
+                getVue().setContraintesBarres("");
+                getVue().setType("Segment");
+            } else if(proche instanceof Barre){
+                getVue().setNormeForce("");
+                getVue().setAngleForce("");
+                getVue().setContraintesBarres("Contraintes : "+((Barre)proche).getEffort());
+                getVue().setType("Barre");
+            } else if(proche instanceof Noeud){
+                getVue().setNormeForce("Norme Force :"+((Noeud) proche ).getForceNoeud().getNorme());
+                getVue().setAngleForce("Angle Force : "+ (((Noeud) proche).getForceNoeud().getAngle() + Math.PI/2));
+                getVue().setContraintesBarres("");
+                getVue().setType("Noeud");
+            } 
         }
         if (etat == 20) {
             Point pClic = new Point(t.getX(), t.getY());
@@ -312,8 +335,18 @@ public class Controleur {
             if(ri.isPossible() == false){
                 getVue().setTextByMoi("Le treillis n'est pas isostatique");
             } else {
+                ArrayList<Barre> AB = getVue().getModel().Tri_Des_Barres();
+                for (Barre B : AB) {
+                    B.setEffort(ri.getSolution());
+                }
                 getVue().redrawAll();
-            };
+            }
+        } else if (etat == 120){
+            Point pClic = new Point(t.getX(), t.getY());
+            Figure Proche = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
+            Force F = new Force(getVue().getChampNorme(), getVue().getChampAngle()-(Math.PI/2), IdForce);//Le Math.PI, permet de se décaler d'un angle de 90° vers le bas, ce qui est plus intutif et donc les force, vont par défaut verticalement vers le bas
+            ((Noeud) Proche).setForceNoeud(F);
+            IdForce++;
         }
         TreillisControleur.setTreillis(vue.getModel());
     }
@@ -537,6 +570,10 @@ public class Controleur {
     
     public Treillis getTreillisControleur(){
         return TreillisControleur;
+    }
+
+    void BoutonValider(ActionEvent t) {
+        changeEtat(120);
     }
     
     
