@@ -5,16 +5,23 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
-import javafx.application.Application;
-import static javafx.application.Application.launch;
-import javafx.geometry.Insets;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -22,29 +29,170 @@ import javafx.stage.Stage;
  *
  * @author Youri
  */
-public class vroumvroumledemarrage extends VBox {
+public class vroumvroumledemarrage extends BorderPane {
 
-//    private Label Conseil;
-//    private Label Loading ;
-//    private Label Password;
-//
-//
-//    public void start(Stage fenetre) throws Exception {
-//        ProgressBar progressBar = new ProgressBar();
-//        ProgressIndicator progressIndicator = new ProgressIndicator(); //on crée les progressbar
-//        VBox page = new VBox();
-//        page.setSpacing(10);
-//        page.setPadding(new javafx.geometry.Insets(15,15,15,15));
-//        
-//        
-//        Scene scene = new Scene(page,600,300);
-//        fenetre.setTitle("tkt");
-//        fenetre.setScene(scene);
-//        fenetre.show();
-//    }
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
+    private Label Conseil;
+    private Label Loading ;
+    private Label Password;
+    private Stage inStage2;
+    private ToggleButton BoutonInutile ;
+    private ProgressBar barre;
+    private Label Bridgies;
+    private Button Identifiant;
+    public boolean Vbouton;
+    public Button closeButton;
+    private Label Username;
+    private TextField UText;
+    private PasswordField PText;
+    private ToggleButton showbutton;
+    private Label show;
+    private HBox PasswordHBox;
+    private ToggleGroup AfficherMasquer;
+    private ToggleButton hidebutton;
+    private HBox PasswordHBox2;
+    private Button SeConnecter;
+    private Label Indication;
+    private boolean CodeBon=false;
+
+    
+    public static String Conseil(double i) {
+        System.out.println(i);
+        String res="";
+        if (i<0.25) {
+            res="Boire de l'eau c'est bon pour la santé";
+        }
+        if (i>=0.25 && i<0.50) {
+            res="Pour manger il faut de la nourriture";
+        }
+        if (i>=0.50 && i<0.75) {
+            res="Pour lutter contre le covid, il faut ouvrir la fenêtre";       
+        }
+        if (i>=0.75) {
+            res="Non";            
+        }
+    return("Conseil : "+ "\n" +res); 
+    }
+
+
+
+    public vroumvroumledemarrage(Stage primaryStage) {
+        this.Conseil = new Label(Conseil(Math.random()));
+        this.Bridgies = new Label("Bridgies");
+        
+        ImageView ImageSimu = new ImageView(new Image("file:Image_Simulation.png"));
+        this.BoutonInutile = new ToggleButton("Bouton Inutile",ImageSimu);
+        this.BoutonInutile.setContentDisplay(ContentDisplay.BOTTOM);
+        this.BoutonInutile.setPrefSize(100, 100);
+        
+        this.Identifiant = new Button("Rentrer ses identifiants");
+        this.barre = new ProgressBar();
+       
+        VBox page = new VBox(this.Bridgies,this.BoutonInutile,this.barre,this.Identifiant,this.Conseil);
+        this.setCenter(page);
+        page.setSpacing(25);
+        page.setPadding(new javafx.geometry.Insets(15,15,15,15));
+        
+        Identifiant.setOnAction((t) -> {
+                this.Username = new Label("Nom d'utilisateur");
+                this.UText = new TextField("Entrer le nom d'utilisateur");
+                this.Password = new Label("Mot de passe");
+                this.PText = new PasswordField();
+                this.SeConnecter = new Button("Se Connecter");
+                
+                //On crée les boutons pour masquer
+                this.AfficherMasquer = new ToggleGroup();
+                this.hidebutton = new ToggleButton("Masquer");
+                this.showbutton = new ToggleButton("Afficher");
+                hidebutton.setToggleGroup(AfficherMasquer);
+                showbutton.setToggleGroup(AfficherMasquer);
+                hidebutton.setSelected(true);
+                this.show = new Label("");
+                this.Indication = new Label("Conseil : Rentrez votre mot de passe et votre nom d'utilisateur");
+                
+ 
+                showbutton.setOnAction(new EventHandler<ActionEvent>() {
+ 
+                    @Override
+                    public void handle(ActionEvent event) {
+                        String password = PText.getText();
+                        show.setText(password);
+                    }
+                });
+                hidebutton.setOnAction(new EventHandler<ActionEvent>() {
+ 
+                    @Override
+                    public void handle(ActionEvent event) {
+                        show.setText("");
+                    }
+                });
+                UText.setOnMouseClicked((ti) -> {
+                        if (UText.getText().equals("Entrer le nom d'utilisateur")){
+                            UText.setText("");
+                        }
+                });   
+
+                
+                this.PasswordHBox = new HBox(this.showbutton,this.hidebutton,this.show);
+                PasswordHBox.setSpacing(20);
+                this.PasswordHBox2 = new HBox(this.PText,this.SeConnecter);
+                PasswordHBox2.setSpacing(20);
+
+                VBox PasswordVBox = new VBox(this.Username,this.UText,this.Password,this.PasswordHBox2,this.PasswordHBox,this.Indication);
+                Scene Scene2 = new Scene(PasswordVBox, 400, 200);
+                PasswordVBox.setSpacing(10);
+                PasswordVBox.setPadding(new javafx.geometry.Insets(15,15,15,15));
+ 
+                // on crée la nouvelle page
+                Stage PasswordWindow = new Stage();
+                PasswordWindow.setScene(Scene2);
+                PasswordWindow.getIcons().add(new Image("file:Image_Logo.png"));
+                PasswordWindow.setTitle("Connexion...");
+ 
+                // fixer la position et la taille par rapport au stage de base
+                PasswordWindow.setX(primaryStage.getX() + 200);
+                PasswordWindow.setY(primaryStage.getY() + 100);
+                
+ 
+                PasswordWindow.show();
+                
+                //On configure le bouton SeConnecter avec les indications
+                SeConnecter.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override public void handle(ActionEvent e) {
+
+                        if (PText.getText().equals("")){
+                            Indication.setText("Conseil : Vous n'avez même pas écrit votre mot de passe...");
+                            Indication.setTextFill(Color.rgb(0, 0, 0));
+                        }
+                        else if (!(PText.getText().equals("DeBeuvron") || PText.getText().equals("Coulibaly"))) {
+                            Indication.setText("Conseil : Votre mot de passe est incorrect");
+                            Indication.setTextFill(Color.rgb(210, 39, 30));
+                        } 
+                        else {
+                            Indication.setText("Conseil : Votre mot de passe est correct");
+                            Indication.setTextFill(Color.rgb(21, 117, 84));
+                            CodeBon=true;
+                        }
+                        if (UText.getText().equals("") || UText.getText().equals("Entrer le nom d'utilisateur")) {
+                            Indication.setText("Conseil : Votre nom d'utilisateur");
+                            CodeBon=false;
+                        }
+                        if (CodeBon==true) {
+                            //attendre 1secondes
+                            Indication.setText("Veuillez patientez...");
+                            PasswordWindow.close();
+                            primaryStage.close();
+                        }
+                        PText.clear();
+                    }
+                });
+            }
+        );
+
+                
+        
+        
+        
+    }
 }
 
 
