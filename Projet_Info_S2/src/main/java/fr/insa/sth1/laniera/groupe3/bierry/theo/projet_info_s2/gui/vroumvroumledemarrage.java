@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
@@ -53,6 +54,7 @@ public class vroumvroumledemarrage extends BorderPane {
     private Button SeConnecter;
     private Label Indication;
     private boolean CodeBon=false;
+    private Hyperlink MDPOublie; 
 
     
     public static String Conseil(double i) {
@@ -125,20 +127,42 @@ public class vroumvroumledemarrage extends BorderPane {
                         show.setText("");
                     }
                 });
+                
+                //on fait en sorte que lorsqu'on appuie sur la barre de texte, le "entrer.." disparait
                 UText.setOnMouseClicked((ti) -> {
                         if (UText.getText().equals("Entrer le nom d'utilisateur")){
                             UText.setText("");
                         }
                 });   
 
-                
+                this.MDPOublie = new Hyperlink("Mot de passe oublié ?");
+ 
+                MDPOublie.setOnAction(new EventHandler<ActionEvent>() {
+                    private VBox VBoxInutile;
+                    private Button BoutonInutile2;
+                    @Override
+                    public void handle(ActionEvent event) {
+                        this.BoutonInutile2 = new Button("Pour vous consoler :"  +"\n" +"un bouton satisfaisant"); 
+                        this.VBoxInutile = new VBox(this.BoutonInutile2);
+                        VBoxInutile.setPadding(new javafx.geometry.Insets(15,15,15,15));
+                        //On configure la scene
+                        Scene SceneOublie = new Scene(VBoxInutile, 200,75);
+                        Stage UselessWindow = new Stage();
+                        UselessWindow.setScene(SceneOublie);                
+                        UselessWindow.getIcons().add(new Image("file:Image_Logo.png"));
+                        UselessWindow.setTitle("Dommage");
+                        UselessWindow.setX(primaryStage.getX() + 400);
+                        UselessWindow.setY(primaryStage.getY() + 100);
+                        UselessWindow.show();
+                    }
+                });
                 this.PasswordHBox = new HBox(this.showbutton,this.hidebutton,this.show);
                 PasswordHBox.setSpacing(20);
-                this.PasswordHBox2 = new HBox(this.PText,this.SeConnecter);
+                this.PasswordHBox2 = new HBox(this.PText,this.SeConnecter,this.MDPOublie);
                 PasswordHBox2.setSpacing(20);
 
                 VBox PasswordVBox = new VBox(this.Username,this.UText,this.Password,this.PasswordHBox2,this.PasswordHBox,this.Indication);
-                Scene Scene2 = new Scene(PasswordVBox, 400, 200);
+                Scene Scene2 = new Scene(PasswordVBox, 500, 200);
                 PasswordVBox.setSpacing(10);
                 PasswordVBox.setPadding(new javafx.geometry.Insets(15,15,15,15));
  
