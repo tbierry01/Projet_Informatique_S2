@@ -14,6 +14,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -23,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -56,6 +58,8 @@ public class vroumvroumledemarrage extends BorderPane {
     private boolean CodeBon=false;
     private Hyperlink MDPOublie; 
     private Scene scene2;
+    double i=0;
+    private ProgressIndicator pourcentage;
 
     
     public static String Conseil(double i) {
@@ -88,13 +92,23 @@ public class vroumvroumledemarrage extends BorderPane {
         this.BoutonInutile.setPrefSize(100, 100);
         
         this.Identifiant = new Button("Rentrer ses identifiants");
-        this.barre = new ProgressBar();
-       
-        VBox page = new VBox(this.Bridgies,this.BoutonInutile,this.barre,this.Identifiant,this.Conseil);
+        this.barre = new ProgressBar(0);
+        this.pourcentage = new ProgressIndicator(0);
+        HBox chargement = new HBox(this.barre,this.pourcentage);
+        chargement.setSpacing(10);
+        
+        
+        VBox page = new VBox(this.Bridgies,this.BoutonInutile,chargement,this.Identifiant,this.Conseil);
         this.setRight(page);
         page.setSpacing(25);
         page.setPadding(new javafx.geometry.Insets(15,15,15,15));
         
+        
+        while (i<100) {
+            Identifiant.setDisable(true);
+            i=i+1;
+        }
+        Identifiant.setDisable(false);
         Identifiant.setOnAction((t) -> {
                 this.Username = new Label("Nom d'utilisateur");
                 this.UText = new TextField("Entrer le nom d'utilisateur");
