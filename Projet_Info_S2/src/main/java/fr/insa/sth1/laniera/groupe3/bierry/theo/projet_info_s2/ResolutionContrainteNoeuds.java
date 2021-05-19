@@ -24,9 +24,9 @@ public class ResolutionContrainteNoeuds {
         //Dans ce qui suit, jusqu'à la fin de la boucle for, on calcul combien de colones doit on rajouter à notre systeme en fonction des appuis simples et appuis doubles
         for (int i = 0; i < Noeuds_Systeme.size(); i++) {
             if (Noeuds_Systeme.get(i) instanceof Appui_Double) { //Si le noeud est un appui double on a 2 inconnues en plus, Rx et Ry
-                Compteur = Compteur + 2;
-            } else if (Noeuds_Systeme.get(i) instanceof Appui_Simple) { //Si le noeud est un appui simple, on a que 1 inconnue en plus qui est la reaction normale
                 Compteur = Compteur + 1;
+            } else if (Noeuds_Systeme.get(i) instanceof Appui_Simple) { //Si le noeud est un appui simple, on a que 1 inconnue en plus qui est la reaction normale
+                Compteur = Compteur + 2;
             }
         }
         NbInconnus = Compteur;
