@@ -62,7 +62,7 @@ public class GlobalPane extends BorderPane {
     private ToggleButton Sélectionner;
     private ToggleButton Vertical;
     private ToggleButton Horizontal;
-    private ToggleButton Force;
+    private Button Force;
     private Button Valider;
     private TextField Norme;
     private TextField Angle;
@@ -124,7 +124,7 @@ public class GlobalPane extends BorderPane {
         this.Sélectionner = new ToggleButton("Sélectionner");
         this.Vertical = new ToggleButton("Vertical");
         this.Horizontal = new ToggleButton("Horizontal");
-        this.Force = new ToggleButton("Force");
+        this.Force = new Button("Force");
         this.Valider = new Button("Valider");
         this.Norme = new TextField("Entrer Norme (en Newton)");
         this.Angle = new TextField("Entrer Angle (en rad)");
@@ -341,18 +341,16 @@ public class GlobalPane extends BorderPane {
             y = t.getSceneY() - 152.8;
             posX.setText("X : " + x);
             posY.setText("Y : " + y);
-            /*    x = Dessin.getLayoutX();
-            y = Dessin.getLayoutY();
-            posX.setText("X : " + x);
-            posY.setText("Y : " + y);
-             */        });
+        });
         VBox posCurseur = new VBox(posX, posY);
-        posCurseur.setBackground(bgLightBlue);
+//        posCurseur.setBackground(bgBlue);
         
         HBox FormatPrix = new HBox(NomCout, Cout, SymboleEuro);
         VBox IndicationElement = new VBox(Type, NormeForce, AngleForce, ContraintesBarres, FormatPrix);
         VBox Assemblage = new VBox (IndicationElement, posCurseur);
         VBox JeSersARienBis = new VBox();
+        
+        Assemblage.setBackground(bgBlue);
         JeSersARienBis.setBackground(bgLightBlue);
 
         gauche.setTop(coteGauche);
@@ -393,7 +391,7 @@ public class GlobalPane extends BorderPane {
         ToggleGroup gTerrainPont = new ToggleGroup();
         Terrain.setToggleGroup(gTerrainPont);
         Pont.setToggleGroup(gTerrainPont);
-        Simulation.setToggleGroup(gTerrainPont);
+//        Simulation.setToggleGroup(gTerrainPont);
         Sélectionner.setToggleGroup(gTerrainPont);
         Vertical.setToggleGroup(gTerrainPont);
         Horizontal.setToggleGroup(gTerrainPont);
@@ -415,11 +413,19 @@ public class GlobalPane extends BorderPane {
             }
 
             if (Segment.isDisabled() == true) {
+                Pont.setDisable(false);
+                Terrain.setDisable(false);
+                Force.setDisable(false);
+                Simulation.setDisable(false);
                 Segment.setDisable(false);
                 Sélectionner.setDisable(false);
                 Vertical.setDisable(false);
                 Horizontal.setDisable(false);
             } else {
+                Pont.setDisable(true);
+                Terrain.setDisable(true);
+                Force.setDisable(true);
+                Simulation.setDisable(true);
                 Segment.setDisable(true);
                 Sélectionner.setDisable(true);
                 Vertical.setDisable(true);
@@ -438,11 +444,19 @@ public class GlobalPane extends BorderPane {
 
             if (Point.isDisabled() == true) {
                 Point.setDisable(false);
+                Pont.setDisable(false);
+                Terrain.setDisable(false);
+                Force.setDisable(false);
+                Simulation.setDisable(false);
                 Sélectionner.setDisable(false);
                 Vertical.setDisable(false);
                 Horizontal.setDisable(false);
             } else {
                 Point.setDisable(true);
+                Pont.setDisable(true);
+                Terrain.setDisable(true);
+                Force.setDisable(true);
+                Simulation.setDisable(true);
                 Sélectionner.setDisable(true);
                 Vertical.setDisable(true);
                 Horizontal.setDisable(true);
@@ -452,13 +466,17 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les instructions attendues lorsqu'on clique sur Appui Simple -----------//
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
-            if (Point.isDisabled() == false) { //TODO j'ai changé true ne false
+            if (AppuiDouble.isDisabled() == true) { 
                 controleur.boutonEtatNeutre(t);
             } else {
                 controleur.boutonAppuiSimple(t);
             }
 
             if (Barres.isDisabled() == true) {
+                Pont.setDisable(false);
+                Terrain.setDisable(false);
+                Simulation.setDisable(false);
+                Force.setDisable(false);
                 Barres.setDisable(false);
                 AppuiDouble.setDisable(false);
                 Noeuds.setDisable(false);
@@ -466,6 +484,10 @@ public class GlobalPane extends BorderPane {
                 Vertical.setDisable(false);
                 Horizontal.setDisable(false);
             } else {
+                Pont.setDisable(true);
+                Terrain.setDisable(true);
+                Simulation.setDisable(true);
+                Force.setDisable(true);
                 Barres.setDisable(true);
                 AppuiDouble.setDisable(true);
                 Noeuds.setDisable(true);
@@ -478,13 +500,17 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les instructions attendues lorsqu'on clique sur Appui Double -----------//
         AppuiDouble.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
-            if (Point.isDisabled() == false) { //TODO j'ai chaghé true en false
+            if (AppuiSimple.isDisabled() == true) {
                 controleur.boutonEtatNeutre(t);
             } else {
                 controleur.boutonAppuiDouble(t);
             }
 
             if (Barres.isDisabled() == true) {
+                Pont.setDisable(false);
+                Terrain.setDisable(false);
+                Simulation.setDisable(false);
+                Force.setDisable(false);
                 Barres.setDisable(false);
                 AppuiSimple.setDisable(false);
                 Noeuds.setDisable(false);
@@ -492,6 +518,10 @@ public class GlobalPane extends BorderPane {
                 Vertical.setDisable(false);
                 Horizontal.setDisable(false);
             } else {
+                Pont.setDisable(true);
+                Terrain.setDisable(true);
+                Simulation.setDisable(true);
+                Force.setDisable(true);
                 Barres.setDisable(true);
                 AppuiSimple.setDisable(true);
                 Noeuds.setDisable(true);
@@ -511,6 +541,10 @@ public class GlobalPane extends BorderPane {
             }
 
             if (Noeuds.isDisabled() == true) {
+                Pont.setDisable(false);
+                Terrain.setDisable(false);
+                Simulation.setDisable(false);
+                Force.setDisable(false);
                 AppuiDouble.setDisable(false);
                 AppuiSimple.setDisable(false);
                 Noeuds.setDisable(false);
@@ -518,6 +552,10 @@ public class GlobalPane extends BorderPane {
                 Vertical.setDisable(false);
                 Horizontal.setDisable(false);
             } else {
+                Pont.setDisable(true);
+                Terrain.setDisable(true);
+                Simulation.setDisable(true);
+                Force.setDisable(true);
                 AppuiDouble.setDisable(true);
                 AppuiSimple.setDisable(true);
                 Noeuds.setDisable(true);
@@ -537,6 +575,10 @@ public class GlobalPane extends BorderPane {
             }
 
             if (Barres.isDisabled() == true) {
+                Pont.setDisable(false);
+                Terrain.setDisable(false);
+                Simulation.setDisable(false);
+                Force.setDisable(false);
                 Barres.setDisable(false);
                 AppuiSimple.setDisable(false);
                 AppuiDouble.setDisable(false);
@@ -544,6 +586,10 @@ public class GlobalPane extends BorderPane {
                 Vertical.setDisable(false);
                 Horizontal.setDisable(false);
             } else {
+                Pont.setDisable(true);
+                Terrain.setDisable(true);
+                Simulation.setDisable(true);
+                Force.setDisable(true);
                 Barres.setDisable(true);
                 AppuiSimple.setDisable(true);
                 AppuiDouble.setDisable(true);
@@ -564,9 +610,13 @@ public class GlobalPane extends BorderPane {
             if (Segment.isDisabled() == true) {
                 Segment.setDisable(false);
                 Point.setDisable(false);
+                Pont.setDisable(true);
+                Simulation.setDisable(true);
             } else {
                 Segment.setDisable(true);
                 Point.setDisable(true);
+                Pont.setDisable(false);
+                Simulation.setDisable(false);
             }
         });
 
@@ -581,11 +631,15 @@ public class GlobalPane extends BorderPane {
                 AppuiSimple.setDisable(false);
                 AppuiDouble.setDisable(false);
                 Noeuds.setDisable(false);
+                Terrain.setDisable(true);
+                Simulation.setDisable(true);
             } else {
                 Barres.setDisable(true);
                 AppuiSimple.setDisable(true);
                 AppuiDouble.setDisable(true);
                 Noeuds.setDisable(true);
+                Terrain.setDisable(false);
+                Simulation.setDisable(false);
             }
         });
 
@@ -616,6 +670,8 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les instructions attendues lorsqu'on clique sur Force -----------//
         Force.setOnAction((t) -> {
             Aide.setText("Sélectionnez le noeuds puis entrez la norme et l'angle de la force qui s'y applique");
+            controleur.boutonEtatNeutre(t);
+            
             if (Angle.isDisabled() == true) {
                 Angle.setDisable(false);
                 Norme.setDisable(false);
@@ -844,6 +900,9 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les actions quand on veut valider une force -------------------------//
         Valider.setOnAction((t) -> {
             controleur.BoutonValider(t);
+            Valider.setDisable(true);
+            Norme.setDisable(true);
+            Angle.setDisable(true);
         });
     }
 

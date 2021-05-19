@@ -136,6 +136,12 @@ public class Controleur {
 
     void clicDansZoneDessin(MouseEvent t) {
         //System.out.println("Je suis dedans");
+        if(etat!= 10){
+            getVue().setNormeForce("");
+                getVue().setAngleForce("");
+                getVue().setContraintesBarres("");
+                getVue().setType("");
+        }
         if (etat == 10) {
             Point pClic = new Point(t.getX(), t.getY());
             Figure proche = getVue().getModel().plusProche(pClic, Double.MAX_VALUE);
