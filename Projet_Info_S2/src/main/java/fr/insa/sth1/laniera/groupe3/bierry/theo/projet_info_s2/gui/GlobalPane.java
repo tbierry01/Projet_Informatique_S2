@@ -34,6 +34,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -345,6 +346,7 @@ public class GlobalPane extends BorderPane {
         VBox posCurseur = new VBox(posX, posY);
 //        posCurseur.setBackground(bgBlue);
         
+        NomCout.setFont(Color.WHITE);
         HBox FormatPrix = new HBox(NomCout, Cout, SymboleEuro);
         VBox IndicationElement = new VBox(Type, NormeForce, AngleForce, ContraintesBarres, FormatPrix);
         VBox Assemblage = new VBox (IndicationElement, posCurseur);
