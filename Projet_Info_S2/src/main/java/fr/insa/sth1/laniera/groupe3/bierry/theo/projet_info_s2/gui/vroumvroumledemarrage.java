@@ -24,8 +24,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 
 /**
@@ -38,7 +38,7 @@ public class vroumvroumledemarrage extends BorderPane {
     private Label Loading ;
     private Label Password;
     private Stage inStage2;
-    private ToggleButton BoutonInutile ;
+    private Button BoutonInutile ;
     private ProgressBar barre;
     private Label Bridgies;
     private Button Identifiant;
@@ -60,6 +60,7 @@ public class vroumvroumledemarrage extends BorderPane {
     private Scene scene2;
     double i=0;
     private ProgressIndicator pourcentage;
+    private boolean justeUnefois=true;
 
     
     public static String Conseil(double i) {
@@ -87,7 +88,7 @@ public class vroumvroumledemarrage extends BorderPane {
         this.Bridgies = new Label("Bridgies");
         
         ImageView ImageSimu = new ImageView(new Image("file:Image_Simulation.png"));
-        this.BoutonInutile = new ToggleButton("Bouton Inutile",ImageSimu);
+        this.BoutonInutile = new Button("Bouton Inutile",ImageSimu);
         this.BoutonInutile.setContentDisplay(ContentDisplay.BOTTOM);
         this.BoutonInutile.setPrefSize(100, 100);
         
@@ -102,13 +103,31 @@ public class vroumvroumledemarrage extends BorderPane {
         this.setRight(page);
         page.setSpacing(25);
         page.setPadding(new javafx.geometry.Insets(15,15,15,15));
+        Identifiant.setDisable(true);
         
-        
-        while (i<100) {
-            Identifiant.setDisable(true);
-            i=i+1;
-        }
-        Identifiant.setDisable(false);
+        BoutonInutile.setOnAction((ttt)-> {
+            if (justeUnefois==true) {
+                barre.setProgress(barre.getProgress()+ Math.random()/7);
+                pourcentage.setProgress(barre.getProgress());
+            }
+            if (barre.getProgress() >= 0.5 && barre.getProgress()<0.6 ) {
+                Conseil.setText("On y est presque");
+            } 
+            if (justeUnefois==false)
+                barre.setProgress(barre.getProgress()+ 0.334);
+                pourcentage.setProgress(barre.getProgress());
+            if (barre.getProgress() >= 0.9 && justeUnefois==true) {
+                    barre.setProgress(0);
+                    pourcentage.setProgress(barre.getProgress());
+                    Conseil.setText("Aïe, coup dur pour Guillaume");
+                    justeUnefois=false;
+            }
+
+            if (barre.getProgress() >= 1) {
+                Identifiant.setDisable(false);
+                Conseil.setText("Conseil : Aller rentrer vos identifiants");
+            }
+        });
         Identifiant.setOnAction((t) -> {
                 this.Username = new Label("Nom d'utilisateur");
                 this.UText = new TextField("Entrer le nom d'utilisateur");
