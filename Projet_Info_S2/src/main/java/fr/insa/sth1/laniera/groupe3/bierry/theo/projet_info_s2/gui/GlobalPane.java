@@ -16,6 +16,7 @@ import java.io.File;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
@@ -346,7 +347,7 @@ public class GlobalPane extends BorderPane {
         VBox posCurseur = new VBox(posX, posY);
 //        posCurseur.setBackground(bgBlue);
         
-        NomCout.setFont(Color.WHITE);
+        //NomCout.setFont(Color.WHITE);
         HBox FormatPrix = new HBox(NomCout, Cout, SymboleEuro);
         VBox IndicationElement = new VBox(Type, NormeForce, AngleForce, ContraintesBarres, FormatPrix);
         VBox Assemblage = new VBox (IndicationElement, posCurseur);
@@ -894,7 +895,18 @@ public class GlobalPane extends BorderPane {
 
 //----------- Concerne les instructions attendues lorsqu'on clique sur Sauvegarder -----------//  
         Enregistrer.setOnAction((t) -> {
+            ArrayList<Noeud> AN = controleur.getVue().getModel().Tri_Des_Noeuds();
+            ArrayList<Barre> AB = controleur.getVue().getModel().Tri_Des_Barres();
+            ArrayList<Segment> AS = controleur.getVue().getModel().Tri_Des_Segment();
+            if(AN.isEmpty() || AB.isEmpty() || AS.size() == 0){//En fait, seule le fait que la liste des segments ne doit pas être vide suffit,mais cela n'a pas vraiment de sens d'enregistrer un fichier sans au moins une des trois conditions donc ce n'est pas très déreangant
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Problème durant la sauvegarde\n\nPour sauvegarder un fichier, celui_ci doit contenir au moins : \n-Une barre\n-Un noeud simple\n-Un segment"); 
+                alert.showAndWait();
+                controleur.boutonEtatNeutre(t);
+            } else{
             controleur.menuSauvegarder(t);
+            }
         });
 
     
