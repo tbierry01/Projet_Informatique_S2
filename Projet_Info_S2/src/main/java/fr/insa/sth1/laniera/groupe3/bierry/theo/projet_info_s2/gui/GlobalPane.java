@@ -727,7 +727,14 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les instructions attendues lorsqu'on clique sur Simulation -----------//
         Simulation.setOnAction((t) -> {
             //System.out.println("Je suis là");
-            controleur.boutonSimulation(t);
+            ArrayList<Noeud> AN = controleur.getVue().getModel().Tri_Des_Noeuds();
+            ArrayList<Barre> AB = controleur.getVue().getModel().Tri_Des_Barres();
+            ArrayList<Segment> AS = controleur.getVue().getModel().Tri_Des_Segment();
+            if(AN.isEmpty() || AB.isEmpty() || AS.size() == 0){
+                Aide.setText("La simulation est impossible, vou devez avoir au moins un Segment, une Barre et un Noeud.");
+            } else {
+                controleur.boutonSimulation(t);
+            }
         });
 
 //----------- Concerne les instructions attendues lorsqu'on clique sur Supprimer -----------//

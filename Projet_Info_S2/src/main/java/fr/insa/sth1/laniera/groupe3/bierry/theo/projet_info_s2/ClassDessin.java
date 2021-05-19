@@ -467,11 +467,12 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
     
     public Remonte_Inversion Simulation(){
         Remonte_Inversion RI = new Remonte_Inversion();
-        if(this.isIsostatic() == false){ //On teste si c'est isostatic ou pas
+        Remonte_Inversion RI1 = Resolution_ClassDessin(); //Si c'est faisable, on résoud
+        RI.setPossible(RI1.getPossible());//J'aurais pu directement mettre true, mais je prefère faire ca come ca, on ne sait jamais, si jamais ca a réussi à rentre dans la boucle mais que ce n'est pas résolvable, c'est cohérant, sinon, on peut avoir true et en même temps, la matrice qui vaut null donc bon...
+        if(this.isIsostatic() == false || RI.getPossible() == false){ //On teste si c'est isostatic ou pas
             return RI; //Note : on a pas besoin de le mettre à false parce que le constructeur vide met par defaut la matrice à null et le Possible à false
         } else {
-            Remonte_Inversion RI1 = Resolution_ClassDessin(); //Si c'est faisable, on résoud
-            RI.setPossible(RI1.getPossible());//J'aurais pu directement mettre true, mais je prefère faire ca come ca, on ne sait jamais, si jamais ca a réussi à rentre dans la boucle mais que ce n'est pas résolvable, c'est cohérant, sinon, on peut avoir true et en même temps, la matrice qui vaut null donc bon...
+            
             RI.setSolution(RI1.getSolution()); //On récupère a matrice solution
             Matrice M = RI.getSolution();
             this.ColorationSimulation(M); //On colore les barres

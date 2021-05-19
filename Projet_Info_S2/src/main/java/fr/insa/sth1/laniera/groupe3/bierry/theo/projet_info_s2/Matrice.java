@@ -647,16 +647,23 @@ public class Matrice {
 
     public Remonte_Inversion Resolution_complete(Matrice Vect) { //Ici on résoud un systeme entier avec la matrice carré du système en paramètre implicite et la matrice vecteur qui est le vecteur des égalités
         Matrice Matrice_rectangle = this.concatCol(Vect); // On assemble les deux pour que cela soit plus facile a travailler
-        ResGauss Resultat_descente = Matrice_rectangle.DescenteGauss(); //On rend la matrice triangulaire supérieur
-        double EPSILON_PIVOT = Math.pow(10, -8);
-        //System.out.println(" +++++++++++++++++++++++++++++ Determinant : "+Matrice_rectangle.Determinant(Resultat_descente.signature) );
-        if (Math.abs(Matrice_rectangle.Determinant(Resultat_descente.signature)) <= EPSILON_PIVOT ) { //Ici on fait une condition qui demande si la matrice est inversible ou non,  à savoir, si son déterminant est différnet de 0 ou non
+        
+        if( Matrice_rectangle.getLig() + 1 != Matrice_rectangle.getCol()){
             Remonte_Inversion Sol = new Remonte_Inversion(); // S'il l'est, alors on créer un objet de la classe Remonte_Inversion qui est vide de la matrice solution puisqu'elle n'existe pas et qui possède comme attribut Possible, false 
-            return Sol; //!!! DEMANDER SI CELA SORTE AU RTURN OU SI CELA CONTINUE L'EXECUTION
+            return Sol; 
+        } else{
+            ResGauss Resultat_descente = Matrice_rectangle.DescenteGauss();
+        //On rend la matrice triangulaire supérieur
+            double EPSILON_PIVOT = Math.pow(10, -8);
+            System.out.println(" +++++++++++++++++++++++++++++ Determinant : "+Matrice_rectangle.Determinant(Resultat_descente.signature) );
+            if (Math.abs(Matrice_rectangle.Determinant(Resultat_descente.signature)) <= EPSILON_PIVOT ) { //Ici on fait une condition qui demande si la matrice est inversible ou non,  à savoir, si son déterminant est différnet de 0 ou non
+                Remonte_Inversion Sol = new Remonte_Inversion(); // S'il l'est, alors on créer un objet de la classe Remonte_Inversion qui est vide de la matrice solution puisqu'elle n'existe pas et qui possède comme attribut Possible, false 
+            return Sol; 
             //throw new Error ("Le système ne possède pas de solution ou du moins, pas de solution unique");
-        } else { //Si la matrice est inversible, alors on entre dans cette boucle
-            Remonte_Inversion Sol = new Remonte_Inversion(Matrice_rectangle.RemonteGauss(Resultat_descente));
-            return Sol;
+            } else { //Si la matrice est inversible, alors on entre dans cette boucle
+                Remonte_Inversion Sol = new Remonte_Inversion(Matrice_rectangle.RemonteGauss(Resultat_descente));
+                return Sol;
+            }
         }
     }
 
