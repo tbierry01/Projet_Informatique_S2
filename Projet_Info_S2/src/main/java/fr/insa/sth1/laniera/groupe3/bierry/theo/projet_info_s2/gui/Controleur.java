@@ -455,7 +455,7 @@ public class Controleur {
                 ArrayList<Force> AF = cdOuvrir.Recup_Force(AN);
                 Stage nouveau = new Stage();
                 nouveau.setTitle("BRIDGIES " + f.getName());
-                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size(), AF.size(), FRE.getCout());
+                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size(), AF.size(), FRE.getCout(),"");
                 Scene sc = new Scene(GP);
                 nouveau.setScene(sc);
                 nouveau.show();
