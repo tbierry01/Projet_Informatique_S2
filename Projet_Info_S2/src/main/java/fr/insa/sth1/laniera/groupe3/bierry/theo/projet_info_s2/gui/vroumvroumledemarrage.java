@@ -102,7 +102,7 @@ public class vroumvroumledemarrage extends BorderPane  {
         this.Conseil = new Label(Conseil(Math.random()));
         this.Bridgies = new Label(" Bridgies ");
         Bridgies.setFont(new Font("Bauhaus 93",100));
-        //Bridgies.setStyle("-fx-background-color:whitesmoke");
+        //Bridgies.setStyle("-fx-background-color:grey");
         Conseil.setFont(new Font("Harrington",20));
         Conseil.setStyle("-fx-background-color:lightgrey");
         Image Image_Logo2 = new Image("file:Image_Logo2-2.png");
@@ -113,7 +113,7 @@ public class vroumvroumledemarrage extends BorderPane  {
         this.BoutonInutile.setPrefSize(100, 100);
         BoutonInutile.setStyle("-fx-background-color:lightgrey");
         BoutonInutile.setFont(new Font("Harrington",20));
-        
+        BoutonInutile.setTextFill(Color.DARKGRAY);
         //deco
         Rectangle rectangledeco = new Rectangle();
         rectangledeco.setWidth(500);
@@ -155,7 +155,8 @@ public class vroumvroumledemarrage extends BorderPane  {
         System.out.println(Image_Logo2.getWidth());
         
         //C'est la barre de chargement, avec un bouton identifiant disable tant que la barre n'est pas complète
-        Identifiant.setDisable(true);
+        //Identifiant.setDisable(true);
+        
         BoutonInutile.setOnAction((ttt)-> {
             if (justeUnefois==true) {
                 barre.setProgress(barre.getProgress()+ Math.random()/7);
@@ -192,6 +193,10 @@ public class vroumvroumledemarrage extends BorderPane  {
                 this.Password = new Label("Mot de passe :");
                 this.PText = new PasswordField();
                 this.SeConnecter = new Button("Se Connecter");
+                Rectangle rectangledeco5 = new Rectangle();
+                rectangledeco5.setWidth(145);
+                rectangledeco5.setHeight(2);
+                rectangledeco5.setFill(Color.GREY);
                 
                 //On crée les boutons pour masquer
                 this.AfficherMasquer = new ToggleGroup();
@@ -199,6 +204,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                 this.showbutton = new ToggleButton("Afficher");
                 hidebutton.setToggleGroup(AfficherMasquer);
                 showbutton.setToggleGroup(AfficherMasquer);
+                
                 hidebutton.setSelected(true); //le bouton masquer est appuyer par défaut
                 this.show = new Label("");
                 this.Indication = new Label("Conseil : Rentrez votre mot de passe et votre nom d'utilisateur");
@@ -258,8 +264,8 @@ public class vroumvroumledemarrage extends BorderPane  {
                 this.PasswordHBox2 = new HBox(this.PText,this.SeConnecter,this.MDPOublie);
                 PasswordHBox2.setSpacing(20);
 
-                VBox PasswordVBox = new VBox(this.Username,this.UText,this.Password,this.PasswordHBox2,this.PasswordHBox,this.Indication);
-                Scene Scene2 = new Scene(PasswordVBox, 500, 200);
+                VBox PasswordVBox = new VBox(this.Username,this.UText,this.Password,this.PasswordHBox2,this.PasswordHBox,rectangledeco5,this.Indication);
+                Scene Scene2 = new Scene(PasswordVBox, 500, 220);
                 PasswordVBox.setSpacing(10);
                 PasswordVBox.setPadding(new javafx.geometry.Insets(15,15,15,15));
                 PasswordVBox.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY))); //on change la couleur de fond de la VBox
@@ -321,6 +327,8 @@ public class vroumvroumledemarrage extends BorderPane  {
         
 
     }
+    
+    
 }
 
 
