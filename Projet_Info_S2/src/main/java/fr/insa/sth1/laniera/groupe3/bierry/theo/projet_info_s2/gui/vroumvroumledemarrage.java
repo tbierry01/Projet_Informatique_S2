@@ -5,8 +5,12 @@
  */
 package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
+
+import java.io.FileNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
@@ -20,10 +24,19 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -32,7 +45,7 @@ import javafx.stage.Stage;
  *
  * @author Youri
  */
-public class vroumvroumledemarrage extends BorderPane {
+public class vroumvroumledemarrage extends BorderPane  {
 
     private Label Conseil;
     private Label Loading ;
@@ -61,57 +74,88 @@ public class vroumvroumledemarrage extends BorderPane {
     double i=0;
     private ProgressIndicator pourcentage;
     private boolean justeUnefois=true;
+    private Font fonte;
+    private VBox page;
 
     
     public static String Conseil(double i) {
-        System.out.println(i);
         String res="";
         if (i<0.25) {
-            res="Boire de l'eau c'est bon pour la santé";
+            res="  Boire de l'eau c'est bon pour la santé  ";
         }
         if (i>=0.25 && i<0.50) {
-            res="Pour manger il faut de la nourriture";
+            res="  Pour manger il faut de la nourriture  ";
         }
         if (i>=0.50 && i<0.75) {
-            res="Pour lutter contre le covid, il faut ouvrir la fenêtre";       
+            res="  Pour lutter contre le covid, il faut ouvrir la fenêtre  ";       
         }
         if (i>=0.75) {
-            res="Non";            
+            res="  Un projet d'informatique se travaille  ";            
         }
-    return("Conseil : "+ "\n" +res); 
+    return("      Conseil : "+ "\n" +res); 
     }
 
 
 
-    public vroumvroumledemarrage(Stage primaryStage) {
+    public vroumvroumledemarrage(Stage primaryStage) throws FileNotFoundException {
         this.Conseil = new Label(Conseil(Math.random()));
-        this.Bridgies = new Label("Bridgies");
-        
+        this.Bridgies = new Label(" Bridgies ");
+        Bridgies.setFont(new Font("Bauhaus 93",70));
+        Bridgies.setStyle("-fx-background-color:grey");
+        Conseil.setFont(new Font("Bell MT",30));
+        Conseil.setStyle("-fx-background-color:grey");
+        Image Image_Logo2 = new Image("file:Image_Logo2-1.png");
         ImageView ImageSimu = new ImageView(new Image("file:Image_Simulation.png"));
         this.BoutonInutile = new Button("Bouton Inutile",ImageSimu);
         this.BoutonInutile.setContentDisplay(ContentDisplay.BOTTOM);
         this.BoutonInutile.setPrefSize(100, 100);
         
+        //deco
+        Rectangle rectangledeco = new Rectangle();
+        rectangledeco.setWidth(500);
+        rectangledeco.setHeight(3);
+        rectangledeco.setFill(Color.TRANSPARENT);
+        Rectangle rectangledeco2 = new Rectangle();
+        rectangledeco2.setWidth(500);
+        rectangledeco2.setHeight(3);
+        rectangledeco2.setFill(Color.TRANSPARENT);
+        Rectangle rectangledeco3 = new Rectangle();
+        rectangledeco3.setWidth(500);
+        rectangledeco3.setHeight(3);
+        rectangledeco3.setFill(Color.TRANSPARENT);
+                
+        //HBox Chargement et identifiant
         this.Identifiant = new Button("Rentrer ses identifiants");
         this.barre = new ProgressBar(0);
         this.pourcentage = new ProgressIndicator(0);
         HBox chargement = new HBox(this.barre,this.pourcentage);
         chargement.setSpacing(10);
+        chargement.setAlignment(Pos.CENTER);
         
+        //VBox final
+        this.page = new VBox(rectangledeco,this.Bridgies,rectangledeco2,this.BoutonInutile,chargement,this.Identifiant,rectangledeco3,this.Conseil);
+        this.setLeft(page);
+        page.setSpacing(25); //545
+        page.setPadding(new javafx.geometry.Insets(15,0,15,0));
+        page.setAlignment(Pos.CENTER);
+        BackgroundImage backgroundimage = new BackgroundImage(Image_Logo2, 
+                                             BackgroundRepeat.NO_REPEAT, 
+                                             BackgroundRepeat.NO_REPEAT, 
+                                             BackgroundPosition.DEFAULT, 
+                                             BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundimage);
+        this.setBackground(background);
+        System.out.println(Image_Logo2.getWidth());
         
-        VBox page = new VBox(this.Bridgies,this.BoutonInutile,chargement,this.Identifiant,this.Conseil);
-        this.setRight(page);
-        page.setSpacing(25);
-        page.setPadding(new javafx.geometry.Insets(15,15,15,15));
-        Identifiant.setDisable(true);
-        
+        //C'est la barre de chargement, avec un bouton identifiant disable tant que la barre n'est pas complète
+        //Identifiant.setDisable(true);
         BoutonInutile.setOnAction((ttt)-> {
             if (justeUnefois==true) {
                 barre.setProgress(barre.getProgress()+ Math.random()/7);
                 pourcentage.setProgress(barre.getProgress());
             }
             if (barre.getProgress() >= 0.5 && barre.getProgress()<0.6 ) {
-                Conseil.setText("On y est presque");
+                Conseil.setText(" On y est presque ");
             } 
             if (justeUnefois==false)
                 barre.setProgress(barre.getProgress()+ 0.334);
@@ -119,19 +163,22 @@ public class vroumvroumledemarrage extends BorderPane {
             if (barre.getProgress() >= 0.9 && justeUnefois==true) {
                     barre.setProgress(0);
                     pourcentage.setProgress(barre.getProgress());
-                    Conseil.setText("Aïe, coup dur pour Guillaume");
+                    Conseil.setText(" Dommage, c'est revenu à zéro.. ");
                     justeUnefois=false;
             }
 
             if (barre.getProgress() >= 1) {
                 Identifiant.setDisable(false);
-                Conseil.setText("Conseil : Aller rentrer vos identifiants");
+                Conseil.setText(" Conseil : Allez rentrer vos identifiants ");
             }
         });
+        
+        
+        
         Identifiant.setOnAction((t) -> {
-                this.Username = new Label("Nom d'utilisateur");
+                this.Username = new Label("Nom d'utilisateur :");
                 this.UText = new TextField("Entrer le nom d'utilisateur");
-                this.Password = new Label("Mot de passe");
+                this.Password = new Label("Mot de passe :");
                 this.PText = new PasswordField();
                 this.SeConnecter = new Button("Se Connecter");
                 
@@ -199,12 +246,14 @@ public class vroumvroumledemarrage extends BorderPane {
                 Scene Scene2 = new Scene(PasswordVBox, 500, 200);
                 PasswordVBox.setSpacing(10);
                 PasswordVBox.setPadding(new javafx.geometry.Insets(15,15,15,15));
+                PasswordVBox.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
  
                 // on crée la nouvelle page
                 Stage PasswordWindow = new Stage();
                 PasswordWindow.setScene(Scene2);
                 PasswordWindow.getIcons().add(new Image("file:Image_Logo.png"));
                 PasswordWindow.setTitle("Connexion...");
+                
  
                 // fixer la position et la taille par rapport au stage de base
                 PasswordWindow.setX(primaryStage.getX() + 200);
