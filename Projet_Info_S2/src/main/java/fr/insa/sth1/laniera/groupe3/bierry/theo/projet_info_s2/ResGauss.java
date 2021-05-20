@@ -7,7 +7,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 
 /**
  *
- * @author theob
+ * @author theob / Théo BIERRY
  */
 public class ResGauss {
     

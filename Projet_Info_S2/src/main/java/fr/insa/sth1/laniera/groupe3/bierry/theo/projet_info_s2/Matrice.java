@@ -13,7 +13,7 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2;
 //Synthaxe pour demander des méthode statics dans d'autres classe NomClasse.Methode(elements1, elements2);
 /**
  *
- * @author theob
+ * @author theob / Théo BIERRY
  */
 //1.1 def classe 
 /**
