@@ -7,6 +7,9 @@ package fr.insa.sth1.laniera.groupe3.bierry.theo.projet_info_s2.gui;
 
 
 import java.io.FileNotFoundException;
+import java.lang.InterruptedException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -104,7 +107,7 @@ public class vroumvroumledemarrage extends BorderPane  {
         //Bridgies.setStyle("-fx-background-color:whitesmoke");
         Conseil.setFont(new Font("Harrington",20));
         Conseil.setStyle("-fx-background-color:lightgrey");
-        Image Image_Logo2 = new Image("file:Image_Logo2-1.png");
+        Image Image_Logo2 = new Image("file:Image_Logo2-2.png");
         ImageView ImageSimu = new ImageView(new Image("file:Image_Simulation.png"));
         this.BoutonInutile = new Button("Bouton \n Inutile");
         this.BoutonInutile.setContentDisplay(ContentDisplay.BOTTOM);
@@ -131,7 +134,7 @@ public class vroumvroumledemarrage extends BorderPane  {
         this.Identifiant = new Button("Rentrer ses identifiants");
         this.barre = new ProgressBar(0);
         this.pourcentage = new ProgressIndicator(0);
-        pourcentage.setStyle("-fx-background-color:lightgrey");
+        //pourcentage.setStyle("-fx-background-color:lightgrey");
 
         HBox chargement = new HBox(this.barre,this.pourcentage);
         chargement.setSpacing(10);
@@ -161,7 +164,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                 pourcentage.setProgress(barre.getProgress());
             }
             if (barre.getProgress() >= 0.5 && barre.getProgress()<0.6 ) {
-                Conseil.setText(" On y est presque ");
+                Conseil.setText("      Conseil : "+ "\n"+" On y est presque ");
             } 
             if (justeUnefois==false)
                 barre.setProgress(barre.getProgress()+ 0.334);
@@ -169,19 +172,23 @@ public class vroumvroumledemarrage extends BorderPane  {
             if (barre.getProgress() >= 0.9 && justeUnefois==true) {
                     barre.setProgress(0);
                     pourcentage.setProgress(barre.getProgress());
-                    Conseil.setText(" Dommage, c'est revenu à zéro.. ");
+                    Conseil.setText("      Conseil : "+ "\n"+" Dommage, c'est revenu à zéro.. ");
                     justeUnefois=false;
             }
 
             if (barre.getProgress() >= 1) {
                 Identifiant.setDisable(false);
-                Conseil.setText(" Conseil : Allez rentrer vos identifiants ");
+                Conseil.setText("      Conseil : "+ "\n"+"Allez rentrer vos identifiants ");
             }
         });
         
         
+        //page qui s'affiche quand on clique sur identifiant
         
         Identifiant.setOnAction((t) -> {
+                
+                //définition des attributs
+                
                 this.Username = new Label("Nom d'utilisateur :");
                 this.UText = new TextField("Entrer le nom d'utilisateur");
                 this.Password = new Label("Mot de passe :");
@@ -194,11 +201,11 @@ public class vroumvroumledemarrage extends BorderPane  {
                 this.showbutton = new ToggleButton("Afficher");
                 hidebutton.setToggleGroup(AfficherMasquer);
                 showbutton.setToggleGroup(AfficherMasquer);
-                hidebutton.setSelected(true);
+                hidebutton.setSelected(true); //le bouton masquer est appuyer par défaut
                 this.show = new Label("");
                 this.Indication = new Label("Conseil : Rentrez votre mot de passe et votre nom d'utilisateur");
                 
- 
+                //On fixe le bouton "Afficher" pour afficher le mot de passe à gauche de la HBox
                 showbutton.setOnAction(new EventHandler<ActionEvent>() {
  
                     @Override
@@ -207,6 +214,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                         show.setText(password);
                     }
                 });
+                //On fixe le bouton "Masquer" pour masquer le mot de passe à gauche de la HBox
                 hidebutton.setOnAction(new EventHandler<ActionEvent>() {
  
                     @Override
@@ -220,10 +228,12 @@ public class vroumvroumledemarrage extends BorderPane  {
                         if (UText.getText().equals("Entrer le nom d'utilisateur")){
                             UText.setText("");
                         }
-                });   
-
+                });
+                
+                //on crée un hyperlink pour pouvoir rouvrir une nouvelle page pour mot de passe oublié
                 this.MDPOublie = new Hyperlink("Mot de passe oublié ?");
- 
+                
+                //on définit une nouvelle scène pour mot de passe oublié
                 MDPOublie.setOnAction(new EventHandler<ActionEvent>() {
                     private VBox VBoxInutile;
                     private Button BoutonInutile2;
@@ -243,6 +253,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                         UselessWindow.show();
                     }
                 });
+                //on définit la disposition de la scène Identifiant
                 this.PasswordHBox = new HBox(this.showbutton,this.hidebutton,this.show);
                 PasswordHBox.setSpacing(20);
                 this.PasswordHBox2 = new HBox(this.PText,this.SeConnecter,this.MDPOublie);
@@ -252,7 +263,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                 Scene Scene2 = new Scene(PasswordVBox, 500, 200);
                 PasswordVBox.setSpacing(10);
                 PasswordVBox.setPadding(new javafx.geometry.Insets(15,15,15,15));
-                PasswordVBox.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
+                PasswordVBox.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY))); //on change la couleur de fond de la VBox
  
                 // on crée la nouvelle page
                 Stage PasswordWindow = new Stage();
@@ -276,23 +287,23 @@ public class vroumvroumledemarrage extends BorderPane  {
                             Indication.setText("Conseil : Vous n'avez même pas écrit votre mot de passe...");
                             Indication.setTextFill(Color.rgb(0, 0, 0));
                         }
-                        else if (!(PText.getText().equals("DeBeuvron") || PText.getText().equals("Coulibaly"))) {
+                        else if (!(PText.getText().equals("DeBeuvron") || PText.getText().equals("Coulibaly"))) { //tant que l'un des 2 mdp n'est pas rentré, on renvoie des choses différentes dans conseils
                             Indication.setText("Conseil : Votre mot de passe est incorrect");
                             Indication.setTextFill(Color.rgb(210, 39, 30));
                         } 
                         else {
                             Indication.setText("Conseil : Votre mot de passe est correct");
                             Indication.setTextFill(Color.rgb(21, 117, 84));
-                            CodeBon=true;
+                            CodeBon=true; //le mdp devient correct, reste à savoir si le nom d'utilisateur est toujours correct
                         }
                         if (UText.getText().equals("") || UText.getText().equals("Entrer le nom d'utilisateur")) {
                             Indication.setText("Conseil : Votre nom d'utilisateur");
-                            CodeBon=false;
+                            CodeBon=false; //le code redevient faux, même si le mdp est juste, car le nom d'utilisateur n'est pas rentré
                         }
-                        if (CodeBon==true) {
-                            //attendre 1secondes
-                            Indication.setText("Veuillez patientez...");
-                            //attendre 3 secondes
+                        if (CodeBon==true) { 
+
+                            //si le code est bon, on passe à la scène suivante
+                            
                             PasswordWindow.close();
                             scene2 = new Scene(new GlobalPane(primaryStage));
                             primaryStage.setScene(scene2);
