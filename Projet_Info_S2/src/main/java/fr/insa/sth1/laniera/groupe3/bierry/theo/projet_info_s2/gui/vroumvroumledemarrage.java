@@ -157,7 +157,7 @@ public class vroumvroumledemarrage extends BorderPane  {
         System.out.println(Image_Logo2.getWidth());
         
         //C'est la barre de chargement, avec un bouton identifiant disable tant que la barre n'est pas complète
-        //Identifiant.setDisable(true);
+        Identifiant.setDisable(true);
         BoutonInutile.setOnAction((ttt)-> {
             if (justeUnefois==true) {
                 barre.setProgress(barre.getProgress()+ Math.random()/7);
@@ -181,9 +181,9 @@ public class vroumvroumledemarrage extends BorderPane  {
                 Conseil.setText("      Conseil : "+ "\n"+"Allez rentrer vos identifiants ");
             }
         });
-        
-        
+        primaryStage.setResizable(false);
         //page qui s'affiche quand on clique sur identifiant
+        
         
         Identifiant.setOnAction((t) -> {
                 
@@ -250,6 +250,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                         UselessWindow.setTitle("Dommage");
                         UselessWindow.setX(primaryStage.getX() + 400);
                         UselessWindow.setY(primaryStage.getY() + 100);
+                        UselessWindow.setResizable(false);
                         UselessWindow.show();
                     }
                 });
@@ -272,9 +273,10 @@ public class vroumvroumledemarrage extends BorderPane  {
                 PasswordWindow.setTitle("Connexion...");
                 
  
-                // fixer la position et la taille par rapport au stage de base
+                // fixer la position et la taille par rapport au stage de base et on la rend insizable
                 PasswordWindow.setX(primaryStage.getX() + 200);
                 PasswordWindow.setY(primaryStage.getY() + 100);
+                PasswordWindow.setResizable(false);
                 
  
                 PasswordWindow.show();
@@ -308,6 +310,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                             scene2 = new Scene(new GlobalPane(primaryStage));
                             primaryStage.setScene(scene2);
                             primaryStage.setX(primaryStage.getX() - 500);
+                            primaryStage.setResizable(true);
                         }
                         PText.clear();
                     }
