@@ -311,7 +311,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                             //si le code est bon, on passe à la scène suivante
                             
                             PasswordWindow.close();
-                            scene2 = new Scene(new GlobalPane(primaryStage));
+                            scene2 = new Scene(new GlobalPane(primaryStage, UText.getText()));
                             primaryStage.setScene(scene2);
                             primaryStage.setX(primaryStage.getX() - 500);
                             primaryStage.setResizable(true);
@@ -328,7 +328,7 @@ public class vroumvroumledemarrage extends BorderPane  {
 
     }
     
-    
+
 }
 
 
