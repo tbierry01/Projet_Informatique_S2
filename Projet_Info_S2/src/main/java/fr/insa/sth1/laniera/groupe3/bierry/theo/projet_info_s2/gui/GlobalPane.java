@@ -92,13 +92,18 @@ public class GlobalPane extends BorderPane {
     private int IDAppuiDouble;
     private int IDBarres;
     private int IDNoeuds;
-
+    private Label UTextLabel;
     private MainMenu menu;
 
     /*public GlobalPane () {
         this(new ClassDessin());  
     }
      */
+    
+    public GlobalPane(Stage inStage, String UText){
+        this(inStage, null, new ClassDessin(),0, 0, 0, 0, 0, 0, UText);
+    }
+    
     public GlobalPane(Stage inStage) {
         this(inStage, new ClassDessin());
     }
@@ -108,13 +113,17 @@ public class GlobalPane extends BorderPane {
     }
     
     public GlobalPane(Stage inStage, File fromFile, ClassDessin model){
-        this(inStage, fromFile, model, 0, 0, 0, 0, 0, 0);
+        this(inStage, fromFile, model, 0, 0, 0, 0, 0, 0,"");
+
     }
 
-    public GlobalPane(Stage inStage, File fromFile, ClassDessin model, int IDS, int IDP, int IDN, int IDB, int IDF, double  Prix) {
+    public GlobalPane(Stage inStage, File fromFile, ClassDessin model, int IDS, int IDP, int IDN, int IDB, int IDF, double  Prix, String UText) {
         this.inStage = inStage;
         this.model = model;
         this.controleur = new Controleur(this, IDN, IDB, IDS, IDP, IDF);
+        
+        UText = "Connecté en tant que "+UText;
+        this.UTextLabel= new Label(UText);
 
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
@@ -227,6 +236,7 @@ public class GlobalPane extends BorderPane {
         VBox bTerrain = new VBox(this.getSegment(), this.getPoint());
         VBox bPont1 = new VBox(this.getAppuiSimple(), this.getAppuiDouble());
         VBox bPont2 = new VBox(this.getNoeuds(), this.getBarres());
+        
 
         VBox vOptions = new VBox(this.Nouveau, this.Ouvrir, this.getEnregistrer());
 
@@ -235,7 +245,24 @@ public class GlobalPane extends BorderPane {
 
         hTerrain.setSpacing(8);
         hPont.setSpacing(8);
-
+        
+        //partie déco (logo INSA, connecté en tant que etc...)
+        Rectangle rectangle0 = new Rectangle();
+        rectangle0.setWidth(100);
+        rectangle0.setHeight(3);
+        rectangle0.setFill(Color.LIGHTSEAGREEN);
+        UTextLabel.setStyle("-fx-font-weight: bold");
+        VBox LogoUsername = new VBox(iconINSA,rectangle0,this.UTextLabel);
+        LogoUsername.setSpacing(10);
+        LogoUsername.setPadding(new javafx.geometry.Insets(10, 10, 10, 10));
+        NormeForce.setTextFill(Color.WHITE);
+        ContraintesBarres.setTextFill(Color.WHITE);
+        AngleForce.setTextFill(Color.WHITE);
+        Cout.setTextFill(Color.WHITE);
+        NomCout.setTextFill(Color.WHITE);
+        Type.setTextFill(Color.WHITE);
+        SymboleEuro.setTextFill(Color.WHITE);
+        
         Rectangle rectangle1 = new Rectangle();
         rectangle1.setWidth(5);
         rectangle1.setHeight(100);
@@ -268,7 +295,7 @@ public class GlobalPane extends BorderPane {
         barreMenus.setBackground(bgBlue);
 
         BorderPane haut = new BorderPane();
-        HBox logoINSA = new HBox(iconINSA);
+        HBox logoINSA = new HBox(LogoUsername);
         logoINSA.setBackground(bgBlue);
         HBox JeSersARien = new HBox();
         JeSersARien.setBackground(bgBlue);
@@ -342,7 +369,9 @@ public class GlobalPane extends BorderPane {
             x = t.getSceneX() - 145.6;
             y = t.getSceneY() - 152.8;
             posX.setText("X : " + x);
+            posX.setStyle("-fx-font-weight: bold");
             posY.setText("Y : " + y);
+            posY.setStyle("-fx-font-weight: bold");
         });
         VBox posCurseur = new VBox(posX, posY);
 //        posCurseur.setBackground(bgBlue);
@@ -536,7 +565,7 @@ public class GlobalPane extends BorderPane {
 
 //----------- Concerne les instructions attendues lorsqu'on clique sur Barres -----------//
         Barres.setOnAction((t) -> {
-            Aide.setText("Cliquez sur 2 noeurs pour créer une barre");
+            Aide.setText("Cliquez sur 2 noeuds pour créer une barre");
             if (Noeuds.isDisabled() == true) {
                 controleur.boutonEtatNeutre(t);
             } else {
