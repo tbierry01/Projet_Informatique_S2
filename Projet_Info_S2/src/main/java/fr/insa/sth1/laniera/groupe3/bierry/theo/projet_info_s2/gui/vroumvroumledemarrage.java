@@ -100,15 +100,18 @@ public class vroumvroumledemarrage extends BorderPane  {
     public vroumvroumledemarrage(Stage primaryStage) throws FileNotFoundException {
         this.Conseil = new Label(Conseil(Math.random()));
         this.Bridgies = new Label(" Bridgies ");
-        Bridgies.setFont(new Font("Bauhaus 93",70));
-        Bridgies.setStyle("-fx-background-color:grey");
-        Conseil.setFont(new Font("Bell MT",30));
-        Conseil.setStyle("-fx-background-color:grey");
+        Bridgies.setFont(new Font("Bauhaus 93",100));
+        //Bridgies.setStyle("-fx-background-color:whitesmoke");
+        Conseil.setFont(new Font("Harrington",20));
+        Conseil.setStyle("-fx-background-color:lightgrey");
         Image Image_Logo2 = new Image("file:Image_Logo2-1.png");
         ImageView ImageSimu = new ImageView(new Image("file:Image_Simulation.png"));
-        this.BoutonInutile = new Button("Bouton Inutile",ImageSimu);
+        this.BoutonInutile = new Button("Bouton \n Inutile");
         this.BoutonInutile.setContentDisplay(ContentDisplay.BOTTOM);
+        
         this.BoutonInutile.setPrefSize(100, 100);
+        BoutonInutile.setStyle("-fx-background-color:lightgrey");
+        BoutonInutile.setFont(new Font("Harrington",20));
         
         //deco
         Rectangle rectangledeco = new Rectangle();
@@ -128,12 +131,15 @@ public class vroumvroumledemarrage extends BorderPane  {
         this.Identifiant = new Button("Rentrer ses identifiants");
         this.barre = new ProgressBar(0);
         this.pourcentage = new ProgressIndicator(0);
+        pourcentage.setStyle("-fx-background-color:lightgrey");
+
         HBox chargement = new HBox(this.barre,this.pourcentage);
         chargement.setSpacing(10);
         chargement.setAlignment(Pos.CENTER);
+        Identifiant.setFont(new Font("Bell MT",20));
         
         //VBox final
-        this.page = new VBox(rectangledeco,this.Bridgies,rectangledeco2,this.BoutonInutile,chargement,this.Identifiant,rectangledeco3,this.Conseil);
+        this.page = new VBox(this.Bridgies,rectangledeco2,this.BoutonInutile,chargement,this.Identifiant,rectangledeco3,this.Conseil);
         this.setLeft(page);
         page.setSpacing(25); //545
         page.setPadding(new javafx.geometry.Insets(15,0,15,0));
