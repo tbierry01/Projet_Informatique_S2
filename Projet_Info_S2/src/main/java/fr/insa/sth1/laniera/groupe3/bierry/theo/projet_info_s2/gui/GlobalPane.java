@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -35,6 +36,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -87,6 +89,11 @@ public class GlobalPane extends BorderPane {
     private Label UTextLabel;
     private MainMenu menu;
     private String NomUtilisatuer = "";
+    
+    private Tooltip precision;
+    private Tooltip precision2;
+    private Tooltip precision3;
+    private Tooltip precision4;
 
     
     public GlobalPane(Stage inStage, String UText){
@@ -114,6 +121,8 @@ public class GlobalPane extends BorderPane {
         NomUtilisatuer = UText;
         UText = "Connecté en tant que "+UText;
         this.UTextLabel= new Label(UText);
+        UTextLabel.setTextFill(Color.DARKSLATEGREY);
+        UTextLabel.setStyle("-fx-font-weight: bold");
         
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
@@ -242,7 +251,6 @@ public class GlobalPane extends BorderPane {
         rectangle0.setWidth(100);
         rectangle0.setHeight(3);
         rectangle0.setFill(Color.LIGHTSEAGREEN);
-        UTextLabel.setStyle("-fx-font-weight: bold");
         VBox LogoUsername = new VBox(iconINSA,rectangle0,this.UTextLabel);
         LogoUsername.setSpacing(10);
         LogoUsername.setPadding(new javafx.geometry.Insets(10, 10, 10, 10));
@@ -316,11 +324,19 @@ public class GlobalPane extends BorderPane {
         //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
         ChoixStyleTrait traitPlein = new ChoixStyleTrait("Trait plein");
         ChoixStyleTrait traitPointilles = new ChoixStyleTrait("Trait pointillé");
-
+        
+        
         ObservableList<ChoixStyleTrait> styleTrait = FXCollections.observableArrayList(traitPlein, traitPointilles);
         ChoiceBox<ChoixStyleTrait> cbTrait = new ChoiceBox<ChoixStyleTrait>(styleTrait);
         cbTrait.getSelectionModel().select(traitPlein);
         cbTrait.setPrefSize(120, 25);
+        this.precision = new Tooltip("Work In Progress...");
+        precision.setFont(new Font("Bauhaus 93",15));
+        precision.setPrefSize(150,16);
+        precision.setStyle("-fx-text-fill: DARKCYAN");
+        cbTrait.setStyle("-fx-text-fill: -fx-text-inner-color");
+        Tooltip.install(cbTrait, precision);
+
 
         //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
         ChoixEpaisseur fin = new ChoixEpaisseur("Trait fin");
@@ -331,6 +347,7 @@ public class GlobalPane extends BorderPane {
         ChoiceBox<ChoixEpaisseur> cbEpaisseur = new ChoiceBox<ChoixEpaisseur>(epaisseur);
         cbEpaisseur.getSelectionModel().select(moyen);
         cbEpaisseur.setPrefSize(120, 25);
+        Tooltip.install(cbEpaisseur, precision);
 
         //----------- Définit les choix de la ChoiceBox en définissant le acier par défaut -----------//
         ChoixMatériaux matAcier = new ChoixMatériaux("Acier");
@@ -341,6 +358,7 @@ public class GlobalPane extends BorderPane {
         ChoiceBox<ChoixMatériaux> cbMatériaux = new ChoiceBox<ChoixMatériaux>(matériaux);
         cbMatériaux.getSelectionModel().select(matAcier);
         cbMatériaux.setPrefSize(120, 25);
+        Tooltip.install(cbMatériaux, precision);
 
         //----------- On place les différents éléments qui composent la partie gauche -----------//
         
