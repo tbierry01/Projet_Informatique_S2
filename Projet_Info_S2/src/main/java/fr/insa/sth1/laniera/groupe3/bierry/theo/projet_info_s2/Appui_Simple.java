@@ -92,7 +92,8 @@ public class Appui_Simple extends Appui {
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
         Context.setFill(super.getColor());
-        Context.fillOval(this.getPos().getAbscisse() - 2.5*RAYON_POINT, this.getPos().getOrdonnee() - 2.5*RAYON_POINT, 5 * RAYON_POINT, 5 * RAYON_POINT);
+        //Context.fillOval(this.getPos().getAbscisse() - 2.5*RAYON_POINT, this.getPos().getOrdonnee() - 2.5*RAYON_POINT, 5 * RAYON_POINT, 5 * RAYON_POINT);
+        Context.fillRect(this.getPos().getAbscisse()-1.5*RAYON_POINT, this.getPos().getOrdonnee() - 1.5*RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
     }
 
     @Override

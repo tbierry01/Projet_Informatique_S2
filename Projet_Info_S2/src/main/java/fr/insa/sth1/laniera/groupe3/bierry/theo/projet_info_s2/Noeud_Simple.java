@@ -95,7 +95,8 @@ public class Noeud_Simple extends Noeud{
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
         Context.setFill(super.getColor());
-        Context.fillOval(Pos.getAbscisse() - 2.5*RAYON_POINT, Pos.getOrdonnee() - 2.5*RAYON_POINT , 5*RAYON_POINT, 5*RAYON_POINT);
+        Context.setLineWidth(5);
+        Context.strokeOval(Pos.getAbscisse() - 1.5*RAYON_POINT, Pos.getOrdonnee() - 1.5*RAYON_POINT , 3*RAYON_POINT, 3*RAYON_POINT);
     }
 
     @Override

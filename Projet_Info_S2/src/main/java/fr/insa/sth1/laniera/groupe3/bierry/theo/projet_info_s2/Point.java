@@ -126,12 +126,12 @@ public class Point extends Figure{
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
         Context.setFill(super.getColor());
-        Context.fillOval(abscisse - 1.5*RAYON_POINT, ordonnee- 1.5*RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
+        Context.fillOval(abscisse - 1*RAYON_POINT, ordonnee- 1*RAYON_POINT, 2*RAYON_POINT, 2*RAYON_POINT);
     }
     
     public void DessineToiNomDeDieu(GraphicsContext Context, Color C) {
         Context.setFill(C);
-        Context.fillOval(abscisse - 1.5*RAYON_POINT, ordonnee- 1.5*RAYON_POINT, 3*RAYON_POINT, 3*RAYON_POINT);
+        Context.fillOval(abscisse - 1*RAYON_POINT, ordonnee- 1*RAYON_POINT, 2*RAYON_POINT, 2*RAYON_POINT);
     }
 
   

@@ -108,6 +108,7 @@ public class Segment extends Figure{
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
         Context.setStroke(super.getColor());
+        Context.setLineWidth(1);
         Context.strokeLine(Extremite[0].getAbscisse(), Extremite[0].getOrdonnee(), Extremite[1].getAbscisse(), Extremite[1].getOrdonnee());
 
     }

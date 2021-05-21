@@ -138,6 +138,7 @@ public class Barre extends Figure {
 
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
+        Context.setLineWidth(5);
         Context.setStroke(super.getColor());
         Context.strokeLine(Noeuds_Barre[0].getPos().getAbscisse(), Noeuds_Barre[0].getPos().getOrdonnee(), Noeuds_Barre[1].getPos().getAbscisse(), Noeuds_Barre[1].getPos().getOrdonnee());
     }

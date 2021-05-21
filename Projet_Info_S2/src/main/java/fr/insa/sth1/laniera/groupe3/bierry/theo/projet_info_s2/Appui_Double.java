@@ -124,7 +124,7 @@ public class Appui_Double extends Appui {
     @Override
     public void DessineToiNomDeDieu(GraphicsContext Context) {
         Context.setFill(super.getColor());
-        Context.fillOval(this.getPos().getAbscisse() - 1.5*RAYON_POINT, this.getPos().getOrdonnee() - 1.5*RAYON_POINT, 3 * RAYON_POINT, 3 * RAYON_POINT);
+        Context.fillOval(this.getPos().getAbscisse() - 2*RAYON_POINT, this.getPos().getOrdonnee() - 2*RAYON_POINT, 4 * RAYON_POINT, 4 * RAYON_POINT);
     }
 
     @Override
