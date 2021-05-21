@@ -23,8 +23,8 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
@@ -77,6 +77,9 @@ public class vroumvroumledemarrage extends BorderPane  {
     private boolean justeUnefois=true;
     private Font fonte;
     private VBox page;
+    private Tooltip precision;
+    private int j=3;
+    private Stage UselessWindow;
 
     
     public static String Conseil(double i) {
@@ -105,15 +108,22 @@ public class vroumvroumledemarrage extends BorderPane  {
         //Bridgies.setStyle("-fx-background-color:grey");
         Conseil.setFont(new Font("Harrington",20));
         Conseil.setStyle("-fx-background-color:lightgrey");
+        
+        
+        //On importe les images utiles
         Image Image_Logo2 = new Image("file:Image_Logo2-2.png");
-        ImageView ImageSimu = new ImageView(new Image("file:Image_Simulation.png"));
+        //ImageView ImageSimu = new ImageView(new Image("file:Image_Simulation.png"));
+        
+        //on configure le bouton inutile
+        this.precision = new Tooltip("Cliquez pour faire avancer le chargement"); //petit tooltip sur le bouton
         this.BoutonInutile = new Button("Bouton \n Inutile");
         this.BoutonInutile.setContentDisplay(ContentDisplay.BOTTOM);
-        
         this.BoutonInutile.setPrefSize(100, 100);
         BoutonInutile.setStyle("-fx-background-color:lightgrey");
         BoutonInutile.setFont(new Font("Harrington",20));
         BoutonInutile.setTextFill(Color.DARKGRAY);
+        Tooltip.install(BoutonInutile, precision); //on installe le tooltip pour pouvoir le désactiver potentiellement après (on peut set aussi)
+        
         //deco
         Rectangle rectangledeco = new Rectangle();
         rectangledeco.setWidth(500);
@@ -155,7 +165,7 @@ public class vroumvroumledemarrage extends BorderPane  {
         System.out.println(Image_Logo2.getWidth());
         
         //C'est la barre de chargement, avec un bouton identifiant disable tant que la barre n'est pas complète
-        //Identifiant.setDisable(true);
+        Identifiant.setDisable(true);
         
         BoutonInutile.setOnAction((ttt)-> {
             if (justeUnefois==true) {
@@ -248,7 +258,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                         VBoxInutile.setPadding(new javafx.geometry.Insets(15,15,15,15));
                         //On configure la scene
                         Scene SceneOublie = new Scene(VBoxInutile, 200,75);
-                        Stage UselessWindow = new Stage();
+                        UselessWindow = new Stage();
                         UselessWindow.setScene(SceneOublie);                
                         UselessWindow.getIcons().add(new Image("file:Image_Logo.png"));
                         UselessWindow.setTitle("Dommage");
@@ -284,18 +294,23 @@ public class vroumvroumledemarrage extends BorderPane  {
                 
  
                 PasswordWindow.show();
-                
                 //On configure le bouton SeConnecter avec les indications
                 SeConnecter.setOnAction(new EventHandler<ActionEvent>() {
                     @Override public void handle(ActionEvent e) {
-
                         if (PText.getText().equals("")){
                             Indication.setText("Conseil : Vous n'avez même pas écrit votre mot de passe...");
                             Indication.setTextFill(Color.rgb(0, 0, 0));
                         }
                         else if (!(PText.getText().equals("DeBeuvron") || PText.getText().equals("Coulibaly"))) { //tant que l'un des 2 mdp n'est pas rentré, on renvoie des choses différentes dans conseils
-                            Indication.setText("Conseil : Votre mot de passe est incorrect");
+                            if (j==0) {
+                                PasswordWindow.close();
+                                primaryStage.close();
+                                UselessWindow.close();
+                            }
+                            Indication.setText("Conseil : Votre mot de passe est incorrect   "+""+j+" essai(s) restant(s)");
                             Indication.setTextFill(Color.rgb(210, 39, 30));
+                            System.out.println(j);
+                            j--;
                         } 
                         else {
                             Indication.setText("Conseil : Votre mot de passe est correct");
