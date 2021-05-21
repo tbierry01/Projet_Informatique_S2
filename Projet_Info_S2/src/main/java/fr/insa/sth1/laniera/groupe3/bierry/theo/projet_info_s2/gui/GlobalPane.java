@@ -94,6 +94,7 @@ public class GlobalPane extends BorderPane {
     private int IDNoeuds;
     private Label UTextLabel;
     private MainMenu menu;
+    private String NomUtilisatuer = "";
 
     /*public GlobalPane () {
         this(new ClassDessin());  
@@ -122,9 +123,10 @@ public class GlobalPane extends BorderPane {
         this.model = model;
         this.controleur = new Controleur(this, IDN, IDB, IDS, IDP, IDF);
         
+        NomUtilisatuer = UText;
         UText = "Connecté en tant que "+UText;
         this.UTextLabel= new Label(UText);
-
+        
         this.Noeuds = new ToggleButton("Noeuds");
         this.Barres = new ToggleButton("Barres");
         this.Style = new Label("Style");
@@ -760,7 +762,7 @@ public class GlobalPane extends BorderPane {
             ArrayList<Barre> AB = controleur.getVue().getModel().Tri_Des_Barres();
             ArrayList<Segment> AS = controleur.getVue().getModel().Tri_Des_Segment();
             if(AN.isEmpty() || AB.isEmpty() || AS.size() == 0){
-                Aide.setText("La simulation est impossible, vou devez avoir au moins un Segment, une Barre et un Noeud.");
+                Aide.setText("La simulation est impossible, vous devez avoir au moins un Segment, une Barre et un Noeud.");
             } else {
                 controleur.boutonSimulation(t);
             }
@@ -1108,7 +1110,7 @@ public class GlobalPane extends BorderPane {
     }
     
     public String getUText(){
-        return ""+UTextLabel;
+        return NomUtilisatuer;
     }
 
 }

@@ -435,7 +435,7 @@ public class Controleur {
     public void menuNouveau(ActionEvent t) {
         Stage nouveau = new Stage();
         nouveau.setTitle("BRIDGE");
-        Scene sc = new Scene(new GlobalPane(nouveau));
+        Scene sc = new Scene(new GlobalPane(nouveau, getVue().getUText()));
         nouveau.setScene(sc);
         nouveau.show();
     }
@@ -455,7 +455,7 @@ public class Controleur {
                 ArrayList<Force> AF = cdOuvrir.Recup_Force(AN);
                 Stage nouveau = new Stage();
                 nouveau.setTitle("BRIDGIES " + f.getName());
-                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size(), AF.size(), FRE.getCout(),"");
+                GlobalPane GP = new GlobalPane(nouveau, f, cdOuvrir, AS.size(), AP.size(), AN.size(), AB.size(), AF.size(), FRE.getCout(),getVue().getUText());
                 Scene sc = new Scene(GP);
                 nouveau.setScene(sc);
                 nouveau.show();
