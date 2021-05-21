@@ -199,6 +199,9 @@ public class Controleur {
                         proche.setColor(Color.BLUE);
                     }
                 } else {
+                    for(Figure F : selection){
+                        F.setColor(Color.BLACK);
+                    }
                     selection.clear();
                     selection.add(proche);
                     proche.setColor(Color.BLUE);
