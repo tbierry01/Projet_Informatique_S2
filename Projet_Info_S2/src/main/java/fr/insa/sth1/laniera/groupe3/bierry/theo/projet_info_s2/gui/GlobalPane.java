@@ -1107,5 +1107,8 @@ public class GlobalPane extends BorderPane {
         Cout.setText(S);
     }
     
+    public String getUText(){
+        return ""+UTextLabel;
+    }
 
 }
