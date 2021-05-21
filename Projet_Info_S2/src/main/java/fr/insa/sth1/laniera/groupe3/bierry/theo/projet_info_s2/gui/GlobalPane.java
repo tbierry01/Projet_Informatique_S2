@@ -130,7 +130,7 @@ public class GlobalPane extends BorderPane {
         this.Norme = new TextField("Norme (en N)");
         this.Angle = new TextField("Angle (en rad)");
         this.Supprimer = new Button("Supprimer");
-        this.setCout("" + Prix);
+        this.setCout("" + ((int)Prix));
         this.Vertical.setPrefSize(120, 25);
         this.Horizontal.setPrefSize(120, 25);
         this.Sélectionner.setPrefSize(120, 25);
