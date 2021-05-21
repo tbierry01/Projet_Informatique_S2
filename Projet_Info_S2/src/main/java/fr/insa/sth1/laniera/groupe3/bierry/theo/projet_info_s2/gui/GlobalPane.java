@@ -35,7 +35,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -82,24 +81,13 @@ public class GlobalPane extends BorderPane {
     private ClassDessin model;
     private Controleur controleur;
 
-    private ArrayList<Figure> EnsembleFigures;
     private File curFile;
     private Stage inStage;
 
-    private int IDSegment;
-    private int IDPoint;
-    private int IDAppuiSimple;
-    private int IDAppuiDouble;
-    private int IDBarres;
-    private int IDNoeuds;
     private Label UTextLabel;
     private MainMenu menu;
     private String NomUtilisatuer = "";
 
-    /*public GlobalPane () {
-        this(new ClassDessin());  
-    }
-     */
     
     public GlobalPane(Stage inStage, String UText){
         this(inStage, null, new ClassDessin(),0, 0, 0, 0, 0, 0, UText);
@@ -151,21 +139,11 @@ public class GlobalPane extends BorderPane {
         this.Supprimer.setPrefSize(120, 25);
 
         this.Aide.setFont(javafx.scene.text.Font.font(15));
-
-        IDPoint = 0;
         
-        Norme.setOnMouseClicked((ti) -> {
-            if (Norme.getText().equals("Norme (en N)")){
-                Norme.setText("");
-            }
-        });   
-        Angle.setOnMouseClicked((ti) -> {
-            if (Angle.getText().equals("Angle (en rad)")){
-                Angle.setText("");
-            }
-        });   
+       
 
 //----------- Concerne les insertions des icones dans les différents boutons ainsi que leur taille -----------//
+       
         //----------- Bouton Terrain -----------//
         ImageView iconTerrain = new ImageView(new Image("file:Image_Terrain.png"));
         this.Terrain = new ToggleButton("Terrain", iconTerrain);
@@ -242,12 +220,15 @@ public class GlobalPane extends BorderPane {
         this.Valider = new Button(" Valider", iconValider);
         this.Valider.setPrefSize(200, 50);
 
+
+
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
+        
+        // Gère les groupe de boutons à l'aide de HBox et VBox
         VBox bTerrain = new VBox(this.getSegment(), this.getPoint());
         VBox bPont1 = new VBox(this.getAppuiSimple(), this.getAppuiDouble());
         VBox bPont2 = new VBox(this.getNoeuds(), this.getBarres());
         
-
         VBox vOptions = new VBox(this.Nouveau, this.Ouvrir, this.getEnregistrer());
 
         HBox hTerrain = new HBox(this.getTerrain(), bTerrain);
@@ -273,6 +254,7 @@ public class GlobalPane extends BorderPane {
         Type.setTextFill(Color.WHITE);
         SymboleEuro.setTextFill(Color.WHITE);
         
+        // Défini les rectangles de séparation entre les groupes de boutons
         Rectangle rectangle1 = new Rectangle();
         rectangle1.setWidth(5);
         rectangle1.setHeight(100);
@@ -288,6 +270,7 @@ public class GlobalPane extends BorderPane {
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
         
+        // Gère les groupes des différents boutons en définissant des couleurs de fond pour les H/VBox
         VBox NormeAngle = new VBox(Norme, Angle);
         HBox ForceDonnees = new HBox (Force, NormeAngle);
         VBox vbForce = new VBox(ForceDonnees, Valider);
@@ -299,6 +282,7 @@ public class GlobalPane extends BorderPane {
         entete.setSpacing(20);
         entete.setPadding(new javafx.geometry.Insets(15, 20, 10, 10));
 
+        // Place la barre de menu en haut de l'interface
         this.menu = new MainMenu(this);
         VBox barreMenus = new VBox(menu, entete);
 
@@ -318,7 +302,10 @@ public class GlobalPane extends BorderPane {
 
         this.setTop(haut);
 
+        
+        
 //----------- Concerne les éléments de la partie gauche de l'interface -----------//
+
         //----------- Définit le bouton Couleur en définissant la couleur Noir par défaut -----------//
         Couleur = new ColorPicker(Color.BLACK);
         Couleur.setOnAction((t) -> {
@@ -356,8 +343,11 @@ public class GlobalPane extends BorderPane {
         cbMatériaux.setPrefSize(120, 25);
 
         //----------- On place les différents éléments qui composent la partie gauche -----------//
+        
+        // On défini une BorderPane pour la partie gauche pour bien placer les éléments
         BorderPane gauche = new BorderPane();
 
+        // On défini les groupes de bouton à l'aide de H/VBox, on modifie la taille police et les couleurs
         HBox hStyle = new HBox(this.Style);
         hStyle.setPadding(new javafx.geometry.Insets(10, 5, 0, 0));
 
@@ -374,6 +364,7 @@ public class GlobalPane extends BorderPane {
         Background bgLightBlue = new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, null));
         coteGauche.setBackground(bgLightBlue);
 
+        // Permet d'afficher les coordonnées du pointeurs en direct lorsqu'on bouge la souris sur le Canvas
         Dessin.setOnMouseMoved((t) -> {
             double x;
             double y;
@@ -384,10 +375,9 @@ public class GlobalPane extends BorderPane {
             posY.setText("Y : " + y);
             posY.setStyle("-fx-font-weight: bold");
         });
-        VBox posCurseur = new VBox(posX, posY);
-//        posCurseur.setBackground(bgBlue);
         
-        //NomCout.setFont(Color.WHITE);
+        VBox posCurseur = new VBox(posX, posY);
+        
         HBox FormatPrix = new HBox(NomCout, Cout, SymboleEuro);
         VBox IndicationElement = new VBox(Type, NormeForce, AngleForce, ContraintesBarres, FormatPrix);
         VBox Assemblage = new VBox (IndicationElement, posCurseur);
@@ -402,7 +392,10 @@ public class GlobalPane extends BorderPane {
 
         this.setLeft(gauche);
 
+        
+        
 //----------- Concerne les éléments de la partie inférieure de l'interface -----------//
+        
         Aide.setText("Cliquez sur un bouton pour modéliser votre pont");
 
         HBox coteBas = new HBox(this.Aide);
@@ -412,10 +405,14 @@ public class GlobalPane extends BorderPane {
 
         this.setBottom(coteBas);
 
+        
+        
 //----------- Concerne la position centrale du canvas -----------//
         this.setCenter(Dessin);
 
-//----------- Concerne l'activation et la désactivation des boutons en fonctions des boutons Terrain et Pont -----------//
+        
+        
+//----------- Concerne l'activation et la désactivation des boutons par défaut / Met les ToggleButton dans des groupes -----------//
         Point.setDisable(true);
         Segment.setDisable(true);
         Barres.setDisable(true);
@@ -434,7 +431,6 @@ public class GlobalPane extends BorderPane {
         ToggleGroup gTerrainPont = new ToggleGroup();
         Terrain.setToggleGroup(gTerrainPont);
         Pont.setToggleGroup(gTerrainPont);
-//        Simulation.setToggleGroup(gTerrainPont);
         Sélectionner.setToggleGroup(gTerrainPont);
         Vertical.setToggleGroup(gTerrainPont);
         Horizontal.setToggleGroup(gTerrainPont);
@@ -445,6 +441,8 @@ public class GlobalPane extends BorderPane {
         AppuiSimple.setToggleGroup(gPont);
         AppuiDouble.setToggleGroup(gPont);
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Point -----------//
         Point.setOnAction((t) -> {
             Aide.setText("Cliquez sur la zone du dessin pour placer vos points");
@@ -455,6 +453,7 @@ public class GlobalPane extends BorderPane {
                 controleur.boutonPoint(t);
             }
 
+            // Quand Point est activé, on désactive tous les autres boutons
             if (Segment.isDisabled() == true) {
                 Pont.setDisable(false);
                 Terrain.setDisable(false);
@@ -476,6 +475,8 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Segment -----------//
         Segment.setOnAction((t) -> {
             Aide.setText("Placez 2 points pour créer un segment ou reliez 2 points déjà existants");
@@ -485,6 +486,7 @@ public class GlobalPane extends BorderPane {
                 controleur.boutonSegment(t);
             }
 
+            // Quand Segment est activé, on désactive tous les autres boutons
             if (Point.isDisabled() == true) {
                 Point.setDisable(false);
                 Pont.setDisable(false);
@@ -506,6 +508,8 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Appui Simple -----------//
         AppuiSimple.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui simple");
@@ -515,6 +519,7 @@ public class GlobalPane extends BorderPane {
                 controleur.boutonAppuiSimple(t);
             }
 
+            // Quand Appui Simple est activé, on désactive tous les autres boutons
             if (Barres.isDisabled() == true) {
                 Pont.setDisable(false);
                 Terrain.setDisable(false);
@@ -540,6 +545,8 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Appui Double -----------//
         AppuiDouble.setOnAction((t) -> {
             Aide.setText("Cliquez sur un segment du terrain pour y placer un appui double");
@@ -549,6 +556,7 @@ public class GlobalPane extends BorderPane {
                 controleur.boutonAppuiDouble(t);
             }
 
+            // Quand Appui Double est activé, on désactive tous les autres boutons
             if (Barres.isDisabled() == true) {
                 Pont.setDisable(false);
                 Terrain.setDisable(false);
@@ -574,6 +582,8 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Barres -----------//
         Barres.setOnAction((t) -> {
             Aide.setText("Cliquez sur 2 noeuds pour créer une barre");
@@ -583,6 +593,7 @@ public class GlobalPane extends BorderPane {
                 controleur.boutonBarres(t);
             }
 
+            // Quand Appui Double est activé, on désactive tous les autres boutons
             if (Noeuds.isDisabled() == true) {
                 Pont.setDisable(false);
                 Terrain.setDisable(false);
@@ -608,6 +619,8 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Noeuds -----------//
         Noeuds.setOnAction((t) -> {
             Aide.setText("Cliquez sur un point pour créer un noeud");
@@ -617,6 +630,7 @@ public class GlobalPane extends BorderPane {
                 controleur.boutonNoeuds(t);
             }
 
+            // Quand Noeuds est activé, on désactive tous les autres boutons
             if (Barres.isDisabled() == true) {
                 Pont.setDisable(false);
                 Terrain.setDisable(false);
@@ -642,6 +656,8 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
         Terrain.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Point ou Segment afin de modéliser votre terrain");
@@ -650,6 +666,7 @@ public class GlobalPane extends BorderPane {
             AppuiDouble.setDisable(true);
             Noeuds.setDisable(true);
 
+            // Quand Terrain est activé, on active Point et Terrain et on désactive tous les autres boutons
             if (Segment.isDisabled() == true) {
                 Segment.setDisable(false);
                 Point.setDisable(false);
@@ -663,12 +680,15 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Pont -----------//
         Pont.setOnAction((t) -> {
             Aide.setText("Cliquez sur le bouton Noeuds, Appui (Simple/Double) ou Barres pour modéliser votre pont");
             Point.setDisable(true);
             Segment.setDisable(true);
 
+            // Quand Pont est activé, on active Appui Simple, Appui Double, Noeuds et Barres et on désactive tous les autres boutons
             if (Barres.isDisabled() == true) {
                 Barres.setDisable(false);
                 AppuiSimple.setDisable(false);
@@ -686,14 +706,14 @@ public class GlobalPane extends BorderPane {
             }
         });
 
-        /*        Sélectionner.setOnAction((t) -> {
-            this.controleur.boutonSélectionner(t);
-        }); 
-         */
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Sélectionner -----------//
         Sélectionner.setOnAction((t) -> {
             Aide.setText("Cliquez sur des éléments pour les sélectionner");
             this.controleur.boutonSélectionner(t);
+            
+            // On désactive tous les bouton et on active le bouton Supprimer
             if (Segment.isDisabled() == false || Barres.isDisabled() == false) {
                 Segment.setDisable(true);
                 Point.setDisable(true);
@@ -710,11 +730,14 @@ public class GlobalPane extends BorderPane {
 
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Force -----------//
         Force.setOnAction((t) -> {
             Aide.setText("Sélectionnez le noeuds puis entrez la norme et l'angle de la force qui s'y applique");
             controleur.boutonEtatNeutre(t);
             
+            // On active les zones de texte et le bouton valider
             if (Angle.isDisabled() == true) {
                 Angle.setDisable(false);
                 Norme.setDisable(false);
@@ -732,9 +755,13 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Vertical -----------//  
         Vertical.setOnAction((t) -> {
             controleur.boutonVertical(t);
+            
+            // On désactive tous les boutons lorsqu'on clique sur Vertical
             if (Segment.isDisabled() == false || Barres.isDisabled() == false || Angle.isDisabled() == false) {
                 Segment.setDisable(true);
                 Point.setDisable(true);
@@ -748,9 +775,13 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Horizontal -----------//  
         Horizontal.setOnAction((t) -> {
             controleur.boutonHorizontal(t);
+            
+            // On désactive tous les boutons lorsqu'on clique sur Horizontal
             if (Segment.isDisabled() == false || Barres.isDisabled() == false || Angle.isDisabled() == false) {
                 Segment.setDisable(true);
                 Point.setDisable(true);
@@ -764,9 +795,12 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Simulation -----------//
         Simulation.setOnAction((t) -> {
-            //System.out.println("Je suis là");
+            
+            // Permet de lancer les calculs et de dire si le treillis est isostatique / Affiche une erreur si le calcul est impossible
             ArrayList<Noeud> AN = controleur.getVue().getModel().Tri_Des_Noeuds();
             ArrayList<Barre> AB = controleur.getVue().getModel().Tri_Des_Barres();
             ArrayList<Segment> AS = controleur.getVue().getModel().Tri_Des_Segment();
@@ -777,26 +811,11 @@ public class GlobalPane extends BorderPane {
             }
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Supprimer -----------//
         Supprimer.setOnAction((t) -> {
-            //System.out.println("\n\nListe Selection\n\n" + controleur.getSelection());
-            /*for (Figure f : controleur.getSelection()) {
-                controleur.getVue().getModel().Remove(f);
-                int i = f.getId();
-                System.out.println("\n\nId : "+i);
-                controleur.getVue().getModel(). MAJ_Ids(f, i); //On met à jour les identificateurs des figures
-                //On met à jour les identificateurs dans la classe controleur
-                if(f instanceof Noeud){
-                    controleur.setIdNoeud(controleur.getIdNoeud() - 1);
-                } else if (f instanceof Barre){
-                    controleur.setIdBarre(controleur.getIdBarre() - 1);
-                }else if (f instanceof Point){
-                    controleur.setIdPoint(controleur.getIdPoint() - 1);
-                } else if (f instanceof Segment){
-                    controleur.setIdSegment(controleur.getIdSegment() - 1);
-                }
-            }
-             */
+  
             int i = 0;
             for (Figure F : controleur.getSelection()) { //On récupère toutes les figures de la séléction
                 if (controleur.getVue().getModel().getContenu().contains(F)) { //Comme dans la suite, on va enlever des figures qui ne sont pas demander d'enlever, mais qui créent des ncohérence, alors, on vérfie si cette figure est déjà enlevé ou pas
@@ -924,22 +943,29 @@ public class GlobalPane extends BorderPane {
             controleur.getVue().redrawAll();
         });
 
-        //TO POUR M BIEERY : SEAU QU Pé Dé I DENT TIF HI KA T'HEURE    
+        
+           
 //----------- Concerne les instructions attendues lorsqu'on clique sur Terrain -----------//
         Nouveau.setOnAction((t) -> {
             controleur.menuNouveau(t);
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Ouvrir -----------//  
         Ouvrir.setOnAction((t) -> {
             controleur.menuOuvrir(t);
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Nouveau -----------//  
         Nouveau.setOnAction((t) -> {
             controleur.menuNouveau(t);
         });
 
+        
+        
 //----------- Concerne les instructions attendues lorsqu'on clique sur Sauvegarder -----------//  
         Enregistrer.setOnAction((t) -> {
             ArrayList<Noeud> AN = controleur.getVue().getModel().Tri_Des_Noeuds();
@@ -961,10 +987,30 @@ public class GlobalPane extends BorderPane {
 //----------- Concerne les actions quand on veut valider une force -------------------------//
         Valider.setOnAction((t) -> {
             controleur.BoutonValider(t);
+            
+            // Une fois cliqué sur Valider, on désactive les champ et ce même bouton
             Valider.setDisable(true);
             Norme.setDisable(true);
             Angle.setDisable(true);
         });
+        
+        
+        
+//----------- Concerne les actions lorsqu'on entre une norme -------------------------//        
+        Norme.setOnMouseClicked((ti) -> {
+            if (Norme.getText().equals("Norme (en N)")){
+                Norme.setText("");
+            }
+        });
+        
+        
+        
+//----------- Concerne les actions lorsqu'on entre une norme -------------------------//         
+        Angle.setOnMouseClicked((ti) -> {
+            if (Angle.getText().equals("Angle (en rad)")){
+                Angle.setText("");
+            }
+        }); 
     }
 
     public void redrawAll() {
