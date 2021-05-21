@@ -139,17 +139,15 @@ public class GlobalPane extends BorderPane {
         this.Horizontal = new ToggleButton("Horizontal");
         this.Force = new Button("Force");
         this.Valider = new Button("Valider");
-        this.Norme = new TextField("Entrer Norme (en Newton)");
-        this.Angle = new TextField("Entrer Angle (en rad)");
+        this.Norme = new TextField("Norme (en N)");
+        this.Angle = new TextField("Angle (en rad)");
         this.Supprimer = new Button("Supprimer");
         this.setCout("" + Prix);
         this.Vertical.setPrefSize(120, 25);
         this.Horizontal.setPrefSize(120, 25);
         this.Sélectionner.setPrefSize(120, 25);
-        this.Norme.setPrefSize(100, 50);
-        this.Force.setPrefSize(100, 50);
-        this.Valider.setPrefSize(100, 50);
-        this.Angle.setPrefSize(100, 50);
+        this.Norme.setPrefSize(100, 25);
+        this.Angle.setPrefSize(100, 25);
         this.Supprimer.setPrefSize(120, 25);
 
         this.Aide.setFont(javafx.scene.text.Font.font(15));
@@ -157,12 +155,12 @@ public class GlobalPane extends BorderPane {
         IDPoint = 0;
         
         Norme.setOnMouseClicked((ti) -> {
-            if (Norme.getText().equals("Entrer Norme (en Newton)")){
+            if (Norme.getText().equals("Norme (en N)")){
                 Norme.setText("");
             }
         });   
         Angle.setOnMouseClicked((ti) -> {
-            if (Angle.getText().equals("Entrer Angle (en rad)")){
+            if (Angle.getText().equals("Angle (en rad)")){
                 Angle.setText("");
             }
         });   
@@ -233,6 +231,16 @@ public class GlobalPane extends BorderPane {
         this.Simulation = new ToggleButton("Simulation", iconSimulation);
         this.Simulation.setContentDisplay(ContentDisplay.TOP);
         this.Simulation.setPrefSize(100, 100);
+        
+        //----------- Bouton Force -----------//
+        ImageView iconForce = new ImageView(new Image("file:Image_Force.png"));
+        this.Force = new Button(" Force", iconForce);
+        this.Force.setPrefSize(100, 50);
+        
+        //----------- Bouton Barres -----------//
+        ImageView iconValider = new ImageView(new Image("file:Image_Valider.png"));
+        this.Valider = new Button(" Valider", iconValider);
+        this.Valider.setPrefSize(200, 50);
 
 //----------- Concerne les éléments de la partie haute de l'interface -----------//
         VBox bTerrain = new VBox(this.getSegment(), this.getPoint());
@@ -279,11 +287,12 @@ public class GlobalPane extends BorderPane {
         rectangle3.setWidth(5);
         rectangle3.setHeight(100);
         rectangle3.setFill(Color.LIGHTSEAGREEN);
-
+        
         VBox NormeAngle = new VBox(Norme, Angle);
-        VBox vbForce = new VBox(Force, Valider);
+        HBox ForceDonnees = new HBox (Force, NormeAngle);
+        VBox vbForce = new VBox(ForceDonnees, Valider);
 
-        HBox SimFor = new HBox(Simulation, vbForce, NormeAngle);
+        HBox SimFor = new HBox(Simulation, vbForce);
         SimFor.setSpacing(8);
 
         HBox entete = new HBox(vOptions, rectangle1, hTerrain, rectangle2, hPont, rectangle3, SimFor);
@@ -384,7 +393,7 @@ public class GlobalPane extends BorderPane {
         VBox Assemblage = new VBox (IndicationElement, posCurseur);
         VBox JeSersARienBis = new VBox();
         
-        Assemblage.setBackground(bgBlue);
+        Assemblage.setBackground(bgLightBlue);
         JeSersARienBis.setBackground(bgLightBlue);
 
         gauche.setTop(coteGauche);

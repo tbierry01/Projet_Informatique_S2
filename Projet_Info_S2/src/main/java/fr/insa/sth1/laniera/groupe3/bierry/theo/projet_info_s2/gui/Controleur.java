@@ -193,7 +193,7 @@ public class Controleur {
                 } else if (t.isControlDown()) {
                     if (selection.contains(proche)) {
                         selection.remove(proche);
-                        proche.setColor(Color.PINK);
+                        proche.setColor(Color.BLACK);
                     } else {
                         selection.add(proche);
                         proche.setColor(Color.BLUE);
@@ -387,7 +387,7 @@ public class Controleur {
     }
 
     public void boutonSélectionner(ActionEvent t) {
-        System.out.println("Je passe par là");
+    //    System.out.println("Je passe par là");
         changeEtat(20);
     }
 
@@ -544,6 +544,7 @@ public class Controleur {
         Scene secondScene = new Scene(secondaryLayout);
         
         Stage newWindow = new Stage();
+   //     newWindow.setX()
         newWindow.getIcons().add(new Image("file:Image_Logo.png"));
         newWindow.setTitle("BRIDGIES - FAQ");
         newWindow.setScene(secondScene);
