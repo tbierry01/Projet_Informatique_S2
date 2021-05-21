@@ -370,9 +370,9 @@ public class GlobalPane extends BorderPane {
             double y;
             x = t.getSceneX() - 145.6;
             y = t.getSceneY() - 152.8;
-            posX.setText("X : " + x);
+            posX.setText("X : " + ((int) x));
             posX.setStyle("-fx-font-weight: bold");
-            posY.setText("Y : " + y);
+            posY.setText("Y : " + ((int) y));
             posY.setStyle("-fx-font-weight: bold");
         });
         
