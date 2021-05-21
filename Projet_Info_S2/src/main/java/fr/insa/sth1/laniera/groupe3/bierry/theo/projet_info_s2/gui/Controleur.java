@@ -291,7 +291,7 @@ public class Controleur {
                 IdBarre++;
                 double C = Double.parseDouble(getVue().getCout());
                 C = C + B.getCout();
-                getVue().setCout(""+C);
+                getVue().setCout(""+((int)C));
                 System.out.println("\n"+getVue().getModel());
                 getVue().redrawAll();
                 getVue().setTextByMoi("Placez 2 points pour créer une barre ou reliez 2 noeuds déjà existants");
