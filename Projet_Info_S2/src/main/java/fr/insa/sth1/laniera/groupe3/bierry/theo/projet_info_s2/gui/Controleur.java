@@ -105,42 +105,24 @@ public class Controleur {
     }
     */
 
+
+//----------- Permet de gérer les changements d'état pour savoir quelle fonction réaliser plus tard -----------//    
     
     public void changeEtat(int nouvelEtat) {
-        if (nouvelEtat == 30) {                         // On est dans l'état Point donc on désactive le bouton Segment //
-//            this.vue.getSegment().setDisable(true);
-        } else if (nouvelEtat == 40) {                  // On est dans l'état Segment donc on désactive le bouton Point //
-//            this.vue.getPoint().setDisable(true);
-        } else if (nouvelEtat == 41) {                  // On est dans l'état Segment pour créer le 2e point //
-//            this.vue.getPoint().setDisable(true);
-        } else if (nouvelEtat == 50) {                  // On est dans l'état Appui Simple donc on désactive les boutons Appui Double, Barres et Noeuds  //
-/*            this.vue.getAppuiDouble().setDisable(true);
-            this.vue.getBarres().setDisable(true);
-            this.vue.getNoeuds().setDisable(true);
-             */        } else if (nouvelEtat == 60) {                  // On est dans l'état Appui Double donc on désactive les boutons Appui Simple, Barres et Noeuds  //
-/*            this.vue.getAppuiSimple().setDisable(true);
-            this.vue.getBarres().setDisable(true);
-            this.vue.getNoeuds().setDisable(true);
-             */        } else if (nouvelEtat == 70) {                  // On est dans l'état Barres donc on désactive les boutons Appui Simple, Appui Double et Noeuds  //
-/*            this.vue.getAppuiDouble().setDisable(true);
-            this.vue.getAppuiSimple().setDisable(true);
-            this.vue.getNoeuds().setDisable(true);
-             */        } else if (nouvelEtat == 71) {
-        } else if (nouvelEtat == 80) {                  // On est dans l'état Noeuds donc on désactive les boutons Appui Simple, Appui Double et Barres  //
-/*            this.vue.getAppuiSimple().setDisable(true);
-            this.vue.getAppuiDouble().setDisable(true);
-            this.vue.getBarres().setDisable(true);
-             */        }
         this.etat = nouvelEtat;
     }
+    
+    
+    
+//----------- Permet de réaliser les fonctions de dessin lorsqu'on clique dans le canvas, en fonction du bouton appuyé -----------//    
 
     void clicDansZoneDessin(MouseEvent t) {
-        //System.out.println("Je suis dedans");
         if(etat!= 10){
+            // Affiche ce sur quoi on clique dans la partie inférieure gauche et donne ses caractéristiques
             getVue().setNormeForce("");
-                getVue().setAngleForce("");
-                getVue().setContraintesBarres("");
-                getVue().setType("");
+            getVue().setAngleForce("");
+            getVue().setContraintesBarres("");
+            getVue().setType("");
         }
         if (etat == 10) {
             Point pClic = new Point(t.getX(), t.getY());
@@ -179,26 +161,31 @@ public class Controleur {
                 getVue().setType("Appui Simple");
             }
         }
-        if (etat == 20) {
+        if (etat == 20) {  
+            // Gère la fonction du bouton Sélectionner
             Point pClic = new Point(t.getX(), t.getY());
             Figure proche = getVue().getModel().plusProche(pClic, Double.MAX_VALUE);
             if(proche.getColor() != Couleur){
                 Couleur = proche.getColor();
             }
-            //System.out.println("Selectionné: " + proche);
             if (proche != null) {
+                // Défini l'action lorsqu'on clique sur une figure en appuyant avec une touche du clavier
                 if (t.isShiftDown()) {
+                    // Change la couleur de la figure en bleu et l'ajoute à la liste de sélection quand Shift appuyé
                     selection.add(proche);
                     proche.setColor(Color.BLUE);
                 } else if (t.isControlDown()) {
                     if (selection.contains(proche)) {
+                        // Enlève la figure de la sélection si elle y est deja et remet la couleur noir quand CTRL est appuyé
                         selection.remove(proche);
                         proche.setColor(Color.BLACK);
                     } else {
+                        // Ajoute la figure de la sélection si elle n'y est pas et lui met la couleur bleu quand CTRL est appuyé
                         selection.add(proche);
                         proche.setColor(Color.BLUE);
                     }
                 } else {
+                    // Si on clique simplement sur les figures, la(es) précédente(s) figure(s) se déselectionne(nt) et se remet(tent) en noir
                     for(Figure F : selection){
                         F.setColor(Color.BLACK);
                     }
@@ -212,8 +199,8 @@ public class Controleur {
             for (Figure f : vue.getModel().getContenu()){
                 S = S+f.toString();
             }
-            //System.out.println(S);
-        } else if (etat == 30) {            // 30 correspond à l'état Point //
+        } else if (etat == 30) {        
+            //Gère la fonction du bouton Point
             double px = t.getX();
             double py = t.getY();
             ClassDessin model = this.getVue().getModel();
@@ -221,12 +208,14 @@ public class Controleur {
             IdPoint++;
             System.out.println("\n"+getVue().getModel());
             this.getVue().redrawAll();
-        } else if (etat == 40) {            // 40 correspond à l'état Segment //
+        } else if (etat == 40) {            
+            // Gère la fonction du bouton Segment
             Point pClic = new Point(t.getX(), t.getY());
             Point proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             pos1[0] = proche;
-            changeEtat(41);                 // 41 correspond au 2e point de l'état Segment //
+            changeEtat(41);                 
         } else if (etat == 41) {
+            // Gère le deuxième point pour créer un Segment
             Point pClic = new Point(t.getX(), t.getY());
             Point proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
             pos1[1] = proche;
@@ -242,6 +231,7 @@ public class Controleur {
                 changeEtat(40);
             }
         } else if (etat == 50) {
+            // Gère la fonction du bouton Appui Simple
             Point pClic = new Point(t.getX(), t.getY());
             Segment S = getVue().getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
             Appui_Simple AS = Appui_Simple.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, getVue().getCouleur().getValue());
@@ -258,7 +248,7 @@ public class Controleur {
                 getVue().setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
             }
         } else if (etat == 60) {
-            //System.out.println("Ok on passe par l'état 60");
+            // Gère la fonction du bouton Appui Double
             Point pClic = new Point(t.getX(), t.getY());
             Segment S = getVue().getModel().SegmentPlusProche(pClic, Double.MAX_VALUE);
             Appui_Double AS = Appui_Double.CreationAppuiPossibleOuPas(IdNoeud, S, pClic, getVue().getCouleur().getValue());
@@ -274,11 +264,13 @@ public class Controleur {
                 getVue().setTextByMoi("Cliquez sur un segment du terrain pour y placer un appui simple");
             }
         } else if (etat == 70) {
+            // Gère la fonction du bouton Barre
             Point pClic = new Point(t.getX(), t.getY());
             Noeud proche = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             pos2[0] = proche;
             changeEtat(71);
         } else if (etat == 71) {
+            // Gère le deuxième Noeud nécessaire pour créer une Barre
             Point pClic = new Point(t.getX(), t.getY());
             Noeud proche = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             pos2[1] = proche;
@@ -298,12 +290,14 @@ public class Controleur {
                 changeEtat(70);
             }
         } else if (etat == 80) {
+            // Gère la fonction du bouton Noeud
             Point pClic = new Point(t.getX(), t.getY());
             getVue().getModel().addFigure(new Noeud_Simple(pClic, IdNoeud, getVue().getCouleur().getValue()));
             IdNoeud++;
             System.out.println("\n"+getVue().getModel());
             getVue().redrawAll();
         } else if (etat == 90) {
+            // Gère la fonction du bouton Vertical (reconnaissance du point ou noeud le plus proche
             getVue().setTextByMoi("Cliquez sur la figure sur laquelle vous voulez vous baser");
             Point pClic = new Point(t.getX(), t.getY());
             Figure proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
@@ -319,17 +313,20 @@ public class Controleur {
                 changeEtat(92);
             }
         } else if(etat == 91) {
+            // Gère la fonction du bouton Vertical (placer un point)
             getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Point");
             double Ord = t.getY();
             getVue().getModel().addFigure(new Point(pos3[0], Ord));
             getVue().redrawAll();
             
         } else if (etat == 92) {
+            // Gère la fonction du bouton Vertical (placer un noeud)
             getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Noeud");
             double Ord = t.getY();
             getVue().getModel().addFigure(new Noeud_Simple(pos3[0], Ord, IdNoeud, getVue().getCouleur().getValue()));
             getVue().redrawAll();
         } else if (etat == 100) {
+            // Gère la fonction du bouton Horizontal (reconnaissance du point ou du noeud le plus proche
             getVue().setTextByMoi("Cliquez sur la figure sur laquelle vous voulez vous baser");
             Point pClic = new Point(t.getX(), t.getY());
             Figure proche = getVue().getModel().PointPlusProche(pClic, Double.MAX_VALUE);
@@ -345,27 +342,19 @@ public class Controleur {
                 changeEtat(102);
             }
         } else if (etat==101) {
+            // Gère la fonction du bouton Horizontal (placer un point)
             getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Point");
             double Abs = t.getX();
             getVue().getModel().addFigure(new Point(Abs, pos3[0]));
             getVue().redrawAll();
         } else if (etat==102) {
+            // Gère la fonction du bouton Horizontal (placer un noeud)
             getVue().setTextByMoi("Cliquez à l'endroit où vous voulez positionner votre Noeud");
             double Abs = t.getX();
             getVue().getModel().addFigure(new Noeud_Simple(Abs, pos3[0], IdNoeud, getVue().getCouleur().getValue()));
             getVue().redrawAll();
-        } else if (etat==110) {
-            Remonte_Inversion ri = getVue().getModel().Simulation();
-            if(ri.isPossible() == false){
-                getVue().setTextByMoi("Le treillis n'est pas isostatique");
-            } else {
-                ArrayList<Barre> AB = getVue().getModel().Tri_Des_Barres();
-                for (Barre B : AB) {
-                    B.setEffort(ri.getSolution());
-                }
-                getVue().redrawAll();
-            }
         } else if (etat == 120){
+            // Gère la fonction du bouton Valider
             Point pClic = new Point(t.getX(), t.getY());
             Figure Proche = getVue().getModel().NoeudPlusProche(pClic, Double.MAX_VALUE);
             Force F = new Force(getVue().getChampNorme(), getVue().getChampAngle()-(Math.PI/2), IdForce);//Le Math.PI, permet de se décaler d'un angle de 90° vers le bas, ce qui est plus intutif et donc les force, vont par défaut verticalement vers le bas
@@ -378,6 +367,10 @@ public class Controleur {
         TreillisControleur.setTreillis(vue.getModel());
     }
 
+    
+    
+//----------- Permet de changer la couleur des figures sélectionnées -----------//    
+    
     void changeColor(Color value) {
         if (etat == 20) {
             for (Figure f : selection) {
@@ -387,49 +380,71 @@ public class Controleur {
         }
     }
 
+    
+    
+//----------- Permet de mettre l'état adéquat en fonction du bouton cliqué -----------//
+    
     void boutonEtatNeutre(ActionEvent t) {
         changeEtat(10);
     }
 
     public void boutonSélectionner(ActionEvent t) {
-    //    System.out.println("Je passe par là");
+        // Bouton Sélectionner
         changeEtat(20);
     }
 
     void boutonPoint(ActionEvent t) {
+        // Bouton Point
         changeEtat(30);
     }
 
     void boutonSegment(ActionEvent t) {
+        // Bouton Segment
         changeEtat(40);
     }
 
     public void boutonAppuiSimple(ActionEvent t) {
+        // Bouton Appui Simple
         changeEtat(50);
     }
 
     public void boutonAppuiDouble(ActionEvent t) {
+        // Bouton Appui Double
         changeEtat(60);
     }
 
     public void boutonBarres(ActionEvent t) {
+        //Bouton Barre
         changeEtat(70);
     }
 
     public void boutonNoeuds(ActionEvent t) {
+        // Bouton Noeud
         changeEtat(80);
     }
     
     public void boutonVertical (ActionEvent t) {
+        // Bouron Vertical
         changeEtat(90);
     }
     
     public void boutonHorizontal (ActionEvent t) {
+        // Bouton Horizontal
         changeEtat(100);
     }
     
     public void boutonSimulation (ActionEvent t) {
-        changeEtat(110);
+        // Gère la fonction du bouton Simulation
+            Remonte_Inversion ri = getVue().getModel().Simulation();
+            if(ri.isPossible() == false){
+                getVue().setTextByMoi("Le treillis n'est pas isostatique");
+            } else {
+                ArrayList<Barre> AB = getVue().getModel().Tri_Des_Barres();
+                for (Barre B : AB) {
+                    B.setEffort(ri.getSolution());
+                }
+                getVue().redrawAll();
+            }
     }
 
     public List<Figure> getSelection() {
@@ -513,21 +528,38 @@ public class Controleur {
     }
 
     public void menuAPropos(ActionEvent t) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("A propos");
-        alert.setHeaderText(null);
-        alert.setContentText("Ce logiciel a été dévellopé par trois gugus en STH1 durnat l'année de 2020 / 2021, année Coronus, dans le cadre d'un projet d'informatique pour le deuxième semestre.\n\n\nSinon, j'ai une blague : \nf et f' sont sur un bateau, f tombe à l'eau, que se passe t-il?\n\n\nLe bateau dérive ;-) ;-)\n");
-
-        alert.showAndWait();
+        Label aPropos = new Label ("Ce logiciel a été dévellopé par trois gugus en STH1 durant l'année de 2020 / 2021, année Coronus, dans le cadre d'un projet d'informatique pour le deuxième semestre.\n\n\nSinon, j'ai une blague : \nf et f' sont sur un bateau, f tombe à l'eau, que se passe t-il?\n\n\nLe bateau dérive ;-) ;-)\n");
+       
+        StackPane secondaryLayout = new StackPane();
+        secondaryLayout.getChildren().add(aPropos);
+        Scene secondScene = new Scene(secondaryLayout);
+        
+        Stage newWindow = new Stage();
+        newWindow.getIcons().add(new Image("file:Image_Logo.png"));
+        newWindow.setTitle("BRIDGIES - Fenêtre d'aide");
+        newWindow.setScene(secondScene);
+        
+        newWindow.show();
     }
     
     public void menuAideUtilisation (ActionEvent t) {
-        Label boutonTerrain = new Label (" - Boutons Point / Segment: appuyez d'abord sur Terrain");
-        Label boutonPont = new Label (" - Boutons Appuis, Noeuds, Barres : appuyez d'abord sur Pont");
-        Label boutonPoint = new Label (" - Point : appuyez où vous voulez sur la zone centrale pour placer les points qui définirons le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
-        Label boutonSegment = new Label (" - Segment : reliez deux points existants pour former le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)");
+        Label indications = new Label (" - Boutons Point / Segment: appuyez d'abord sur Terrain \n"
+            + " - Boutons Appuis, Noeuds, Barres : appuyez d'abord sur Pont\n\n"
+            + " - Point : appuyez où vous voulez sur la zone centrale pour placer les points qui définirons le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)\n"
+            + " - Segment : reliez deux points existants pour former le terrain (vous pouvez changer les couleurs avec le bouton prévu à cet effet sur le côté gauche)\n\n"
+            + " - Appui Simple : appuyez sur un segment existant pour y placer l'appui simple\n"
+            + " - Appui Double : appuyez sur un segment existant pour y placer l'appui double\n"
+            + " - Noeud : appuyez sur la zone de dessin pour y placer un noeud\n"
+            + " - Barre : reliez 2 noeuds / appuis pour y former une barre\n\n"
+            + " - Simulation : une fois le treillis fini, appuyez sur simulation. Un treillis vert = treillis isostatique, si message dans la partie inférieure, alors le treillis n'est pas isostatique\n\n"
+            + " - Force : entrez la norme du vecteur force ainsi que son angle, puis validez et sélectionnez le noeud sur lesquel vous voulez appliquer cette force\n\n"
+            + " - Vertical : sélectionnez le point ou le noeud sur lequel vous voulez vous baser (pour son abscisse), puis cliquez où vous voulez pour créer la nouvelle figure voulue\n"
+            + " - Horizontal : sélectionnez le point ou le noeud sur lequel vous voulez vous baser (pour son ordonnée), puis cliquez où vous voulez pour créer la nouvelle figure voulue\n\n"
+            + " - Sélectionner : cliquez et la forme sélectionnée devient bleue. Appuyez sur ctrl et vous pourrez en sélectionner plusieurs\n"
+            + " - Supprimer : sélectionnez d'abord les figures avec le bouton sélectionner (voir au-dessus) puis appuyez sur supprimer. Les figures auront disparues");
         
-        VBox textInfo = new VBox (boutonTerrain, boutonPont, boutonPoint, boutonSegment);
+             
+        VBox textInfo = new VBox (indications);
         
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(textInfo);
