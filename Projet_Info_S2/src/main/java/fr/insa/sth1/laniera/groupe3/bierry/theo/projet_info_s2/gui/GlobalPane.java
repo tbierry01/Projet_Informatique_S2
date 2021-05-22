@@ -1010,6 +1010,9 @@ public class GlobalPane extends BorderPane {
             Valider.setDisable(true);
             Norme.setDisable(true);
             Angle.setDisable(true);
+            
+            Norme.setText("Norme (en N)");
+            Angle.setText("Angle (en rad)");
         });
         
         
