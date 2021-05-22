@@ -356,7 +356,6 @@ public class Controleur {
             getVue().redrawAll();
         } else if (etat==110) {
             Remonte_Inversion ri = getVue().getModel().Simulation();
-            System.out.println("PAR ICI");
             if(ri.isPossible() == false){
                 getVue().setTextByMoi("Le treillis n'est pas isostatique");
             } else {

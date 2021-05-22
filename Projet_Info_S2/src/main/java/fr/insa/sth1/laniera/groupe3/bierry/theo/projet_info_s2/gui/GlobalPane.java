@@ -1023,7 +1023,7 @@ public class GlobalPane extends BorderPane {
         
         
         
-//----------- Concerne les actions lorsqu'on entre une norme -------------------------//         
+//----------- Concerne les actions lorsqu'on entre un angle -------------------------//         
         Angle.setOnMouseClicked((ti) -> {
             if (Angle.getText().equals("Angle (en rad)")){
                 Angle.setText("");
