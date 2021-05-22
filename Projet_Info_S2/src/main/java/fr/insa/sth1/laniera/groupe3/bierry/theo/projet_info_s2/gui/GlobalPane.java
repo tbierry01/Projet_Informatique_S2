@@ -323,7 +323,7 @@ public class GlobalPane extends BorderPane {
 
         //----------- Définit les choix de la ChoiceBox style trait -----------//
         ChoixStyleTrait stylTrait = new ChoixStyleTrait("Style trait");
-        ChoixStyleTrait traitPointilles = new ChoixStyleTrait("Work In Progress");
+        ChoixStyleTrait traitPointilles = new ChoixStyleTrait("En attente d'une mise à jour");
         
         
         ObservableList<ChoixStyleTrait> styleTrait = FXCollections.observableArrayList(stylTrait, traitPointilles);
@@ -339,9 +339,9 @@ public class GlobalPane extends BorderPane {
 
 
         //----------- Définit les choix de la ChoiceBox épaisseur -----------//
-        ChoixEpaisseur fin = new ChoixEpaisseur("Work In Progress");
+        ChoixEpaisseur fin = new ChoixEpaisseur("En attente d'une mise à jour");
         ChoixEpaisseur épaisseur = new ChoixEpaisseur("Epaisseur");
-        ChoixEpaisseur épais = new ChoixEpaisseur("Work In Progress");
+        ChoixEpaisseur épais = new ChoixEpaisseur("En attente d'une mise à jour");
 
         ObservableList<ChoixEpaisseur> epaisseur = FXCollections.observableArrayList(fin, épaisseur, épais);
         ChoiceBox<ChoixEpaisseur> cbEpaisseur = new ChoiceBox<ChoixEpaisseur>(epaisseur);
@@ -351,8 +351,8 @@ public class GlobalPane extends BorderPane {
 
         //----------- Définit les choix de la ChoiceBox matériaux -----------//
         ChoixMatériaux matériau = new ChoixMatériaux("Matériaux");
-        ChoixMatériaux matBois = new ChoixMatériaux("Work In Progress");
-        ChoixMatériaux matPolystyrène = new ChoixMatériaux("Work In Progress");
+        ChoixMatériaux matBois = new ChoixMatériaux("En attente d'une mise à jour");
+        ChoixMatériaux matPolystyrène = new ChoixMatériaux("En attente d'une mise à jour");
 
         ObservableList<ChoixMatériaux> matériaux = FXCollections.observableArrayList(matériau, matBois, matPolystyrène);
         ChoiceBox<ChoixMatériaux> cbMatériaux = new ChoiceBox<ChoixMatériaux>(matériaux);
