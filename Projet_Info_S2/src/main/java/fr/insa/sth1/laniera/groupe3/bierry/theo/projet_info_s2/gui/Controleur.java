@@ -372,6 +372,9 @@ public class Controleur {
             Force F = new Force(getVue().getChampNorme(), getVue().getChampAngle()-(Math.PI/2), IdForce);//Le Math.PI, permet de se décaler d'un angle de 90° vers le bas, ce qui est plus intutif et donc les force, vont par défaut verticalement vers le bas
             ((Noeud) Proche).setForceNoeud(F);
             IdForce++;
+            vue.setTextNorme("Norme (en N)");
+            vue.setTextAngle("Angle (en rad)");
+            changeEtat(10);
         }
         TreillisControleur.setTreillis(vue.getModel());
     }
@@ -427,7 +430,6 @@ public class Controleur {
     }
     
     public void boutonSimulation (ActionEvent t) {
-        System.out.println("OKay par là");
         changeEtat(110);
     }
 
@@ -438,6 +440,7 @@ public class Controleur {
     public void menuNouveau(ActionEvent t) {
         Stage nouveau = new Stage();
         nouveau.setTitle("BRIDGE");
+        nouveau.getIcons().add(new Image("file:Image_Logo.png"));
         Scene sc = new Scene(new GlobalPane(nouveau, getVue().getUText()));
         nouveau.setScene(sc);
         nouveau.show();
