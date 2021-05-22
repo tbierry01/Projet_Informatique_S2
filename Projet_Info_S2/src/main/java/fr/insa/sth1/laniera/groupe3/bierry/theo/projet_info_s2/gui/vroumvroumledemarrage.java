@@ -301,7 +301,7 @@ public class vroumvroumledemarrage extends BorderPane  {
                             Indication.setText("Conseil : Vous n'avez même pas écrit votre mot de passe...");
                             Indication.setTextFill(Color.rgb(0, 0, 0));
                         }
-                        else if (!(PText.getText().equals("DeBeuvron") || PText.getText().equals("Coulibaly"))) { //tant que l'un des 2 mdp n'est pas rentré, on renvoie des choses différentes dans conseils
+                        else if (!(PText.getText().equals("DeBeuvron") || PText.getText().equals("admin"))) { //tant que l'un des 2 mdp n'est pas rentré, on renvoie des choses différentes dans conseils
                             if (j==0) {
                                 PasswordWindow.close();
                                 primaryStage.close();
