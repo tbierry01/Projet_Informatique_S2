@@ -29,7 +29,6 @@ public class DessinCanvas extends Pane {
         this.getChildren().add(this.realCanvas);
         this.realCanvas.heightProperty().bind(this.heightProperty());
         this.realCanvas.heightProperty().addListener((o) -> {
- //           System.out.println("w = " + this.realCanvas.getWidth() + " ; h = " + this.realCanvas.getHeight());
             this.redrawAll();
         });
         
@@ -50,8 +49,6 @@ public class DessinCanvas extends Pane {
         GraphicsContext context = this.realCanvas.getGraphicsContext2D();
         context.setFill(Color.WHITE);
         context.fillRect(0, 0, realCanvas.getWidth(), realCanvas.getHeight());
-    //    context.setFill(Color.CORNSILK);
-    //    context.fillRect (0, 0, this.realCanvas.getWidth(), this.realCanvas.getHeight());
         ClassDessin model = this.main.getModel();
         model.MaisDessineToutPuree(context);
         List<Figure> select = main.getControleur().getVue().getModel().getContenu();
