@@ -304,8 +304,13 @@ public class vroumvroumledemarrage extends BorderPane  {
                         else if (!(PText.getText().equals("DeBeuvron") || PText.getText().equals("admin"))) { //tant que l'un des 2 mdp n'est pas rentré, on renvoie des choses différentes dans conseils
                             if (j==0) {
                                 PasswordWindow.close();
-                                primaryStage.close();
-                                UselessWindow.close();
+//                                primaryStage.close();
+//                                UselessWindow.close();
+                                Identifiant.setDisable(true);
+                                j=3;
+                                barre.setProgress(0);
+                                pourcentage.setProgress(0);
+                                Conseil.setText("      Conseil :"+"\n"+ "Mot de passe incorrect, veuillez recharger la page ");
                             }
                             Indication.setText("Conseil : Votre mot de passe est incorrect   "+""+j+" essai(s) restant(s)");
                             Indication.setTextFill(Color.rgb(210, 39, 30));
