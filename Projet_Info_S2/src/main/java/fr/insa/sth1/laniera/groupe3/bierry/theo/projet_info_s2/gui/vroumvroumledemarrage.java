@@ -119,9 +119,9 @@ public class vroumvroumledemarrage extends BorderPane  {
         this.BoutonInutile = new Button("Bouton \n Inutile");
         this.BoutonInutile.setContentDisplay(ContentDisplay.BOTTOM);
         this.BoutonInutile.setPrefSize(100, 100);
-        BoutonInutile.setStyle("-fx-background-color:lightgrey");
+        BoutonInutile.setStyle("-fx-faint-focus-color: grey"); 
         BoutonInutile.setFont(new Font("Harrington",20));
-        BoutonInutile.setTextFill(Color.DARKGRAY);
+        BoutonInutile.setTextFill(Color.BLACK);
         Tooltip.install(BoutonInutile, precision); //on installe le tooltip pour pouvoir le désactiver potentiellement après (on peut set aussi)
         
         //deco
