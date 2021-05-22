@@ -84,17 +84,26 @@ public class vroumvroumledemarrage extends BorderPane  {
     
     public static String Conseil(double i) {
         String res="";
-        if (i<0.25) {
+        if (i<0.14) {
             res="  Boire de l'eau c'est bon pour la santé  ";
         }
-        if (i>=0.25 && i<0.50) {
+        if (i>=0.14 && i<0.28) {
             res="  Pour manger il faut de la nourriture  ";
         }
-        if (i>=0.50 && i<0.75) {
+        if (i>=0.28&& i<0.42) {
             res="  Pour lutter contre le covid, il faut ouvrir la fenêtre  ";       
         }
-        if (i>=0.75) {
+        if (i>=0.42 && i<0.56) {
             res="  Un projet d'informatique se travaille  ";            
+        }
+        if (i>=0.56 && i<0.70) {
+            res="  Que dit un poussin de 10 kg?      PIOU PIOU  ";            
+        }
+        if (i>=0.70 && i<0.84) {
+            res="  Un jour Dieu demanda à Casto de ramer et Casto rama  ";            
+        }
+        if (i >= 0.84){
+            res="  Boire un canon c'est sauver un vigneron  ";
         }
     return("      Conseil : "+ "\n" +res); 
     }
