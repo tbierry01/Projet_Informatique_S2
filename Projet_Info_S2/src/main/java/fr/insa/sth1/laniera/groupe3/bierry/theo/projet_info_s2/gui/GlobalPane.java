@@ -321,14 +321,14 @@ public class GlobalPane extends BorderPane {
         });
         Couleur.setPrefSize(120, 25);
 
-        //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
-        ChoixStyleTrait traitPlein = new ChoixStyleTrait("Trait plein");
-        ChoixStyleTrait traitPointilles = new ChoixStyleTrait("Trait pointillé");
+        //----------- Définit les choix de la ChoiceBox style trait -----------//
+        ChoixStyleTrait stylTrait = new ChoixStyleTrait("Style trait");
+        ChoixStyleTrait traitPointilles = new ChoixStyleTrait("Work In Progress");
         
         
-        ObservableList<ChoixStyleTrait> styleTrait = FXCollections.observableArrayList(traitPlein, traitPointilles);
+        ObservableList<ChoixStyleTrait> styleTrait = FXCollections.observableArrayList(stylTrait, traitPointilles);
         ChoiceBox<ChoixStyleTrait> cbTrait = new ChoiceBox<ChoixStyleTrait>(styleTrait);
-        cbTrait.getSelectionModel().select(traitPlein);
+        cbTrait.getSelectionModel().select(stylTrait);
         cbTrait.setPrefSize(120, 25);
         this.precision = new Tooltip("Work In Progress...");
         precision.setFont(new Font("Bauhaus 93",15));
@@ -338,25 +338,25 @@ public class GlobalPane extends BorderPane {
         Tooltip.install(cbTrait, precision);
 
 
-        //----------- Définit les choix de la ChoiceBox en définissant le trait plein par défaut -----------//
-        ChoixEpaisseur fin = new ChoixEpaisseur("Trait fin");
-        ChoixEpaisseur moyen = new ChoixEpaisseur("Trait moyen");
-        ChoixEpaisseur épais = new ChoixEpaisseur("Trait épais");
+        //----------- Définit les choix de la ChoiceBox épaisseur -----------//
+        ChoixEpaisseur fin = new ChoixEpaisseur("Work In Progress");
+        ChoixEpaisseur épaisseur = new ChoixEpaisseur("Epaisseur");
+        ChoixEpaisseur épais = new ChoixEpaisseur("Work In Progress");
 
-        ObservableList<ChoixEpaisseur> epaisseur = FXCollections.observableArrayList(fin, moyen, épais);
+        ObservableList<ChoixEpaisseur> epaisseur = FXCollections.observableArrayList(fin, épaisseur, épais);
         ChoiceBox<ChoixEpaisseur> cbEpaisseur = new ChoiceBox<ChoixEpaisseur>(epaisseur);
-        cbEpaisseur.getSelectionModel().select(moyen);
+        cbEpaisseur.getSelectionModel().select(épaisseur);
         cbEpaisseur.setPrefSize(120, 25);
         Tooltip.install(cbEpaisseur, precision);
 
-        //----------- Définit les choix de la ChoiceBox en définissant le acier par défaut -----------//
-        ChoixMatériaux matAcier = new ChoixMatériaux("Acier");
-        ChoixMatériaux matBois = new ChoixMatériaux("Bois");
-        ChoixMatériaux matPolystyrène = new ChoixMatériaux("Polystyrène");
+        //----------- Définit les choix de la ChoiceBox matériaux -----------//
+        ChoixMatériaux matériau = new ChoixMatériaux("Matériaux");
+        ChoixMatériaux matBois = new ChoixMatériaux("Work In Progress");
+        ChoixMatériaux matPolystyrène = new ChoixMatériaux("Work In Progress");
 
-        ObservableList<ChoixMatériaux> matériaux = FXCollections.observableArrayList(matAcier, matBois, matPolystyrène);
+        ObservableList<ChoixMatériaux> matériaux = FXCollections.observableArrayList(matériau, matBois, matPolystyrène);
         ChoiceBox<ChoixMatériaux> cbMatériaux = new ChoiceBox<ChoixMatériaux>(matériaux);
-        cbMatériaux.getSelectionModel().select(matAcier);
+        cbMatériaux.getSelectionModel().select(matériau);
         cbMatériaux.setPrefSize(120, 25);
         Tooltip.install(cbMatériaux, precision);
 
