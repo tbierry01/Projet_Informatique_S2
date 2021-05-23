@@ -177,6 +177,9 @@ public class vroumvroumledemarrage extends BorderPane  {
         Identifiant.setDisable(true);
         
         BoutonInutile.setOnAction((ttt)-> {
+            if (BoutonInutile.getText().equals("Bouton \n Inutile")) {
+                BoutonInutile.setText("Bouton \n Super  \n  Utile");
+            }
             if (justeUnefois==true) {
                 barre.setProgress(barre.getProgress()+ Math.random()/7);
                 pourcentage.setProgress(barre.getProgress());
