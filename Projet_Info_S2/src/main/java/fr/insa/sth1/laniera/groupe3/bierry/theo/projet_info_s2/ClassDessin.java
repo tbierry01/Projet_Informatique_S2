@@ -472,7 +472,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
         if(this.isIsostatic() == false || RI.getPossible() == false){ //On teste si c'est isostatic ou pas
             return RI; //Note : on a pas besoin de le mettre à false parce que le constructeur vide met par defaut la matrice à null et le Possible à false
         } else {
-            
+            System.out.println("ICIIIIII");
             RI.setSolution(RI1.getSolution()); //On récupère a matrice solution
             Matrice M = RI.getSolution();
             this.ColorationSimulation(M); //On colore les barres
@@ -495,7 +495,7 @@ public class ClassDessin { //Cette classe porte en fait mal son nom, de base, el
                 AAS.add((Appui_Simple) N);
             }
         }
-        if (2 * AN.size() == AB.size() + AAS.size() + 2 * AAD.size()) { //On teste si cela répond à la formule du polycopié
+        if (2 * AN.size() == AB.size() + 2*AAS.size() + 1 * AAD.size()) { //On teste si cela répond à la formule du polycopié
             B = true;
         } else {
             B = false;
